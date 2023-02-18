@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "noEmit": true,
+    "strict": true,
+    "types": ["vitest/globals"]
+  },
+  "include": ["src"]
+}

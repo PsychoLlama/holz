@@ -1,0 +1,89 @@
+{
+  "name": "strog",
+  "version": "0.0.0",
+  "description": "A structured logger",
+  "main": "./dist/strog.umd.js",
+  "module": "./dist/strog.mjs",
+  "repository": "https://github.com/github:PsychoLlama/strog",
+  "author": "Jesse Gibson",
+  "license": "MIT",
+  "types": "./src/index.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "structured",
+    "composable",
+    "logger"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/strog.umd.js",
+      "import": "./dist/strog.mjs"
+    }
+  },
+  "scripts": {
+    "prepare": "vite build --sourcemap",
+    "test": "run test:coverage && run test:lint && run test:fmt",
+    "test:unit": "vitest --color --passWithNoTests",
+    "test:coverage": "run test:unit --coverage",
+    "test:lint": "eslint src --ext ts,tsx --color",
+    "test:fmt": "prettier --check src",
+    "fmt": "prettier --write src"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "overrides": [
+      {
+        "files": [
+          "./**/__tests__/*.ts{x,}"
+        ],
+        "rules": {
+          "@typescript-eslint/no-explicit-any": "off"
+        }
+      }
+    ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+      "@typescript-eslint/no-use-before-define": "off"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.tsx?": [
+      "eslint",
+      "prettier --check"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
+    "@vitest/coverage-c8": "^0.25.7",
+    "eslint": "^8.29.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "typescript": "4.8.4",
+    "vite": "^4.0.0",
+    "vitest": "^0.25.6"
+  },
+  "packageManager": "yarn@3.4.1"
+}
