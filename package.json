@@ -9,6 +9,7 @@
   "license": "MIT",
   "types": "./src/index.ts",
   "packageManager": "yarn@3.4.1",
+  "sideEffects": false,
   "files": [
     "dist",
     "src"
