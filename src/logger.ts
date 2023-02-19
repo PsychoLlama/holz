@@ -1,4 +1,5 @@
-import { LogLevel, LogProcessor, LogContext } from './types';
+import type { LogProcessor, LogContext } from './types';
+import { LogLevel } from './types';
 
 class Logger {
   static create(backend: LogProcessor): Logger {

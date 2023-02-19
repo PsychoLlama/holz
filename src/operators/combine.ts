@@ -1,4 +1,4 @@
-import { Log, LogProcessor } from '../types';
+import type { Log, LogProcessor } from '../types';
 
 class CombinedLogProcessor implements LogProcessor {
   constructor(private processors: Array<LogProcessor>) {
