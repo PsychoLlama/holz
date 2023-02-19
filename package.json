@@ -1,15 +1,17 @@
 {
-  "name": "strog",
+  "name": "@holz/monorepo",
+  "private": true,
   "version": "0.0.0",
   "description": "A structured logger",
-  "main": "./dist/strog.umd.js",
-  "module": "./dist/strog.mjs",
-  "repository": "https://github.com/github:PsychoLlama/strog",
+  "repository": "https://github.com/github:PsychoLlama/holz",
   "author": "Jesse Gibson",
   "license": "MIT",
   "types": "./src/index.ts",
   "packageManager": "yarn@3.4.1",
   "sideEffects": false,
+  "workspaces": [
+    "packages/*"
+  ],
   "files": [
     "dist",
     "src"
@@ -19,20 +21,11 @@
     "composable",
     "logger"
   ],
-  "exports": {
-    ".": {
-      "require": "./dist/strog.umd.js",
-      "import": "./dist/strog.mjs"
-    }
-  },
   "scripts": {
-    "prepare": "vite build --sourcemap",
     "test": "run test:coverage && run test:lint && run test:fmt",
-    "test:unit": "vitest --color --passWithNoTests",
-    "test:coverage": "run test:unit --coverage",
-    "test:lint": "eslint src --ext ts,tsx --color",
-    "test:fmt": "prettier --check src",
-    "fmt": "prettier --write src"
+    "test:lint": "eslint packages/*/src --ext ts,tsx --color",
+    "test:fmt": "prettier --check packages/*/src",
+    "fmt": "prettier --write packages/*/src"
   },
   "eslintConfig": {
     "root": true,
@@ -79,13 +72,10 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
-    "@vitest/coverage-c8": "^0.25.7",
     "eslint": "^8.29.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.1",
-    "typescript": "4.8.4",
-    "vite": "^4.0.0",
-    "vitest": "^0.25.6"
+    "typescript": "4.8.4"
   }
 }
