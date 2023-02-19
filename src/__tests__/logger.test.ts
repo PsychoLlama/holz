@@ -1,9 +1,6 @@
+import TestBackend from '../backends/test';
 import { createLogger } from '../logger';
-import { LogLevel, LogProcessor } from '../types';
-
-class TestBackend implements LogProcessor {
-  processLog = vi.fn();
-}
+import { LogLevel } from '../types';
 
 describe('Logger', () => {
   it('sends structured logs to the log processor', () => {
