@@ -1,6 +1,6 @@
-import { createLogger } from '../../logger';
-import type { MinimalConsole } from '../terminal';
-import TerminalBackend from '../terminal';
+import { createLogger } from '@holz/core';
+import type { MinimalConsole } from '../terminal-backend';
+import TerminalBackend from '../terminal-backend';
 import { format } from 'util';
 
 class MockConsole implements MinimalConsole {

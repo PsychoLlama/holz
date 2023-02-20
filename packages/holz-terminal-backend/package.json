@@ -1,13 +1,13 @@
 {
-  "name": "@holz/core",
+  "name": "@holz/terminal-backend",
   "version": "0.0.0",
-  "description": "A structured logger",
-  "main": "./dist/holz-core.umd.js",
-  "module": "./dist/holz-core.mjs",
+  "description": "A NodeJS/Deno terminal backend for Holz",
+  "main": "./dist/holz-terminal-backend.umd.js",
+  "module": "./dist/holz-terminal-backend.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
-    "directory": "packages/holz-core"
+    "directory": "packages/holz-terminal-backend"
   },
   "author": "Jesse Gibson",
   "license": "MIT",
@@ -31,6 +31,8 @@
     "test:coverage": "run test:unit --coverage"
   },
   "devDependencies": {
+    "@holz/core": "workspace:*",
+    "@types/node": "^18.14.0",
     "@vitest/coverage-c8": "0.28.5",
     "vite": "^4.0.0",
     "vitest": "^0.28.5"

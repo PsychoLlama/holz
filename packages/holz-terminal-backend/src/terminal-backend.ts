@@ -1,6 +1,6 @@
-import type { Log, LogProcessor } from '../types';
-import { LogLevel } from '../types';
-import { color, code } from '../utils/ansi';
+import type { Log, LogProcessor } from '@holz/core';
+import { LogLevel } from '@holz/core';
+import { color, code } from './ansi';
 
 /**
  * A backend that prints logs to an Ansi terminal. This should work on most
