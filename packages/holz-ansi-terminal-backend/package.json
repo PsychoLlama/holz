@@ -1,20 +1,20 @@
 {
-  "name": "@holz/terminal-backend",
+  "name": "@holz/ansi-terminal-backend",
   "version": "0.0.0",
   "description": "A NodeJS/Deno terminal backend for Holz",
   "type": "module",
-  "main": "./dist/holz-terminal-backend.umd.cjs",
-  "module": "./dist/holz-terminal-backend.js",
+  "main": "./dist/holz-ansi-terminal-backend.umd.cjs",
+  "module": "./dist/holz-ansi-terminal-backend.js",
   "types": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
-    "directory": "packages/holz-terminal-backend"
+    "directory": "packages/holz-ansi-terminal-backend"
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-terminal-backend.umd.cjs",
-      "import": "./dist/holz-terminal-backend.js"
+      "require": "./dist/holz-ansi-terminal-backend.umd.cjs",
+      "import": "./dist/holz-ansi-terminal-backend.js"
     }
   },
   "author": "Jesse Gibson",

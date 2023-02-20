@@ -1,6 +1,6 @@
 import { createLogger } from '@holz/core';
-import type { MinimalConsole } from '../terminal-backend';
-import TerminalBackend from '../terminal-backend';
+import type { MinimalConsole } from '../ansi-terminal-backend';
+import AnsiTerminalBackend from '../ansi-terminal-backend';
 import { format } from 'util';
 
 class MockConsole implements MinimalConsole {
@@ -19,7 +19,7 @@ class MockConsole implements MinimalConsole {
 describe('Terminal backend', () => {
   it('prints the message to the terminal', () => {
     const terminal = new MockConsole();
-    const backend = new TerminalBackend({ console: terminal });
+    const backend = new AnsiTerminalBackend({ console: terminal });
 
     const logger = createLogger(backend);
     logger.info('hello world');
@@ -31,7 +31,7 @@ describe('Terminal backend', () => {
 
   it('includes the log level', () => {
     const terminal = new MockConsole();
-    const backend = new TerminalBackend({ console: terminal });
+    const backend = new AnsiTerminalBackend({ console: terminal });
 
     const logger = createLogger(backend);
     logger.debug('shout');
@@ -58,7 +58,7 @@ describe('Terminal backend', () => {
 
   it('includes the log namespace', () => {
     const terminal = new MockConsole();
-    const backend = new TerminalBackend({ console: terminal });
+    const backend = new AnsiTerminalBackend({ console: terminal });
     const logger = createLogger(backend)
       .namespace('my-lib')
       .namespace('MyClass');
@@ -72,7 +72,7 @@ describe('Terminal backend', () => {
 
   it('includes the log context', () => {
     const terminal = new MockConsole();
-    const backend = new TerminalBackend({ console: terminal });
+    const backend = new AnsiTerminalBackend({ console: terminal });
     const logger = createLogger(backend);
 
     logger.info('creating session', { sessionId: 3109 });
@@ -89,7 +89,7 @@ describe('Terminal backend', () => {
 
   it('does not include the log context if it is empty', () => {
     const terminal = new MockConsole();
-    const backend = new TerminalBackend({ console: terminal });
+    const backend = new AnsiTerminalBackend({ console: terminal });
     const logger = createLogger(backend);
 
     logger.warn('activating death ray', {});

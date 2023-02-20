@@ -5,8 +5,8 @@ export default defineConfig(async () => {
     build: {
       lib: {
         entry: './src/index.ts',
-        name: 'holz-terminal-backend',
-        fileName: 'holz-terminal-backend',
+        name: 'holz-ansi-terminal-backend',
+        fileName: 'holz-ansi-terminal-backend',
       },
       rollupOptions: {
         output: {

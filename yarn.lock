@@ -190,6 +190,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend":
+  version: 0.0.0-use.local
+  resolution: "@holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend"
+  dependencies:
+    "@holz/core": "workspace:*"
+    "@types/node": ^18.14.0
+    "@vitest/coverage-c8": 0.28.5
+    vite: ^4.0.0
+    vitest: ^0.28.5
+  languageName: unknown
+  linkType: soft
+
 "@holz/console-backend@workspace:*, @holz/console-backend@workspace:packages/holz-console-backend":
   version: 0.0.0-use.local
   resolution: "@holz/console-backend@workspace:packages/holz-console-backend"
@@ -235,18 +247,6 @@ __metadata:
     lint-staged: ^13.1.0
     prettier: ^2.8.1
     typescript: 4.8.4
-  languageName: unknown
-  linkType: soft
-
-"@holz/terminal-backend@workspace:packages/holz-terminal-backend":
-  version: 0.0.0-use.local
-  resolution: "@holz/terminal-backend@workspace:packages/holz-terminal-backend"
-  dependencies:
-    "@holz/core": "workspace:*"
-    "@types/node": ^18.14.0
-    "@vitest/coverage-c8": 0.28.5
-    vite: ^4.0.0
-    vitest: ^0.28.5
   languageName: unknown
   linkType: soft
 
