@@ -190,6 +190,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@holz/console-backend@workspace:*, @holz/console-backend@workspace:packages/holz-console-backend":
+  version: 0.0.0-use.local
+  resolution: "@holz/console-backend@workspace:packages/holz-console-backend"
+  dependencies:
+    "@holz/core": "workspace:*"
+    "@types/node": ^18.14.0
+    "@vitest/coverage-c8": 0.28.5
+    vite: ^4.0.0
+    vitest: ^0.28.5
+  languageName: unknown
+  linkType: soft
+
 "@holz/core@workspace:*, @holz/core@workspace:packages/holz-core":
   version: 0.0.0-use.local
   resolution: "@holz/core@workspace:packages/holz-core"
@@ -204,6 +216,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/logger@workspace:packages/holz-logger"
   dependencies:
+    "@holz/console-backend": "workspace:*"
     "@holz/core": "workspace:*"
     "@vitest/coverage-c8": 0.28.5
     vite: ^4.0.0

@@ -1,0 +1,65 @@
+// Vitest Snapshot v1
+
+exports[`Console backend > avoids changing debug messages 1`] = `
+[
+  "%c%s %c%s %c%o %c%s",
+  "font-weight: bold; color: darkgray",
+  "DEBUG",
+  "font-weight: normal; color: darkgray",
+  "just spam",
+  "",
+  {
+    "id": 1234,
+  },
+  "color: gray",
+  "ns-1:ns-2",
+]
+`;
+
+exports[`Console backend > avoids changing error messages 1`] = `
+[
+  "%c%s %c%s %c%o %c%s",
+  "font-weight: bold; color: unset",
+  "ERROR",
+  "font-weight: normal; color: unset",
+  "some error message",
+  "",
+  {
+    "id": 1234,
+  },
+  "color: gray",
+  "ns-1:ns-2",
+]
+`;
+
+exports[`Console backend > avoids changing info messages 1`] = `
+[
+  "%c%s %c%s %c%o %c%s",
+  "font-weight: bold; color: darkturquoise",
+  "INFO ",
+  "font-weight: normal; color: unset",
+  "a little info",
+  "",
+  {
+    "id": 1234,
+  },
+  "color: gray",
+  "ns-1:ns-2",
+]
+`;
+
+exports[`Console backend > avoids changing warn messages 1`] = `
+[
+  "%c%s %c%s %c%o %c%s",
+  "font-weight: bold; color: unset",
+  "WARN ",
+  "font-weight: normal; color: unset",
+  "a warning",
+  "",
+  {
+    "id": 1234,
+  },
+  "color: gray",
+  "ns-1:ns-2",
+]
+`;

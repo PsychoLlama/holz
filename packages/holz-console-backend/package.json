@@ -1,28 +1,20 @@
 {
-  "name": "@holz/logger",
+  "name": "@holz/console-backend",
   "version": "0.0.0",
-  "description": "A preconfigured, general-purpose logger",
+  "description": "A console backend for Holz",
   "type": "module",
-  "main": "./dist/browser-logger.cjs",
-  "module": "./dist/browser-logger.js",
-  "types": "./src/index.browser.ts",
+  "main": "./dist/holz-console-backend.umd.cjs",
+  "module": "./dist/holz-console-backend.js",
+  "types": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
-    "directory": "packages/holz-logger"
+    "directory": "packages/holz-console-backend"
   },
   "exports": {
     ".": {
-      "node": {
-        "types": "./src/index.node.ts",
-        "import": "./dist/server-logger.js",
-        "require": "./dist/server-logger.cjs"
-      },
-      "browser": {
-        "types": "./src/index.browser.ts",
-        "import": "./dist/browser-logger.js",
-        "require": "./dist/browser-logger.cjs"
-      }
+      "require": "./dist/holz-console-backend.umd.cjs",
+      "import": "./dist/holz-console-backend.js"
     }
   },
   "author": "Jesse Gibson",
@@ -46,8 +38,8 @@
     "test:coverage": "run test:unit --coverage"
   },
   "devDependencies": {
-    "@holz/console-backend": "workspace:*",
     "@holz/core": "workspace:*",
+    "@types/node": "^18.14.0",
     "@vitest/coverage-c8": "0.28.5",
     "vite": "^4.0.0",
     "vitest": "^0.28.5"
