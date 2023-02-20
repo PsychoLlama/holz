@@ -1,24 +1,32 @@
 {
-  "name": "@holz/terminal-backend",
+  "name": "@holz/logger",
   "version": "0.0.0",
-  "description": "A NodeJS/Deno terminal backend for Holz",
-  "main": "./dist/holz-terminal-backend.umd.js",
-  "module": "./dist/holz-terminal-backend.mjs",
+  "description": "A preconfigured, general-purpose logger",
   "type": "module",
+  "main": "./dist/browser-logger.cjs",
+  "module": "./dist/browser-logger.js",
+  "types": "./src/index.browser.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
-    "directory": "packages/holz-terminal-backend"
+    "directory": "packages/holz-logger"
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-terminal-backend.umd.js",
-      "import": "./dist/holz-terminal-backend.mjs"
+      "node": {
+        "types": "./src/index.node.ts",
+        "import": "./dist/server-logger.js",
+        "require": "./dist/server-logger.cjs"
+      },
+      "browser": {
+        "types": "./src/index.browser.ts",
+        "import": "./dist/browser-logger.js",
+        "require": "./dist/browser-logger.cjs"
+      }
     }
   },
   "author": "Jesse Gibson",
   "license": "MIT",
-  "types": "./src/index.ts",
   "sideEffects": false,
   "workspaces": [
     "packages/*"
@@ -39,8 +47,6 @@
   },
   "devDependencies": {
     "@holz/core": "workspace:*",
-    "@holz/logger": "workspace:*",
-    "@types/node": "^18.14.0",
     "@vitest/coverage-c8": "0.28.5",
     "vite": "^4.0.0",
     "vitest": "^0.28.5"
