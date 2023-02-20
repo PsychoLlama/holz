@@ -200,7 +200,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@holz/logger@workspace:*, @holz/logger@workspace:packages/holz-logger":
+"@holz/logger@workspace:packages/holz-logger":
   version: 0.0.0-use.local
   resolution: "@holz/logger@workspace:packages/holz-logger"
   dependencies:
@@ -230,7 +230,6 @@ __metadata:
   resolution: "@holz/terminal-backend@workspace:packages/holz-terminal-backend"
   dependencies:
     "@holz/core": "workspace:*"
-    "@holz/logger": "workspace:*"
     "@types/node": ^18.14.0
     "@vitest/coverage-c8": 0.28.5
     vite: ^4.0.0

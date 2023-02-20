@@ -2,16 +2,23 @@
   "name": "@holz/core",
   "version": "0.0.0",
   "description": "A structured logger",
-  "main": "./dist/holz-core.umd.js",
-  "module": "./dist/holz-core.mjs",
+  "type": "module",
+  "main": "./dist/holz-core.umd.cjs",
+  "module": "./dist/holz-core.js",
+  "types": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
     "directory": "packages/holz-core"
   },
+  "exports": {
+    ".": {
+      "require": "./dist/holz-core.umd.cjs",
+      "import": "./dist/holz-core.js"
+    }
+  },
   "author": "Jesse Gibson",
   "license": "MIT",
-  "types": "./src/index.ts",
   "sideEffects": false,
   "workspaces": [
     "packages/*"

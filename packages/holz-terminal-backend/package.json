@@ -2,9 +2,10 @@
   "name": "@holz/terminal-backend",
   "version": "0.0.0",
   "description": "A NodeJS/Deno terminal backend for Holz",
-  "main": "./dist/holz-terminal-backend.umd.js",
-  "module": "./dist/holz-terminal-backend.mjs",
   "type": "module",
+  "main": "./dist/holz-terminal-backend.umd.cjs",
+  "module": "./dist/holz-terminal-backend.js",
+  "types": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
@@ -12,13 +13,12 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-terminal-backend.umd.js",
-      "import": "./dist/holz-terminal-backend.mjs"
+      "require": "./dist/holz-terminal-backend.umd.cjs",
+      "import": "./dist/holz-terminal-backend.js"
     }
   },
   "author": "Jesse Gibson",
   "license": "MIT",
-  "types": "./src/index.ts",
   "sideEffects": false,
   "workspaces": [
     "packages/*"
@@ -39,7 +39,6 @@
   },
   "devDependencies": {
     "@holz/core": "workspace:*",
-    "@holz/logger": "workspace:*",
     "@types/node": "^18.14.0",
     "@vitest/coverage-c8": "0.28.5",
     "vite": "^4.0.0",
