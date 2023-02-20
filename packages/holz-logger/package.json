@@ -28,17 +28,17 @@
   "author": "Jesse Gibson",
   "license": "MIT",
   "sideEffects": false,
-  "workspaces": [
-    "packages/*"
-  ],
   "files": [
     "dist",
     "src"
   ],
   "keywords": [
-    "structured",
-    "composable",
-    "logger"
+    "holz",
+    "logger",
+    "preconfigured",
+    "browser",
+    "node",
+    "deno"
   ],
   "scripts": {
     "prepare": "vite build --sourcemap",

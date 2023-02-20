@@ -1,7 +1,7 @@
 {
   "name": "@holz/ansi-terminal-backend",
   "version": "0.0.0",
-  "description": "A NodeJS/Deno terminal backend for Holz",
+  "description": "An ANSI terminal backend for Holz",
   "type": "module",
   "main": "./dist/holz-ansi-terminal-backend.umd.cjs",
   "module": "./dist/holz-ansi-terminal-backend.js",
@@ -20,17 +20,14 @@
   "author": "Jesse Gibson",
   "license": "MIT",
   "sideEffects": false,
-  "workspaces": [
-    "packages/*"
-  ],
   "files": [
     "dist",
     "src"
   ],
   "keywords": [
-    "structured",
-    "composable",
-    "logger"
+    "holz-backend",
+    "ansi",
+    "terminal"
   ],
   "scripts": {
     "prepare": "vite build --sourcemap",

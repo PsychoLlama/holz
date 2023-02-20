@@ -20,17 +20,15 @@
   "author": "Jesse Gibson",
   "license": "MIT",
   "sideEffects": false,
-  "workspaces": [
-    "packages/*"
-  ],
   "files": [
     "dist",
     "src"
   ],
   "keywords": [
-    "structured",
-    "composable",
-    "logger"
+    "holz-backend",
+    "console",
+    "browser",
+    "debugger"
   ],
   "scripts": {
     "prepare": "vite build --sourcemap",

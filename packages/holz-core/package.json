@@ -1,7 +1,7 @@
 {
   "name": "@holz/core",
   "version": "0.0.0",
-  "description": "A structured logger",
+  "description": "A structured and composable logger",
   "type": "module",
   "main": "./dist/holz-core.umd.cjs",
   "module": "./dist/holz-core.js",
@@ -20,9 +20,6 @@
   "author": "Jesse Gibson",
   "license": "MIT",
   "sideEffects": false,
-  "workspaces": [
-    "packages/*"
-  ],
   "files": [
     "dist",
     "src"
