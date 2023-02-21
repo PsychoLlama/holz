@@ -17,6 +17,7 @@
     "src"
   ],
   "scripts": {
+    "prepare": "yarn workspaces foreach run prepare",
     "test": "run test:coverage && run test:lint && run test:fmt",
     "test:coverage": "yarn workspaces foreach run test:coverage",
     "test:lint": "eslint packages/*/src --ext ts,tsx --color",
