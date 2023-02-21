@@ -1,7 +1,7 @@
-import { createLogger, LogLevel } from '@holz/core';
+import { format } from 'util';
+import { createLogger } from '@holz/core';
 import type { MinimalConsole } from '../console-backend';
 import ConsoleBackend from '../console-backend';
-import { format } from 'util';
 
 class MockConsole implements MinimalConsole {
   log = vi.fn((...strings: Array<unknown>) => {

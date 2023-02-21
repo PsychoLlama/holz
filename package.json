@@ -39,15 +39,27 @@
       }
     ],
     "plugins": [
-      "@typescript-eslint"
+      "@typescript-eslint",
+      "import"
     ],
     "extends": [
       "eslint:recommended",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "plugin:import/recommended",
+      "plugin:import/typescript"
     ],
     "rules": {
       "@typescript-eslint/no-use-before-define": "off",
-      "@typescript-eslint/consistent-type-imports": "error"
+      "@typescript-eslint/consistent-type-imports": "error",
+      "import/order": [
+        "error"
+      ]
+    },
+    "settings": {
+      "import/resolver": {
+        "typescript": true,
+        "node": true
+      }
     }
   },
   "husky": {
@@ -68,6 +80,8 @@
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
     "eslint": "^8.29.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.5",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.1",

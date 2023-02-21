@@ -1,7 +1,7 @@
+import { format } from 'util';
 import { createLogger } from '@holz/core';
 import type { MinimalConsole } from '../ansi-terminal-backend';
 import AnsiTerminalBackend from '../ansi-terminal-backend';
-import { format } from 'util';
 
 class MockConsole implements MinimalConsole {
   log(...strings: Array<unknown>) {
