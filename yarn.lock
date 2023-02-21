@@ -254,6 +254,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@holz/pattern-filter@workspace:packages/holz-pattern-filter":
+  version: 0.0.0-use.local
+  resolution: "@holz/pattern-filter@workspace:packages/holz-pattern-filter"
+  dependencies:
+    "@holz/core": "workspace:*"
+    "@types/node": ^18.14.0
+    "@vitest/coverage-c8": 0.28.5
+    vite: ^4.0.0
+    vitest: ^0.28.5
+  languageName: unknown
+  linkType: soft
+
 "@humanwhocodes/config-array@npm:^0.11.8":
   version: 0.11.8
   resolution: "@humanwhocodes/config-array@npm:0.11.8"

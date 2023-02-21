@@ -1,0 +1,49 @@
+{
+  "name": "@holz/pattern-filter",
+  "version": "0.1.0",
+  "description": "Only print log messages that match a pattern",
+  "type": "module",
+  "main": "./dist/holz-pattern-filter.umd.cjs",
+  "module": "./dist/holz-pattern-filter.js",
+  "types": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PsychoLlama/holz",
+    "directory": "packages/holz-pattern-filter"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/holz-pattern-filter.umd.cjs",
+      "import": "./dist/holz-pattern-filter.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jesse Gibson",
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "holz",
+    "logger",
+    "filter",
+    "pattern",
+    "exclude"
+  ],
+  "scripts": {
+    "prepare": "vite build --sourcemap",
+    "test:unit": "vitest --color --passWithNoTests",
+    "test:coverage": "run test:unit --coverage"
+  },
+  "devDependencies": {
+    "@holz/core": "workspace:*",
+    "@types/node": "^18.14.0",
+    "@vitest/coverage-c8": "0.28.5",
+    "vite": "^4.0.0",
+    "vitest": "^0.28.5"
+  }
+}
