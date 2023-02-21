@@ -51,7 +51,8 @@
   "dependencies": {
     "@holz/ansi-terminal-backend": "workspace:*",
     "@holz/console-backend": "workspace:*",
-    "@holz/core": "workspace:*"
+    "@holz/core": "workspace:*",
+    "@holz/env-filter": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^18.14.0",
