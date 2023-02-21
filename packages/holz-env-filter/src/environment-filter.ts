@@ -1,8 +1,8 @@
 import type { Log, LogProcessor } from '@holz/core';
 import { PatternFilter } from '@holz/pattern-filter';
 import * as browserEnv from './browser-env';
+import { detectEnvironment, Environment } from './environment';
 import * as serverEnv from './server-env';
-import { detectEnvironment } from './environment';
 
 /**
  * Reads the debug pattern from the environment and uses it to filter logs.
@@ -29,7 +29,15 @@ export default class EnvironmentFilter implements LogProcessor {
    */
   setPattern(pattern: string) {
     this.filter = new PatternFilter(pattern, this.processor);
-    this.env.save(pattern);
+
+    if (this.env === Environment.Browser) {
+      browserEnv.save(pattern);
+    }
+  }
+
+  /** Return the current filter pattern. */
+  getPattern() {
+    return this.filter.pattern;
   }
 
   /**

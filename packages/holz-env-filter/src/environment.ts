@@ -1,6 +1,3 @@
-import * as browserEnv from './browser-env';
-import * as serverEnv from './server-env';
-
 /**
  * Detect Electron renderer / nwjs processes, which are node, but we should
  * treat them as a browser.
@@ -12,6 +9,11 @@ export const detectEnvironment = (process: unknown) => {
     Object(process).type === 'renderer' ||
     Object(process).browser === true ||
     Object(process).__nwjs
-    ? browserEnv
-    : serverEnv;
+    ? Environment.Browser
+    : Environment.Server;
 };
+
+export enum Environment {
+  Browser = 'browser',
+  Server = 'server',
+}

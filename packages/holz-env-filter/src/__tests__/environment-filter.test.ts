@@ -82,4 +82,15 @@ describe('EnvironmentFilter', () => {
       expect.objectContaining({ message: 'all logs printed' })
     );
   });
+
+  it('can retrieve the current pattern', () => {
+    const backend = new TestBackend();
+    const filter = new EnvironmentFilter({
+      pattern: undefined,
+      defaultPattern: '*, -ignored',
+      processor: backend,
+    });
+
+    expect(filter.getPattern()).toBe('*, -ignored');
+  });
 });

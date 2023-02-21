@@ -17,7 +17,7 @@ export default class PatternFilter implements LogProcessor {
 
   constructor(
     /** A set of patterns to test against `log.origin`. */
-    pattern: string,
+    readonly pattern: string,
 
     /** Where to send logs if they pass the filter. */
     private processor: LogProcessor

@@ -1,5 +1,3 @@
-export const env = 'browser';
-
 const STORAGE_KEY = 'debug';
 
 export const load = (): undefined | string => {
