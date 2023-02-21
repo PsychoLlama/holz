@@ -9,7 +9,11 @@ class TestBackend implements LogProcessor {
 describe('PatternFilter', () => {
   it('only passes through logs that have the filter', () => {
     const backend = new TestBackend();
-    const filter = new PatternFilter('-ignored, -*:wild, *', backend);
+    const filter = new PatternFilter({
+      pattern: '-ignored, -*:wild, *',
+      processor: backend,
+    });
+
     const logger = createLogger(filter);
 
     logger.namespace('ignored').info('excluded by filter');
@@ -28,7 +32,7 @@ describe('PatternFilter', () => {
 
   it('does not send anything by default', () => {
     const backend = new TestBackend();
-    const filter = new PatternFilter('', backend);
+    const filter = new PatternFilter({ pattern: '', processor: backend });
     const logger = createLogger(filter);
 
     logger.info('no include patterns mean this is ignored');

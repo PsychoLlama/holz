@@ -10,19 +10,21 @@ import { parse, matches } from './string-match';
  * `my-app:foo:bar`. The pattern `*, -my-app` will match all logs except those
  * with the origin `my-app`.
  *
- * @example new PatternFilter('my-app*, -spammy:library', backend)
+ * @example
+ * new PatternFilter({
+ *   pattern: 'my-app*, -spammy:library',
+ *   processor: backend,
+ * })
  */
 export default class PatternFilter implements LogProcessor {
   private filters: ReturnType<typeof parse>;
+  readonly pattern: string;
+  private processor: LogProcessor;
 
-  constructor(
-    /** A set of patterns to test against `log.origin`. */
-    readonly pattern: string,
-
-    /** Where to send logs if they pass the filter. */
-    private processor: LogProcessor
-  ) {
-    this.filters = parse(pattern);
+  constructor(config: Config) {
+    this.pattern = config.pattern;
+    this.processor = config.processor;
+    this.filters = parse(config.pattern);
   }
 
   processLog(log: Log) {
@@ -30,4 +32,12 @@ export default class PatternFilter implements LogProcessor {
       this.processor.processLog(log);
     }
   }
+}
+
+interface Config {
+  /** A set of patterns to test against `log.origin`. */
+  pattern: string;
+
+  /** Where to send logs if they pass the filter. */
+  processor: LogProcessor;
 }

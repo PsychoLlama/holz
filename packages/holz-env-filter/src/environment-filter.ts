@@ -28,7 +28,10 @@ export default class EnvironmentFilter implements LogProcessor {
    * it will attempt to persist your preference.
    */
   setPattern(pattern: string) {
-    this.filter = new PatternFilter(pattern, this.processor);
+    this.filter = new PatternFilter({
+      processor: this.processor,
+      pattern,
+    });
 
     if (this.env === Environment.Browser) {
       browserEnv.save(browserEnv.STORAGE_KEY, pattern);
