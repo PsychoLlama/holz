@@ -37,7 +37,7 @@ export interface Log {
    *
    * @example { userId: 123, reason: 'disconnect' }
    */
-  context: LogContext;
+  readonly context: LogContext;
 }
 
 export enum LogLevel {
