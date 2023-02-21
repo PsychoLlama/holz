@@ -17,9 +17,9 @@
     "src"
   ],
   "scripts": {
-    "prepare": "yarn workspaces foreach run prepare",
+    "prepare": "yarn workspaces foreach --parallel --topological-dev run prepare",
     "test": "run test:coverage && run test:lint && run test:fmt",
-    "test:coverage": "yarn workspaces foreach run test:coverage",
+    "test:coverage": "yarn workspaces foreach --parallel run test:coverage --no-watch",
     "test:lint": "eslint packages/*/src --ext ts,tsx --color",
     "test:fmt": "prettier --check packages/*/src",
     "fmt": "prettier --write packages/*/src"
