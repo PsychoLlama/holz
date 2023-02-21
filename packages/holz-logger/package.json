@@ -45,9 +45,13 @@
     "test:unit": "vitest --color --passWithNoTests",
     "test:coverage": "run test:unit --coverage"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@holz/ansi-terminal-backend": "workspace:*",
     "@holz/console-backend": "workspace:*",
-    "@holz/core": "workspace:*",
+    "@holz/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.0",
     "@vitest/coverage-c8": "0.28.5",
     "vite": "^4.0.0",
     "vitest": "^0.28.5"

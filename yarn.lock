@@ -190,7 +190,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend":
+"@holz/ansi-terminal-backend@workspace:*, @holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend":
   version: 0.0.0-use.local
   resolution: "@holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend"
   dependencies:
@@ -228,8 +228,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/logger@workspace:packages/holz-logger"
   dependencies:
+    "@holz/ansi-terminal-backend": "workspace:*"
     "@holz/console-backend": "workspace:*"
     "@holz/core": "workspace:*"
+    "@types/node": ^18.14.0
     "@vitest/coverage-c8": 0.28.5
     vite: ^4.0.0
     vitest: ^0.28.5
