@@ -1,5 +1,8 @@
 import type { Log, LogProcessor } from '@holz/core';
 import { PatternFilter } from '@holz/pattern-filter';
+import * as browserEnv from './browser-env';
+import * as serverEnv from './server-env';
+import { detectEnvironment } from './environment';
 
 /**
  * Reads the debug pattern from the environment and uses it to filter logs.
@@ -7,11 +10,13 @@ import { PatternFilter } from '@holz/pattern-filter';
 export default class EnvironmentFilter implements LogProcessor {
   private processor: LogProcessor;
   private filter!: PatternFilter;
+  private env = detectEnvironment(globalThis.process);
 
   constructor(options: Config) {
     this.processor = options.processor;
-    this.setPattern(options.pattern ?? options.defaultPattern ?? '*');
-    // TODO: Hydrate the pattern from the environment.
+    this.setPattern(
+      options.pattern ?? this.loadPattern() ?? options.defaultPattern ?? '*'
+    );
   }
 
   processLog(log: Log) {
@@ -24,7 +29,16 @@ export default class EnvironmentFilter implements LogProcessor {
    */
   setPattern(pattern: string) {
     this.filter = new PatternFilter(pattern, this.processor);
-    // TODO: Persist.
+    this.env.save(pattern);
+  }
+
+  /**
+   * Load from localStorage falling back to `process.env`. We always check
+   * both because we might be in Electron, where both are defined and equally
+   * valid.
+   */
+  private loadPattern() {
+    return browserEnv.load() ?? serverEnv.load();
   }
 }
 
