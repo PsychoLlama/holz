@@ -25,6 +25,9 @@
       }
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Jesse Gibson",
   "license": "MIT",
   "sideEffects": false,

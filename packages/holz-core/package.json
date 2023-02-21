@@ -17,6 +17,9 @@
       "import": "./dist/holz-core.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Jesse Gibson",
   "license": "MIT",
   "sideEffects": false,
