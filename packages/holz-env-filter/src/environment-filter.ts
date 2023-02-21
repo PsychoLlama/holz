@@ -31,7 +31,7 @@ export default class EnvironmentFilter implements LogProcessor {
     this.filter = new PatternFilter(pattern, this.processor);
 
     if (this.env === Environment.Browser) {
-      browserEnv.save(pattern);
+      browserEnv.save(browserEnv.STORAGE_KEY, pattern);
     }
   }
 
@@ -46,7 +46,7 @@ export default class EnvironmentFilter implements LogProcessor {
    * valid.
    */
   private loadPattern() {
-    return browserEnv.load() ?? serverEnv.load();
+    return browserEnv.load(browserEnv.STORAGE_KEY) ?? serverEnv.load('DEBUG');
   }
 }
 

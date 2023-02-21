@@ -1,9 +1,9 @@
-const STORAGE_KEY = 'debug';
+export const STORAGE_KEY = 'debug';
 
-export const load = (): undefined | string => {
+export const load = (key: string): undefined | string => {
   try {
     if (typeof localStorage !== 'undefined') {
-      return localStorage.getItem(STORAGE_KEY) ?? undefined;
+      return localStorage.getItem(key) ?? undefined;
     }
   } catch (error) {
     // Sometimes localStorage fails (e.g. in Safari private mode). That's
@@ -11,10 +11,10 @@ export const load = (): undefined | string => {
   }
 };
 
-export const save = (pattern: string) => {
+export const save = (key: string, pattern: string) => {
   try {
     if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(STORAGE_KEY, pattern);
+      localStorage.setItem(key, pattern);
     }
   } catch (error) {
     // Throwing might break a startup script. Don't do that.

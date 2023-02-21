@@ -1,6 +1,6 @@
-export const load = (): undefined | string => {
+export const load = (key: string): undefined | string => {
   if (typeof process !== 'undefined' && 'env' in process) {
-    return process.env.DEBUG;
+    return process.env[key];
   }
 };
 

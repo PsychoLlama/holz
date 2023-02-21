@@ -24,9 +24,9 @@ describe('Browser environment', () => {
     it('returns the value stored in localStorage, or undefined', () => {
       const { localStorage } = setup();
 
-      expect(browser.load()).toBeUndefined();
+      expect(browser.load(browser.STORAGE_KEY)).toBeUndefined();
       localStorage.getItem.mockReturnValue('yolo');
-      expect(browser.load()).toBe('yolo');
+      expect(browser.load(browser.STORAGE_KEY)).toBe('yolo');
     });
 
     it('survives if the localStorage lookup fails', () => {
@@ -36,11 +36,11 @@ describe('Browser environment', () => {
         throw new Error('Simulating localStorage DOM exception');
       });
 
-      expect(browser.load()).toBeUndefined();
+      expect(browser.load(browser.STORAGE_KEY)).toBeUndefined();
     });
 
     it('survives if localStorage is not available', () => {
-      expect(browser.load()).toBeUndefined();
+      expect(browser.load(browser.STORAGE_KEY)).toBeUndefined();
     });
   });
 
@@ -48,12 +48,12 @@ describe('Browser environment', () => {
     it('saves the value in localStorage', () => {
       const { localStorage } = setup();
 
-      browser.save('yolo');
+      browser.save(browser.STORAGE_KEY, 'yolo');
       expect(localStorage.setItem).toHaveBeenCalledWith('debug', 'yolo');
     });
 
     it('survives if localStorage is not available', () => {
-      const pass = () => browser.save('no storage');
+      const pass = () => browser.save(browser.STORAGE_KEY, 'no storage');
 
       expect(pass).not.toThrow();
     });
