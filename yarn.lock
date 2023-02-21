@@ -224,6 +224,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@holz/env-filter@workspace:packages/holz-env-filter":
+  version: 0.0.0-use.local
+  resolution: "@holz/env-filter@workspace:packages/holz-env-filter"
+  dependencies:
+    "@holz/core": "workspace:*"
+    "@holz/pattern-filter": "workspace:^"
+    "@vitest/coverage-c8": 0.28.5
+    vite: ^4.0.0
+    vitest: ^0.28.5
+  languageName: unknown
+  linkType: soft
+
 "@holz/logger@workspace:packages/holz-logger":
   version: 0.0.0-use.local
   resolution: "@holz/logger@workspace:packages/holz-logger"
@@ -254,7 +266,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@holz/pattern-filter@workspace:packages/holz-pattern-filter":
+"@holz/pattern-filter@workspace:^, @holz/pattern-filter@workspace:packages/holz-pattern-filter":
   version: 0.0.0-use.local
   resolution: "@holz/pattern-filter@workspace:packages/holz-pattern-filter"
   dependencies:

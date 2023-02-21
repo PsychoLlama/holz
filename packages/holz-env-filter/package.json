@@ -1,0 +1,49 @@
+{
+  "name": "@holz/env-filter",
+  "version": "0.1.0",
+  "description": "Filter logs based on the current environment.",
+  "type": "module",
+  "main": "./dist/holz-env-filter.umd.cjs",
+  "module": "./dist/holz-env-filter.js",
+  "types": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PsychoLlama/holz",
+    "directory": "packages/holz-env-filter"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/holz-env-filter.umd.cjs",
+      "import": "./dist/holz-env-filter.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jesse Gibson",
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "holz",
+    "logger",
+    "filter",
+    "environment",
+    "pattern"
+  ],
+  "scripts": {
+    "prepare": "vite build --sourcemap",
+    "test:unit": "vitest --color --passWithNoTests",
+    "test:coverage": "run test:unit --coverage"
+  },
+  "devDependencies": {
+    "@holz/core": "workspace:*",
+    "@holz/pattern-filter": "workspace:^",
+    "@vitest/coverage-c8": "0.28.5",
+    "vite": "^4.0.0",
+    "vitest": "^0.28.5"
+  }
+}
