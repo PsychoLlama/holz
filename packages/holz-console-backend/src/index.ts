@@ -1,1 +1,1 @@
-export { default } from './console-backend';
+export { default, default as ConsoleBackend } from './console-backend';

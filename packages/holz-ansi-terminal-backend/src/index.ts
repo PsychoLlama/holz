@@ -1,1 +1,4 @@
-export { default } from './ansi-terminal-backend';
+export {
+  default,
+  default as AnsiTerminalBackend,
+} from './ansi-terminal-backend';
