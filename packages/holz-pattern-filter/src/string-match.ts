@@ -33,7 +33,7 @@ export const matches = (filters: PatternFilters, input: string): boolean => {
 
 const toRegex = (pattern: string): RegExp => {
   const regex = pattern.replace(/\*/g, '.*?');
-  return new RegExp(regex);
+  return new RegExp(`^${regex}$`);
 };
 
 interface PatternFilters {

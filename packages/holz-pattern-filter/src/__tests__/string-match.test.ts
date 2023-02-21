@@ -4,21 +4,21 @@ describe('string-match', () => {
   describe('parse', () => {
     it('parses include patterns', () => {
       expect(parse('  foo,bar baz  , qux  ')).toEqual({
-        include: [/foo/, /bar/, /baz/, /qux/],
+        include: [/^foo$/, /^bar$/, /^baz$/, /^qux$/],
         exclude: [],
       });
     });
 
     it('detects and groups exclusion patterns', () => {
       expect(parse('first,-second,-third,fourth')).toEqual({
-        include: [/first/, /fourth/],
-        exclude: [/second/, /third/],
+        include: [/^first$/, /^fourth$/],
+        exclude: [/^second$/, /^third$/],
       });
     });
 
     it('converts star patterns to regex wildcards', () => {
       expect(parse('first,second*,split*part')).toEqual({
-        include: [/first/, /second.*?/, /split.*?part/],
+        include: [/^first$/, /^second.*?$/, /^split.*?part$/],
         exclude: [],
       });
     });
@@ -47,6 +47,10 @@ describe('string-match', () => {
 
     it('does not match if there is a contradiction', () => {
       expect(matches(parse('maybe,-maybe'), 'maybe')).toBe(false);
+    });
+
+    it('does not match if the filter is empty', () => {
+      expect(matches(parse(''), 'content')).toBe(false);
     });
   });
 });
