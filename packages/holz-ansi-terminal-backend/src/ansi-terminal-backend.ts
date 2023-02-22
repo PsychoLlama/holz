@@ -42,14 +42,11 @@ export default class AnsiTerminalBackend implements LogProcessor {
       },
     ].filter((segment) => segment.include);
 
-    const command = segments.map((segment) => segment.command).join(' ');
+    const format = segments.map((segment) => segment.command).join(' ');
     const values = segments.map((segment) => segment.content);
 
-    // Errors should always use stderr.
-    const channel: keyof MinimalConsole =
-      log.level === LogLevel.Error ? 'error' : 'log';
-
-    this.console[channel](command, ...values);
+    // CLIs typically print interactive messages to stdout and logs to stderr.
+    this.console.error(format, ...values);
   }
 }
 

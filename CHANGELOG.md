@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - `[@holz/core]` Exposed `logger.origin` as a read-only property.
+- `[@holz/ansi-terminal-backend]` Send all logs to stderr.
 
 ## [0.0.0] - 2023-02-20
 

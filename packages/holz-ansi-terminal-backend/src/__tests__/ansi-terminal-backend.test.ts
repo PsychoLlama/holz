@@ -24,7 +24,7 @@ describe('Terminal backend', () => {
     const logger = createLogger(backend);
     logger.info('hello world');
 
-    expect(terminal.stdout).toHaveBeenCalledWith(
+    expect(terminal.stderr).toHaveBeenCalledWith(
       expect.stringContaining('hello world')
     );
   });
@@ -39,15 +39,15 @@ describe('Terminal backend', () => {
     logger.warn('hmmmm');
     logger.error('oh no');
 
-    expect(terminal.stdout).toHaveBeenCalledWith(
+    expect(terminal.stderr).toHaveBeenCalledWith(
       expect.stringContaining('debug')
     );
 
-    expect(terminal.stdout).toHaveBeenCalledWith(
+    expect(terminal.stderr).toHaveBeenCalledWith(
       expect.stringContaining('info')
     );
 
-    expect(terminal.stdout).toHaveBeenCalledWith(
+    expect(terminal.stderr).toHaveBeenCalledWith(
       expect.stringContaining('warn')
     );
 
@@ -65,7 +65,7 @@ describe('Terminal backend', () => {
 
     logger.debug('initialized');
 
-    expect(terminal.stdout).toHaveBeenCalledWith(
+    expect(terminal.stderr).toHaveBeenCalledWith(
       expect.stringContaining('my-lib:MyClass')
     );
   });
@@ -78,11 +78,11 @@ describe('Terminal backend', () => {
     logger.info('creating session', { sessionId: 3109 });
 
     // Hard to test without replicating the implementation.
-    expect(terminal.stdout).toHaveBeenCalledWith(
+    expect(terminal.stderr).toHaveBeenCalledWith(
       expect.stringContaining('sessionId')
     );
 
-    expect(terminal.stdout).toHaveBeenCalledWith(
+    expect(terminal.stderr).toHaveBeenCalledWith(
       expect.stringContaining('3109')
     );
   });
@@ -95,11 +95,11 @@ describe('Terminal backend', () => {
     logger.warn('activating death ray', {});
 
     // Hard to test without replicating the implementation.
-    expect(terminal.stdout).not.toHaveBeenCalledWith(
+    expect(terminal.stderr).not.toHaveBeenCalledWith(
       expect.stringContaining('{')
     );
 
-    expect(terminal.stdout).not.toHaveBeenCalledWith(
+    expect(terminal.stderr).not.toHaveBeenCalledWith(
       expect.stringContaining('}')
     );
   });
