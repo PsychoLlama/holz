@@ -8,9 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- `[@holz/pattern-filter]` Initial release.
-- `[@holz/env-filter]` Initial release.
+- `[@holz/pattern-filter]` Initial `v0.1.0` release.
+- `[@holz/env-filter]` Initial `v0.1.0` release.
 - `[@holz/logger]` Log filtering based on `DEBUG`/`localStorage.debug`.
+
+### Changed
+
+- `[@holz/core]` Exposed `logger.origin` as a read-only property.
 
 ## [0.0.0] - 2023-02-20
 

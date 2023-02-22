@@ -2,15 +2,25 @@ import type { LogProcessor, LogContext } from './types';
 import { LogLevel } from './types';
 
 class Logger {
-  static create(backend: LogProcessor): Logger {
-    return new Logger(backend, []);
+  /**
+   * Create a new logger. The processor is up to you. There are plugins for
+   * filtering, formatting, combining multiple processors together, and more.
+   *
+   * If you wish to use more than one processor, `combine(...)` them first.
+   */
+  static create(processor: LogProcessor): Logger {
+    return new Logger(processor, []);
   }
 
   private constructor(
     private processor: LogProcessor,
-    private origin: ReadonlyArray<string>
+    readonly origin: ReadonlyArray<string>
   ) {
-    // empty
+    // Non-enumerable to keep the repls clean.
+    Object.defineProperty(this, 'processor', {
+      configurable: false,
+      enumerable: false,
+    });
   }
 
   /** Extend the logger to attach a class or module name to logs. */
