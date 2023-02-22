@@ -10,13 +10,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `[@holz/pattern-filter]` Initial `v0.1.0` release.
 - `[@holz/env-filter]` Initial `v0.1.0` release.
-- `[@holz/logger]` Log filtering based on `DEBUG`/`localStorage.debug`.
 - `[@holz/stream-backend]` Initial `v0.1.0` release.
 
 ### Changed
 
 - `[@holz/core]` Exposed `logger.origin` as a read-only property.
 - `[@holz/ansi-terminal-backend]` Send all logs to stderr.
+- `[@holz/logger]` Log filtering from `DEBUG`/`localStorage.debug`. Logging is no longer enabled by default.
 - `[@holz/logger]` Use the stream backend when destination is not a TTY.
 
 ## [0.0.0] - 2023-02-20
