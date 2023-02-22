@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `[@holz/core]` Exposed `logger.origin` as a read-only property.
 - `[@holz/ansi-terminal-backend]` Send all logs to stderr.
+- `[@holz/logger]` Use the stream backend when destination is not a TTY.
 
 ## [0.0.0] - 2023-02-20
 

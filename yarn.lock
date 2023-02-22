@@ -244,6 +244,7 @@ __metadata:
     "@holz/console-backend": "workspace:*"
     "@holz/core": "workspace:*"
     "@holz/env-filter": "workspace:*"
+    "@holz/stream-backend": "workspace:*"
     "@types/node": ^18.14.0
     "@vitest/coverage-c8": 0.28.5
     vite: ^4.0.0
@@ -278,7 +279,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@holz/stream-backend@workspace:packages/holz-stream-backend":
+"@holz/stream-backend@workspace:*, @holz/stream-backend@workspace:packages/holz-stream-backend":
   version: 0.0.0-use.local
   resolution: "@holz/stream-backend@workspace:packages/holz-stream-backend"
   dependencies:

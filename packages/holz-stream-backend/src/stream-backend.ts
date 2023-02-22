@@ -59,6 +59,6 @@ const LOG_LEVELS: Record<LogLevel, string> = {
 };
 
 interface Config {
-  /** Where to print logs. Normally `process.stdout`. */
+  /** Where to print logs. Normally `process.stderr`. */
   stream: Writable;
 }
