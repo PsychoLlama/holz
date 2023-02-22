@@ -34,7 +34,7 @@
     "stdout"
   ],
   "scripts": {
-    "prepare": "vite build --sourcemap",
+    "prepare": "vite build",
     "test:unit": "vitest --color --passWithNoTests",
     "test:coverage": "run test:unit --coverage"
   },
