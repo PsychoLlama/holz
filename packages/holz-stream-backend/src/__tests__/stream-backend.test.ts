@@ -41,10 +41,10 @@ describe('Stream backend', () => {
     logger.error('oh no');
 
     expect(getOutput()).toMatchInlineSnapshot(`
-      "2020-06-15T12:00:00.000Z DEBUG <root> shout
-      2020-06-15T12:00:00.000Z INFO  <root> normal
-      2020-06-15T12:00:00.000Z WARN  <root> hmmmm
-      2020-06-15T12:00:00.000Z ERROR <root> oh no
+      "2020-06-15T12:00:00.000Z DEBUG shout
+      2020-06-15T12:00:00.000Z INFO  normal
+      2020-06-15T12:00:00.000Z WARN  hmmmm
+      2020-06-15T12:00:00.000Z ERROR oh no
       "
     `);
   });
@@ -69,7 +69,6 @@ describe('Stream backend', () => {
     logger.debug('orphan log');
 
     expect(getOutput()).not.toContain('[]');
-    expect(getOutput()).toContain('<root>');
   });
 
   it('includes the log context', () => {
@@ -121,9 +120,9 @@ describe('Stream backend', () => {
     logger.info('multi-line log\r\nwith a second line\nand a third line');
 
     expect(getOutput()).toMatchInlineSnapshot(`
-      "2020-06-15T12:00:00.000Z INFO  <root> multi-line log
-                                            with a second line
-                                            and a third line
+      "2020-06-15T12:00:00.000Z INFO  multi-line log
+                                     with a second line
+                                     and a third line
       "
     `);
   });

@@ -21,11 +21,9 @@ export default class StreamBackend implements LogProcessor {
     const currentTime = new Date().toISOString();
     const level = LOG_LEVELS[log.level];
     const context = this.stringifyContext(log.context);
-    const namespace = log.origin.length
-      ? `[${log.origin.join(':')}]`
-      : '<root>';
+    const namespace = log.origin.length ? `[${log.origin.join(':')}] ` : '';
 
-    const header = `${currentTime} ${level} ${namespace} `;
+    const header = `${currentTime} ${level} ${namespace}`;
     const message = this.multilineIndent(header.length, log.message);
     const output = `${header}${message}${context ? ' ' + context : ''}\n`;
 
