@@ -4,20 +4,17 @@ import type { MinimalConsole } from '../console-backend';
 import ConsoleBackend from '../console-backend';
 
 class MockConsole implements MinimalConsole {
-  log = vi.fn((...strings: Array<unknown>) => {
-    this.stdout(format(...strings));
-  });
+  private fmt = (level: string, ...strings: Array<unknown>) => {
+    this.print(format(level, ...strings));
+  };
 
-  warn = vi.fn((...strings: Array<unknown>) => {
-    this.stdout(format(...strings));
-  });
+  debug = vi.fn(this.fmt);
+  info = vi.fn(this.fmt);
+  warn = vi.fn(this.fmt);
+  error = vi.fn(this.fmt);
 
-  error = vi.fn((...strings: Array<unknown>) => {
-    this.stderr(format(...strings));
-  });
-
-  stdout = vi.fn();
-  stderr = vi.fn();
+  // Approximation of what gets printed.
+  print = vi.fn();
 }
 
 describe('Console backend', () => {
@@ -28,29 +25,8 @@ describe('Console backend', () => {
     const logger = createLogger(backend);
     logger.info('hello world');
 
-    expect(output.stdout).toHaveBeenCalledWith(
+    expect(output.print).toHaveBeenCalledWith(
       expect.stringContaining('hello world')
-    );
-  });
-
-  it('includes the log level', () => {
-    const output = new MockConsole();
-    const backend = new ConsoleBackend({ console: output });
-
-    const logger = createLogger(backend);
-    logger.debug('shout');
-    logger.info('normal');
-    logger.warn('hmmmm');
-    logger.error('oh no');
-
-    expect(output.stdout).toHaveBeenCalledWith(
-      expect.stringContaining('DEBUG')
-    );
-
-    expect(output.stdout).toHaveBeenCalledWith(expect.stringContaining('INFO'));
-    expect(output.stdout).toHaveBeenCalledWith(expect.stringContaining('WARN'));
-    expect(output.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('ERROR')
     );
   });
 
@@ -63,7 +39,7 @@ describe('Console backend', () => {
 
     logger.debug('initialized');
 
-    expect(output.stdout).toHaveBeenCalledWith(
+    expect(output.print).toHaveBeenCalledWith(
       expect.stringContaining('my-lib:MyClass')
     );
   });
@@ -76,11 +52,11 @@ describe('Console backend', () => {
     logger.info('creating session', { sessionId: 3109 });
 
     // Hard to test without replicating the implementation.
-    expect(output.stdout).toHaveBeenCalledWith(
+    expect(output.print).toHaveBeenCalledWith(
       expect.stringContaining('sessionId')
     );
 
-    expect(output.stdout).toHaveBeenCalledWith(expect.stringContaining('3109'));
+    expect(output.print).toHaveBeenCalledWith(expect.stringContaining('3109'));
   });
 
   it('does not include the log context if it is empty', () => {
@@ -91,20 +67,16 @@ describe('Console backend', () => {
     logger.warn('activating death ray', {});
 
     // Hard to test without replicating the implementation.
-    expect(output.stdout).not.toHaveBeenCalledWith(
-      expect.stringContaining('{')
-    );
+    expect(output.print).not.toHaveBeenCalledWith(expect.stringContaining('{'));
 
-    expect(output.stdout).not.toHaveBeenCalledWith(
-      expect.stringContaining('}')
-    );
+    expect(output.print).not.toHaveBeenCalledWith(expect.stringContaining('}'));
   });
 
   // Snapshot the exact output of each log level. This mostly prevents
   // regressions while doing innocent refactors.
   it.each([
-    ['debug' as const, 'just spam', ['ns-1', 'ns-2'], 'log' as const],
-    ['info' as const, 'a little info', ['ns-1', 'ns-2'], 'log' as const],
+    ['debug' as const, 'just spam', ['ns-1', 'ns-2'], 'debug' as const],
+    ['info' as const, 'a little info', ['ns-1', 'ns-2'], 'info' as const],
     ['warn' as const, 'a warning', ['ns-1', 'ns-2'], 'warn' as const],
     [
       'error' as const,

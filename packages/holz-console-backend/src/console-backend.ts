@@ -17,16 +17,8 @@ export default class ConsoleBackend implements LogProcessor {
       {
         include: true,
         command: '%c%s',
-        content: LOG_LEVEL_TITLE[log.level],
-        style: `font-weight: bold; color: ${LOG_LEVEL_STYLE[log.level]}`,
-      },
-      {
-        include: true,
-        command: '%c%s',
         content: log.message,
-        style: `font-weight: normal; color: ${
-          log.level === LogLevel.Debug ? 'darkgray' : 'unset'
-        }`,
+        style: `color: ${log.level === LogLevel.Debug ? 'gray' : 'unset'}`,
       },
       {
         include: Object.keys(log.context).length > 0,
@@ -38,7 +30,7 @@ export default class ConsoleBackend implements LogProcessor {
         include: log.origin.length > 0,
         command: '%c%s',
         content: log.origin.join(':'),
-        style: 'color: gray',
+        style: 'color: rgba(128, 128, 128, 0.6); font-style: italic',
       },
     ].filter((segment) => segment.include);
 
@@ -55,24 +47,10 @@ export default class ConsoleBackend implements LogProcessor {
   }
 }
 
-// Before changing these, verify contrast on dark/light themes.
-const LOG_LEVEL_STYLE: Record<LogLevel, string> = {
-  [LogLevel.Debug]: 'darkgray',
-  [LogLevel.Info]: 'darkturquoise',
-  [LogLevel.Warn]: 'unset',
-  [LogLevel.Error]: 'unset',
-};
-
-const LOG_LEVEL_TITLE: Record<LogLevel, string> = {
-  [LogLevel.Debug]: 'DEBUG',
-  [LogLevel.Info]: 'INFO ',
-  [LogLevel.Warn]: 'WARN ',
-  [LogLevel.Error]: 'ERROR',
-};
-
+// Browsers have UIs for filtering by log level. Leverage that.
 const LOG_METHOD: Record<LogLevel, keyof MinimalConsole> = {
-  [LogLevel.Debug]: 'log',
-  [LogLevel.Info]: 'log',
+  [LogLevel.Debug]: 'debug',
+  [LogLevel.Info]: 'info',
   [LogLevel.Warn]: 'warn',
   [LogLevel.Error]: 'error',
 };
@@ -85,4 +63,4 @@ interface Options {
  * A subset of the Console interface. Must support printf-style interpolation.
  * @see https://console.spec.whatwg.org/#formatting-specifiers
  */
-export type MinimalConsole = Pick<Console, 'log' | 'warn' | 'error'>;
+export type MinimalConsole = Pick<Console, 'debug' | 'info' | 'warn' | 'error'>;

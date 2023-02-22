@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/ansi-terminal-backend]` Send all logs to stderr.
 - `[@holz/logger]` Log filtering from `DEBUG`/`localStorage.debug`. Logging is no longer enabled by default.
 - `[@holz/logger]` Use the stream backend when destination is not a TTY.
+- `[@holz/console-backend]` Remove log level prefix and use `console.info`/`console.debug` APIs instead.
 
 ## [0.0.0] - 2023-02-20
 
