@@ -16,7 +16,7 @@ class MockConsole implements MinimalConsole {
   stderr = vi.fn();
 }
 
-describe('Terminal backend', () => {
+describe('ANSI terminal backend', () => {
   it('prints the message to the terminal', () => {
     const terminal = new MockConsole();
     const backend = new AnsiTerminalBackend({ console: terminal });

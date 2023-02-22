@@ -63,11 +63,6 @@ interface Options {
 
 /**
  * A subset of the Console interface. Must support printf-style interpolation.
+ * @see https://console.spec.whatwg.org/#formatting-specifiers
  */
-export interface MinimalConsole {
-  /** Log to stdout. */
-  log: Console['log'];
-
-  /** Log to stderr. */
-  error: Console['error'];
-}
+export type MinimalConsole = Pick<Console, 'log' | 'error'>;
