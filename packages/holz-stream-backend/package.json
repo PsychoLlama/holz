@@ -1,0 +1,48 @@
+{
+  "name": "@holz/stream-backend",
+  "version": "0.0.0",
+  "description": "Print logs to stdout or a file.",
+  "type": "module",
+  "main": "./dist/holz-stream-backend.umd.cjs",
+  "module": "./dist/holz-stream-backend.js",
+  "types": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PsychoLlama/holz",
+    "directory": "packages/holz-stream-backend"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/holz-stream-backend.umd.cjs",
+      "import": "./dist/holz-stream-backend.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jesse Gibson",
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "holz-backend",
+    "stream",
+    "file",
+    "stdout"
+  ],
+  "scripts": {
+    "prepare": "vite build --sourcemap",
+    "test:unit": "vitest --color --passWithNoTests",
+    "test:coverage": "run test:unit --coverage"
+  },
+  "devDependencies": {
+    "@holz/core": "workspace:*",
+    "@types/node": "^18.14.0",
+    "@vitest/coverage-c8": "0.28.5",
+    "vite": "^4.0.0",
+    "vitest": "^0.28.5"
+  }
+}

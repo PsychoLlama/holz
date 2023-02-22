@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/pattern-filter]` Initial `v0.1.0` release.
 - `[@holz/env-filter]` Initial `v0.1.0` release.
 - `[@holz/logger]` Log filtering based on `DEBUG`/`localStorage.debug`.
+- `[@holz/stream-backend]` Initial `v0.1.0` release.
 
 ### Changed
 
