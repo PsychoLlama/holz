@@ -3,6 +3,8 @@ import { createLogger } from '@holz/core';
 import type { MinimalConsole } from '../ansi-terminal-backend';
 import AnsiTerminalBackend from '../ansi-terminal-backend';
 
+const CURRENT_TIME = new Date('2020-06-15T03:05:07.010Z');
+
 class MockConsole implements MinimalConsole {
   log(...strings: Array<unknown>) {
     this.stdout(format(...strings));
@@ -17,6 +19,16 @@ class MockConsole implements MinimalConsole {
 }
 
 describe('ANSI terminal backend', () => {
+  beforeEach(() => {
+    vi.useFakeTimers({
+      now: CURRENT_TIME,
+    });
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('prints the message to the terminal', () => {
     const terminal = new MockConsole();
     const backend = new AnsiTerminalBackend({ console: terminal });
@@ -40,19 +52,19 @@ describe('ANSI terminal backend', () => {
     logger.error('oh no');
 
     expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('debug')
+      expect.stringContaining('DEBUG')
     );
 
     expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('info')
+      expect.stringContaining('INFO')
     );
 
     expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('warn')
+      expect.stringContaining('WARN')
     );
 
     expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('error')
+      expect.stringContaining('ERROR')
     );
   });
 

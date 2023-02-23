@@ -19,7 +19,13 @@ export default class AnsiTerminalBackend implements LogProcessor {
   }
 
   processLog(log: Log) {
+    const timestamp = this.getTimestamp(new Date());
     const segments = [
+      {
+        include: true,
+        command: '%s',
+        content: `${code.reset}${code.dim}${timestamp}${code.reset}`,
+      },
       {
         include: true,
         command: '%s',
@@ -48,13 +54,24 @@ export default class AnsiTerminalBackend implements LogProcessor {
     // CLIs typically print interactive messages to stdout and logs to stderr.
     this.console.error(format, ...values);
   }
+
+  // ISO-8601 timestamp with milliseconds.
+  private getTimestamp(date: Date) {
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+    const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
+
+    return `[${hours}:${minutes}:${seconds}.${milliseconds}]`;
+  }
 }
 
+// Trailing whitespace is important for alignment.
 const logLevelLabel: Record<LogLevel, string> = {
-  [LogLevel.Debug]: `${code.bold}${color.cyan}debug${code.reset}`,
-  [LogLevel.Info]: `${code.bold}${color.green}info${code.reset} `,
-  [LogLevel.Warn]: `${code.bold}${color.yellow}warn${code.reset} `,
-  [LogLevel.Error]: `${code.bold}${color.red}error${code.reset}`,
+  [LogLevel.Debug]: `${color.blue}DEBUG${code.reset}`,
+  [LogLevel.Info]: `${color.green}INFO${code.reset} `,
+  [LogLevel.Warn]: `${color.yellow}WARN${code.reset} `,
+  [LogLevel.Error]: `${color.red}ERROR${code.reset}`,
 };
 
 interface Options {

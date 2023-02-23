@@ -8,9 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- `[@holz/pattern-filter]` Initial `v0.1.0` release.
-- `[@holz/env-filter]` Initial `v0.1.0` release.
-- `[@holz/stream-backend]` Initial `v0.1.0` release.
+- `[@holz/pattern-filter]` Initial release.
+- `[@holz/env-filter]` Initial release.
+- `[@holz/stream-backend]` Initial release.
+- `[@holz/ansi-terminal-backend]` Now logs include timestamps.
 
 ### Changed
 
