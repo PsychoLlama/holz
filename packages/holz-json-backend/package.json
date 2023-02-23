@@ -1,0 +1,49 @@
+{
+  "name": "@holz/json-backend",
+  "version": "0.4.0",
+  "description": "Print logs as newline-delimited JSON.",
+  "type": "module",
+  "main": "./dist/holz-json-backend.cjs",
+  "module": "./dist/holz-json-backend.js",
+  "types": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PsychoLlama/holz",
+    "directory": "packages/holz-json-backend"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/holz-json-backend.cjs",
+      "import": "./dist/holz-json-backend.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jesse Gibson",
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "holz-backend",
+    "ndjson",
+    "structured",
+    "logging"
+  ],
+  "scripts": {
+    "prepack": "vite build",
+    "test:unit": "vitest --color --passWithNoTests",
+    "test:types": "tsc"
+  },
+  "devDependencies": {
+    "@holz/core": "workspace:0.2.0",
+    "@types/node": "^18.14.0",
+    "@vitest/coverage-c8": "0.28.5",
+    "typescript": "4.9.5",
+    "vite": "^4.0.0",
+    "vitest": "^0.28.5"
+  }
+}
