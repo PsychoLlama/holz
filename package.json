@@ -1,7 +1,7 @@
 {
   "name": "@holz/monorepo",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Monorepo for all packages under the @holz organization",
   "repository": "https://github.com/github:PsychoLlama/holz",
   "author": "Jesse Gibson",

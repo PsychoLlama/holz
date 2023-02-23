@@ -203,7 +203,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@holz/console-backend@workspace:0.2.0, @holz/console-backend@workspace:packages/holz-console-backend":
+"@holz/console-backend@workspace:0.3.0, @holz/console-backend@workspace:packages/holz-console-backend":
   version: 0.0.0-use.local
   resolution: "@holz/console-backend@workspace:packages/holz-console-backend"
   dependencies:
@@ -245,7 +245,7 @@ __metadata:
   resolution: "@holz/logger@workspace:packages/holz-logger"
   dependencies:
     "@holz/ansi-terminal-backend": "workspace:0.2.0"
-    "@holz/console-backend": "workspace:0.2.0"
+    "@holz/console-backend": "workspace:0.3.0"
     "@holz/core": "workspace:0.2.0"
     "@holz/env-filter": "workspace:0.2.0"
     "@holz/stream-backend": "workspace:0.2.0"

@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.3.0]
+
 ### Changed
 
 - `[@holz/logger]` Enable all server logs by default.
@@ -54,7 +56,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/core]` Initial release.
 - `[@holz/logger]` Initial release.
 
-[unreleased]: https://github.com/PsychoLlama/holz/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/PsychoLlama/holz/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/PsychoLlama/holz/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/PsychoLlama/holz/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/PsychoLlama/holz/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/PsychoLlama/holz/compare/v0.0.0...v0.1.0

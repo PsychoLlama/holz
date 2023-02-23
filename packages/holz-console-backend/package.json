@@ -1,6 +1,6 @@
 {
   "name": "@holz/console-backend",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A console backend for Holz",
   "type": "module",
   "main": "./dist/holz-console-backend.cjs",
