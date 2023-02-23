@@ -1,0 +1,5 @@
+releases:
+  "@holz/env-filter": patch
+
+undecided:
+  - "@holz/monorepo"

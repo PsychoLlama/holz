@@ -1,5 +1,5 @@
+import { readFile } from 'node:fs/promises';
 import { defineConfig } from 'vite';
-import { readFile } from 'fs/promises';
 
 export default defineConfig(async () => {
   const pkg = JSON.parse(await readFile('./package.json', 'utf-8'));
