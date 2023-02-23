@@ -1,0 +1,8 @@
+releases:
+  "@holz/ansi-terminal-backend": minor
+  "@holz/console-backend": minor
+  "@holz/core": minor
+  "@holz/logger": minor
+
+undecided:
+  - "@holz/monorepo"
