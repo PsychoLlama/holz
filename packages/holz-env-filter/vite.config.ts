@@ -9,8 +9,8 @@ export default defineConfig(async () => {
     build: {
       lib: {
         entry: './src/index.ts',
-        name: 'holz-env-filter',
         fileName: 'holz-env-filter',
+        formats: ['es', 'cjs'],
       },
       rollupOptions: {
         external: externals,

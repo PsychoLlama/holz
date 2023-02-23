@@ -5,8 +5,8 @@ export default defineConfig(async () => {
     build: {
       lib: {
         entry: './src/index.ts',
-        name: 'holz-core',
         fileName: 'holz-core',
+        formats: ['es', 'cjs'],
       },
       rollupOptions: {
         output: {

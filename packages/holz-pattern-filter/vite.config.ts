@@ -5,8 +5,8 @@ export default defineConfig(async () => {
     build: {
       lib: {
         entry: './src/index.ts',
-        name: 'holz-pattern-filter',
         fileName: 'holz-pattern-filter',
+        formats: ['es', 'cjs'],
       },
       rollupOptions: {
         output: {

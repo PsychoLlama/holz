@@ -9,8 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 - `[@holz/env-filter]` Last publish included outdated artifacts.
-- Migrated all compilation scripts to run before publish to avoid this issue in the future.
-- `[@holz/env-filter]` Avoid bundling pattern filter dependency into dist.
+- `[@holz/env-filter]` Avoid bundling pattern-filter dependency into dist.
+- Migrated all compilation scripts to run before publish to avoid stale publishes in the future.
+- Replaced UMD bundles with commonjs on all packages (used for `require`).
 
 ## [0.1.1] - 2023-02-23
 

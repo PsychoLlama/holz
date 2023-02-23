@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A structured and composable logger",
   "type": "module",
-  "main": "./dist/holz-core.umd.cjs",
+  "main": "./dist/holz-core.cjs",
   "module": "./dist/holz-core.js",
   "types": "./src/index.ts",
   "repository": {
@@ -13,7 +13,7 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-core.umd.cjs",
+      "require": "./dist/holz-core.cjs",
       "import": "./dist/holz-core.js"
     }
   },

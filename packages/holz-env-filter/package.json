@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Filter logs based on the current environment.",
   "type": "module",
-  "main": "./dist/holz-env-filter.umd.cjs",
+  "main": "./dist/holz-env-filter.cjs",
   "module": "./dist/holz-env-filter.js",
   "types": "./src/index.ts",
   "repository": {
@@ -13,7 +13,7 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-env-filter.umd.cjs",
+      "require": "./dist/holz-env-filter.cjs",
       "import": "./dist/holz-env-filter.js"
     }
   },

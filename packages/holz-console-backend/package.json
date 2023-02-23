@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A console backend for Holz",
   "type": "module",
-  "main": "./dist/holz-console-backend.umd.cjs",
+  "main": "./dist/holz-console-backend.cjs",
   "module": "./dist/holz-console-backend.js",
   "types": "./src/index.ts",
   "repository": {
@@ -13,7 +13,7 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-console-backend.umd.cjs",
+      "require": "./dist/holz-console-backend.cjs",
       "import": "./dist/holz-console-backend.js"
     }
   },

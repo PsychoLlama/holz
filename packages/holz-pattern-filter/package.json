@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Only print log messages that match a pattern",
   "type": "module",
-  "main": "./dist/holz-pattern-filter.umd.cjs",
+  "main": "./dist/holz-pattern-filter.cjs",
   "module": "./dist/holz-pattern-filter.js",
   "types": "./src/index.ts",
   "repository": {
@@ -13,7 +13,7 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-pattern-filter.umd.cjs",
+      "require": "./dist/holz-pattern-filter.cjs",
       "import": "./dist/holz-pattern-filter.js"
     }
   },

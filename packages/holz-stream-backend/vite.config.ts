@@ -5,8 +5,8 @@ export default defineConfig(async () => {
     build: {
       lib: {
         entry: './src/index.ts',
-        name: 'holz-stream-backend',
         fileName: 'holz-stream-backend',
+        formats: ['es', 'cjs'],
       },
       rollupOptions: {
         output: {

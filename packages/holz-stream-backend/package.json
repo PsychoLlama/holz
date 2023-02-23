@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Print logs to stdout or a file.",
   "type": "module",
-  "main": "./dist/holz-stream-backend.umd.cjs",
+  "main": "./dist/holz-stream-backend.cjs",
   "module": "./dist/holz-stream-backend.js",
   "types": "./src/index.ts",
   "repository": {
@@ -13,7 +13,7 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-stream-backend.umd.cjs",
+      "require": "./dist/holz-stream-backend.cjs",
       "import": "./dist/holz-stream-backend.js"
     }
   },

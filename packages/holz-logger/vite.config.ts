@@ -14,6 +14,7 @@ export default defineConfig(async () => {
           'server-logger': 'src/index.node.ts',
           'browser-logger': 'src/index.browser.ts',
         },
+        formats: ['es', 'cjs'],
       },
       rollupOptions: {
         external: dependencies.concat(builtins),

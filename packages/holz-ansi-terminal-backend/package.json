@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "An ANSI terminal backend for Holz",
   "type": "module",
-  "main": "./dist/holz-ansi-terminal-backend.umd.cjs",
+  "main": "./dist/holz-ansi-terminal-backend.cjs",
   "module": "./dist/holz-ansi-terminal-backend.js",
   "types": "./src/index.ts",
   "repository": {
@@ -13,7 +13,7 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/holz-ansi-terminal-backend.umd.cjs",
+      "require": "./dist/holz-ansi-terminal-backend.cjs",
       "import": "./dist/holz-ansi-terminal-backend.js"
     }
   },
