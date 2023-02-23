@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- `[@holz/env-filter]` Last publish included outdated artifacts.
+- Migrated all compilation scripts to run before publish to avoid this issue in the future.
+
 ## [0.1.1] - 2023-02-23
 
 ### Fixed

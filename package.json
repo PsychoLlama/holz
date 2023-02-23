@@ -17,7 +17,7 @@
     "src"
   ],
   "scripts": {
-    "prepare": "yarn workspaces foreach --parallel --topological-dev run prepare",
+    "prepare": "yarn workspaces foreach --parallel --topological-dev run prepack",
     "test": "run test:coverage && run test:lint && run test:fmt && run test:types",
     "test:coverage": "yarn workspaces foreach --parallel run test:unit --coverage --no-watch",
     "test:types": "yarn workspaces foreach --parallel run test:types",

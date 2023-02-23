@@ -34,7 +34,7 @@
     "debugger"
   ],
   "scripts": {
-    "prepare": "vite build",
+    "prepack": "vite build",
     "test:unit": "vitest --color --passWithNoTests",
     "test:types": "tsc"
   },
