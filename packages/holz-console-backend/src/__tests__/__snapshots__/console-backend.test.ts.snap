@@ -2,10 +2,8 @@
 
 exports[`Console backend > avoids changing debug messages 1`] = `
 [
-  "%c%s %c%o %c%s",
-  "color: gray",
+  "%s %o %c%s",
   "just spam",
-  "",
   {
     "id": 1234,
   },
@@ -16,10 +14,8 @@ exports[`Console backend > avoids changing debug messages 1`] = `
 
 exports[`Console backend > avoids changing error messages 1`] = `
 [
-  "%c%s %c%o %c%s",
-  "color: unset",
+  "%s %o %c%s",
   "some error message",
-  "",
   {
     "id": 1234,
   },
@@ -30,10 +26,8 @@ exports[`Console backend > avoids changing error messages 1`] = `
 
 exports[`Console backend > avoids changing info messages 1`] = `
 [
-  "%c%s %c%o %c%s",
-  "color: unset",
+  "%s %o %c%s",
   "a little info",
-  "",
   {
     "id": 1234,
   },
@@ -44,10 +38,8 @@ exports[`Console backend > avoids changing info messages 1`] = `
 
 exports[`Console backend > avoids changing warn messages 1`] = `
 [
-  "%c%s %c%o %c%s",
-  "color: unset",
+  "%s %o %c%s",
   "a warning",
-  "",
   {
     "id": 1234,
   },

@@ -1,5 +1,4 @@
 import type { Log, LogProcessor } from '@holz/core';
-import { LogLevel } from '@holz/core';
 
 /**
  * A backend that pretty-prints logs to a browser console, or any
@@ -16,44 +15,31 @@ export default class ConsoleBackend implements LogProcessor {
     const segments = [
       {
         include: true,
-        command: '%c%s',
-        content: log.message,
-        style: `color: ${log.level === LogLevel.Debug ? 'gray' : 'unset'}`,
+        format: '%s',
+        values: [log.message],
       },
       {
         include: Object.keys(log.context).length > 0,
-        command: '%c%o', // Chrome hides object content with `%O`.
-        content: log.context,
-        style: '',
+        format: '%o', // Chrome hides object content with `%O`.
+        values: [log.context],
       },
       {
         include: log.origin.length > 0,
-        command: '%c%s',
-        content: log.origin.join(':'),
-        style: 'color: rgba(128, 128, 128, 0.6); font-style: italic',
+        format: '%c%s',
+        values: [
+          'color: rgba(128, 128, 128, 0.6); font-style: italic',
+          log.origin.join(':'),
+        ],
       },
     ].filter((segment) => segment.include);
 
-    const command = segments.map((segment) => segment.command).join(' ');
-    const values = segments.flatMap((segment) => [
-      segment.style,
-      segment.content,
-    ]);
+    const format = segments.map((segment) => segment.format).join(' ');
+    const values = segments.flatMap<unknown>((segment) => segment.values);
 
-    // Errors should always use stderr.
-    const channel = LOG_METHOD[log.level];
-
-    this.console[channel](command, ...values);
+    // Browsers have UIs for filtering by log level. Leverage that.
+    this.console[log.level](format, ...values);
   }
 }
-
-// Browsers have UIs for filtering by log level. Leverage that.
-const LOG_METHOD: Record<LogLevel, keyof MinimalConsole> = {
-  [LogLevel.Debug]: 'debug',
-  [LogLevel.Info]: 'info',
-  [LogLevel.Warn]: 'warn',
-  [LogLevel.Error]: 'error',
-};
 
 interface Options {
   console?: MinimalConsole;
