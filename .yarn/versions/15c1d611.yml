@@ -1,0 +1,5 @@
+releases:
+  "@holz/stream-backend": patch
+
+undecided:
+  - "@holz/monorepo"

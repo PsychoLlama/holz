@@ -1,4 +1,5 @@
 import type { Writable } from 'node:stream';
+import { EOL } from 'node:os';
 import { LogLevel } from '@holz/core';
 import type { Log, LogContext, LogProcessor } from '@holz/core';
 
@@ -25,7 +26,7 @@ export default class StreamBackend implements LogProcessor {
 
     const header = `${currentTime} ${level} ${namespace}`;
     const message = this.multilineIndent(header.length, log.message);
-    const output = `${header}${message}${context ? ' ' + context : ''}\n`;
+    const output = `${header}${message}${context ? ' ' + context : ''}${EOL}`;
 
     // NOTE: If the stream applies backpressure, we will lose logs. I believe
     // this is the right tradeoff. We can't prevent the app from generating
