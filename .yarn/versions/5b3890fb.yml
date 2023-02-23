@@ -1,0 +1,5 @@
+releases:
+  "@holz/logger": minor
+
+undecided:
+  - "@holz/monorepo"

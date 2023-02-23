@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - `[@holz/logger]` Enable all server logs by default.
+- `[@holz/logger]` Hide logs in unit tests.
 
 ## [0.2.0] - 2023-02-23
 
