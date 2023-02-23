@@ -9,7 +9,6 @@ const supportsAnsiColors =
 
 const logger = createLogger(
   new EnvironmentFilter({
-    defaultPattern: '',
     processor: supportsAnsiColors
       ? new AnsiTerminalBackend()
       : new StreamBackend({ stream: process.stderr }),
