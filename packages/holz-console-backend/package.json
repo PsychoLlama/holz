@@ -36,12 +36,13 @@
   "scripts": {
     "prepare": "vite build",
     "test:unit": "vitest --color --passWithNoTests",
-    "test:coverage": "run test:unit --coverage"
+    "test:types": "tsc"
   },
   "devDependencies": {
     "@holz/core": "workspace:*",
     "@types/node": "^18.14.0",
     "@vitest/coverage-c8": "0.28.5",
+    "typescript": "4.8.4",
     "vite": "^4.0.0",
     "vitest": "^0.28.5"
   }

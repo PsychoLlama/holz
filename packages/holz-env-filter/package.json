@@ -37,7 +37,7 @@
   "scripts": {
     "prepare": "vite build",
     "test:unit": "vitest --color --passWithNoTests",
-    "test:coverage": "run test:unit --coverage"
+    "test:types": "tsc"
   },
   "devDependencies": {
     "@holz/core": "workspace:*",
