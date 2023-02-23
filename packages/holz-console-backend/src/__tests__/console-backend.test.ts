@@ -18,6 +18,16 @@ class MockConsole implements MinimalConsole {
 }
 
 describe('Console backend', () => {
+  beforeEach(() => {
+    vi.useFakeTimers({
+      now: new Date('2020-01-01T00:00:00.000Z'),
+    });
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('prints messages to the console', () => {
     const output = new MockConsole();
     const backend = new ConsoleBackend({ console: output });
@@ -70,6 +80,18 @@ describe('Console backend', () => {
     expect(output.print).not.toHaveBeenCalledWith(expect.stringContaining('{'));
 
     expect(output.print).not.toHaveBeenCalledWith(expect.stringContaining('}'));
+  });
+
+  it('prints the time since the last log', () => {
+    const output = new MockConsole();
+    const backend = new ConsoleBackend({ console: output });
+    const logger = createLogger(backend);
+
+    logger.info('first message');
+    vi.advanceTimersByTime(1000);
+    logger.info('second message');
+
+    expect(output.print).toHaveBeenCalledWith(expect.stringContaining('+1s'));
   });
 
   // Snapshot the exact output of each log level. This mostly prevents

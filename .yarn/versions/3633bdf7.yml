@@ -1,0 +1,5 @@
+releases:
+  "@holz/console-backend": minor
+
+undecided:
+  - "@holz/monorepo"

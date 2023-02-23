@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/logger]` Enable all server logs by default.
 - `[@holz/logger]` Hide logs in unit tests.
 - `[@holz/console-backend]` Make log styling more consistent and reduce bundle size.
+- `[@holz/console-backend]` Add time deltas to log messages.
 
 ## [0.2.0] - 2023-02-23
 

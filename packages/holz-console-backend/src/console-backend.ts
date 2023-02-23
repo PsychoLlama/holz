@@ -1,4 +1,5 @@
 import type { Log, LogProcessor } from '@holz/core';
+import { timeDelta } from './time-delta';
 
 /**
  * A backend that pretty-prints logs to a browser console, or any
@@ -6,12 +7,19 @@ import type { Log, LogProcessor } from '@holz/core';
  */
 export default class ConsoleBackend implements LogProcessor {
   private console: MinimalConsole;
+  private stamp?: Date;
 
   constructor(options: Options = {}) {
     this.console = options.console ?? console;
   }
 
   processLog(log: Log) {
+    const lastTimestamp = this.stamp;
+    const now = new Date();
+
+    // Track the time spent between logs.
+    this.stamp = now;
+
     const segments = [
       {
         include: true,
@@ -22,6 +30,11 @@ export default class ConsoleBackend implements LogProcessor {
         include: Object.keys(log.context).length > 0,
         format: '%o', // Chrome hides object content with `%O`.
         values: [log.context],
+      },
+      {
+        include: true,
+        format: '%c%s',
+        values: ['color: gray', timeDelta(now, lastTimestamp)],
       },
       {
         include: log.origin.length > 0,
