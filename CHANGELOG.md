@@ -14,7 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `[@holz/stream-backend]` Use OS-sensitive line endings.
 
-## [0.3.0]
+### Fixed
+
+- `[@holz/stream-backend]` Avoid bundling core, list as peer dependency.
+- `[@holz/ansi-terminal-backend]` Avoid bundling core, list as peer dependency.
+
+## [0.3.0] - 2023-02-23
 
 ### Changed
 
