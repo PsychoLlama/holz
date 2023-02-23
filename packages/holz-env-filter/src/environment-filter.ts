@@ -14,7 +14,7 @@ export default class EnvironmentFilter implements LogProcessor {
 
   constructor(options: Config) {
     this.processor = options.processor;
-    this.setPattern(
+    this.replaceFilter(
       options.pattern ?? this.loadPattern() ?? options.defaultPattern ?? '*'
     );
   }
@@ -28,10 +28,7 @@ export default class EnvironmentFilter implements LogProcessor {
    * it will attempt to persist your preference.
    */
   setPattern(pattern: string) {
-    this.filter = new PatternFilter({
-      processor: this.processor,
-      pattern,
-    });
+    this.replaceFilter(pattern);
 
     if (this.env === Environment.Browser) {
       browserEnv.save(browserEnv.STORAGE_KEY, pattern);
@@ -50,6 +47,13 @@ export default class EnvironmentFilter implements LogProcessor {
    */
   private loadPattern() {
     return browserEnv.load(browserEnv.STORAGE_KEY) ?? serverEnv.load('DEBUG');
+  }
+
+  private replaceFilter(pattern: string) {
+    this.filter = new PatternFilter({
+      processor: this.processor,
+      pattern,
+    });
   }
 }
 
