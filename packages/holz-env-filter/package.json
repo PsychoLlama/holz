@@ -1,6 +1,6 @@
 {
   "name": "@holz/env-filter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Filter logs based on the current environment.",
   "type": "module",
   "main": "./dist/holz-env-filter.umd.cjs",

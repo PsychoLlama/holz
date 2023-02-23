@@ -227,7 +227,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@holz/env-filter@workspace:0.1.0, @holz/env-filter@workspace:packages/holz-env-filter":
+"@holz/env-filter@workspace:0.1.1, @holz/env-filter@workspace:packages/holz-env-filter":
   version: 0.0.0-use.local
   resolution: "@holz/env-filter@workspace:packages/holz-env-filter"
   dependencies:
@@ -246,7 +246,7 @@ __metadata:
     "@holz/ansi-terminal-backend": "workspace:0.1.0"
     "@holz/console-backend": "workspace:0.1.0"
     "@holz/core": "workspace:0.1.0"
-    "@holz/env-filter": "workspace:0.1.0"
+    "@holz/env-filter": "workspace:0.1.1"
     "@holz/stream-backend": "workspace:0.1.0"
     "@types/node": ^18.14.0
     "@vitest/coverage-c8": 0.28.5
