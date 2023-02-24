@@ -1,6 +1,6 @@
 import type { Log, LogProcessor } from '@holz/core';
 import { LogLevel } from '@holz/core';
-import { color, code } from './ansi-codes';
+import * as ansi from './ansi-codes';
 
 /**
  * A backend that prints logs to a 3-bit ansi terminal. This should work on
@@ -24,7 +24,7 @@ export default class AnsiTerminalBackend implements LogProcessor {
       {
         include: true,
         command: '%s',
-        content: `${code.reset}${code.dim}${timestamp}${code.reset}`,
+        content: `${ansi.reset}${ansi.dim}${timestamp}${ansi.reset}`,
       },
       {
         include: true,
@@ -39,7 +39,7 @@ export default class AnsiTerminalBackend implements LogProcessor {
       {
         include: log.origin.length > 0,
         command: '%s',
-        content: `${code.dim}${log.origin.join(':')}${code.reset}`,
+        content: `${ansi.dim}${log.origin.join(':')}${ansi.reset}`,
       },
       {
         include: Object.keys(log.context).length > 0,
@@ -68,10 +68,10 @@ export default class AnsiTerminalBackend implements LogProcessor {
 
 // Trailing whitespace is important for alignment.
 const logLevelLabel: Record<LogLevel, string> = {
-  [LogLevel.Debug]: `${color.blue}DEBUG${code.reset}`,
-  [LogLevel.Info]: `${color.green}INFO${code.reset} `,
-  [LogLevel.Warn]: `${color.yellow}WARN${code.reset} `,
-  [LogLevel.Error]: `${color.red}ERROR${code.reset}`,
+  [LogLevel.Debug]: `${ansi.blue}DEBUG${ansi.reset}`,
+  [LogLevel.Info]: `${ansi.green}INFO${ansi.reset} `,
+  [LogLevel.Warn]: `${ansi.yellow}WARN${ansi.reset} `,
+  [LogLevel.Error]: `${ansi.red}ERROR${ansi.reset}`,
 };
 
 interface Options {
