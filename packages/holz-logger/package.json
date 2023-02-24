@@ -49,11 +49,11 @@
     "test:types": "tsc"
   },
   "dependencies": {
-    "@holz/ansi-terminal-backend": "workspace:0.2.0",
+    "@holz/ansi-terminal-backend": "workspace:0.4.0",
     "@holz/console-backend": "workspace:0.3.0",
     "@holz/core": "workspace:0.2.0",
     "@holz/env-filter": "workspace:0.2.0",
-    "@holz/stream-backend": "workspace:0.2.0"
+    "@holz/stream-backend": "workspace:0.4.0"
   },
   "devDependencies": {
     "@types/node": "^18.14.0",
