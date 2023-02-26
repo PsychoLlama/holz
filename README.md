@@ -34,22 +34,20 @@ You're done! This works in Node and the browser.
 
 ### Plugins (Advanced)
 
-Almost everything in Holz is a plugin. The design is simple, they're basically just functions:
+Almost everything in Holz is a plugin. The design is simple, they're just functions that that logs:
 
 ```typescript
 import { createLogger } from '@holz/core';
 
-const plugin = {
-  processLog(log) {
-    // Print it, save it to a file, pass it to another plugin...
-    // This is up to you.
-  },
+const plugin = (log: Log) => {
+  // Print it, save it to a file, pass it to another plugin...
+  // This is up to you.
 };
 
 const logger = createLogger(plugin);
 ```
 
-You don't have to start from scratch. You can mix and match with other plugins.
+But you don't have to start from scratch. You can mix and match with other plugins.
 
 | Plugin                                                                                                             | Description                                      |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
@@ -66,13 +64,17 @@ You don't have to start from scratch. You can mix and match with other plugins.
 
 ### Multiple Logging Destinations
 
-Holz supports piping to different log destinations by using the `combine(...)` operator:
+Holz supports forking to different log destinations by using the `combine(...)` operator:
 
 ```typescript
 import { createLogger, combine } from '@holz/core';
 
 const logger = createLogger(
-  combine([new FileBackend(), new LogUploadService()])
+  combine([
+    createStdoutBackend(),
+    createFileBackend('./my-app.log'),
+    createUploadBackend({ apiKey: config.apiKey }),
+  ])
 );
 ```
 
@@ -96,10 +98,10 @@ import { createLogger, combine, filter } from '@holz/core';
 
 const logger = createLogger(
   combine([
-    new StreamBackend({ stream: process.stdout }),
+    createStreamBackend({ stream: process.stdout }),
     filter(
       (log) => log.origin[0] === 'my-app',
-      new UploadService({ key: config.uploadKey })
+      createUploadBackend({ key: config.uploadKey })
     ),
   ])
 );
