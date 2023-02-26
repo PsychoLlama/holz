@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- **Plugins are functions now.** This improves bundle size and composition at the expense of broad changes.
+- Every plugin's export was replaced with a function instead of a class, so `import { FooBackend }` becomes `import { createFooBackend }`.
+
+### Removed
+
+- All classes and default entrypoints were removed. They were replaced with the plain functions described above.
+
 ## [0.4.0] - 2023-02-23
 
 ### Added
@@ -71,7 +80,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/core]` Initial release.
 - `[@holz/logger]` Initial release.
 
-[unreleased]: https://github.com/PsychoLlama/holz/compare/v0.3.0...HEAD
+[unreleased]: https://github.com/PsychoLlama/holz/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/PsychoLlama/holz/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/PsychoLlama/holz/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/PsychoLlama/holz/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/PsychoLlama/holz/compare/v0.1.0...v0.1.1

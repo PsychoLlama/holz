@@ -7,20 +7,14 @@ import type { Log, LogProcessor } from '@holz/core';
  * log files.
  *
  * @example
- * new JsonBackend({
+ * createJsonBackend({
  *   stream: fs.createWriteStream('my-app.log', { flags: 'a' }),
  * })
  *
  * @see http://ndjson.org
  */
-export default class JsonBackend implements LogProcessor {
-  private stream: Writable;
-
-  constructor(options: Config) {
-    this.stream = options.stream;
-  }
-
-  processLog(log: Log) {
+export function createJsonBackend({ stream }: Config): LogProcessor {
+  return (log: Log) => {
     // Follow the order of typical log statements. Be kind to the human
     // reader.
     const output = JSON.stringify({
@@ -36,8 +30,8 @@ export default class JsonBackend implements LogProcessor {
     // crashing the process.
     //
     // It is unlikely that a file or tty will apply backpressure in practice.
-    this.stream.write(`${output}${EOL}`);
-  }
+    stream.write(`${output}${EOL}`);
+  };
 }
 
 interface Config {

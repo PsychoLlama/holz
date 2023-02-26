@@ -1,1 +1,1 @@
-export { default, default as PatternFilter } from './pattern-filter';
+export { createPatternFilter } from './pattern-filter';

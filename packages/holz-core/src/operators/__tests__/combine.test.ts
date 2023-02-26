@@ -1,21 +1,20 @@
-import TestBackend from '../../backends/test';
 import { createLogger } from '../../logger';
 import combine from '../combine';
 
 describe('combine operator', () => {
   it('combines several log processors backends into one', () => {
-    const b1 = new TestBackend();
-    const b2 = new TestBackend();
+    const b1 = vi.fn();
+    const b2 = vi.fn();
     const backend = combine([b1, b2]);
     const logger = createLogger(backend);
 
     logger.info('tee message');
 
-    expect(b1.processLog).toHaveBeenCalledWith(
+    expect(b1).toHaveBeenCalledWith(
       expect.objectContaining({ message: 'tee message' })
     );
 
-    expect(b2.processLog).toHaveBeenCalledWith(
+    expect(b2).toHaveBeenCalledWith(
       expect.objectContaining({ message: 'tee message' })
     );
   });

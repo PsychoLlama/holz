@@ -5,7 +5,7 @@
  */
 export interface LogProcessor {
   /** Do something with a log message. */
-  processLog(log: Log): void;
+  (log: Log): void;
 }
 
 /** A log message where variables are carried as structured data. */

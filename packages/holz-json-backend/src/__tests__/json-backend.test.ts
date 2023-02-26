@@ -1,6 +1,6 @@
 import { Writable } from 'node:stream';
 import { createLogger } from '@holz/core';
-import JsonBackend from '../json-backend';
+import { createJsonBackend } from '../json-backend';
 
 const CURRENT_TIME = new Date('2020-06-15T12:00:00.000Z');
 
@@ -32,7 +32,7 @@ describe('JSON backend', () => {
 
   it('prints the logs to the writable stream', () => {
     const { stream, getOutput } = createStream();
-    const backend = new JsonBackend({ stream });
+    const backend = createJsonBackend({ stream });
 
     const logger = createLogger(backend);
     logger.debug('shout');
@@ -45,7 +45,7 @@ describe('JSON backend', () => {
 
   it('escapes newlines and carriage returns', () => {
     const { stream, getOutput } = createStream();
-    const backend = new JsonBackend({ stream });
+    const backend = createJsonBackend({ stream });
     const logger = createLogger(backend);
 
     logger.debug('sneaky log\nwith newlines\rand carriage returns\r\n');
@@ -57,7 +57,7 @@ describe('JSON backend', () => {
 
   it('includes log context', () => {
     const { stream, getOutput } = createStream();
-    const backend = new JsonBackend({ stream });
+    const backend = createJsonBackend({ stream });
     const logger = createLogger(backend);
 
     logger.debug('hello', { reqId: 'abc' });

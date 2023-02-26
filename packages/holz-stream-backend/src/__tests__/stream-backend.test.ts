@@ -1,6 +1,6 @@
 import { Writable } from 'node:stream';
 import { createLogger } from '@holz/core';
-import StreamBackend from '../stream-backend';
+import { createStreamBackend } from '../stream-backend';
 
 const CURRENT_TIME = new Date('2020-06-15T12:00:00.000Z');
 
@@ -32,7 +32,7 @@ describe('Stream backend', () => {
 
   it('prints the logs to the writable stream', () => {
     const { stream, getOutput } = createStream();
-    const backend = new StreamBackend({ stream });
+    const backend = createStreamBackend({ stream });
 
     const logger = createLogger(backend);
     logger.debug('shout');
@@ -51,7 +51,7 @@ describe('Stream backend', () => {
 
   it('includes the log namespace', () => {
     const { stream, getOutput } = createStream();
-    const backend = new StreamBackend({ stream });
+    const backend = createStreamBackend({ stream });
     const logger = createLogger(backend)
       .namespace('my-lib')
       .namespace('MyClass');
@@ -63,7 +63,7 @@ describe('Stream backend', () => {
 
   it('does not print the log namespace if it is empty', () => {
     const { stream, getOutput } = createStream();
-    const backend = new StreamBackend({ stream });
+    const backend = createStreamBackend({ stream });
     const logger = createLogger(backend);
 
     logger.debug('orphan log');
@@ -73,7 +73,7 @@ describe('Stream backend', () => {
 
   it('includes the log context', () => {
     const { stream, getOutput } = createStream();
-    const backend = new StreamBackend({ stream });
+    const backend = createStreamBackend({ stream });
     const logger = createLogger(backend);
 
     logger.info('creating session', { sessionId: 3109, enabled: true });
@@ -84,7 +84,7 @@ describe('Stream backend', () => {
 
   it('includes the timestamp for each log', () => {
     const { stream, getOutput } = createStream();
-    const backend = new StreamBackend({ stream });
+    const backend = createStreamBackend({ stream });
     const logger = createLogger(backend);
 
     logger.info('traveling through time');
@@ -94,7 +94,7 @@ describe('Stream backend', () => {
 
   it('wraps strings in log context with quotes', () => {
     const { stream, getOutput } = createStream();
-    const backend = new StreamBackend({ stream });
+    const backend = createStreamBackend({ stream });
     const logger = createLogger(backend);
 
     logger.info('creating session', { code: 'ENOBACON' });
@@ -104,7 +104,7 @@ describe('Stream backend', () => {
 
   it('joins arrays in log context', () => {
     const { stream, getOutput } = createStream();
-    const backend = new StreamBackend({ stream });
+    const backend = createStreamBackend({ stream });
     const logger = createLogger(backend);
 
     logger.info('adding tags', { tags: ['important', 'urgent'] });
@@ -114,7 +114,7 @@ describe('Stream backend', () => {
 
   it('indents multi-line log statements', () => {
     const { stream, getOutput } = createStream();
-    const backend = new StreamBackend({ stream });
+    const backend = createStreamBackend({ stream });
     const logger = createLogger(backend);
 
     logger.info('multi-line log\r\nwith a second line\nand a third line');

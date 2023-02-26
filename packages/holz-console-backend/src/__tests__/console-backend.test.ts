@@ -1,7 +1,7 @@
 import { format } from 'util';
 import { createLogger } from '@holz/core';
 import type { MinimalConsole } from '../console-backend';
-import ConsoleBackend from '../console-backend';
+import { createConsoleBackend } from '../console-backend';
 
 class MockConsole implements MinimalConsole {
   private fmt = (level: string, ...strings: Array<unknown>) => {
@@ -30,7 +30,7 @@ describe('Console backend', () => {
 
   it('prints messages to the console', () => {
     const output = new MockConsole();
-    const backend = new ConsoleBackend({ console: output });
+    const backend = createConsoleBackend({ console: output });
 
     const logger = createLogger(backend);
     logger.info('hello world');
@@ -42,7 +42,7 @@ describe('Console backend', () => {
 
   it('includes the log namespace', () => {
     const output = new MockConsole();
-    const backend = new ConsoleBackend({ console: output });
+    const backend = createConsoleBackend({ console: output });
     const logger = createLogger(backend)
       .namespace('my-lib')
       .namespace('MyClass');
@@ -56,7 +56,7 @@ describe('Console backend', () => {
 
   it('includes the log context', () => {
     const output = new MockConsole();
-    const backend = new ConsoleBackend({ console: output });
+    const backend = createConsoleBackend({ console: output });
     const logger = createLogger(backend);
 
     logger.info('creating session', { sessionId: 3109 });
@@ -71,7 +71,7 @@ describe('Console backend', () => {
 
   it('does not include the log context if it is empty', () => {
     const output = new MockConsole();
-    const backend = new ConsoleBackend({ console: output });
+    const backend = createConsoleBackend({ console: output });
     const logger = createLogger(backend);
 
     logger.warn('activating death ray', {});
@@ -84,7 +84,7 @@ describe('Console backend', () => {
 
   it('prints the time since the last log', () => {
     const output = new MockConsole();
-    const backend = new ConsoleBackend({ console: output });
+    const backend = createConsoleBackend({ console: output });
     const logger = createLogger(backend);
 
     logger.info('first message');
@@ -108,7 +108,7 @@ describe('Console backend', () => {
     ],
   ])('avoids changing %s messages', (method, message, namespace, pipe) => {
     const output = new MockConsole();
-    const backend = new ConsoleBackend({ console: output });
+    const backend = createConsoleBackend({ console: output });
     const logger = namespace.reduce(
       (logger, ns) => logger.namespace(ns),
       createLogger(backend)

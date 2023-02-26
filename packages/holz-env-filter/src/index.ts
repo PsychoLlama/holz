@@ -1,1 +1,1 @@
-export { default, default as EnvironmentFilter } from './environment-filter';
+export { createEnvironmentFilter } from './environment-filter';

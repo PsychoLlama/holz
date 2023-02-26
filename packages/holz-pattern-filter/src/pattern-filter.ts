@@ -11,27 +11,22 @@ import { parse, matches } from './string-match';
  * with the origin `my-app`.
  *
  * @example
- * new PatternFilter({
+ * createPatternFilter({
  *   pattern: 'my-app*, -spammy:library',
  *   processor: backend,
  * })
  */
-export default class PatternFilter implements LogProcessor {
-  private filters: ReturnType<typeof parse>;
-  readonly pattern: string;
-  private processor: LogProcessor;
+export function createPatternFilter({
+  processor,
+  pattern,
+}: Config): LogProcessor {
+  const filters = parse(pattern);
 
-  constructor(config: Config) {
-    this.pattern = config.pattern;
-    this.processor = config.processor;
-    this.filters = parse(config.pattern);
-  }
-
-  processLog(log: Log) {
-    if (matches(this.filters, log.origin.join(':'))) {
-      this.processor.processLog(log);
+  return (log: Log) => {
+    if (matches(filters, log.origin.join(':'))) {
+      processor(log);
     }
-  }
+  };
 }
 
 interface Config {

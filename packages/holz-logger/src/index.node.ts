@@ -1,8 +1,8 @@
 import { isatty } from 'node:tty';
-import { AnsiTerminalBackend } from '@holz/ansi-terminal-backend';
+import { createAnsiTerminalBackend } from '@holz/ansi-terminal-backend';
 import { createLogger, filter } from '@holz/core';
-import { EnvironmentFilter } from '@holz/env-filter';
-import { StreamBackend } from '@holz/stream-backend';
+import { createEnvironmentFilter } from '@holz/env-filter';
+import { createStreamBackend } from '@holz/stream-backend';
 
 const { NODE_ENV } = process.env;
 
@@ -12,10 +12,10 @@ const supportsAnsiColors =
 const logger = createLogger(
   filter(
     () => NODE_ENV !== 'test',
-    new EnvironmentFilter({
+    createEnvironmentFilter({
       processor: supportsAnsiColors
-        ? new AnsiTerminalBackend()
-        : new StreamBackend({ stream: process.stderr }),
+        ? createAnsiTerminalBackend()
+        : createStreamBackend({ stream: process.stderr }),
     })
   )
 );

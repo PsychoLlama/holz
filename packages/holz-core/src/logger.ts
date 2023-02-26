@@ -53,7 +53,7 @@ class Logger {
     message: string,
     context: LogContext = {}
   ) {
-    this.processor.processLog({
+    this.processor({
       message,
       level,
       origin: this.origin,

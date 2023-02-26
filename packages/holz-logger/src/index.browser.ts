@@ -1,9 +1,9 @@
-import { ConsoleBackend } from '@holz/console-backend';
+import { createConsoleBackend } from '@holz/console-backend';
 import { createLogger } from '@holz/core';
-import { EnvironmentFilter } from '@holz/env-filter';
+import { createEnvironmentFilter } from '@holz/env-filter';
 
 const logger = createLogger(
-  new EnvironmentFilter({ processor: new ConsoleBackend() })
+  createEnvironmentFilter({ processor: createConsoleBackend() })
 );
 
 export default logger;

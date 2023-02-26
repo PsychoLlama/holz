@@ -1,1 +1,1 @@
-export { default, default as StreamBackend } from './stream-backend';
+export { createStreamBackend } from './stream-backend';

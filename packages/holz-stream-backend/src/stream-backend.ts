@@ -7,26 +7,20 @@ import type { Log, LogContext, LogProcessor } from '@holz/core';
  * Prints logs to a writable stream in plaintext. Optimized for log files.
  *
  * @example
- * new StreamBackend({
+ * createStreamBackend({
  *   stream: fs.createWriteStream('my-app.log', { flags: 'a' }),
  * })
  */
-export default class StreamBackend implements LogProcessor {
-  private stream: Writable;
-
-  constructor(options: Config) {
-    this.stream = options.stream;
-  }
-
-  processLog(log: Log) {
+export function createStreamBackend({ stream }: Config): LogProcessor {
+  return (log: Log) => {
     const currentTime = new Date().toISOString();
     const level = LOG_LEVELS[log.level];
-    const context = this.stringifyContext(log.context);
+    const context = stringifyContext(log.context);
     const namespace = log.origin.length ? `[${log.origin.join(':')}] ` : '';
 
     const header = `${currentTime} ${level} ${namespace}`;
-    const message = this.multilineIndent(header.length, log.message);
-    const output = `${header}${message}${context ? ' ' + context : ''}${EOL}`;
+    const message = multilineIndent(header.length, log.message);
+    const output = `${header}${message}${context ? ' ' + context : ''}`;
 
     // NOTE: If the stream applies backpressure, we will lose logs. I believe
     // this is the right tradeoff. We can't prevent the app from generating
@@ -34,26 +28,25 @@ export default class StreamBackend implements LogProcessor {
     // crashing the process.
     //
     // It is unlikely that a file or tty will apply backpressure in practice.
-    this.stream.write(output);
-  }
+    stream.write(`${output}${EOL}`);
+  };
+}
 
-  // { id: 123, type: 'article' } -> 'id=123 type="article"'
-  private stringifyContext(context: LogContext) {
-    return Object.entries(context)
-      .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
-      .join(' ');
-  }
+/**
+ * Some messages will ruin your output without proper indentation. Stack
+ * traces are a good example of this.
+ *
+ * Supports Unix + DOS line endings.
+ */
+function multilineIndent(offset: number, message: string) {
+  return message.replace(/(\r?\n)/g, (newline) => newline + ' '.repeat(offset));
+}
 
-  // Some messages will ruin your output without proper indentation. Stack
-  // traces are a good example of this.
-  //
-  // Supports Unix + DOS line endings.
-  private multilineIndent(offset: number, message: string) {
-    return message.replace(
-      /(\r?\n)/g,
-      (newline) => newline + ' '.repeat(offset)
-    );
-  }
+// { id: 123, type: 'article' } -> 'id=123 type="article"'
+function stringifyContext(context: LogContext) {
+  return Object.entries(context)
+    .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
+    .join(' ');
 }
 
 const LOG_LEVELS: Record<LogLevel, string> = {

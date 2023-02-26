@@ -11,15 +11,11 @@ import * as ansi from './ansi-codes';
  * ques, the printed text is much less understandable. It is better to check
  * when constructing the logger instead.
  */
-export default class AnsiTerminalBackend implements LogProcessor {
-  private console: MinimalConsole;
+export function createAnsiTerminalBackend(options: Options = {}): LogProcessor {
+  const output = options.console ?? console;
 
-  constructor(options: Options = {}) {
-    this.console = options.console ?? console;
-  }
-
-  processLog(log: Log) {
-    const timestamp = this.getTimestamp(new Date());
+  return (log: Log) => {
+    const timestamp = formatAsTimestamp(new Date());
     const segments = [
       {
         include: true,
@@ -52,18 +48,18 @@ export default class AnsiTerminalBackend implements LogProcessor {
     const values = segments.map((segment) => segment.content);
 
     // CLIs typically print interactive messages to stdout and logs to stderr.
-    this.console.error(format, ...values);
-  }
+    output.error(format, ...values);
+  };
+}
 
-  // ISO-8601 timestamp with milliseconds.
-  private getTimestamp(date: Date) {
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const seconds = date.getSeconds().toString().padStart(2, '0');
-    const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
+// ISO-8601 timestamp with milliseconds.
+function formatAsTimestamp(date: Date) {
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+  const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
 
-    return `[${hours}:${minutes}:${seconds}.${milliseconds}]`;
-  }
+  return `[${hours}:${minutes}:${seconds}.${milliseconds}]`;
 }
 
 // Trailing whitespace is important for alignment.

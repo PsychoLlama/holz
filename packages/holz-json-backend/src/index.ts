@@ -1,1 +1,1 @@
-export { default, default as JsonBackend } from './json-backend';
+export { createJsonBackend } from './json-backend';

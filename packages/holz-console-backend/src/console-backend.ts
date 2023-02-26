@@ -5,20 +5,12 @@ import { timeDelta } from './time-delta';
  * A backend that pretty-prints logs to a browser console, or any
  * remote-attached console.
  */
-export default class ConsoleBackend implements LogProcessor {
-  private console: MinimalConsole;
-  private stamp?: Date;
+export function createConsoleBackend(options: Options = {}): LogProcessor {
+  const output = options.console ?? console;
+  let lastTimestamp: Date;
 
-  constructor(options: Options = {}) {
-    this.console = options.console ?? console;
-  }
-
-  processLog(log: Log) {
-    const lastTimestamp = this.stamp;
+  return (log: Log) => {
     const now = new Date();
-
-    // Track the time spent between logs.
-    this.stamp = now;
 
     const segments = [
       {
@@ -50,8 +42,11 @@ export default class ConsoleBackend implements LogProcessor {
     const values = segments.flatMap<unknown>((segment) => segment.values);
 
     // Browsers have UIs for filtering by log level. Leverage that.
-    this.console[log.level](format, ...values);
-  }
+    output[log.level](format, ...values);
+
+    // Track the time spent between logs.
+    lastTimestamp = now;
+  };
 }
 
 interface Options {
