@@ -1,24 +1,42 @@
-import { format } from 'util';
+import { Writable } from 'node:stream';
+import { Console } from 'node:console';
 import { createLogger } from '@holz/core';
-import type { MinimalConsole } from '../ansi-terminal-backend';
 import { createAnsiTerminalBackend } from '../ansi-terminal-backend';
 
 const CURRENT_TIME = new Date('2020-06-15T03:05:07.010Z');
 
-class MockConsole implements MinimalConsole {
-  log(...strings: Array<unknown>) {
-    this.stdout(format(...strings));
-  }
-
-  error(...strings: Array<unknown>) {
-    this.stderr(format(...strings));
-  }
-
-  stdout = vi.fn();
-  stderr = vi.fn();
-}
-
 describe('ANSI terminal backend', () => {
+  function createStream() {
+    let output = '';
+    const stream = new Writable({
+      write(chunk, _encoding, callback) {
+        output += String(chunk);
+        callback();
+      },
+    });
+
+    return {
+      getOutput: () => output,
+      stream,
+    };
+  }
+
+  // Named "terminal" to avoid conflict with `global.console`.
+  function createTerminal() {
+    const stdout = createStream();
+    const stderr = createStream();
+    const terminal = new Console({
+      stdout: stdout.stream,
+      stderr: stderr.stream,
+    });
+
+    return {
+      stdout,
+      stderr,
+      terminal,
+    };
+  }
+
   beforeEach(() => {
     vi.useFakeTimers({
       now: CURRENT_TIME,
@@ -30,19 +48,17 @@ describe('ANSI terminal backend', () => {
   });
 
   it('prints the message to the terminal', () => {
-    const terminal = new MockConsole();
+    const { terminal, stderr } = createTerminal();
     const backend = createAnsiTerminalBackend({ console: terminal });
 
     const logger = createLogger(backend);
     logger.info('hello world');
 
-    expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('hello world')
-    );
+    expect(stderr.getOutput()).toContain('hello world');
   });
 
   it('includes the log level', () => {
-    const terminal = new MockConsole();
+    const { terminal, stderr } = createTerminal();
     const backend = createAnsiTerminalBackend({ console: terminal });
 
     const logger = createLogger(backend);
@@ -51,25 +67,14 @@ describe('ANSI terminal backend', () => {
     logger.warn('hmmmm');
     logger.error('oh no');
 
-    expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('DEBUG')
-    );
-
-    expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('INFO')
-    );
-
-    expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('WARN')
-    );
-
-    expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('ERROR')
-    );
+    expect(stderr.getOutput()).toContain('DEBUG');
+    expect(stderr.getOutput()).toContain('INFO');
+    expect(stderr.getOutput()).toContain('WARN');
+    expect(stderr.getOutput()).toContain('ERROR');
   });
 
   it('includes the log namespace', () => {
-    const terminal = new MockConsole();
+    const { terminal, stderr } = createTerminal();
     const backend = createAnsiTerminalBackend({ console: terminal });
     const logger = createLogger(backend)
       .namespace('my-lib')
@@ -77,42 +82,30 @@ describe('ANSI terminal backend', () => {
 
     logger.debug('initialized');
 
-    expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('my-lib:MyClass')
-    );
+    expect(stderr.getOutput()).toContain('my-lib:MyClass');
   });
 
   it('includes the log context', () => {
-    const terminal = new MockConsole();
+    const { terminal, stderr } = createTerminal();
     const backend = createAnsiTerminalBackend({ console: terminal });
     const logger = createLogger(backend);
 
     logger.info('creating session', { sessionId: 3109 });
 
     // Hard to test without replicating the implementation.
-    expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('sessionId')
-    );
-
-    expect(terminal.stderr).toHaveBeenCalledWith(
-      expect.stringContaining('3109')
-    );
+    expect(stderr.getOutput()).toContain('sessionId');
+    expect(stderr.getOutput()).toContain('3109');
   });
 
   it('does not include the log context if it is empty', () => {
-    const terminal = new MockConsole();
+    const { terminal, stderr } = createTerminal();
     const backend = createAnsiTerminalBackend({ console: terminal });
     const logger = createLogger(backend);
 
     logger.warn('activating death ray', {});
 
     // Hard to test without replicating the implementation.
-    expect(terminal.stderr).not.toHaveBeenCalledWith(
-      expect.stringContaining('{')
-    );
-
-    expect(terminal.stderr).not.toHaveBeenCalledWith(
-      expect.stringContaining('}')
-    );
+    expect(stderr.getOutput()).not.toContain('{');
+    expect(stderr.getOutput()).not.toContain('}');
   });
 });

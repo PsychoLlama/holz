@@ -71,11 +71,11 @@ const logLevelLabel: Record<LogLevel, string> = {
 };
 
 interface Options {
-  console?: MinimalConsole;
+  /**
+   * Defaults the global `console`, but in NodeJS you can create a console
+   * over any writable stream. It could be a file or a network socket.
+   *
+   * @see https://nodejs.org/api/console.html#new-consoleoptions
+   */
+  console?: Console;
 }
-
-/**
- * A subset of the Console interface. Must support printf-style interpolation.
- * @see https://console.spec.whatwg.org/#formatting-specifiers
- */
-export type MinimalConsole = Pick<Console, 'log' | 'error'>;
