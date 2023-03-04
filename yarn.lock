@@ -190,53 +190,53 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@holz/ansi-terminal-backend@workspace:0.4.0, @holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend":
+"@holz/ansi-terminal-backend@workspace:^0.4.0, @holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend":
   version: 0.0.0-use.local
   resolution: "@holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend"
   dependencies:
-    "@holz/core": "workspace:0.2.0"
+    "@holz/core": "workspace:^0.2.0"
     "@types/node": ^18.14.0
-    "@vitest/coverage-c8": 0.28.5
-    typescript: 4.9.5
+    "@vitest/coverage-c8": ^0.28.5
+    typescript: ^4.9.5
     vite: ^4.0.0
     vitest: ^0.28.5
   peerDependencies:
-    "@holz/core": "workspace:0.2.0"
+    "@holz/core": "workspace:^0.2.0"
   languageName: unknown
   linkType: soft
 
-"@holz/console-backend@workspace:0.3.0, @holz/console-backend@workspace:packages/holz-console-backend":
+"@holz/console-backend@workspace:^0.3.0, @holz/console-backend@workspace:packages/holz-console-backend":
   version: 0.0.0-use.local
   resolution: "@holz/console-backend@workspace:packages/holz-console-backend"
   dependencies:
-    "@holz/core": "workspace:0.2.0"
+    "@holz/core": "workspace:^0.2.0"
     "@types/node": ^18.14.0
-    "@vitest/coverage-c8": 0.28.5
-    typescript: 4.9.5
+    "@vitest/coverage-c8": ^0.28.5
+    typescript: ^4.9.5
     vite: ^4.0.0
     vitest: ^0.28.5
   languageName: unknown
   linkType: soft
 
-"@holz/core@workspace:0.2.0, @holz/core@workspace:packages/holz-core":
+"@holz/core@workspace:^0.2.0, @holz/core@workspace:packages/holz-core":
   version: 0.0.0-use.local
   resolution: "@holz/core@workspace:packages/holz-core"
   dependencies:
-    "@vitest/coverage-c8": 0.28.5
-    typescript: 4.9.5
+    "@vitest/coverage-c8": ^0.28.5
+    typescript: ^4.9.5
     vite: ^4.0.0
     vitest: ^0.28.5
   languageName: unknown
   linkType: soft
 
-"@holz/env-filter@workspace:0.2.0, @holz/env-filter@workspace:packages/holz-env-filter":
+"@holz/env-filter@workspace:^0.2.0, @holz/env-filter@workspace:packages/holz-env-filter":
   version: 0.0.0-use.local
   resolution: "@holz/env-filter@workspace:packages/holz-env-filter"
   dependencies:
-    "@holz/core": "workspace:0.2.0"
-    "@holz/pattern-filter": "workspace:0.2.0"
+    "@holz/core": "workspace:^0.2.0"
+    "@holz/pattern-filter": "workspace:^0.2.0"
     "@types/node": ^18.14.0
-    "@vitest/coverage-c8": 0.28.5
+    "@vitest/coverage-c8": ^0.28.5
     vite: ^4.0.0
     vitest: ^0.28.5
   languageName: unknown
@@ -246,10 +246,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/json-backend@workspace:packages/holz-json-backend"
   dependencies:
-    "@holz/core": "workspace:0.2.0"
+    "@holz/core": "workspace:^0.2.0"
     "@types/node": ^18.14.0
-    "@vitest/coverage-c8": 0.28.5
-    typescript: 4.9.5
+    "@vitest/coverage-c8": ^0.28.5
+    typescript: ^4.9.5
     vite: ^4.0.0
     vitest: ^0.28.5
   languageName: unknown
@@ -259,14 +259,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/logger@workspace:packages/holz-logger"
   dependencies:
-    "@holz/ansi-terminal-backend": "workspace:0.4.0"
-    "@holz/console-backend": "workspace:0.3.0"
-    "@holz/core": "workspace:0.2.0"
-    "@holz/env-filter": "workspace:0.2.0"
-    "@holz/stream-backend": "workspace:0.4.0"
+    "@holz/ansi-terminal-backend": "workspace:^0.4.0"
+    "@holz/console-backend": "workspace:^0.3.0"
+    "@holz/core": "workspace:^0.2.0"
+    "@holz/env-filter": "workspace:^0.2.0"
+    "@holz/stream-backend": "workspace:^0.4.0"
     "@types/node": ^18.14.0
-    "@vitest/coverage-c8": 0.28.5
-    typescript: 4.9.5
+    "@vitest/coverage-c8": ^0.28.5
+    typescript: ^4.9.5
     vite: ^4.0.0
     vitest: ^0.28.5
   languageName: unknown
@@ -284,34 +284,34 @@ __metadata:
     husky: ^8.0.2
     lint-staged: ^13.1.0
     prettier: ^2.8.1
-    typescript: 4.9.5
+    typescript: ^4.9.5
   languageName: unknown
   linkType: soft
 
-"@holz/pattern-filter@workspace:0.2.0, @holz/pattern-filter@workspace:packages/holz-pattern-filter":
+"@holz/pattern-filter@workspace:^0.2.0, @holz/pattern-filter@workspace:packages/holz-pattern-filter":
   version: 0.0.0-use.local
   resolution: "@holz/pattern-filter@workspace:packages/holz-pattern-filter"
   dependencies:
-    "@holz/core": "workspace:0.2.0"
-    "@vitest/coverage-c8": 0.28.5
-    typescript: 4.9.5
+    "@holz/core": "workspace:^0.2.0"
+    "@vitest/coverage-c8": ^0.28.5
+    typescript: ^4.9.5
     vite: ^4.0.0
     vitest: ^0.28.5
   languageName: unknown
   linkType: soft
 
-"@holz/stream-backend@workspace:0.4.0, @holz/stream-backend@workspace:packages/holz-stream-backend":
+"@holz/stream-backend@workspace:^0.4.0, @holz/stream-backend@workspace:packages/holz-stream-backend":
   version: 0.0.0-use.local
   resolution: "@holz/stream-backend@workspace:packages/holz-stream-backend"
   dependencies:
-    "@holz/core": "workspace:0.2.0"
+    "@holz/core": "workspace:^0.2.0"
     "@types/node": ^18.14.0
-    "@vitest/coverage-c8": 0.28.5
-    typescript: 4.9.5
+    "@vitest/coverage-c8": ^0.28.5
+    typescript: ^4.9.5
     vite: ^4.0.0
     vitest: ^0.28.5
   peerDependencies:
-    "@holz/core": "workspace:0.2.0"
+    "@holz/core": "workspace:^0.2.0"
   languageName: unknown
   linkType: soft
 
@@ -611,7 +611,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-c8@npm:*, @vitest/coverage-c8@npm:0.28.5":
+"@vitest/coverage-c8@npm:*, @vitest/coverage-c8@npm:^0.28.5":
   version: 0.28.5
   resolution: "@vitest/coverage-c8@npm:0.28.5"
   dependencies:
@@ -3921,7 +3921,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.9.5":
+"typescript@npm:^4.9.5":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -3931,7 +3931,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.9.5#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:

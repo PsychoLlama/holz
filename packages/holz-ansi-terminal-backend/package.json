@@ -38,13 +38,13 @@
     "test:types": "tsc"
   },
   "peerDependencies": {
-    "@holz/core": "workspace:0.2.0"
+    "@holz/core": "workspace:^0.2.0"
   },
   "devDependencies": {
-    "@holz/core": "workspace:0.2.0",
+    "@holz/core": "workspace:^0.2.0",
     "@types/node": "^18.14.0",
-    "@vitest/coverage-c8": "0.28.5",
-    "typescript": "4.9.5",
+    "@vitest/coverage-c8": "^0.28.5",
+    "typescript": "^4.9.5",
     "vite": "^4.0.0",
     "vitest": "^0.28.5"
   }
