@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - `[@holz/env-filter]` New options `localStorageKey` and `environmentVariable` configure where to look for patterns.
+- `[@holz/ansi-terminal-backend]` Auto-indent for messages spanning multiple lines.
 
 ### Changed
 

@@ -1,0 +1,5 @@
+releases:
+  "@holz/ansi-terminal-backend": minor
+
+undecided:
+  - "@holz/monorepo"

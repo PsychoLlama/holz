@@ -13,14 +13,16 @@ import * as ansi from './ansi-codes';
  */
 export function createAnsiTerminalBackend(options: Options = {}): LogProcessor {
   const output = options.console ?? console;
+  const labelSizeInWhitespace = ' '.repeat(LogLevel.Error.length);
 
   return (log: Log) => {
     const timestamp = formatAsTimestamp(new Date());
+    const timestampPrefix = `${ansi.reset}${ansi.dim}${timestamp}${ansi.reset}`;
     const segments = [
       {
         include: true,
         command: '%s',
-        content: `${ansi.reset}${ansi.dim}${timestamp}${ansi.reset}`,
+        content: timestampPrefix,
       },
       {
         include: true,
@@ -30,17 +32,20 @@ export function createAnsiTerminalBackend(options: Options = {}): LogProcessor {
       {
         include: true,
         command: '%s',
-        content: log.message,
-      },
-      {
-        include: log.origin.length > 0,
-        command: '%s',
-        content: `${ansi.dim}${log.origin.join(':')}${ansi.reset}`,
+        content: log.message.replace(
+          /(\r?\n)/g,
+          `$1${timestampPrefix} ${labelSizeInWhitespace} `
+        ),
       },
       {
         include: Object.keys(log.context).length > 0,
         command: '%O',
         content: log.context,
+      },
+      {
+        include: log.origin.length > 0,
+        command: '%s',
+        content: `${ansi.dim}${log.origin.join(':')}${ansi.reset}`,
       },
     ].filter((segment) => segment.include);
 

@@ -108,4 +108,15 @@ describe('ANSI terminal backend', () => {
     expect(stderr.getOutput()).not.toContain('{');
     expect(stderr.getOutput()).not.toContain('}');
   });
+
+  it('indents multiline strings', () => {
+    const { terminal, stderr } = createTerminal();
+    const backend = createAnsiTerminalBackend({ console: terminal });
+    const logger = createLogger(backend);
+
+    logger.info('This is a multiline string.\nIt has two lines.');
+
+    expect(stderr.getOutput()).toContain('This is a multiline string.');
+    expect(stderr.getOutput()).toContain('  It has two lines.');
+  });
 });
