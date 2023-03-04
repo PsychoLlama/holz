@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+- `[@holz/env-filter]` New options `localStorageKey` and `environmentVariable` configure where to look for patterns.
+
 ### Changed
 
 - **Plugins are functions now.** This improves bundle size and composition at the expense of broad changes.
@@ -14,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Removed
 
 - All classes and default entrypoints were removed. They were replaced with the plain functions described above.
+- `[@holz/env-filter]` Changing the pattern at runtime is no longer supported. It's better to create a new instance of the plugin.
 
 ## [0.4.0] - 2023-02-23
 

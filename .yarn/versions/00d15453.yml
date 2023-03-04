@@ -1,0 +1,5 @@
+releases:
+  "@holz/env-filter": minor
+
+undecided:
+  - "@holz/monorepo"

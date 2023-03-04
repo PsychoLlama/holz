@@ -1,8 +1,8 @@
 import { createLogger } from '@holz/core';
 import { createEnvironmentFilter } from '../environment-filter';
+import { getLocalStorageKey, getEnvironmentVariable } from '../get-env';
 
-vi.mock('../browser-env');
-vi.mock('../server-env');
+vi.mock('../get-env');
 
 describe('EnvironmentFilter', () => {
   beforeEach(() => {
@@ -66,37 +66,29 @@ describe('EnvironmentFilter', () => {
     );
   });
 
-  it.skip('can change the pattern on the fly', () => {
+  it('allows you to choose a different localStorage key', () => {
     const backend = vi.fn();
     const filter = createEnvironmentFilter({
-      pattern: '',
       processor: backend,
+      localStorageKey: 'override',
     });
 
     const logger = createLogger(filter);
+    logger.info('just print something');
 
-    logger.info('all logs excluded');
-    expect(backend).not.toHaveBeenCalled();
-
-    // TODO: This API was removed during the functional refactor.
-    // Find an equivalent way to express it.
-    (filter as any).setPattern('*');
-    logger.info('all logs printed');
-    expect(backend).toHaveBeenCalledWith(
-      expect.objectContaining({ message: 'all logs printed' })
-    );
+    expect(getLocalStorageKey).toHaveBeenCalledWith('override');
   });
 
-  it.skip('can retrieve the current pattern', () => {
+  it('allows you to choose a different environment variable', () => {
     const backend = vi.fn();
     const filter = createEnvironmentFilter({
-      pattern: undefined,
-      defaultPattern: '*, -ignored',
       processor: backend,
+      environmentVariable: 'OVERRIDE',
     });
 
-    // TODO: This API was removed during the functional refactor.
-    // Find an equivalent way to express it.
-    expect((filter as any).getPattern()).toBe('*, -ignored');
+    const logger = createLogger(filter);
+    logger.info('just print something');
+
+    expect(getEnvironmentVariable).toHaveBeenCalledWith('OVERRIDE');
   });
 });
