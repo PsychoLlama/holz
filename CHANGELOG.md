@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.5.0] - 2023-03-04
+
 ### Added
 
 - `[@holz/env-filter]` New options `localStorageKey` and `environmentVariable` configure where to look for patterns.
@@ -87,7 +89,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/core]` Initial release.
 - `[@holz/logger]` Initial release.
 
-[unreleased]: https://github.com/PsychoLlama/holz/compare/v0.4.0...HEAD
+[unreleased]: https://github.com/PsychoLlama/holz/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/PsychoLlama/holz/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/PsychoLlama/holz/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/PsychoLlama/holz/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/PsychoLlama/holz/compare/v0.1.1...v0.2.0
