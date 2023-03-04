@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - **Plugins are functions now.** This improves bundle size and composition at the expense of broad changes.
 - Every plugin's export was replaced with a function instead of a class, so `import { FooBackend }` becomes `import { createFooBackend }`.
+- `[@holz/core]` Renamed `logger.origin` to `logger.owner`.
 
 ### Removed
 

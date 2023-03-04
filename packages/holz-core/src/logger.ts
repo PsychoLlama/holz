@@ -14,7 +14,7 @@ class Logger {
 
   private constructor(
     private processor: LogProcessor,
-    readonly origin: ReadonlyArray<string>
+    readonly owner: ReadonlyArray<string>
   ) {
     // Non-enumerable to keep the repls clean.
     Object.defineProperty(this, 'processor', {
@@ -25,7 +25,7 @@ class Logger {
 
   /** Extend the logger to attach a class or module name to logs. */
   namespace(owner: string): Logger {
-    return new Logger(this.processor, this.origin.concat(owner));
+    return new Logger(this.processor, this.owner.concat(owner));
   }
 
   /** Log a frequent and verbose progress update. */
@@ -56,7 +56,7 @@ class Logger {
     this.processor({
       message,
       level,
-      origin: this.origin,
+      origin: this.owner,
       context,
     });
   }
