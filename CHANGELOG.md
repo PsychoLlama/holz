@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `[@holz/core]` Bound logging methods so they can be passed as first-class functions.
 
+### Changed
+
+- `[@holz/logger]` Disable all logs by default. This makes it reasonable to use Holz as a logging solution in other libraries.
+
 ## [0.5.0] - 2023-03-04
 
 ### Added

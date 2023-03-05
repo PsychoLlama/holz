@@ -12,13 +12,13 @@ npm install @holz/logger
 
 ## Usage
 
-First, import the logger:
+To use the logger, import it into your project:
 
 ```typescript
 import logger from '@holz/logger';
 ```
 
-Then, start logging! You can use any of the supported log levels (`debug`, `info`, `warn`, `error`) to write messages to the console:
+After that, you can start logging messages with different log levels:
 
 ```typescript
 logger.debug('This is a debug message');
@@ -27,18 +27,20 @@ logger.warn('This is a warning message');
 logger.error('This is an error message');
 ```
 
-You can also add a namespace to your logs to help organize them:
+By default, logs are formatted with a timestamp, log level, namespace (if provided), and message. You can also add a namespace to your logs to help organize them:
 
 ```typescript
 const dbLogger = logger.namespace('db');
 dbLogger.info('Connected to database');
 ```
 
-By default, logs are formatted with a timestamp, log level, namespace (if provided), and message:
+If you don't see logs, you may need to enable them. You can do this by setting the `DEBUG` environment variable to `your-app*` or setting `localStorage.debug` to `your-app*`. For example, to enable logs in a Node.js script:
 
+```bash
+DEBUG='your-app*' node script.js
 ```
-2023-03-04T22:25:41.143Z INFO  [db] Connected to database
-```
+
+Holz is suitable for use in other libraries as you can enable logs when needed, without cluttering downstream application logs.
 
 ## Customizing the Logger
 

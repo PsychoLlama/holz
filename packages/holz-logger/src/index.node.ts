@@ -13,6 +13,7 @@ const logger = createLogger(
   filter(
     () => NODE_ENV !== 'test',
     createEnvironmentFilter({
+      defaultPattern: '',
       processor: supportsAnsiColors
         ? createAnsiTerminalBackend()
         : createStreamBackend({ stream: process.stderr }),

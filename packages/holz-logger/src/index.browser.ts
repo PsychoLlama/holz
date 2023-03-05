@@ -3,7 +3,10 @@ import { createLogger } from '@holz/core';
 import { createEnvironmentFilter } from '@holz/env-filter';
 
 const logger = createLogger(
-  createEnvironmentFilter({ processor: createConsoleBackend() })
+  createEnvironmentFilter({
+    processor: createConsoleBackend(),
+    defaultPattern: '',
+  })
 );
 
 export default logger;

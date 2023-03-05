@@ -34,7 +34,19 @@ logger.info('Hello, world!');
 
 That's it! You can use Holz in Node or in the browser.
 
-For more details check [the documentation](https://github.com/PsychoLlama/holz/tree/main/packages/holz-logger).
+By default, logs are hidden. To enable them, set the `DEBUG` environment variable to the namespace(s) you want to see logs for:
+
+```bash
+DEBUG='your-app*' node script.js
+```
+
+Alternatively, you can enable logs by setting the `localStorage.debug` property:
+
+```typescript
+localStorage.debug = 'your-app*';
+```
+
+For more details, check [the documentation](https://github.com/PsychoLlama/holz/tree/main/packages/holz-logger).
 
 ## Rules
 
