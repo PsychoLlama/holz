@@ -35,6 +35,19 @@ describe('Logger', () => {
     });
   });
 
+  it('binds the log methods to the logger', () => {
+    const backend = vi.fn();
+    const logger = createLogger(backend);
+
+    const { debug, info, warn, error } = logger;
+    debug('Debugging message');
+    info('Informative message');
+    warn('Warning message');
+    error('Error message');
+
+    expect(backend).toHaveBeenCalledTimes(4);
+  });
+
   describe('namespace', () => {
     it('extends the origin of the logger', () => {
       const backend = vi.fn();

@@ -16,10 +16,14 @@ class Logger {
     private processor: LogProcessor,
     readonly owner: ReadonlyArray<string>
   ) {
-    // Non-enumerable to keep the repls clean.
-    Object.defineProperty(this, 'processor', {
-      configurable: false,
-      enumerable: false,
+    // Non-enumerable to keep the repl clean.
+    const hidden = { configurable: false, enumerable: false };
+    Object.defineProperties(this, {
+      processor: hidden,
+      debug: hidden,
+      info: hidden,
+      warn: hidden,
+      error: hidden,
     });
   }
 
@@ -29,24 +33,24 @@ class Logger {
   }
 
   /** Log a frequent and verbose progress update. */
-  debug(message: string, context?: LogContext) {
+  debug = (message: string, context?: LogContext) => {
     this.forwardLog(LogLevel.Debug, message, context);
-  }
+  };
 
   /** Log a high-level progress update. */
-  info(message: string, context?: LogContext) {
+  info = (message: string, context?: LogContext) => {
     this.forwardLog(LogLevel.Info, message, context);
-  }
+  };
 
   /** Log something concerning. */
-  warn(message: string, context?: LogContext) {
+  warn = (message: string, context?: LogContext) => {
     this.forwardLog(LogLevel.Warn, message, context);
-  }
+  };
 
   /** Log a critical failure. */
-  error(message: string, context?: LogContext) {
+  error = (message: string, context?: LogContext) => {
     this.forwardLog(LogLevel.Error, message, context);
-  }
+  };
 
   private forwardLog(
     level: LogLevel,

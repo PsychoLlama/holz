@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+- `[@holz/core]` Bound logging methods so they can be passed as first-class functions.
+
 ## [0.5.0] - 2023-03-04
 
 ### Added
