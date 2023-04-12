@@ -45,8 +45,8 @@
   "devDependencies": {
     "@holz/core": "workspace:^0.6.0",
     "@types/node": "^18.14.0",
-    "@vitest/coverage-c8": "^0.29.0",
+    "@vitest/coverage-c8": "^0.30.0",
     "vite": "^4.0.0",
-    "vitest": "^0.29.0"
+    "vitest": "^0.30.0"
   }
 }
