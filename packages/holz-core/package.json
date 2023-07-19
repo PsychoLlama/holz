@@ -38,9 +38,9 @@
     "test:types": "tsc"
   },
   "devDependencies": {
-    "@vitest/coverage-c8": "^0.31.0",
+    "@vitest/coverage-c8": "^0.33.0",
     "typescript": "^5.0.0",
     "vite": "^4.0.0",
-    "vitest": "^0.31.0"
+    "vitest": "^0.33.0"
   }
 }
