@@ -21,7 +21,7 @@ The `processor` option is where you specify which plugin should process the filt
 
 ## Patterns
 
-Patterns are strings that match against `log.origin`, which is a property of each log object. Origins are added when you call `logger.namepspace(...)`. The following syntax is supported:
+Patterns are strings that match against `log.origin`, which is a property of each log object. Origins are added when you call `logger.namespace(...)`. The following syntax is supported:
 
 - `*` matches zero or more characters.
 - `-` at the beginning of a pattern negates it, so that logs with origins matching the pattern are hidden rather than shown.
