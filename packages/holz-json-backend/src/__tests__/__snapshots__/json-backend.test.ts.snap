@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`JSON backend > prints the logs to the writable stream 1`] = `
 "{\\"level\\":\\"debug\\",\\"time\\":\\"2020-06-15T12:00:00.000Z\\",\\"msg\\":\\"shout\\"}
