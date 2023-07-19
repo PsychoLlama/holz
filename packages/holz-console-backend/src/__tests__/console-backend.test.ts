@@ -36,7 +36,7 @@ describe('Console backend', () => {
     logger.info('hello world');
 
     expect(output.print).toHaveBeenCalledWith(
-      expect.stringContaining('hello world')
+      expect.stringContaining('hello world'),
     );
   });
 
@@ -50,7 +50,7 @@ describe('Console backend', () => {
     logger.debug('initialized');
 
     expect(output.print).toHaveBeenCalledWith(
-      expect.stringContaining('my-lib:MyClass')
+      expect.stringContaining('my-lib:MyClass'),
     );
   });
 
@@ -63,7 +63,7 @@ describe('Console backend', () => {
 
     // Hard to test without replicating the implementation.
     expect(output.print).toHaveBeenCalledWith(
-      expect.stringContaining('sessionId')
+      expect.stringContaining('sessionId'),
     );
 
     expect(output.print).toHaveBeenCalledWith(expect.stringContaining('3109'));
@@ -111,7 +111,7 @@ describe('Console backend', () => {
     const backend = createConsoleBackend({ console: output });
     const logger = namespace.reduce(
       (logger, ns) => logger.namespace(ns),
-      createLogger(backend)
+      createLogger(backend),
     );
 
     logger[method](message, { id: 1234 });

@@ -28,7 +28,7 @@ describe('EnvironmentFilter', () => {
     expect(backend).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'not ignored',
-      })
+      }),
     );
   });
 
@@ -47,7 +47,7 @@ describe('EnvironmentFilter', () => {
 
     logger.info('not ignored');
     expect(backend).toHaveBeenCalledWith(
-      expect.objectContaining({ message: 'not ignored' })
+      expect.objectContaining({ message: 'not ignored' }),
     );
   });
 
@@ -62,7 +62,7 @@ describe('EnvironmentFilter', () => {
 
     logger.info('not excluded');
     expect(backend).toHaveBeenCalledWith(
-      expect.objectContaining({ message: 'not excluded' })
+      expect.objectContaining({ message: 'not excluded' }),
     );
   });
 

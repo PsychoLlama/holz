@@ -18,7 +18,7 @@ export function filter(
   /** Returns `true` to forward the log. */
   predicate: (log: Log) => boolean,
   /** Where to send the log if it passes the filter. */
-  processor: LogProcessor
+  processor: LogProcessor,
 ): LogProcessor {
   return (log: Log) => {
     if (predicate(log)) {

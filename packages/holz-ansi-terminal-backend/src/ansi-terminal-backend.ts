@@ -34,7 +34,7 @@ export function createAnsiTerminalBackend(options: Options = {}): LogProcessor {
         command: '%s',
         content: log.message.replace(
           /(\r?\n)/g,
-          `$1${timestampPrefix} ${labelSizeInWhitespace} `
+          `$1${timestampPrefix} ${labelSizeInWhitespace} `,
         ),
       },
       {

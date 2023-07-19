@@ -13,11 +13,11 @@ describe('operators', () => {
       logger.info('tee message');
 
       expect(b1).toHaveBeenCalledWith(
-        expect.objectContaining({ message: 'tee message' })
+        expect.objectContaining({ message: 'tee message' }),
       );
 
       expect(b2).toHaveBeenCalledWith(
-        expect.objectContaining({ message: 'tee message' })
+        expect.objectContaining({ message: 'tee message' }),
       );
     });
 
@@ -33,7 +33,7 @@ describe('operators', () => {
     it('filters out logs that do not match the predicate', () => {
       const backend = vi.fn();
       const logger = createLogger(
-        filter((log) => log.level !== LogLevel.Debug, backend)
+        filter((log) => log.level !== LogLevel.Debug, backend),
       );
 
       logger.info('keep me');
@@ -41,7 +41,7 @@ describe('operators', () => {
 
       expect(backend).toHaveBeenCalledOnce();
       expect(backend).toHaveBeenCalledWith(
-        expect.objectContaining({ message: 'keep me' })
+        expect.objectContaining({ message: 'keep me' }),
       );
     });
   });

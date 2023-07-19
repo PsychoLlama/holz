@@ -17,8 +17,8 @@ const logger = createLogger(
       processor: supportsAnsiColors
         ? createAnsiTerminalBackend()
         : createStreamBackend({ stream: process.stderr }),
-    })
-  )
+    }),
+  ),
 );
 
 export default logger;

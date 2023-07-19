@@ -51,7 +51,7 @@ describe('JSON backend', () => {
     logger.debug('sneaky log\nwith newlines\rand carriage returns\r\n');
 
     expect(getOutput()).toContain(
-      'sneaky log\\nwith newlines\\rand carriage returns\\r\\n'
+      'sneaky log\\nwith newlines\\rand carriage returns\\r\\n',
     );
   });
 
