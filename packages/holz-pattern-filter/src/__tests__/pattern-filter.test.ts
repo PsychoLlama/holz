@@ -21,7 +21,7 @@ describe('PatternFilter', () => {
     expect(backend).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'not ignored',
-      })
+      }),
     );
   });
 

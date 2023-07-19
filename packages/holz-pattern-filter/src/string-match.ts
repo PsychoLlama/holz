@@ -19,7 +19,7 @@ export const parse = (input: string): PatternFilters => {
 
       return groups;
     },
-    { include: [], exclude: [] }
+    { include: [], exclude: [] },
   );
 };
 

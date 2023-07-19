@@ -6,7 +6,7 @@ const logger = createLogger(
   createEnvironmentFilter({
     processor: createConsoleBackend(),
     defaultPattern: '',
-  })
+  }),
 );
 
 export default logger;

@@ -14,7 +14,7 @@ class Logger {
 
   private constructor(
     private processor: LogProcessor,
-    readonly owner: ReadonlyArray<string>
+    readonly owner: ReadonlyArray<string>,
   ) {
     // Non-enumerable to keep the repl clean.
     const hidden = { configurable: false, enumerable: false };
@@ -55,7 +55,7 @@ class Logger {
   private forwardLog(
     level: LogLevel,
     message: string,
-    context: LogContext = {}
+    context: LogContext = {},
   ) {
     this.processor({
       message,
