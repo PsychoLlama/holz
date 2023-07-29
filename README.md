@@ -5,7 +5,7 @@
 
 ## Purpose
 
-Most logging frameworks are destructive. The act of converting logs to strings partially destroys the data it contains. Instead, Holz uses pipelines of structured data:
+Most logging frameworks are destructive. The act of converting logs to strings partially destroys the data it contains. Instead, Holz encourages pipelines of structured data:
 
 ```typescript
 logger.info('Sending new user email', { userId: user.id });
@@ -20,7 +20,7 @@ logger.info('Sending new user email', { userId: user.id });
 }
 ```
 
-Eventually a plugin converts it to a string, but it happens at the end of the line. Anywhere in between you can filter, transform, upload, or reroute your logs.
+Each log is sent through a chain of plugins that choose how to filter, transform, serialize, or upload them.
 
 ## Usage
 
@@ -110,7 +110,7 @@ import { createLogger, filter, LogLevel } from '@holz/core';
 const logger = createLogger(
   filter(
     (log) => log.level !== LogLevel.Debug,
-    new StreamBackend({ stream: process.stderr })
+    createStreamBackend({ stream: process.stderr })
   )
 );
 ```
