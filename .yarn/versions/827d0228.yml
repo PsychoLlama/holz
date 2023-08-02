@@ -1,0 +1,7 @@
+releases:
+  "@holz/console-backend": patch
+  "@holz/env-filter": patch
+  "@holz/pattern-filter": patch
+
+undecided:
+  - "@holz/monorepo"

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved a TypeScript error when using PnP where `@holz/core` was unresolvable.
+
 ## [0.6.0] - 2023-03-05
 
 ### Added

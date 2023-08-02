@@ -38,6 +38,9 @@
     "test:unit": "vitest --color --passWithNoTests",
     "test:types": "tsc"
   },
+  "peerDependencies": {
+    "@holz/core": "workspace:*"
+  },
   "devDependencies": {
     "@holz/core": "workspace:^0.6.0",
     "@types/node": "^18.14.0",
