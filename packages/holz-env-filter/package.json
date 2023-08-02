@@ -1,6 +1,6 @@
 {
   "name": "@holz/env-filter",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Filter logs based on the current environment.",
   "type": "module",
   "main": "./dist/holz-env-filter.cjs",
@@ -40,7 +40,7 @@
     "test:types": "tsc"
   },
   "dependencies": {
-    "@holz/pattern-filter": "workspace:^0.6.0"
+    "@holz/pattern-filter": "workspace:^0.6.1"
   },
   "peerDependencies": {
     "@holz/core": "workspace:*"

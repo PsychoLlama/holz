@@ -1,6 +1,6 @@
 {
   "name": "@holz/logger",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A preconfigured, general-purpose logger",
   "type": "module",
   "main": "./dist/browser-logger.cjs",
@@ -50,9 +50,9 @@
   },
   "dependencies": {
     "@holz/ansi-terminal-backend": "workspace:^0.6.0",
-    "@holz/console-backend": "workspace:^0.6.0",
+    "@holz/console-backend": "workspace:^0.6.1",
     "@holz/core": "workspace:^0.6.0",
-    "@holz/env-filter": "workspace:^0.6.0",
+    "@holz/env-filter": "workspace:^0.6.1",
     "@holz/stream-backend": "workspace:^0.6.0"
   },
   "devDependencies": {
