@@ -7,7 +7,7 @@
   "author": "Jesse Gibson",
   "license": "MIT",
   "types": "./src/index.ts",
-  "packageManager": "yarn@3.6.3",
+  "packageManager": "yarn@3.8.0",
   "sideEffects": false,
   "workspaces": [
     "packages/*"
