@@ -7,7 +7,7 @@
   "author": "Jesse Gibson",
   "license": "MIT",
   "types": "./src/index.ts",
-  "packageManager": "yarn@3.6.3",
+  "packageManager": "yarn@4.1.0",
   "sideEffects": false,
   "workspaces": [
     "packages/*"
@@ -17,10 +17,10 @@
     "src"
   ],
   "scripts": {
-    "prepare": "yarn workspaces foreach --parallel --topological-dev run prepack",
+    "prepare": "yarn workspaces foreach --all --parallel --topological-dev run prepack",
     "test": "run test:coverage && run test:lint && run test:fmt && run test:types",
-    "test:coverage": "yarn workspaces foreach --parallel run test:unit --coverage --no-watch",
-    "test:types": "yarn workspaces foreach --parallel run test:types",
+    "test:coverage": "yarn workspaces foreach --all --parallel run test:unit --coverage --no-watch",
+    "test:types": "yarn workspaces foreach --all --parallel run test:types",
     "test:lint": "eslint packages/*/src --ext ts,tsx --color",
     "test:fmt": "prettier --check packages/*/src",
     "fmt": "prettier --write packages/*/src"
