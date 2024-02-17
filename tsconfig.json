@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "moduleResolution": "Bundler",
+    "module": "ES2020",
     "resolveJsonModule": true,
     "jsx": "react",
     "noEmit": true,
