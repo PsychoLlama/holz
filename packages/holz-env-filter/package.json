@@ -14,7 +14,8 @@
   "exports": {
     ".": {
       "require": "./dist/holz-env-filter.cjs",
-      "import": "./dist/holz-env-filter.js"
+      "import": "./dist/holz-env-filter.js",
+      "types": "./src/index.ts"
     }
   },
   "publishConfig": {
@@ -50,6 +51,6 @@
     "@types/node": "^20.0.0",
     "@vitest/coverage-v8": "^1.0.0",
     "vite": "^5.0.0",
-    "vitest": "^1.0.0"
+    "vitest": "^1.3.0"
   }
 }
