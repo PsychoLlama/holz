@@ -321,7 +321,7 @@ __metadata:
   resolution: "@holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend"
   dependencies:
     "@holz/core": "workspace:^0.6.0"
-    "@types/node": "npm:^20.0.0"
+    "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^2.0.0"
     typescript: "npm:^5.0.0"
     vite: "npm:^5.0.0"
@@ -336,7 +336,7 @@ __metadata:
   resolution: "@holz/console-backend@workspace:packages/holz-console-backend"
   dependencies:
     "@holz/core": "workspace:^0.6.0"
-    "@types/node": "npm:^20.0.0"
+    "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^2.0.0"
     typescript: "npm:^5.0.0"
     vite: "npm:^5.0.0"
@@ -363,7 +363,7 @@ __metadata:
   dependencies:
     "@holz/core": "workspace:^0.6.0"
     "@holz/pattern-filter": "workspace:^0.6.1"
-    "@types/node": "npm:^20.0.0"
+    "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^2.0.0"
     vite: "npm:^5.0.0"
     vitest: "npm:^2.0.0"
@@ -377,7 +377,7 @@ __metadata:
   resolution: "@holz/json-backend@workspace:packages/holz-json-backend"
   dependencies:
     "@holz/core": "workspace:^0.6.0"
-    "@types/node": "npm:^20.0.0"
+    "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^2.0.0"
     typescript: "npm:^5.0.0"
     vite: "npm:^5.0.0"
@@ -394,7 +394,7 @@ __metadata:
     "@holz/core": "workspace:^0.6.0"
     "@holz/env-filter": "workspace:^0.6.1"
     "@holz/stream-backend": "workspace:^0.6.0"
-    "@types/node": "npm:^20.0.0"
+    "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^2.0.0"
     typescript: "npm:^5.0.0"
     vite: "npm:^5.0.0"
@@ -437,7 +437,7 @@ __metadata:
   resolution: "@holz/stream-backend@workspace:packages/holz-stream-backend"
   dependencies:
     "@holz/core": "workspace:^0.6.0"
-    "@types/node": "npm:^20.0.0"
+    "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^2.0.0"
     typescript: "npm:^5.0.0"
     vite: "npm:^5.0.0"
@@ -736,12 +736,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.0.0":
+"@types/node@npm:*":
   version: 20.11.19
   resolution: "@types/node@npm:20.11.19"
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/f451ef0a1d78f29c57bad7b77e49ebec945f2a6d0d7a89851d7e185ee9fe7ad94d651c0dfbcb7858c9fa791310c8b40a881e2260f56bd3c1b7e7ae92723373ae
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22.0.0":
+  version: 22.8.2
+  resolution: "@types/node@npm:22.8.2"
+  dependencies:
+    undici-types: "npm:~6.19.8"
+  checksum: 10c0/c6fa6c54c23e61015cace1517c4101602cae0ff3c4f6604f6cdb89875143921830e5602cabe8b4f90f90363451687a0497f1d07d30be8104fee758d6d44c90ac
   languageName: node
   linkType: hard
 
@@ -5036,6 +5045,13 @@ __metadata:
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
   checksum: 10c0/bb673d7876c2d411b6eb6c560e0c571eef4a01c1c19925175d16e3a30c4c428181fb8d7ae802a261f283e4166a0ac435e2f505743aa9e45d893f9a3df017b501
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.19.8":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: 10c0/078afa5990fba110f6824823ace86073b4638f1d5112ee26e790155f481f2a868cc3e0615505b6f4282bdf74a3d8caad715fd809e870c2bb0704e3ea6082f344
   languageName: node
   linkType: hard
 
