@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if (( $# == 0 )); then
+  echo "Usage: version-bump [stable|rc]"
+  exit 1
+fi
+
+case "$1" in
+  stable)
+    tag=latest
+    ;;
+  rc)
+    tag=rc
+    ;;
+  *)
+    echo "Invalid tag: $1"
+    exit 1
+    ;;
+esac
+
+if [[ "$tag" == "latest" ]]; then
+  yarn version apply --all --recursive
+else
+  yarn version apply --all --recursive --prerelease
+fi

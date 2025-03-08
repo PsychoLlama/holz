@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if (( $# == 0 )); then
+  echo "Usage: publish [stable|rc]"
+  exit 1
+fi
+
+case "$1" in
+  stable)
+    tag=latest
+    ;;
+  rc)
+    tag=rc
+    ;;
+  *)
+    echo "Invalid tag: $1"
+    exit 1
+    ;;
+esac
+
+echo "Publishing with tag '$tag'"
+
+yarn workspaces foreach \
+  --topological-dev \
+  --all \
+  --exclude . \
+  npm publish \
+  --access=public \
+  --tolerate-republish \
+  --tag="$tag"
