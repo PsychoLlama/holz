@@ -6,20 +6,12 @@ if (( $# == 0 )); then
   exit 1
 fi
 
-case "$1" in
-  stable)
-    tag=latest
-    ;;
-  rc)
-    tag=rc
-    ;;
-  *)
-    echo "Invalid tag: $1"
-    exit 1
-    ;;
-esac
+if [[ "$1" != "stable" && "$1" != "rc" ]]; then
+  echo "Invalid bump type: $1"
+  exit 1
+fi
 
-if [[ "$tag" == "latest" ]]; then
+if [[ "$1" == "stable" ]]; then
   yarn version apply --all --recursive
 else
   yarn version apply --all --recursive --prerelease
