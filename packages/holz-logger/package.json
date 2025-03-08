@@ -10,15 +10,15 @@
   },
   "exports": {
     ".": {
-      "node": {
-        "types": "./dist/server-logger.d.ts",
-        "import": "./dist/server-logger.js",
-        "require": "./dist/server-logger.cjs"
-      },
       "browser": {
         "types": "./dist/browser-logger.d.ts",
         "import": "./dist/browser-logger.js",
         "require": "./dist/browser-logger.cjs"
+      },
+      "default": {
+        "types": "./dist/server-logger.d.ts",
+        "import": "./dist/server-logger.js",
+        "require": "./dist/server-logger.cjs"
       }
     }
   },
