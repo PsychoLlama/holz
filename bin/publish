@@ -19,7 +19,22 @@ case "$1" in
     ;;
 esac
 
-echo "Publishing with tag '$tag'"
+if [[ "$1" == stable ]]; then
+  echo "Checklist:"
+  echo ""
+  echo " - Update CHANGELOG.md"
+  echo " - Create a git tag"
+  echo ""
+  echo "Are you ready to publish? [y/n]"
+  read -r confirm
+
+  if [[ "$confirm" != y ]]; then
+    echo "Aborting"
+    exit 1
+  fi
+fi
+
+echo "Publishing $1 release"
 
 yarn workspaces foreach \
   --topological-dev \
