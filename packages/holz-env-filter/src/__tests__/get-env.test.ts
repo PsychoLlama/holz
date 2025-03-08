@@ -1,7 +1,7 @@
 import * as env from '../get-env';
 
 class MockLocalStorage {
-  private store = new Map();
+  private store = new Map<string, string>();
 
   getItem = vi.fn((key: string) => this.store.get(key) ?? null);
   setItem = vi.fn((key: string, value: string) => {

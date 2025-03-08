@@ -9,7 +9,7 @@ class Logger {
    * If you wish to use more than one processor, `combine(...)` them first.
    */
   static create(processor: LogProcessor): Logger {
-    return new Logger(processor, []);
+    return new this(processor, []);
   }
 
   private constructor(
@@ -66,4 +66,4 @@ class Logger {
   }
 }
 
-export const createLogger = Logger.create;
+export const createLogger = Logger.create.bind(Logger);

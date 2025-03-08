@@ -9,7 +9,7 @@ export const getLocalStorageKey = (key: string): undefined | string => {
     if (typeof localStorage !== 'undefined') {
       return localStorage.getItem(key) ?? undefined;
     }
-  } catch (error) {
+  } catch {
     // Sometimes localStorage fails (e.g. in Safari private mode). That's
     // okay. We'll just use a fallback pattern.
   }
