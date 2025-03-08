@@ -1,6 +1,6 @@
 {
   "name": "@holz/logger",
-  "version": "0.7.0-rc.1",
+  "version": "0.7.0-rc.2",
   "description": "A preconfigured, general-purpose logger",
   "type": "module",
   "repository": {
@@ -46,11 +46,11 @@
     "test:types": "tsc"
   },
   "dependencies": {
-    "@holz/ansi-terminal-backend": "workspace:^0.7.0-rc.1",
-    "@holz/console-backend": "workspace:^0.7.0-rc.1",
-    "@holz/core": "workspace:^0.7.0-rc.1",
-    "@holz/env-filter": "workspace:^0.7.0-rc.1",
-    "@holz/stream-backend": "workspace:^0.7.0-rc.1"
+    "@holz/ansi-terminal-backend": "workspace:^0.7.0-rc.2",
+    "@holz/console-backend": "workspace:^0.7.0-rc.2",
+    "@holz/core": "workspace:^0.7.0-rc.2",
+    "@holz/env-filter": "workspace:^0.7.0-rc.2",
+    "@holz/stream-backend": "workspace:^0.7.0-rc.2"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
