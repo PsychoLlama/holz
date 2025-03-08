@@ -9,6 +9,21 @@
     "jsx": "react",
     "noEmit": true,
     "strict": true,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "paths": {
+      "@holz/ansi-terminal-backend": [
+        "./packages/holz-ansi-terminal-backend/src/index.ts"
+      ],
+      "@holz/console-backend": ["./packages/holz-console-backend/src/index.ts"],
+      "@holz/core": ["./packages/holz-core/src/index.ts"],
+      "@holz/env-filter": ["./packages/holz-env-filter/src/index.ts"],
+      "@holz/json-backend": ["./packages/holz-json-backend/src/index.ts"],
+      "@holz/logger": [
+        "./packages/holz-logger/src/index.node.ts",
+        "./packages/holz-logger/src/index.browser.ts"
+      ],
+      "@holz/pattern-filter": ["./packages/holz-pattern-filter/src/index.ts"],
+      "@holz/stream-backend": ["./packages/holz-stream-backend/src/index.ts"]
+    }
   }
 }

@@ -9,7 +9,7 @@ export default async () => {
   const builtins = builtinModules.map((name) => `node:${name}`);
 
   return defineConfig({
-    plugins: [dts({ rollupTypes: true })],
+    plugins: [dts({ rollupTypes: true, pathsToAliases: false })],
     build: {
       lib: {
         entry: {

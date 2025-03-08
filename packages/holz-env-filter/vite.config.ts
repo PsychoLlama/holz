@@ -7,7 +7,7 @@ export default async () => {
   const externals = Object.keys(pkg.dependencies ?? {});
 
   return defineConfig({
-    plugins: [dts({ rollupTypes: true })],
+    plugins: [dts({ rollupTypes: true, pathsToAliases: false })],
     build: {
       lib: {
         entry: './src/index.ts',
