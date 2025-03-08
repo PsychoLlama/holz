@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [UNRELEASED]
 
+### Added
+
+- `[@holz/core]` Exports the `Logger` type which is returned by `createLogger`.
+
+### Changed
+
+- TypeScript declaration files are published with every package. Previous versions pointed to the source for types, which was much less stable.
+- Packages no longer support legacy `main` and `module` fields. All modern tools support `exports` fields. You should not see a difference.
+
 ## [0.6.1] - 2023-08-02
 
 ### Fixed
