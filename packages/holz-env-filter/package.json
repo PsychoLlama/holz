@@ -3,8 +3,6 @@
   "version": "0.6.1",
   "description": "Filter logs based on the current environment.",
   "type": "module",
-  "main": "./dist/holz-env-filter.cjs",
-  "module": "./dist/holz-env-filter.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",

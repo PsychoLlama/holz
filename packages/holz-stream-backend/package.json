@@ -3,8 +3,6 @@
   "version": "0.6.0",
   "description": "Print logs to stdout or a file.",
   "type": "module",
-  "main": "./dist/holz-stream-backend.cjs",
-  "module": "./dist/holz-stream-backend.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",

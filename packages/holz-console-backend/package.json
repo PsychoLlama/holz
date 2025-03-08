@@ -3,8 +3,6 @@
   "version": "0.6.1",
   "description": "A console backend for Holz",
   "type": "module",
-  "main": "./dist/holz-console-backend.cjs",
-  "module": "./dist/holz-console-backend.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",

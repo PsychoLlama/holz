@@ -3,8 +3,6 @@
   "version": "0.6.1",
   "description": "Only print log messages that match a pattern",
   "type": "module",
-  "main": "./dist/holz-pattern-filter.cjs",
-  "module": "./dist/holz-pattern-filter.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",

@@ -3,8 +3,6 @@
   "version": "0.6.0",
   "description": "Print logs as newline-delimited JSON.",
   "type": "module",
-  "main": "./dist/holz-json-backend.cjs",
-  "module": "./dist/holz-json-backend.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",

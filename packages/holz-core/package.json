@@ -3,8 +3,6 @@
   "version": "0.6.0",
   "description": "A structured and composable logger",
   "type": "module",
-  "main": "./dist/holz-core.cjs",
-  "module": "./dist/holz-core.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
