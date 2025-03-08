@@ -1,20 +1,32 @@
 {
   description = "Development environment";
 
-  outputs = { self, nixpkgs }:
-    let inherit (nixpkgs) lib;
+  inputs.systems.url = "github:nix-systems/default";
 
-    in {
-      devShell = lib.genAttrs lib.systems.flakeExposed (system:
-        let
-          pkgs = import nixpkgs { inherit system; };
-          nodejs = pkgs.nodejs-18_x;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      systems,
+    }:
 
-        in pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [
-            nodejs
-            (yarn.override { inherit nodejs; })
+    let
+      inherit (nixpkgs) lib;
+
+      eachSystem = lib.flip lib.mapAttrs (
+        lib.genAttrs (import systems) (system: nixpkgs.legacyPackages.${system})
+      );
+    in
+
+    {
+      devShell = eachSystem (
+        system: pkgs:
+        pkgs.mkShell {
+          packages = [
+            pkgs.nodejs
+            pkgs.yarn
           ];
-        });
+        }
+      );
     };
 }
