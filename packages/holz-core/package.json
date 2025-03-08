@@ -1,6 +1,6 @@
 {
   "name": "@holz/core",
-  "version": "0.7.0-rc.2",
+  "version": "0.7.0",
   "description": "A structured and composable logger",
   "type": "module",
   "repository": {
@@ -42,6 +42,5 @@
     "vite-plugin-dts": "^4.5.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8"
-  },
-  "stableVersion": "0.6.0"
+  }
 }

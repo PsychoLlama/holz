@@ -1,6 +1,6 @@
 {
   "name": "@holz/json-backend",
-  "version": "0.7.0-rc.2",
+  "version": "0.7.0",
   "description": "Print logs as newline-delimited JSON.",
   "type": "module",
   "repository": {
@@ -37,7 +37,7 @@
     "test:types": "tsc"
   },
   "devDependencies": {
-    "@holz/core": "workspace:^0.7.0-rc.2",
+    "@holz/core": "workspace:^0.7.0",
     "@types/node": "^22.0.0",
     "@vitest/coverage-v8": "^3.0.8",
     "typescript": "^5.0.0",
@@ -45,6 +45,5 @@
     "vite-plugin-dts": "^4.5.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8"
-  },
-  "stableVersion": "0.6.0"
+  }
 }

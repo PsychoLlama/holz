@@ -1,6 +1,6 @@
 {
   "name": "@holz/env-filter",
-  "version": "0.7.0-rc.2",
+  "version": "0.7.0",
   "description": "Filter logs based on the current environment.",
   "type": "module",
   "repository": {
@@ -38,19 +38,18 @@
     "test:types": "tsc"
   },
   "dependencies": {
-    "@holz/pattern-filter": "workspace:^0.7.0-rc.2"
+    "@holz/pattern-filter": "workspace:^0.7.0"
   },
   "peerDependencies": {
     "@holz/core": "workspace:*"
   },
   "devDependencies": {
-    "@holz/core": "workspace:^0.7.0-rc.2",
+    "@holz/core": "workspace:^0.7.0",
     "@types/node": "^22.0.0",
     "@vitest/coverage-v8": "^3.0.8",
     "vite": "^6.0.0",
     "vite-plugin-dts": "^4.5.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8"
-  },
-  "stableVersion": "0.6.1"
+  }
 }
