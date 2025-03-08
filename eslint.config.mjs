@@ -23,7 +23,10 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-use-before-define': 'off',
       '@typescript-eslint/consistent-type-imports': 'error',
-      'import/order': ['error'],
+      'import/order': 'error',
+
+      // This is already handled by TypeScript.
+      'import/no-unresolved': 'off',
     },
   },
   {
