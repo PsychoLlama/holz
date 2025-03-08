@@ -1,8 +1,10 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "esModuleInterop": true,
     "moduleResolution": "Bundler",
     "module": "ES2020",
+    "target": "ESNext",
     "resolveJsonModule": true,
     "jsx": "react",
     "noEmit": true,
