@@ -2,17 +2,7 @@ import type { LogProcessor, LogContext } from './types';
 import { LogLevel } from './types';
 
 class Logger {
-  /**
-   * Create a new logger. The processor is up to you. There are plugins for
-   * filtering, formatting, combining multiple processors together, and more.
-   *
-   * If you wish to use more than one processor, `combine(...)` them first.
-   */
-  static create(processor: LogProcessor): Logger {
-    return new this(processor, []);
-  }
-
-  private constructor(
+  constructor(
     private processor: LogProcessor,
     readonly owner: ReadonlyArray<string>,
   ) {
@@ -66,4 +56,13 @@ class Logger {
   }
 }
 
-export const createLogger = Logger.create.bind(Logger);
+/**
+ * Create a new logger. The processor is up to you. There are plugins for
+ * filtering, formatting, combining multiple processors together, and more.
+ *
+ * If you wish to use more than one processor, `combine(...)` them first.
+ */
+export const createLogger = (processor: LogProcessor): Logger =>
+  new Logger(processor, []);
+
+export type { Logger };

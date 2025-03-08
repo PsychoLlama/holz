@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite';
 import { builtinModules } from 'module';
+import dts from 'vite-plugin-dts';
 
-export default defineConfig(async () => {
+export default async () => {
   const builtins = builtinModules.map((name) => `node:${name}`);
 
-  return {
+  return defineConfig({
+    plugins: [dts({ rollupTypes: true })],
     build: {
       lib: {
         entry: './src/index.ts',
@@ -18,5 +20,5 @@ export default defineConfig(async () => {
         },
       },
     },
-  };
-});
+  });
+};

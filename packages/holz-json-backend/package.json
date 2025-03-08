@@ -5,7 +5,6 @@
   "type": "module",
   "main": "./dist/holz-json-backend.cjs",
   "module": "./dist/holz-json-backend.js",
-  "types": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
@@ -13,9 +12,9 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/holz-json-backend.d.ts",
       "require": "./dist/holz-json-backend.cjs",
-      "import": "./dist/holz-json-backend.js",
-      "types": "./src/index.ts"
+      "import": "./dist/holz-json-backend.js"
     }
   },
   "publishConfig": {
@@ -45,6 +44,7 @@
     "@vitest/coverage-v8": "^3.0.8",
     "typescript": "^5.0.0",
     "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.3",
     "vitest": "^3.0.8"
   }
 }

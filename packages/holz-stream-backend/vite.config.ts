@@ -1,14 +1,16 @@
 import { readFile } from 'fs/promises';
 import { builtinModules } from 'node:module';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
-export default defineConfig(async () => {
+export default async () => {
   const pkg = JSON.parse(await readFile('./package.json', 'utf-8'));
   const dependencies = Object.keys(pkg.dependencies ?? {});
   const peerDependencies = Object.keys(pkg.peerDependencies ?? {});
   const builtins = builtinModules.map((name) => `node:${name}`);
 
-  return {
+  return defineConfig({
+    plugins: [dts({ rollupTypes: true })],
     build: {
       lib: {
         entry: './src/index.ts',
@@ -22,5 +24,5 @@ export default defineConfig(async () => {
         },
       },
     },
-  };
-});
+  });
+};

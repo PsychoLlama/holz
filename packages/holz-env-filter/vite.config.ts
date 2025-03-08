@@ -1,11 +1,13 @@
 import { readFile } from 'node:fs/promises';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
-export default defineConfig(async () => {
+export default async () => {
   const pkg = JSON.parse(await readFile('./package.json', 'utf-8'));
   const externals = Object.keys(pkg.dependencies ?? {});
 
-  return {
+  return defineConfig({
+    plugins: [dts({ rollupTypes: true })],
     build: {
       lib: {
         entry: './src/index.ts',
@@ -19,5 +21,5 @@ export default defineConfig(async () => {
         },
       },
     },
-  };
-});
+  });
+};

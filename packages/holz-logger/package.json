@@ -5,7 +5,6 @@
   "type": "module",
   "main": "./dist/browser-logger.cjs",
   "module": "./dist/browser-logger.js",
-  "types": "./src/index.browser.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/PsychoLlama/holz",
@@ -14,12 +13,12 @@
   "exports": {
     ".": {
       "node": {
-        "types": "./src/index.node.ts",
+        "types": "./dist/server-logger.d.ts",
         "import": "./dist/server-logger.js",
         "require": "./dist/server-logger.cjs"
       },
       "browser": {
-        "types": "./src/index.browser.ts",
+        "types": "./dist/browser-logger.d.ts",
         "import": "./dist/browser-logger.js",
         "require": "./dist/browser-logger.cjs"
       }
@@ -60,6 +59,7 @@
     "@vitest/coverage-v8": "^3.0.8",
     "typescript": "^5.0.0",
     "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.3",
     "vitest": "^3.0.8"
   }
 }
