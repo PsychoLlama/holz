@@ -22,6 +22,11 @@ class Logger {
     return new Logger(this.processor, this.owner.concat(owner));
   }
 
+  /** Log a verbose and frequent update. */
+  trace = (message: string, context?: LogContext) => {
+    this.forwardLog(LogLevel.Trace, message, context);
+  }
+
   /** Log a frequent and verbose progress update. */
   debug = (message: string, context?: LogContext) => {
     this.forwardLog(LogLevel.Debug, message, context);
@@ -37,9 +42,14 @@ class Logger {
     this.forwardLog(LogLevel.Warn, message, context);
   };
 
-  /** Log a critical failure. */
+  /** Log a failure. */
   error = (message: string, context?: LogContext) => {
     this.forwardLog(LogLevel.Error, message, context);
+  };
+
+  /** Log a catastrophic failure. */
+  fatal = (message: string, context?: LogContext) => {
+    this.forwardLog(LogLevel.Fatal, message, context);
   };
 
   private forwardLog(

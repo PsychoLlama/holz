@@ -41,17 +41,23 @@ export interface Log {
 }
 
 export enum LogLevel {
-  /** Something critical failed and we can't continue. */
+  /** A critical failure happened and the program must exit. */
+  Fatal = 'fatal',
+
+  /** Something failed, but we can keep going. */
   Error = 'error',
 
-  /** Something is concerning, but we can keep going. */
+  /** Cause for concern, but we can keep going. */
   Warn = 'warn',
 
   /** High-level progress updates. */
   Info = 'info',
 
-  /** Extremely verbose progress updates (usually hidden). */
+  /** Verbose update about events or control flow (usually hidden). */
   Debug = 'debug',
+
+  /** Extremely detailed progress updates (usually hidden). */
+  Trace = 'trace',
 }
 
 export type LogContext = Record<

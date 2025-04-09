@@ -18,10 +18,12 @@ describe('Logger', () => {
   });
 
   it.each([
-    [LogLevel.Debug, 'Look, a dead fly', { urgency: 'high' }],
+    [LogLevel.Trace, 'Look, a dead fly', { urgency: 'high?' }],
+    [LogLevel.Debug, 'Made in Britain', { condition: 'fire' }],
     [LogLevel.Info, 'I am not a window cleaner!', { state: 'panic' }],
     [LogLevel.Warn, 'There are irregularities in the pension fund', {}],
-    [LogLevel.Error, 'Leadership has taken a dive', { windows: 'open' }],
+    [LogLevel.Error, 'Have you tried turning it off and on again?', {}],
+    [LogLevel.Fatal, 'Leadership has taken a dive', { windows: 'open' }],
   ])('correctly processes %s log messages', (level, message, context) => {
     const backend = vi.fn();
     const logger = createLogger(backend);
