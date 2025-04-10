@@ -1,5 +1,5 @@
 import { createLogger } from '../logger';
-import { level } from '../types';
+import { level } from '../index';
 
 describe('Logger', () => {
   it('sends structured logs to the log processor', () => {
@@ -11,27 +11,27 @@ describe('Logger', () => {
     expect(backend).toHaveBeenCalledOnce();
     expect(backend).toHaveBeenCalledWith({
       message: 'Hello world',
-      level: 'info',
+      level: level.info,
       origin: [],
       context: { audience: 'testers' },
     });
   });
 
   it.each([
-    [level.trace, 'Look, a dead fly', { urgency: 'high?' }],
-    [level.debug, 'Made in Britain', { condition: 'fire' }],
-    [level.info, 'I am not a window cleaner!', { state: 'panic' }],
-    [level.warn, 'There are irregularities in the pension fund', {}],
-    [level.error, 'Have you tried turning it off and on again?', {}],
-    [level.fatal, 'Leadership has taken a dive', { windows: 'open' }],
-  ])('correctly processes %s log messages', (level, message, context) => {
+    ['trace' as const, 'Look, a dead fly', { urgency: 'high?' }],
+    ['debug' as const, 'Made in Britain', { condition: 'fire' }],
+    ['info' as const, 'I am not a window cleaner!', { state: 'panic' }],
+    ['warn' as const, 'There are irregularities in the pension fund', {}],
+    ['error' as const, 'Have you tried turning it off and on again?', {}],
+    ['fatal' as const, 'Leadership has taken a dive', { windows: 'open' }],
+  ])('correctly processes %s log messages', (method, message, context) => {
     const backend = vi.fn();
     const logger = createLogger(backend);
 
-    logger[level](message, context);
+    logger[method](message, context);
     expect(backend).toHaveBeenCalledWith({
       message,
-      level,
+      level: level[method],
       context,
       origin: [],
     });
@@ -62,7 +62,7 @@ describe('Logger', () => {
       expect(backend).toHaveBeenCalledOnce();
       expect(backend).toHaveBeenCalledWith({
         message: 'opening socket',
-        level: 'info',
+        level: level.info,
         origin: ['signaling', 'socket'],
         context: {},
       });

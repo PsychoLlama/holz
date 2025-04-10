@@ -2,5 +2,6 @@ releases:
   "@holz/ansi-terminal-backend": minor
   "@holz/console-backend": minor
   "@holz/core": minor
+  "@holz/json-backend": minor
   "@holz/logger": minor
   "@holz/stream-backend": minor

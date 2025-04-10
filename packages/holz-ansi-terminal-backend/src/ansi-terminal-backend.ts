@@ -12,7 +12,7 @@ import * as ansi from './ansi-codes';
  */
 export function createAnsiTerminalBackend(options: Options = {}): LogProcessor {
   const output = options.console ?? console;
-  const labelSizeInWhitespace = ' '.repeat(level.error.length);
+  const labelSizeInWhitespace = ' '.repeat(5); // char length of longest level type
 
   return (log: Log) => {
     const timestamp = formatAsTimestamp(new Date());

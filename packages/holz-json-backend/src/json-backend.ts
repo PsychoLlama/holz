@@ -1,6 +1,6 @@
 import type { Writable } from 'node:stream';
 import { EOL } from 'node:os';
-import type { Log, LogProcessor } from '@holz/core';
+import { level, type LogLevel, type Log, type LogProcessor } from '@holz/core';
 
 /**
  * Prints structured logs to a writable stream in NDJSON form. Optimized for
@@ -18,7 +18,7 @@ export function createJsonBackend({ stream }: Config): LogProcessor {
     // Follow the order of typical log statements. Be kind to the human
     // reader.
     const output = JSON.stringify({
-      level: log.level,
+      level: labelForLevel[log.level],
       time: new Date().toISOString(),
       msg: log.message,
       ctx: Object.keys(log.context).length > 0 ? log.context : undefined,
@@ -33,6 +33,14 @@ export function createJsonBackend({ stream }: Config): LogProcessor {
     stream.write(`${output}${EOL}`);
   };
 }
+
+/**
+ * Slightly heavier than logging the number, but easier to process
+ * programmatically which is somewhat implied by a JSON backend.
+ */
+const labelForLevel = Object.fromEntries(
+  Object.entries(level).map(([key, value]) => [value, key]),
+) as Record<LogLevel, string>;
 
 interface Config {
   /** Where to print logs. */

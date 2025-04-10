@@ -42,22 +42,22 @@ export interface Log {
 
 export const level = {
   /** A critical failure happened and the program must exit. */
-  fatal: 'fatal',
+  fatal: 60,
 
   /** Something failed, but we can keep going. */
-  error: 'error',
+  error: 50,
 
   /** Cause for concern, but we can keep going. */
-  warn: 'warn',
+  warn: 40,
 
   /** High-level progress updates. */
-  info: 'info',
+  info: 30,
 
   /** Verbose update about events or control flow (usually hidden). */
-  debug: 'debug',
+  debug: 20,
 
   /** Extremely detailed progress updates (usually hidden). */
-  trace: 'trace',
+  trace: 10,
 } as const;
 
 export type LogLevel = (typeof level)[keyof typeof level];

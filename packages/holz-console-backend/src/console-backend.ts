@@ -1,4 +1,4 @@
-import { level, type Log, type LogProcessor } from '@holz/core';
+import { level, type LogLevel, type Log, type LogProcessor } from '@holz/core';
 import { timeDelta } from './time-delta';
 
 /**
@@ -42,15 +42,21 @@ export function createConsoleBackend(options: Options = {}): LogProcessor {
     const values = segments.flatMap<unknown>((segment) => segment.values);
 
     // Browsers have UIs for filtering by log level. Leverage that.
-    output[log.level === level.fatal ? level.error : log.level](
-      format,
-      ...values,
-    );
+    output[sink[log.level]](format, ...values);
 
     // Track the time spent between logs.
     lastTimestamp = now;
   };
 }
+
+const sink: Record<LogLevel, keyof MinimalConsole> = {
+  [level.trace]: 'trace',
+  [level.debug]: 'debug',
+  [level.info]: 'info',
+  [level.warn]: 'warn',
+  [level.error]: 'error',
+  [level.fatal]: 'error',
+};
 
 interface Options {
   console?: MinimalConsole;

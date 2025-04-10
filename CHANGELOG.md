@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - `[@holz/core]` The `LogLevel` enum was replaced with a `levels` object supporting [erasableSyntaxOnly](https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/), an effort by TypeScript to focus on types instead of code transformation. `LogLevel` is still exported, but it only represents a type, not a value.
+- `[@holz/core]` Log levels became numbers instead of strings. This supports filtering all logs below a certain level, such as `>= level.info`. While strings were convenient for display, most backends specialize with their own representation.
 
 ## [0.7.0] - 2025-03-08
 
