@@ -11,7 +11,7 @@ import { createLogger } from '@holz/core';
 createLogger(
   createEnvironmentFilter({
     processor: plugin,
-  })
+  }),
 );
 ```
 
@@ -55,7 +55,7 @@ const logger = createLogger(
   createEnvironmentFilter({
     processor: yourProcessor,
     defaultPattern: '',
-  })
+  }),
 );
 ```
 

@@ -12,7 +12,7 @@ import * as fs from 'node:fs';
 const logger = createLogger(
   createJsonBackend({
     stream: fs.createWriteStream('my-app.log', { flags: 'a' }),
-  })
+  }),
 );
 ```
 

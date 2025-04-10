@@ -14,7 +14,7 @@ import * as fs from 'fs';
 createLogger(
   createStreamBackend({
     stream: fs.createWriteStream('server.log', { flags: 'a' }),
-  })
+  }),
 );
 ```
 
