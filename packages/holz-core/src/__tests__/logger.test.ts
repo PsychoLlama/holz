@@ -1,5 +1,5 @@
 import { createLogger } from '../logger';
-import { LogLevel } from '../types';
+import { level } from '../types';
 
 describe('Logger', () => {
   it('sends structured logs to the log processor', () => {
@@ -18,12 +18,12 @@ describe('Logger', () => {
   });
 
   it.each([
-    [LogLevel.Trace, 'Look, a dead fly', { urgency: 'high?' }],
-    [LogLevel.Debug, 'Made in Britain', { condition: 'fire' }],
-    [LogLevel.Info, 'I am not a window cleaner!', { state: 'panic' }],
-    [LogLevel.Warn, 'There are irregularities in the pension fund', {}],
-    [LogLevel.Error, 'Have you tried turning it off and on again?', {}],
-    [LogLevel.Fatal, 'Leadership has taken a dive', { windows: 'open' }],
+    [level.trace, 'Look, a dead fly', { urgency: 'high?' }],
+    [level.debug, 'Made in Britain', { condition: 'fire' }],
+    [level.info, 'I am not a window cleaner!', { state: 'panic' }],
+    [level.warn, 'There are irregularities in the pension fund', {}],
+    [level.error, 'Have you tried turning it off and on again?', {}],
+    [level.fatal, 'Leadership has taken a dive', { windows: 'open' }],
   ])('correctly processes %s log messages', (level, message, context) => {
     const backend = vi.fn();
     const logger = createLogger(backend);

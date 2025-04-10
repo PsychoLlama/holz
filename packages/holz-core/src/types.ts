@@ -40,25 +40,27 @@ export interface Log {
   readonly context: LogContext;
 }
 
-export enum LogLevel {
+export const level = {
   /** A critical failure happened and the program must exit. */
-  Fatal = 'fatal',
+  fatal: 'fatal',
 
   /** Something failed, but we can keep going. */
-  Error = 'error',
+  error: 'error',
 
   /** Cause for concern, but we can keep going. */
-  Warn = 'warn',
+  warn: 'warn',
 
   /** High-level progress updates. */
-  Info = 'info',
+  info: 'info',
 
   /** Verbose update about events or control flow (usually hidden). */
-  Debug = 'debug',
+  debug: 'debug',
 
   /** Extremely detailed progress updates (usually hidden). */
-  Trace = 'trace',
-}
+  trace: 'trace',
+} as const;
+
+export type LogLevel = (typeof level)[keyof typeof level];
 
 export type LogContext = Record<
   string,

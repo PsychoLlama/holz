@@ -1,4 +1,4 @@
-import { LogLevel, type Log, type LogProcessor } from '@holz/core';
+import { level, type Log, type LogProcessor } from '@holz/core';
 import { timeDelta } from './time-delta';
 
 /**
@@ -42,7 +42,7 @@ export function createConsoleBackend(options: Options = {}): LogProcessor {
     const values = segments.flatMap<unknown>((segment) => segment.values);
 
     // Browsers have UIs for filtering by log level. Leverage that.
-    output[log.level === LogLevel.Fatal ? LogLevel.Error : log.level](
+    output[log.level === level.fatal ? level.error : log.level](
       format,
       ...values,
     );

@@ -1,7 +1,12 @@
 import type { Writable } from 'node:stream';
 import { EOL } from 'node:os';
-import { LogLevel } from '@holz/core';
-import type { Log, LogContext, LogProcessor } from '@holz/core';
+import {
+  level,
+  type LogLevel,
+  type Log,
+  type LogContext,
+  type LogProcessor,
+} from '@holz/core';
 
 /**
  * Prints logs to a writable stream in plaintext. Optimized for log files.
@@ -50,12 +55,12 @@ function stringifyContext(context: LogContext) {
 }
 
 const LOG_LEVELS: Record<LogLevel, string> = {
-  [LogLevel.Trace]: 'TRACE',
-  [LogLevel.Debug]: 'DEBUG',
-  [LogLevel.Info]: 'INFO ',
-  [LogLevel.Warn]: 'WARN ',
-  [LogLevel.Error]: 'ERROR',
-  [LogLevel.Fatal]: 'FATAL',
+  [level.trace]: 'TRACE',
+  [level.debug]: 'DEBUG',
+  [level.info]: 'INFO ',
+  [level.warn]: 'WARN ',
+  [level.error]: 'ERROR',
+  [level.fatal]: 'FATAL',
 };
 
 interface Config {

@@ -1,11 +1,18 @@
-import type { LogProcessor, LogContext } from './types';
-import { LogLevel } from './types';
+import {
+  level,
+  type LogLevel,
+  type LogProcessor,
+  type LogContext,
+} from './types';
 
 class Logger {
-  constructor(
-    private processor: LogProcessor,
-    readonly owner: ReadonlyArray<string>,
-  ) {
+  private processor: LogProcessor;
+  readonly owner: ReadonlyArray<string>;
+
+  constructor(processor: LogProcessor, owner: ReadonlyArray<string>) {
+    this.processor = processor;
+    this.owner = owner;
+
     // Non-enumerable to keep the repl clean.
     const hidden = { configurable: false, enumerable: false };
     Object.defineProperties(this, {
@@ -24,32 +31,32 @@ class Logger {
 
   /** Log a verbose and frequent update. */
   trace = (message: string, context?: LogContext) => {
-    this.forwardLog(LogLevel.Trace, message, context);
+    this.forwardLog(level.trace, message, context);
   };
 
   /** Log a frequent and verbose progress update. */
   debug = (message: string, context?: LogContext) => {
-    this.forwardLog(LogLevel.Debug, message, context);
+    this.forwardLog(level.debug, message, context);
   };
 
   /** Log a high-level progress update. */
   info = (message: string, context?: LogContext) => {
-    this.forwardLog(LogLevel.Info, message, context);
+    this.forwardLog(level.info, message, context);
   };
 
   /** Log something concerning. */
   warn = (message: string, context?: LogContext) => {
-    this.forwardLog(LogLevel.Warn, message, context);
+    this.forwardLog(level.warn, message, context);
   };
 
   /** Log a failure. */
   error = (message: string, context?: LogContext) => {
-    this.forwardLog(LogLevel.Error, message, context);
+    this.forwardLog(level.error, message, context);
   };
 
   /** Log a catastrophic failure. */
   fatal = (message: string, context?: LogContext) => {
-    this.forwardLog(LogLevel.Fatal, message, context);
+    this.forwardLog(level.fatal, message, context);
   };
 
   private forwardLog(

@@ -1,5 +1,4 @@
-import type { Log, LogProcessor } from '@holz/core';
-import { LogLevel } from '@holz/core';
+import { level, type LogLevel, type Log, type LogProcessor } from '@holz/core';
 import * as ansi from './ansi-codes';
 
 /**
@@ -13,7 +12,7 @@ import * as ansi from './ansi-codes';
  */
 export function createAnsiTerminalBackend(options: Options = {}): LogProcessor {
   const output = options.console ?? console;
-  const labelSizeInWhitespace = ' '.repeat(LogLevel.Error.length);
+  const labelSizeInWhitespace = ' '.repeat(level.error.length);
 
   return (log: Log) => {
     const timestamp = formatAsTimestamp(new Date());
@@ -69,12 +68,12 @@ function formatAsTimestamp(date: Date) {
 
 // Trailing whitespace is important for alignment.
 const logLevelLabel: Record<LogLevel, string> = {
-  [LogLevel.Trace]: `${ansi.dim}TRACE${ansi.reset} `,
-  [LogLevel.Debug]: `${ansi.blue}DEBUG${ansi.reset}`,
-  [LogLevel.Info]: `${ansi.green}INFO${ansi.reset} `,
-  [LogLevel.Warn]: `${ansi.yellow}WARN${ansi.reset} `,
-  [LogLevel.Error]: `${ansi.red}ERROR${ansi.reset}`,
-  [LogLevel.Fatal]: `${ansi.red}FATAL${ansi.reset} `,
+  [level.trace]: `${ansi.dim}TRACE${ansi.reset} `,
+  [level.debug]: `${ansi.blue}DEBUG${ansi.reset}`,
+  [level.info]: `${ansi.green}INFO${ansi.reset} `,
+  [level.warn]: `${ansi.yellow}WARN${ansi.reset} `,
+  [level.error]: `${ansi.red}ERROR${ansi.reset}`,
+  [level.fatal]: `${ansi.red}FATAL${ansi.reset} `,
 };
 
 interface Options {

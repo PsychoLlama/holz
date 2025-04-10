@@ -1,6 +1,6 @@
 import { createLogger } from '../logger';
 import { combine, filter } from '../operators';
-import { LogLevel } from '../types';
+import { level } from '../types';
 
 describe('operators', () => {
   describe('combine', () => {
@@ -33,7 +33,7 @@ describe('operators', () => {
     it('filters out logs that do not match the predicate', () => {
       const backend = vi.fn();
       const logger = createLogger(
-        filter((log) => log.level !== LogLevel.Debug, backend),
+        filter((log) => log.level !== level.debug, backend),
       );
 
       logger.info('keep me');
