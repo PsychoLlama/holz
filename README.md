@@ -14,7 +14,7 @@ logger.info('Sending new user email', { userId: user.id });
 ```typescript
 {
   message: 'Sending new user email',
-  level: LogLevel.Info,
+  level: level.info,
   origin: ['UserService'],
   context: { userId: '465ebaec-2b53-4b81-95e9-9f35771c0af2' },
 }
@@ -98,20 +98,20 @@ const logger = createLogger(
     createConsoleBackend(),
     createFileBackend('./my-app.log'),
     createUploadBackend({ apiKey: config.apiKey }),
-  ])
+  ]),
 );
 ```
 
 ### Filtering Debug Logs
 
 ```typescript
-import { createLogger, filter, LogLevel } from '@holz/core';
+import { createLogger, filter, level } from '@holz/core';
 
 const logger = createLogger(
   filter(
-    (log) => log.level !== LogLevel.Debug,
-    createStreamBackend({ stream: process.stderr })
-  )
+    (log) => log.level >= level.info,
+    createStreamBackend({ stream: process.stderr }),
+  ),
 );
 ```
 
@@ -125,9 +125,9 @@ const logger = createLogger(
     createStreamBackend({ stream: process.stderr }),
     filter(
       (log) => log.origin[0] === 'my-app',
-      createUploadBackend({ key: config.uploadKey })
+      createUploadBackend({ key: config.uploadKey }),
     ),
-  ])
+  ]),
 );
 ```
 

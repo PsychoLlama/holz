@@ -7,20 +7,31 @@
 Here is an example of how to create a logger and use it to log a message:
 
 ```typescript
-import { createLogger } from '@holz/core';
+import { createLogger, type LogLevel } from '@holz/core';
 
 const logger = createLogger((log) => {
-  console.log(`[${log.level}]`, log.message);
+  console.log(logLevelPrefix[log.level], log.message);
 });
+
+const logLevelPrefix: Record<LogLevel, string> = {
+  [level.trace]: '[trace]',
+  [level.debug]: '[debug]',
+  [level.info]: '[info]',
+  [level.warn]: '[warn]',
+  [level.error]: '[error]',
+  [level.fatal]: '[fatal]',
+};
 
 logger.info('Hello, world!');
 ```
 
-This will log a message with the info level to the console.
+This will log a message to the console.
 
 ```
 [info] Hello, world!
 ```
+
+This is a simplified example of what `@holz/console-backend` does under the hood.
 
 ## Logger Interface
 
@@ -30,14 +41,18 @@ You can also use the `namespace` method to create a new logger with a specific o
 
 ## Log Levels
 
-The library provides four log levels:
+The library provides six log levels:
 
-- `LogLevel.Debug`: Extremely verbose progress updates (usually hidden).
-- `LogLevel.Info`: High-level progress updates.
-- `LogLevel.Warn`: Something is concerning, but we can keep going.
-- `LogLevel.Error`: Something critical failed and we can't continue.
+- `level.fatal`: Something critical failed and we can't recover.
+- `level.error`: Something failed, but we can recover.
+- `level.warn`: Something is concerning, but we can keep going.
+- `level.info`: High-level progress updates.
+- `level.debug`: Low-level progress updates, such as events (usually hidden).
+- `level.trace`: Extremely verbose updates, such as function calls and branch conditions (usually hidden).
 
-You can use these levels to indicate the severity of a log message. The severity levels can be configured to perform actions based on the level of severity of the log messages.
+Backends may do different things depending on severity, such as only uploading `info` or above to a log aggregator.
+
+Each level is a number. Higher numbers mean higher severity.
 
 ## Log Structure
 
@@ -46,7 +61,7 @@ Every log message processed by Holz follows a specific structure defined by the 
 A `Log` object contains the following properties:
 
 - `message`: The verbatim log message. This property should not contain any interpolated data.
-- `level`: The severity of the log message, expressed as a member of the `LogLevel` enum. The available log levels are, in increasing order of severity: `Debug`, `Info`, `Warn`, `Error`.
+- `level`: The severity of the log message, expressed as a member of the `LogLevel` enum. The available log levels are, in increasing order of severity: `trace`, `debug`, `info`, `warn`, `error`, `fatal`.
 - `origin`: The source of the log message. This property is an array of strings that typically identifies the library, module, or component that generated the log message, followed by more specific information. This property can be used to filter and group log messages based on their origin.
 - `context`: A dictionary of key-value pairs that provides additional context for the log message. The values in this object must be JSON serializable. Because it's easy to accidentally include unsuitable log context, such as PII or deeply nested objects, the use of nested objects in the context is discouraged.
 
@@ -54,9 +69,9 @@ Here is an example of a log message expressed as a `Log` object:
 
 ```typescript
 {
-  message: 'Connection to database established.',
-  level: LogLevel.Info,
-  origin: ['my-app', 'database-connection'],
+  message: 'Established database connection',
+  level: level.info,
+  origin: ['my-app', 'db'],
   context: {
     host: 'localhost',
     port: 5432,
@@ -93,7 +108,7 @@ import {
 } from './custom-processors';
 
 const logger = createLogger(
-  combine([consoleBackend, fileBackend, logUploadService])
+  combine([consoleBackend, fileBackend, logUploadService]),
 );
 ```
 
@@ -105,8 +120,8 @@ The `filter` processor takes a filter function and another log processor as inpu
 import { filter } from '@holz/core';
 
 const debugLogFilter = filter(
-  (log) => log.level !== LogLevel.Debug,
-  consoleProcessor
+  (log) => log.level > level.debug,
+  consoleProcessor,
 );
 
 const logger = createLogger(debugLogFilter);
