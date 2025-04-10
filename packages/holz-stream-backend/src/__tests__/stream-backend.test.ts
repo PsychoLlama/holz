@@ -35,16 +35,20 @@ describe('Stream backend', () => {
     const backend = createStreamBackend({ stream });
 
     const logger = createLogger(backend);
+    logger.trace('scream');
     logger.debug('shout');
     logger.info('normal');
     logger.warn('hmmmm');
     logger.error('oh no');
+    logger.fatal('goodbye');
 
     expect(getOutput()).toMatchInlineSnapshot(`
-      "2020-06-15T12:00:00.000Z DEBUG shout
+      "2020-06-15T12:00:00.000Z TRACE scream
+      2020-06-15T12:00:00.000Z DEBUG shout
       2020-06-15T12:00:00.000Z INFO  normal
       2020-06-15T12:00:00.000Z WARN  hmmmm
       2020-06-15T12:00:00.000Z ERROR oh no
+      2020-06-15T12:00:00.000Z FATAL goodbye
       "
     `);
   });

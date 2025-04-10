@@ -8,6 +8,7 @@ class MockConsole implements MinimalConsole {
     this.print(format(level, ...strings));
   };
 
+  trace = vi.fn(this.fmt);
   debug = vi.fn(this.fmt);
   info = vi.fn(this.fmt);
   warn = vi.fn(this.fmt);
@@ -97,6 +98,7 @@ describe('Console backend', () => {
   // Snapshot the exact output of each log level. This mostly prevents
   // regressions while doing innocent refactors.
   it.each([
+    ['trace' as const, 'noise', ['ns-1', 'ns-2'], 'trace' as const],
     ['debug' as const, 'just spam', ['ns-1', 'ns-2'], 'debug' as const],
     ['info' as const, 'a little info', ['ns-1', 'ns-2'], 'info' as const],
     ['warn' as const, 'a warning', ['ns-1', 'ns-2'], 'warn' as const],
@@ -106,6 +108,7 @@ describe('Console backend', () => {
       ['ns-1', 'ns-2'],
       'error' as const,
     ],
+    ['fatal' as const, 'a fatal error', ['ns-1', 'ns-2'], 'error' as const],
   ])('avoids changing %s messages', (method, message, namespace, pipe) => {
     const output = new MockConsole();
     const backend = createConsoleBackend({ console: output });

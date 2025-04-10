@@ -28,10 +28,38 @@ exports[`Console backend > avoids changing error messages 1`] = `
 ]
 `;
 
+exports[`Console backend > avoids changing fatal messages 1`] = `
+[
+  "%s %o %c%s %c%s",
+  "a fatal error",
+  {
+    "id": 1234,
+  },
+  "color: gray",
+  "+0ms",
+  "color: rgba(128, 128, 128, 0.6); font-style: italic",
+  "ns-1:ns-2",
+]
+`;
+
 exports[`Console backend > avoids changing info messages 1`] = `
 [
   "%s %o %c%s %c%s",
   "a little info",
+  {
+    "id": 1234,
+  },
+  "color: gray",
+  "+0ms",
+  "color: rgba(128, 128, 128, 0.6); font-style: italic",
+  "ns-1:ns-2",
+]
+`;
+
+exports[`Console backend > avoids changing trace messages 1`] = `
+[
+  "%s %o %c%s %c%s",
+  "noise",
   {
     "id": 1234,
   },

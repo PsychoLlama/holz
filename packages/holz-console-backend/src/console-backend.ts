@@ -1,4 +1,4 @@
-import type { Log, LogProcessor } from '@holz/core';
+import { LogLevel, type Log, type LogProcessor } from '@holz/core';
 import { timeDelta } from './time-delta';
 
 /**
@@ -42,7 +42,10 @@ export function createConsoleBackend(options: Options = {}): LogProcessor {
     const values = segments.flatMap<unknown>((segment) => segment.values);
 
     // Browsers have UIs for filtering by log level. Leverage that.
-    output[log.level](format, ...values);
+    output[log.level === LogLevel.Fatal ? LogLevel.Error : log.level](
+      format,
+      ...values,
+    );
 
     // Track the time spent between logs.
     lastTimestamp = now;
@@ -56,5 +59,11 @@ interface Options {
 /**
  * A subset of the Console interface. Must support printf-style interpolation.
  * @see https://console.spec.whatwg.org/#formatting-specifiers
+ *
+ * Note that `fatal` has no corresponding equivalent. It will be downgraded to
+ * `error` when printed.
  */
-export type MinimalConsole = Pick<Console, 'debug' | 'info' | 'warn' | 'error'>;
+export type MinimalConsole = Pick<
+  Console,
+  'trace' | 'debug' | 'info' | 'warn' | 'error'
+>;

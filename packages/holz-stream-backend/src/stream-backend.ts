@@ -50,10 +50,12 @@ function stringifyContext(context: LogContext) {
 }
 
 const LOG_LEVELS: Record<LogLevel, string> = {
+  [LogLevel.Trace]: 'TRACE',
   [LogLevel.Debug]: 'DEBUG',
   [LogLevel.Info]: 'INFO ',
   [LogLevel.Warn]: 'WARN ',
   [LogLevel.Error]: 'ERROR',
+  [LogLevel.Fatal]: 'FATAL',
 };
 
 interface Config {

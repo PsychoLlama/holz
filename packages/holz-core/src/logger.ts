@@ -25,7 +25,7 @@ class Logger {
   /** Log a verbose and frequent update. */
   trace = (message: string, context?: LogContext) => {
     this.forwardLog(LogLevel.Trace, message, context);
-  }
+  };
 
   /** Log a frequent and verbose progress update. */
   debug = (message: string, context?: LogContext) => {

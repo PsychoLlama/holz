@@ -69,10 +69,12 @@ function formatAsTimestamp(date: Date) {
 
 // Trailing whitespace is important for alignment.
 const logLevelLabel: Record<LogLevel, string> = {
+  [LogLevel.Trace]: `${ansi.dim}TRACE${ansi.reset} `,
   [LogLevel.Debug]: `${ansi.blue}DEBUG${ansi.reset}`,
   [LogLevel.Info]: `${ansi.green}INFO${ansi.reset} `,
   [LogLevel.Warn]: `${ansi.yellow}WARN${ansi.reset} `,
   [LogLevel.Error]: `${ansi.red}ERROR${ansi.reset}`,
+  [LogLevel.Fatal]: `${ansi.red}FATAL${ansi.reset} `,
 };
 
 interface Options {

@@ -62,15 +62,19 @@ describe('ANSI terminal backend', () => {
     const backend = createAnsiTerminalBackend({ console: terminal });
 
     const logger = createLogger(backend);
+    logger.trace('scream');
     logger.debug('shout');
     logger.info('normal');
     logger.warn('hmmmm');
     logger.error('oh no');
+    logger.fatal('goodbye');
 
+    expect(stderr.getOutput()).toContain('TRACE');
     expect(stderr.getOutput()).toContain('DEBUG');
     expect(stderr.getOutput()).toContain('INFO');
     expect(stderr.getOutput()).toContain('WARN');
     expect(stderr.getOutput()).toContain('ERROR');
+    expect(stderr.getOutput()).toContain('FATAL');
   });
 
   it('includes the log namespace', () => {
