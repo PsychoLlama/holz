@@ -1,7 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "erasableSyntaxOnly": true,
+    // TODO: Enable once `vite-plugin-dts` upgrades past `typescript@5.8.0`.
+    // "erasableSyntaxOnly": true,
+
     "esModuleInterop": true,
     "moduleResolution": "Bundler",
     "module": "ES2020",
