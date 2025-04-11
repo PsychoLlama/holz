@@ -9,11 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - `[@holz/core]` Support for `Trace` and `Fatal` log levels.
+- `[@holz/core]` Now supports custom fields in log context that don't adhere to the JSON-serializable constraint. The primary use case is a special `error` value. Plugins can define their own reserved fields.
 
 ### Changed
 
 - `[@holz/core]` The `LogLevel` enum was replaced with a `levels` object supporting [erasableSyntaxOnly](https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/), an effort by TypeScript to focus on types instead of code transformation. `LogLevel` is still exported, but it only represents a type, not a value.
 - `[@holz/core]` Log levels became numbers instead of strings. This supports filtering all logs below a certain level, such as `>= level.info`. While strings were convenient for display, most backends specialize with their own representation.
+- `[@holz/core]` If log context contains an `error` key, it MUST be an `Error` value.
 
 ## [0.7.0] - 2025-03-08
 

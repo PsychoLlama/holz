@@ -1,8 +1,9 @@
 import {
   level,
+  type LogContext,
   type LogLevel,
   type LogProcessor,
-  type LogContext,
+  type StrictContext,
 } from './types';
 
 class Logger {
@@ -30,45 +31,63 @@ class Logger {
   }
 
   /** Log a verbose and frequent update. */
-  trace = (message: string, context?: LogContext) => {
+  trace = <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => {
     this.forwardLog(level.trace, message, context);
   };
 
   /** Log a frequent and verbose progress update. */
-  debug = (message: string, context?: LogContext) => {
+  debug = <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => {
     this.forwardLog(level.debug, message, context);
   };
 
   /** Log a high-level progress update. */
-  info = (message: string, context?: LogContext) => {
+  info = <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => {
     this.forwardLog(level.info, message, context);
   };
 
   /** Log something concerning. */
-  warn = (message: string, context?: LogContext) => {
+  warn = <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => {
     this.forwardLog(level.warn, message, context);
   };
 
   /** Log a failure. */
-  error = (message: string, context?: LogContext) => {
+  error = <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => {
     this.forwardLog(level.error, message, context);
   };
 
   /** Log a catastrophic failure. */
-  fatal = (message: string, context?: LogContext) => {
+  fatal = <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => {
     this.forwardLog(level.fatal, message, context);
   };
 
-  private forwardLog(
+  private forwardLog<Context extends StrictContext<Context>>(
     level: LogLevel,
     message: string,
-    context: LogContext = {},
+    context: Context = {} as Context,
   ) {
     this.processor({
       message,
       level,
       origin: this.owner,
-      context,
+      context: context as LogContext,
     });
   }
 }
@@ -79,7 +98,8 @@ class Logger {
  *
  * If you wish to use more than one processor, `combine(...)` them first.
  */
-export const createLogger = (processor: LogProcessor): Logger =>
-  new Logger(processor, []);
+export const createLogger = <Context extends StrictContext<Context>>(
+  processor: LogProcessor,
+): Logger => new Logger(processor, []);
 
 export type { Logger };

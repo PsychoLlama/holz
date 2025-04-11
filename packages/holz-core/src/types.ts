@@ -5,7 +5,7 @@
  */
 export interface LogProcessor {
   /** Do something with a log message. */
-  (log: Log): void;
+  (log: Log): void; // TODO: Test async, switch to `unknown`.
 }
 
 /** A log message where variables are carried as structured data. */
@@ -13,7 +13,7 @@ export interface Log {
   /** The verbatim log message. Should not contain interpolated data. */
   readonly message: string;
 
-  /** Log severity. */
+  /** Log severity. One of `levels.*`. */
   readonly level: LogLevel;
 
   /**
@@ -62,9 +62,43 @@ export const level = {
 
 export type LogLevel = (typeof level)[keyof typeof level];
 
-export type LogContext = Record<
-  string,
-  JsonPrimitive | ReadonlyArray<JsonPrimitive>
->;
-
 type JsonPrimitive = string | number | boolean | null | undefined;
+
+export interface JsonContext {
+  [key: string]: JsonPrimitive | ReadonlyArray<JsonPrimitive>;
+}
+
+/**
+ * Custom values allowed in log context. These values don't have to be JSON.
+ * The most common case is errors, which support richer error tracking in
+ * backends that support it.
+ *
+ * This is part of the public API. Backends may use declaration merging to
+ * extend the standard attributes. It's recommended to use symbols as keys for
+ * custom features, but not required.
+ */
+export interface CustomContext {
+  /**
+   * Error instance associated with the log message. This supports error
+   * tracking and shows prominently in visual backends like TTY output.
+   */
+  error: Error;
+}
+
+/**
+ * A type narrowing constraint designed for generic constraints. Controls
+ * what fields are allowed in `log.context`, sourcing from `CustomContext`
+ * first, then falling back to any JSON value.
+ */
+export type StrictContext<Input> = {
+  [Key in keyof Input]: Key extends keyof CustomContext
+    ? CustomContext[Key]
+    : JsonPrimitive | ReadonlyArray<JsonPrimitive>;
+};
+
+/**
+ * A more general type expected by logging backends. Supports type narrowing,
+ * so if a known field exists, it will be used instead of the generic JSON
+ * type.
+ */
+export type LogContext = Partial<CustomContext> & JsonContext;
