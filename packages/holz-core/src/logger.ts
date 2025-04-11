@@ -18,10 +18,12 @@ class Logger {
     const hidden = { configurable: false, enumerable: false };
     Object.defineProperties(this, {
       processor: hidden,
+      trace: hidden,
       debug: hidden,
       info: hidden,
       warn: hidden,
       error: hidden,
+      fatal: hidden,
     });
   }
 
