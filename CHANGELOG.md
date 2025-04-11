@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `[@holz/core]` Support for `Trace` and `Fatal` log levels.
 - `[@holz/core]` Now supports custom fields in log context that don't adhere to the JSON-serializable constraint. The primary use case is a special `error` value. Plugins can define their own reserved fields.
+- `[@holz/json-backend]` Now detects and serializes `Error` values, including error causes and enumerable custom properties. Stack traces are not included. Raise an issue if you have a use case.
 
 ### Changed
 

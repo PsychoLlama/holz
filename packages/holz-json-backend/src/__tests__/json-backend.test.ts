@@ -64,4 +64,54 @@ describe('JSON backend', () => {
 
     expect(getOutput()).toContain('"reqId":"abc"');
   });
+
+  it('pulls structure from errors', () => {
+    const { stream, getOutput } = createStream();
+    const backend = createJsonBackend({ stream });
+    const logger = createLogger(backend);
+
+    logger.error('content', {
+      error: new RangeError('Testing NDJSON errors'),
+    });
+
+    const output = getOutput();
+    expect(output).toContain(
+      '"error":{"name":"RangeError","message":"Testing NDJSON errors"}',
+    );
+  });
+
+  it('detects and includes error causes', () => {
+    const { stream, getOutput } = createStream();
+    const backend = createJsonBackend({ stream });
+    const logger = createLogger(backend);
+
+    logger.error('content', {
+      error: new Error('Testing NDJSON errors', {
+        cause: new Error('Cause'),
+      }),
+    });
+
+    const output = getOutput();
+    expect(output).toContain(
+      '"error":{"name":"Error","message":"Testing NDJSON errors","cause":{"name":"Error","message":"Cause"}}',
+    );
+  });
+
+  it('includes any enumerable properties on the object', () => {
+    class CustomError extends Error {
+      name = 'CustomError';
+      status = 418;
+    }
+
+    const { stream, getOutput } = createStream();
+    const backend = createJsonBackend({ stream });
+    const logger = createLogger(backend);
+
+    logger.error('content', {
+      error: new CustomError('Testing NDJSON errors'),
+    });
+
+    const output = getOutput();
+    expect(output).toContain('"status":418');
+  });
 });

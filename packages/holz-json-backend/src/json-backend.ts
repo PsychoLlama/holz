@@ -17,12 +17,15 @@ export function createJsonBackend({ stream }: Config): LogProcessor {
   return (log: Log) => {
     // Follow the order of typical log statements. Be kind to the human
     // reader.
-    const output = JSON.stringify({
-      level: labelForLevel[log.level],
-      time: new Date().toISOString(),
-      msg: log.message,
-      ctx: Object.keys(log.context).length > 0 ? log.context : undefined,
-    });
+    const output = JSON.stringify(
+      {
+        level: labelForLevel[log.level],
+        time: new Date().toISOString(),
+        msg: log.message,
+        ctx: Object.keys(log.context).length > 0 ? log.context : undefined,
+      },
+      errorSerializer,
+    );
 
     // NOTE: If the stream applies backpressure, we will lose logs. I believe
     // this is the right tradeoff. We can't prevent the app from generating
@@ -33,6 +36,23 @@ export function createJsonBackend({ stream }: Config): LogProcessor {
     stream.write(`${output}${EOL}`);
   };
 }
+
+/**
+ * Errors are not JSON serializable, but errors are naturally a crucial aspect
+ * of any logging system. This unwraps errors into a JSON representation.
+ */
+const errorSerializer = (_key: string, value: unknown) => {
+  if (value instanceof Error) {
+    return {
+      ...value, // Some custom errors have important custom properties.
+      name: value.name,
+      message: value.message,
+      cause: value.cause,
+    };
+  }
+
+  return value;
+};
 
 /**
  * Slightly heavier than logging the number, but easier to process
