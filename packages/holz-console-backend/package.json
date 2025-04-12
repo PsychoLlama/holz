@@ -22,8 +22,7 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "keywords": [
     "holz-backend",

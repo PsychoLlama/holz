@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [UNRELEASED]
 
+### Removed
+
+- Packages no longer ship source files, only compiled `dist/` assets. You shouldn't notice a difference except download size.
+
 ## [0.8.0] - 2025-04-12
 
 ### Added
