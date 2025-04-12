@@ -41,6 +41,7 @@ const createNamespacedLogger = (
   // Non-enumerable to keep the repl clean.
   const hidden = { configurable: false, enumerable: false };
   return Object.defineProperties(logger, {
+    withMiddleware: hidden,
     namespace: hidden,
     trace: hidden,
     debug: hidden,
