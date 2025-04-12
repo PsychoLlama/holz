@@ -38,10 +38,10 @@
     "test:types": "tsc"
   },
   "peerDependencies": {
-    "@holz/core": "^0.8.0-rc.3"
+    "@holz/core": "^0.8.0"
   },
   "devDependencies": {
-    "@holz/core": "^0.8.0-rc.3",
+    "@holz/core": "^0.8.0",
     "@vitest/coverage-v8": "^3.0.8",
     "typescript": "^5.8.2",
     "vite": "^6.0.0",

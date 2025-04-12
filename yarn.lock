@@ -343,11 +343,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@holz/ansi-terminal-backend@npm:^0.8.0-rc.3, @holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend":
+"@holz/ansi-terminal-backend@npm:^0.8.0, @holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend":
   version: 0.0.0-use.local
   resolution: "@holz/ansi-terminal-backend@workspace:packages/holz-ansi-terminal-backend"
   dependencies:
-    "@holz/core": "npm:^0.8.0-rc.3"
+    "@holz/core": "npm:^0.8.0"
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^3.0.8"
     typescript: "npm:^5.8.2"
@@ -356,15 +356,15 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.0.8"
   peerDependencies:
-    "@holz/core": ^0.8.0-rc.3
+    "@holz/core": ^0.8.0
   languageName: unknown
   linkType: soft
 
-"@holz/console-backend@npm:^0.8.0-rc.3, @holz/console-backend@workspace:packages/holz-console-backend":
+"@holz/console-backend@npm:^0.8.0, @holz/console-backend@workspace:packages/holz-console-backend":
   version: 0.0.0-use.local
   resolution: "@holz/console-backend@workspace:packages/holz-console-backend"
   dependencies:
-    "@holz/core": "npm:^0.8.0-rc.3"
+    "@holz/core": "npm:^0.8.0"
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^3.0.8"
     typescript: "npm:^5.8.2"
@@ -373,11 +373,11 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.0.8"
   peerDependencies:
-    "@holz/core": ^0.8.0-rc.3
+    "@holz/core": ^0.8.0
   languageName: unknown
   linkType: soft
 
-"@holz/core@npm:^0.8.0-rc.3, @holz/core@workspace:packages/holz-core":
+"@holz/core@npm:^0.8.0, @holz/core@workspace:packages/holz-core":
   version: 0.0.0-use.local
   resolution: "@holz/core@workspace:packages/holz-core"
   dependencies:
@@ -394,7 +394,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/env-filter@workspace:packages/holz-env-filter"
   dependencies:
-    "@holz/core": "npm:^0.8.0-rc.3"
+    "@holz/core": "npm:^0.8.0"
     "@holz/pattern-filter": "npm:^0.7.0"
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^3.0.8"
@@ -404,7 +404,7 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.0.8"
   peerDependencies:
-    "@holz/core": ^0.8.0-rc.3
+    "@holz/core": ^0.8.0
   languageName: unknown
   linkType: soft
 
@@ -412,7 +412,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/json-backend@workspace:packages/holz-json-backend"
   dependencies:
-    "@holz/core": "npm:^0.8.0-rc.3"
+    "@holz/core": "npm:^0.8.0"
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^3.0.8"
     typescript: "npm:^5.8.2"
@@ -427,7 +427,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/log-collector@workspace:packages/holz-log-collector"
   dependencies:
-    "@holz/core": "npm:^0.8.0-rc.3"
+    "@holz/core": "npm:^0.8.0"
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^3.0.8"
     typescript: "npm:^5.8.2"
@@ -436,7 +436,7 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.0.8"
   peerDependencies:
-    "@holz/core": ^0.8.0-rc.3
+    "@holz/core": ^0.8.0
   languageName: unknown
   linkType: soft
 
@@ -444,12 +444,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/logger@workspace:packages/holz-logger"
   dependencies:
-    "@holz/ansi-terminal-backend": "npm:^0.8.0-rc.3"
-    "@holz/console-backend": "npm:^0.8.0-rc.3"
-    "@holz/core": "npm:^0.8.0-rc.3"
+    "@holz/ansi-terminal-backend": "npm:^0.8.0"
+    "@holz/console-backend": "npm:^0.8.0"
+    "@holz/core": "npm:^0.8.0"
     "@holz/env-filter": "npm:^0.7.0"
     "@holz/log-collector": "npm:^0.8.0-rc.1"
-    "@holz/stream-backend": "npm:^0.8.0-rc.3"
+    "@holz/stream-backend": "npm:^0.8.0"
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^3.0.8"
     typescript: "npm:^5.8.2"
@@ -480,7 +480,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@holz/pattern-filter@workspace:packages/holz-pattern-filter"
   dependencies:
-    "@holz/core": "npm:^0.8.0-rc.3"
+    "@holz/core": "npm:^0.8.0"
     "@vitest/coverage-v8": "npm:^3.0.8"
     typescript: "npm:^5.8.2"
     vite: "npm:^6.0.0"
@@ -488,15 +488,15 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.0.8"
   peerDependencies:
-    "@holz/core": ^0.8.0-rc.3
+    "@holz/core": ^0.8.0
   languageName: unknown
   linkType: soft
 
-"@holz/stream-backend@npm:^0.8.0-rc.3, @holz/stream-backend@workspace:packages/holz-stream-backend":
+"@holz/stream-backend@npm:^0.8.0, @holz/stream-backend@workspace:packages/holz-stream-backend":
   version: 0.0.0-use.local
   resolution: "@holz/stream-backend@workspace:packages/holz-stream-backend"
   dependencies:
-    "@holz/core": "npm:^0.8.0-rc.3"
+    "@holz/core": "npm:^0.8.0"
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^3.0.8"
     typescript: "npm:^5.8.2"
@@ -505,7 +505,7 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.0.8"
   peerDependencies:
-    "@holz/core": ^0.8.0-rc.3
+    "@holz/core": ^0.8.0
   languageName: unknown
   linkType: soft
 
