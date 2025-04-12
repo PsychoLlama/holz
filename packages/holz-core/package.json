@@ -1,6 +1,6 @@
 {
   "name": "@holz/core",
-  "version": "0.8.0-rc.2",
+  "version": "0.8.0-rc.3",
   "description": "A structured and composable logger",
   "type": "module",
   "repository": {
