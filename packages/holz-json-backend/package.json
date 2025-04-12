@@ -1,6 +1,6 @@
 {
   "name": "@holz/json-backend",
-  "version": "0.8.0-rc.1",
+  "version": "0.8.0-rc.2",
   "description": "Print logs as newline-delimited JSON.",
   "type": "module",
   "repository": {
@@ -37,7 +37,7 @@
     "test:types": "tsc"
   },
   "devDependencies": {
-    "@holz/core": "^0.8.0-rc.1",
+    "@holz/core": "^0.8.0-rc.2",
     "@types/node": "^22.0.0",
     "@vitest/coverage-v8": "^3.0.8",
     "typescript": "^5.8.2",
