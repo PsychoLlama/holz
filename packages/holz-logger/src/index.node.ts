@@ -1,4 +1,3 @@
-import { isatty } from 'node:tty';
 import { createAnsiTerminalBackend } from '@holz/ansi-terminal-backend';
 import { createLogger, filter } from '@holz/core';
 import { createEnvironmentFilter } from '@holz/env-filter';
@@ -8,7 +7,7 @@ import { createLogCollector } from '@holz/log-collector';
 const { NODE_ENV } = process.env;
 
 const supportsAnsiColors =
-  isatty(process.stderr.fd) && process.stderr.hasColors(3);
+  process.stderr.isTTY && process.stderr.getColorDepth() > 1;
 
 const logger = createLogger(
   createLogCollector({

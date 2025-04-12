@@ -17,3 +17,4 @@ export const blue = ansiCode('34m');
 export const magenta = ansiCode('35m');
 export const cyan = ansiCode('36m');
 export const white = ansiCode('37m');
+export const brightWhite = ansiCode('97m');
