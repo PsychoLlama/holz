@@ -102,3 +102,50 @@ export type StrictContext<Input> = {
  * type.
  */
 export type LogContext = Partial<CustomContext> & JsonContext;
+
+/**
+ * This is the public API which generates and sends `Log` events through the
+ * user-defined processing pipeline.
+ */
+export interface Logger {
+  readonly owner: ReadonlyArray<string>;
+
+  /** Extend the logger to attach a class or module name to logs. */
+  namespace: (owner: string) => Logger;
+
+  /** Log a verbose and frequent update. */
+  trace: <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => void;
+
+  /** Log a frequent and verbose progress update. */
+  debug: <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => void;
+
+  /** Log a high-level progress update. */
+  info: <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => void;
+
+  /** Log something concerning. */
+  warn: <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => void;
+
+  /** Log a failure. */
+  error: <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => void;
+
+  /** Log a catastrophic failure. */
+  fatal: <Context extends StrictContext<Context>>(
+    message: string,
+    context?: Context,
+  ) => void;
+}

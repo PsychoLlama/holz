@@ -1,4 +1,11 @@
-export type { LogProcessor, LogContext, Log, CustomContext } from './types';
-export { level, type LogLevel } from './types';
 export { combine, filter } from './operators';
-export { createLogger, type Logger } from './logger';
+export { createLogger } from './logger';
+export { level } from './types';
+export type {
+  LogProcessor,
+  LogContext,
+  Log,
+  CustomContext,
+  Logger,
+  LogLevel,
+} from './types';
