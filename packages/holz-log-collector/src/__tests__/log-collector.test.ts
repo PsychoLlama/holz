@@ -5,6 +5,10 @@ import {
   setGlobalLogCollector,
 } from '../index';
 
+const CURRENT_TIME = new Date('2010-10-01T00:00:00Z').getTime();
+
+vi.setSystemTime(CURRENT_TIME);
+
 describe('log collector', () => {
   afterEach(() => {
     unsetGlobalLogCollector();
@@ -18,6 +22,7 @@ describe('log collector', () => {
       logger.info('test message');
       expect(fallback).toHaveBeenCalledOnce();
       expect(fallback).toHaveBeenCalledWith({
+        timestamp: CURRENT_TIME,
         message: 'test message',
         level: level.info,
         origin: [],
@@ -38,6 +43,7 @@ describe('log collector', () => {
       expect(fallback).not.toHaveBeenCalled();
       expect(interceptor).toHaveBeenCalledOnce();
       expect(interceptor).toHaveBeenCalledWith({
+        timestamp: CURRENT_TIME,
         message: 'test message',
         level: level.info,
         origin: [],
@@ -59,6 +65,7 @@ describe('log collector', () => {
       expect(interceptor).not.toHaveBeenCalled();
       expect(fallback).toHaveBeenCalledOnce();
       expect(fallback).toHaveBeenCalledWith({
+        timestamp: CURRENT_TIME,
         message: 'test message',
         level: level.info,
         origin: [],

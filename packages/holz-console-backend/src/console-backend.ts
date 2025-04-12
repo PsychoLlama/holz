@@ -10,7 +10,7 @@ export const createConsoleBackend = (options: Options = {}): LogProcessor => {
   let lastTimestamp: Date;
 
   return (log: Log) => {
-    const now = new Date();
+    const time = new Date(log.timestamp);
 
     const segments = [
       {
@@ -26,7 +26,7 @@ export const createConsoleBackend = (options: Options = {}): LogProcessor => {
       {
         include: true,
         format: '%c%s',
-        values: ['color: gray', timeDelta(now, lastTimestamp)],
+        values: ['color: gray', timeDelta(time, lastTimestamp)],
       },
       {
         include: log.origin.length > 0,
@@ -45,7 +45,7 @@ export const createConsoleBackend = (options: Options = {}): LogProcessor => {
     output[sink[log.level]](format, ...values);
 
     // Track the time spent between logs.
-    lastTimestamp = now;
+    lastTimestamp = time;
   };
 };
 

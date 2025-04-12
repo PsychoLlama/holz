@@ -20,12 +20,12 @@ import {
 export const createStreamBackend = ({ stream }: Config): LogProcessor => {
   return (log: Log) => {
     const { error, ...plainContext } = log.context;
-    const currentTime = new Date().toISOString();
+    const time = new Date(log.timestamp).toISOString();
     const level = LOG_LEVELS[log.level];
     const context = stringifyContext(plainContext);
     const namespace = log.origin.length ? `[${log.origin.join(':')}] ` : '';
 
-    const header = `${currentTime} ${level} ${namespace}`;
+    const header = `${time} ${level} ${namespace}`;
     const message = multilineIndent(header.length, log.message);
     const output = `${header}${message}${context ? ' ' + context : ''}`;
     const errorMessage = error ? inspect(error, { colors: false }) + EOL : '';

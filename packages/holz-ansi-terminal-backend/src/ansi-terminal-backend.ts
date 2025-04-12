@@ -17,7 +17,7 @@ export const createAnsiTerminalBackend = (
   const labelSizeInWhitespace = ' '.repeat(5); // char length of longest level type
 
   return (log: Log) => {
-    const timestamp = formatAsTimestamp(new Date());
+    const timestamp = formatAsTimestamp(new Date(log.timestamp));
     const timestampPrefix = `${ansi.reset}${ansi.dim}${timestamp}${ansi.reset}`;
     const segments = [
       {
@@ -58,7 +58,8 @@ export const createAnsiTerminalBackend = (
   };
 };
 
-// ISO-8601 timestamp with milliseconds.
+// This is an interactive TTY, so we can assume someone is watching. They
+// probably know what day it is. Focus on the time.
 const formatAsTimestamp = (date: Date) => {
   const hours = date.getHours().toString().padStart(2, '0');
   const minutes = date.getMinutes().toString().padStart(2, '0');
