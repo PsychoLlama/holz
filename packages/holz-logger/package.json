@@ -1,6 +1,6 @@
 {
   "name": "@holz/logger",
-  "version": "0.7.0",
+  "version": "0.8.0-rc.1",
   "description": "A preconfigured, general-purpose logger",
   "type": "module",
   "repository": {
@@ -46,11 +46,11 @@
     "test:types": "tsc"
   },
   "dependencies": {
-    "@holz/ansi-terminal-backend": "^0.7.0",
-    "@holz/console-backend": "^0.7.0",
-    "@holz/core": "^0.7.0",
+    "@holz/ansi-terminal-backend": "^0.8.0-rc.1",
+    "@holz/console-backend": "^0.8.0-rc.1",
+    "@holz/core": "^0.8.0-rc.1",
     "@holz/env-filter": "^0.7.0",
-    "@holz/stream-backend": "^0.7.0"
+    "@holz/stream-backend": "^0.8.0-rc.1"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -60,5 +60,6 @@
     "vite-plugin-dts": "^4.5.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8"
-  }
+  },
+  "stableVersion": "0.7.0"
 }
