@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/core]` Log levels became numbers instead of strings. This supports filtering all logs below a certain level, such as `>= level.info`. While strings were convenient for display, most backends specialize with their own representation.
 - `[@holz/core]` If log context contains an `error` key, it MUST be an `Error` value.
 
+### Fixed
+
+- `[@holz/core]` Plugin types support async functions now. The return value is discarded, so you may still consider wrapping calls for error handling.
+
 ## [0.7.0] - 2025-03-08
 
 ### Added

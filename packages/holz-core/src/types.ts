@@ -5,7 +5,7 @@
  */
 export interface LogProcessor {
   /** Do something with a log message. */
-  (log: Log): void; // TODO: Test async, switch to `unknown`.
+  (log: Log): unknown;
 }
 
 /** A log message where variables are carried as structured data. */
