@@ -16,10 +16,10 @@ import { parse, matches } from './string-match';
  *   processor: backend,
  * })
  */
-export function createPatternFilter({
+export const createPatternFilter = ({
   processor,
   pattern,
-}: Config): LogProcessor {
+}: Config): LogProcessor => {
   const filters = parse(pattern);
 
   return (log: Log) => {
@@ -27,7 +27,7 @@ export function createPatternFilter({
       processor(log);
     }
   };
-}
+};
 
 interface Config {
   /** A set of patterns to test against `log.origin`. */

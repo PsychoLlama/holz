@@ -13,7 +13,7 @@ describe('environment', () => {
   describe('getLocalStorageKey', () => {
     const STORAGE_KEY = 'test-key';
 
-    function setup() {
+    const setup = () => {
       const localStorage = new MockLocalStorage();
 
       Object.assign(globalThis, { localStorage });
@@ -21,7 +21,7 @@ describe('environment', () => {
       return {
         localStorage,
       };
-    }
+    };
 
     beforeEach(() => {
       Object.assign(globalThis, { localStorage: undefined });

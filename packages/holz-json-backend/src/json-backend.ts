@@ -13,7 +13,7 @@ import { level, type LogLevel, type Log, type LogProcessor } from '@holz/core';
  *
  * @see http://ndjson.org
  */
-export function createJsonBackend({ stream }: Config): LogProcessor {
+export const createJsonBackend = ({ stream }: Config): LogProcessor => {
   return (log: Log) => {
     // Follow the order of typical log statements. Be kind to the human
     // reader.
@@ -35,7 +35,7 @@ export function createJsonBackend({ stream }: Config): LogProcessor {
     // It is unlikely that a file or tty will apply backpressure in practice.
     stream.write(`${output}${EOL}`);
   };
-}
+};
 
 /**
  * Errors are not JSON serializable, but errors are naturally a crucial aspect

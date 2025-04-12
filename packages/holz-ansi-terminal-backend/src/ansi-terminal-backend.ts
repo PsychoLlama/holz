@@ -10,7 +10,9 @@ import * as ansi from './ansi-codes';
  * ques, the printed text is much less understandable. It is better to check
  * when constructing the logger instead.
  */
-export function createAnsiTerminalBackend(options: Options = {}): LogProcessor {
+export const createAnsiTerminalBackend = (
+  options: Options = {},
+): LogProcessor => {
   const output = options.console ?? console;
   const labelSizeInWhitespace = ' '.repeat(5); // char length of longest level type
 
@@ -54,17 +56,17 @@ export function createAnsiTerminalBackend(options: Options = {}): LogProcessor {
     // CLIs typically print interactive messages to stdout and logs to stderr.
     output.error(format, ...values);
   };
-}
+};
 
 // ISO-8601 timestamp with milliseconds.
-function formatAsTimestamp(date: Date) {
+const formatAsTimestamp = (date: Date) => {
   const hours = date.getHours().toString().padStart(2, '0');
   const minutes = date.getMinutes().toString().padStart(2, '0');
   const seconds = date.getSeconds().toString().padStart(2, '0');
   const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
 
   return `[${hours}:${minutes}:${seconds}.${milliseconds}]`;
-}
+};
 
 // Trailing whitespace is important for alignment.
 const logLevelLabel: Record<LogLevel, string> = {

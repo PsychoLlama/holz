@@ -5,7 +5,7 @@ import { createJsonBackend } from '../json-backend';
 const CURRENT_TIME = new Date('2020-06-15T12:00:00.000Z');
 
 describe('JSON backend', () => {
-  function createStream() {
+  const createStream = () => {
     let output = '';
     const stream = new Writable({
       write(chunk, _encoding, callback) {
@@ -18,7 +18,7 @@ describe('JSON backend', () => {
       getOutput: () => output,
       stream,
     };
-  }
+  };
 
   beforeEach(() => {
     vi.useFakeTimers({

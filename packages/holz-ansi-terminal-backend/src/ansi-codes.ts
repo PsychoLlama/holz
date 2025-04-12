@@ -1,6 +1,4 @@
-function ansiCode(code: string) {
-  return `\x1b[${code}`;
-}
+const ansiCode = (code: string) => `\x1b[${code}`;
 
 /**
  * Assumes 3-bit color support for an ANSI terminal. This should work on most

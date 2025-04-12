@@ -17,7 +17,7 @@ import {
  *   stream: fs.createWriteStream('my-app.log', { flags: 'a' }),
  * })
  */
-export function createStreamBackend({ stream }: Config): LogProcessor {
+export const createStreamBackend = ({ stream }: Config): LogProcessor => {
   return (log: Log) => {
     const { error, ...plainContext } = log.context;
     const currentTime = new Date().toISOString();
@@ -38,7 +38,7 @@ export function createStreamBackend({ stream }: Config): LogProcessor {
     // It is unlikely that a file or tty will apply backpressure in practice.
     stream.write(`${output}${EOL}${errorMessage}`);
   };
-}
+};
 
 /**
  * Some messages will ruin your output without proper indentation. Stack
@@ -46,16 +46,14 @@ export function createStreamBackend({ stream }: Config): LogProcessor {
  *
  * Supports Unix + DOS line endings.
  */
-function multilineIndent(offset: number, message: string) {
-  return message.replace(/(\r?\n)/g, (newline) => newline + ' '.repeat(offset));
-}
+const multilineIndent = (offset: number, message: string) =>
+  message.replace(/(\r?\n)/g, (newline) => newline + ' '.repeat(offset));
 
 // { id: 123, type: 'article' } -> 'id=123 type="article"'
-function stringifyContext(context: LogContext) {
-  return Object.entries(context)
+const stringifyContext = (context: LogContext) =>
+  Object.entries(context)
     .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
     .join(' ');
-}
 
 const LOG_LEVELS: Record<LogLevel, string> = {
   [level.trace]: 'TRACE',

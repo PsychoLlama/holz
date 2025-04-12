@@ -6,7 +6,7 @@ import { createAnsiTerminalBackend } from '../ansi-terminal-backend';
 const CURRENT_TIME = new Date('2020-06-15T03:05:07.010Z');
 
 describe('ANSI terminal backend', () => {
-  function createStream() {
+  const createStream = () => {
     let output = '';
     const stream = new Writable({
       write(chunk, _encoding, callback) {
@@ -19,10 +19,10 @@ describe('ANSI terminal backend', () => {
       getOutput: () => output,
       stream,
     };
-  }
+  };
 
   // Named "terminal" to avoid conflict with `global.console`.
-  function createTerminal() {
+  const createTerminal = () => {
     const stdout = createStream();
     const stderr = createStream();
     const terminal = new Console({
@@ -35,7 +35,7 @@ describe('ANSI terminal backend', () => {
       stderr,
       terminal,
     };
-  }
+  };
 
   beforeEach(() => {
     vi.useFakeTimers({

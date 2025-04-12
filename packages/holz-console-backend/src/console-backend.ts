@@ -5,7 +5,7 @@ import { timeDelta } from './time-delta';
  * A backend that pretty-prints logs to a browser console, or any
  * remote-attached console.
  */
-export function createConsoleBackend(options: Options = {}): LogProcessor {
+export const createConsoleBackend = (options: Options = {}): LogProcessor => {
   const output = options.console ?? console;
   let lastTimestamp: Date;
 
@@ -47,7 +47,7 @@ export function createConsoleBackend(options: Options = {}): LogProcessor {
     // Track the time spent between logs.
     lastTimestamp = now;
   };
-}
+};
 
 const sink: Record<LogLevel, keyof MinimalConsole> = {
   [level.trace]: 'trace',

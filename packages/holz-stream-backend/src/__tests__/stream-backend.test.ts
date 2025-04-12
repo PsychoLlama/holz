@@ -5,7 +5,7 @@ import { createStreamBackend } from '../stream-backend';
 const CURRENT_TIME = new Date('2020-06-15T12:00:00.000Z');
 
 describe('Stream backend', () => {
-  function createStream() {
+  const createStream = () => {
     let output = '';
     const stream = new Writable({
       write(chunk, _encoding, callback) {
@@ -18,7 +18,7 @@ describe('Stream backend', () => {
       getOutput: () => output,
       stream,
     };
-  }
+  };
 
   beforeEach(() => {
     vi.useFakeTimers({
