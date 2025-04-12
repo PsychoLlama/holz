@@ -11,6 +11,7 @@ export const createConsoleBackend = (options: Options = {}): LogProcessor => {
 
   return (log: Log) => {
     const time = new Date(log.timestamp);
+    const { error, ...plainContext } = log.context;
 
     const segments = [
       {
@@ -19,9 +20,9 @@ export const createConsoleBackend = (options: Options = {}): LogProcessor => {
         values: [log.message],
       },
       {
-        include: Object.keys(log.context).length > 0,
+        include: Object.keys(plainContext).length > 0,
         format: '%o', // Chrome hides object content with `%O`.
-        values: [log.context],
+        values: [plainContext],
       },
       {
         include: true,
@@ -35,6 +36,11 @@ export const createConsoleBackend = (options: Options = {}): LogProcessor => {
           'color: rgba(128, 128, 128, 0.6); font-style: italic',
           log.origin.join(':'),
         ],
+      },
+      {
+        include: error,
+        format: '%o',
+        values: [error],
       },
     ].filter((segment) => segment.include);
 

@@ -121,4 +121,17 @@ describe('Console backend', () => {
 
     expect(output[pipe].mock.calls[0]).toMatchSnapshot();
   });
+
+  it('includes the error object', () => {
+    const output = new MockConsole();
+    const backend = createConsoleBackend({ console: output });
+    const logger = createLogger(backend).namespace('hi');
+
+    const error = new Error('boom');
+    logger.error('an error occurred', { error });
+
+    expect(output.print).toHaveBeenCalledWith(
+      expect.stringContaining('Error: boom'),
+    );
+  });
 });

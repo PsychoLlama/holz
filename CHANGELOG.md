@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/core]` New `withMiddleware(...)` method which supports overlaying plugins on the base configuration.
 - `[@holz/json-backend]` Now detects and serializes `Error` values, including error causes and enumerable custom properties. Stack traces are not included. Raise an issue if you have a use case.
 - `[@holz/stream-backend]` Support for `Error` values. Prints immediately after the log line.
+- `[@holz/console-backend]` Support for featuring `Error` values prominently.
 - `[@holz/log-collector]` New plugin supporting global log collection.
 - `[@holz/logger]` Added global log collector to the default plugin set.
 
