@@ -140,6 +140,7 @@ Holz is inspired by other loggers:
 - [pino](https://getpino.io/)
 - [debug](https://github.com/debug-js/debug)
 - [winston](https://github.com/winstonjs/winston)
+- [tslog](https://github.com/fullstack-build/tslog)
 
 ## Name
 
