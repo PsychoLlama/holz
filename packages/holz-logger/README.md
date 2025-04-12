@@ -21,10 +21,12 @@ import logger from '@holz/logger';
 After that, you can start logging messages with different log levels:
 
 ```typescript
+logger.trace('This is a trace message');
 logger.debug('This is a debug message');
 logger.info('This is an info message');
 logger.warn('This is a warning message');
 logger.error('This is an error message');
+logger.fatal('This is a fatal message');
 ```
 
 By default, logs are formatted with a timestamp, log level, namespace (if provided), and message. You can also add a namespace to your logs to help organize them:
