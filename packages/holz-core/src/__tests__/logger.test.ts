@@ -68,4 +68,45 @@ describe('Logger', () => {
       });
     });
   });
+
+  describe('withMiddleware', () => {
+    it('allows middleware to be added', () => {
+      const backend = vi.fn();
+      const logger = createLogger(backend).withMiddleware((next) => (log) => {
+        next({ ...log, message: 'replaced' });
+      });
+
+      logger.info('original message');
+      expect(backend).toHaveBeenCalledOnce();
+      expect(backend).toHaveBeenCalledWith({
+        message: 'replaced',
+        level: level.info,
+        origin: [],
+        context: {},
+      });
+    });
+
+    it('inherits middleware from parent loggers', () => {
+      const backend = vi.fn();
+      const logger = createLogger(backend)
+        .withMiddleware((next) => (log) => {
+          log.context.parent = true;
+          next(log);
+        })
+        .namespace('child')
+        .withMiddleware((next) => (log) => {
+          log.context.child = true;
+          next(log);
+        });
+
+      logger.info('original message');
+      expect(backend).toHaveBeenCalledOnce();
+      expect(backend).toHaveBeenCalledWith({
+        message: 'original message',
+        level: level.info,
+        origin: ['child'],
+        context: { parent: true, child: true },
+      });
+    });
+  });
 });

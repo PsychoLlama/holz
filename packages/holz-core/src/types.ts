@@ -113,6 +113,13 @@ export interface Logger {
   /** Extend the logger to attach a class or module name to logs. */
   namespace: (owner: string) => Logger;
 
+  /**
+   * Create a new logger which runs all logs through a middleware function.
+   * Useful for adding default context, doing ad-hoc filtering, or
+   * registering plugins. Only applies to this logger and its descendants.
+   */
+  withMiddleware: (middleware: (next: LogProcessor) => LogProcessor) => Logger;
+
   /** Log a verbose and frequent update. */
   trace: <Context extends StrictContext<Context>>(
     message: string,

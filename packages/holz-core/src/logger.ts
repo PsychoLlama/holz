@@ -34,6 +34,8 @@ const createNamespacedLogger = (
     fatal: createAndSendLog.bind(null, level.fatal),
     namespace: (child: string) =>
       createNamespacedLogger(processor, namespace.concat(child)),
+    withMiddleware: (middleware) =>
+      createNamespacedLogger(middleware(processor), namespace),
   };
 
   // Non-enumerable to keep the repl clean.
