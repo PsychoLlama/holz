@@ -130,4 +130,20 @@ describe('Stream backend', () => {
       "
     `);
   });
+
+  it('serializes errors included in log context', () => {
+    const { stream, getOutput } = createStream();
+    const backend = createStreamBackend({ stream });
+    const logger = createLogger(backend);
+
+    const error = new Error('Testing error serialization');
+    logger.error('something went wrong', { error });
+
+    // Make sure it shows up, but don't test the stack trace. Too volatile.
+    expect(getOutput().split('\n').slice(0, 2).join('\n'))
+      .toMatchInlineSnapshot(`
+        "2020-06-15T12:00:00.000Z ERROR something went wrong
+        Error: Testing error serialization"
+      `);
+  });
 });

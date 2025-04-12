@@ -1,5 +1,6 @@
 import type { Writable } from 'node:stream';
 import { EOL } from 'node:os';
+import { inspect } from 'node:util';
 import {
   level,
   type LogLevel,
@@ -18,14 +19,16 @@ import {
  */
 export function createStreamBackend({ stream }: Config): LogProcessor {
   return (log: Log) => {
+    const { error, ...plainContext } = log.context;
     const currentTime = new Date().toISOString();
     const level = LOG_LEVELS[log.level];
-    const context = stringifyContext(log.context);
+    const context = stringifyContext(plainContext);
     const namespace = log.origin.length ? `[${log.origin.join(':')}] ` : '';
 
     const header = `${currentTime} ${level} ${namespace}`;
     const message = multilineIndent(header.length, log.message);
     const output = `${header}${message}${context ? ' ' + context : ''}`;
+    const errorMessage = error ? inspect(error, { colors: false }) + EOL : '';
 
     // NOTE: If the stream applies backpressure, we will lose logs. I believe
     // this is the right tradeoff. We can't prevent the app from generating
@@ -33,7 +36,7 @@ export function createStreamBackend({ stream }: Config): LogProcessor {
     // crashing the process.
     //
     // It is unlikely that a file or tty will apply backpressure in practice.
-    stream.write(`${output}${EOL}`);
+    stream.write(`${output}${EOL}${errorMessage}`);
   };
 }
 
