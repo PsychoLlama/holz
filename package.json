@@ -5,7 +5,7 @@
   "repository": "https://github.com/github:PsychoLlama/holz",
   "author": "Jesse Gibson",
   "license": "MIT",
-  "packageManager": "yarn@4.7.0",
+  "packageManager": "yarn@4.9.0",
   "sideEffects": false,
   "workspaces": [
     "packages/*"
