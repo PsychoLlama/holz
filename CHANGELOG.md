@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/stream-backend]` Support for `Error` values. Prints immediately after the log line.
 - `[@holz/core]` New `withMiddleware(...)` method which supports overlaying plugins on the base configuration.
 - `[@holz/log-collector]` New plugin supporting global log collection.
+- `[@holz/logger]` Added global log collector to the default plugin set.
 
 ### Changed
 
