@@ -10,6 +10,9 @@ export interface LogProcessor {
 
 /** A log message where variables are carried as structured data. */
 export interface Log {
+  /** Unix timestamp. Includes milliseconds. */
+  readonly timestamp: number;
+
   /** The verbatim log message. Should not contain interpolated data. */
   readonly message: string;
 

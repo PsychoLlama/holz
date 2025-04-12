@@ -1,6 +1,10 @@
 import { createLogger } from '../logger';
 import { level } from '../index';
 
+const SYSTEM_TIME = new Date('2020-06-15T12:30:00Z').getTime();
+
+vi.setSystemTime(SYSTEM_TIME);
+
 describe('Logger', () => {
   it('sends structured logs to the log processor', () => {
     const backend = vi.fn();
@@ -10,6 +14,7 @@ describe('Logger', () => {
 
     expect(backend).toHaveBeenCalledOnce();
     expect(backend).toHaveBeenCalledWith({
+      timestamp: SYSTEM_TIME,
       message: 'Hello world',
       level: level.info,
       origin: [],
@@ -30,6 +35,7 @@ describe('Logger', () => {
 
     logger[method](message, context);
     expect(backend).toHaveBeenCalledWith({
+      timestamp: SYSTEM_TIME,
       message,
       level: level[method],
       context,
@@ -61,6 +67,7 @@ describe('Logger', () => {
 
       expect(backend).toHaveBeenCalledOnce();
       expect(backend).toHaveBeenCalledWith({
+        timestamp: SYSTEM_TIME,
         message: 'opening socket',
         level: level.info,
         origin: ['signaling', 'socket'],
@@ -79,6 +86,7 @@ describe('Logger', () => {
       logger.info('original message');
       expect(backend).toHaveBeenCalledOnce();
       expect(backend).toHaveBeenCalledWith({
+        timestamp: SYSTEM_TIME,
         message: 'replaced',
         level: level.info,
         origin: [],
@@ -102,6 +110,7 @@ describe('Logger', () => {
       logger.info('original message');
       expect(backend).toHaveBeenCalledOnce();
       expect(backend).toHaveBeenCalledWith({
+        timestamp: SYSTEM_TIME,
         message: 'original message',
         level: level.info,
         origin: ['child'],

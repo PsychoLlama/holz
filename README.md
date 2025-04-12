@@ -13,6 +13,7 @@ logger.info('Sending new user email', { userId: user.id });
 
 ```typescript
 {
+  timestamp: 1199145600000,
   message: 'Sending new user email',
   level: level.info,
   origin: ['UserService'],

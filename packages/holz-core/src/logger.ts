@@ -17,6 +17,7 @@ const createNamespacedLogger = (
     context: Context = {} as Context,
   ) => {
     processor({
+      timestamp: Date.now(),
       message,
       level,
       origin: namespace,
