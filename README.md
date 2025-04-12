@@ -83,6 +83,7 @@ Holz has a number of plugins already available. See each package for documentati
 | [`@holz/stream-backend`](https://github.com/PsychoLlama/holz/tree/main/packages/holz-stream-backend)               | Send plaintext logs to a writable stream.        |
 | [`@holz/pattern-filter`](https://github.com/PsychoLlama/holz/tree/main/packages/holz-pattern-filter)               | Filter logs against a pattern.                   |
 | [`@holz/env-filter`](https://github.com/PsychoLlama/holz/tree/main/packages/holz-env-filter)                       | Pull filters from `env.DEBUG` or `localStorage`. |
+| [`@holz/log-collector`](https://github.com/PsychoLlama/holz/tree/main/packages/holz-log-collector)                 | Manage a global log destination.                 |
 
 ## Recipes
 

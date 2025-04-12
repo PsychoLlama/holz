@@ -26,7 +26,8 @@
         "./packages/holz-logger/src/index.browser.ts"
       ],
       "@holz/pattern-filter": ["./packages/holz-pattern-filter/src/index.ts"],
-      "@holz/stream-backend": ["./packages/holz-stream-backend/src/index.ts"]
+      "@holz/stream-backend": ["./packages/holz-stream-backend/src/index.ts"],
+      "@holz/log-collector": ["./packages/holz-log-collector/src/index.ts"]
     }
   }
 }

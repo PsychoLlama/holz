@@ -1,0 +1,3 @@
+describe('log collector', () => {
+  // TODO
+});

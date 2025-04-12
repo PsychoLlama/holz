@@ -423,6 +423,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@holz/log-collector@workspace:packages/holz-log-collector":
+  version: 0.0.0-use.local
+  resolution: "@holz/log-collector@workspace:packages/holz-log-collector"
+  dependencies:
+    "@holz/core": "npm:^0.8.0-rc.1"
+    "@types/node": "npm:^22.0.0"
+    "@vitest/coverage-v8": "npm:^3.0.8"
+    typescript: "npm:^5.8.2"
+    vite: "npm:^6.0.0"
+    vite-plugin-dts: "npm:^4.5.3"
+    vite-tsconfig-paths: "npm:^5.1.4"
+    vitest: "npm:^3.0.8"
+  languageName: unknown
+  linkType: soft
+
 "@holz/logger@workspace:packages/holz-logger":
   version: 0.0.0-use.local
   resolution: "@holz/logger@workspace:packages/holz-logger"

@@ -1,0 +1,50 @@
+{
+  "name": "@holz/log-collector",
+  "version": "0.8.0-rc.1",
+  "description": "Send all logs to a central collector",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PsychoLlama/holz",
+    "directory": "packages/holz-log-collector"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/holz-log-collector.d.ts",
+      "require": "./dist/holz-log-collector.cjs",
+      "import": "./dist/holz-log-collector.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jesse Gibson",
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "holz",
+    "collector",
+    "interceptor",
+    "aggregator"
+  ],
+  "scripts": {
+    "prepack": "vite build",
+    "test:unit": "vitest --color --passWithNoTests",
+    "test:types": "tsc"
+  },
+  "devDependencies": {
+    "@holz/core": "^0.8.0-rc.1",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^3.0.8",
+    "typescript": "^5.8.2",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.8"
+  },
+  "stableVersion": "0.7.0"
+}
