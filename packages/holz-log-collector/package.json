@@ -1,6 +1,6 @@
 {
   "name": "@holz/log-collector",
-  "version": "0.8.0-rc.1",
+  "version": "0.8.0",
   "description": "Send all logs to a central collector",
   "type": "module",
   "repository": {
@@ -47,6 +47,5 @@
     "vite-plugin-dts": "^4.5.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8"
-  },
-  "stableVersion": "0.7.0"
+  }
 }

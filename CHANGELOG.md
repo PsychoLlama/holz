@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Packages no longer ship source files, only compiled `dist/` assets. You shouldn't notice a difference except download size.
 
+### Fixed
+
+- `[@holz/log-collector]` No longer published as an RC release - it now has a stable version.
+- `[@holz/logger]` Replaced the log collector plugin with a stable version.
+
 ## [0.8.0] - 2025-04-12
 
 ### Added

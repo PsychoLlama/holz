@@ -1,0 +1,3 @@
+releases:
+  "@holz/log-collector": patch
+  "@holz/logger": patch

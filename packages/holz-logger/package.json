@@ -49,7 +49,7 @@
     "@holz/console-backend": "^0.8.0",
     "@holz/core": "^0.8.0",
     "@holz/env-filter": "^0.7.0",
-    "@holz/log-collector": "^0.8.0-rc.1",
+    "@holz/log-collector": "^0.8.0",
     "@holz/stream-backend": "^0.8.0"
   },
   "devDependencies": {
