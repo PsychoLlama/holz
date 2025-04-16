@@ -423,7 +423,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@holz/log-collector@npm:^0.8.0, @holz/log-collector@workspace:packages/holz-log-collector":
+"@holz/log-collector@npm:^0.8.1, @holz/log-collector@workspace:packages/holz-log-collector":
   version: 0.0.0-use.local
   resolution: "@holz/log-collector@workspace:packages/holz-log-collector"
   dependencies:
@@ -448,7 +448,7 @@ __metadata:
     "@holz/console-backend": "npm:^0.8.0"
     "@holz/core": "npm:^0.8.0"
     "@holz/env-filter": "npm:^0.7.0"
-    "@holz/log-collector": "npm:^0.8.0"
+    "@holz/log-collector": "npm:^0.8.1"
     "@holz/stream-backend": "npm:^0.8.0"
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^3.0.8"

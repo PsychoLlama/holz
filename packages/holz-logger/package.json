@@ -1,6 +1,6 @@
 {
   "name": "@holz/logger",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "A preconfigured, general-purpose logger",
   "type": "module",
   "repository": {
@@ -49,7 +49,7 @@
     "@holz/console-backend": "^0.8.0",
     "@holz/core": "^0.8.0",
     "@holz/env-filter": "^0.7.0",
-    "@holz/log-collector": "^0.8.0",
+    "@holz/log-collector": "^0.8.1",
     "@holz/stream-backend": "^0.8.0"
   },
   "devDependencies": {

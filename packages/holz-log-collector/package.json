@@ -1,6 +1,6 @@
 {
   "name": "@holz/log-collector",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Send all logs to a central collector",
   "type": "module",
   "repository": {
