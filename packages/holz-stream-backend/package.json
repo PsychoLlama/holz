@@ -1,6 +1,6 @@
 {
   "name": "@holz/stream-backend",
-  "version": "0.8.2-rc.0",
+  "version": "0.8.2",
   "description": "Print logs to stdout or a file.",
   "type": "module",
   "repository": {
@@ -39,7 +39,7 @@
     "@holz/core": "^0.8.0"
   },
   "devDependencies": {
-    "@holz/core": "^0.8.2-rc.0",
+    "@holz/core": "^0.8.2",
     "@types/node": "^22.0.0",
     "@vitest/coverage-v8": "^3.0.8",
     "typescript": "^5.8.2",
