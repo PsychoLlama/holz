@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [UNRELEASED]
 
+### Changed
+
+- Holz adopted a [fixed mode versioning scheme](https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default). In following releases all packages will be published together with the same version.
+
 ## [0.8.1] - 2025-04-16
 
 ### Removed
