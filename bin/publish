@@ -36,11 +36,5 @@ fi
 
 echo "Publishing $1 release"
 
-yarn workspaces foreach \
-  --topological-dev \
-  --all \
-  --exclude . \
-  npm publish \
-  --access=public \
-  --tolerate-republish \
-  --tag="$tag"
+npx lerna publish from-package \
+  --dist-tag "$tag"

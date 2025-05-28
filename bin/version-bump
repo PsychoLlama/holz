@@ -1,18 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if (( $# == 0 )); then
-  echo "Usage: version-bump [stable|rc]"
-  exit 1
-fi
-
-if [[ "$1" != "stable" && "$1" != "rc" ]]; then
-  echo "Invalid bump type: $1"
-  exit 1
-fi
-
-if [[ "$1" == "stable" ]]; then
-  yarn version apply --all --recursive
-else
-  yarn version apply --all --recursive --prerelease
-fi
+npx lerna version \
+  --no-push \
+  --force-publish \
+  --no-git-tag-version \
+  --preid rc \
+  "$@"
