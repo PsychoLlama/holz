@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+fail=
+
+npm run -s test:coverage || fail=1
+npm run -s test:lint || fail=1
+npm run -s test:fmt || fail=1
+npm run -s test:types || fail=1
+
+if [[ -n "$fail" ]]; then
+  exit 1
+fi

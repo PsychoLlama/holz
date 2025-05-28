@@ -5,20 +5,14 @@
   "repository": "https://github.com/github:PsychoLlama/holz",
   "author": "Jesse Gibson",
   "license": "MIT",
-  "packageManager": "yarn@4.9.0",
-  "sideEffects": false,
   "workspaces": [
     "packages/*"
   ],
-  "files": [
-    "dist",
-    "src"
-  ],
   "scripts": {
-    "prepare": "yarn workspaces foreach --all --parallel --topological-dev run prepack",
-    "test": "run test:coverage && run test:lint && run test:fmt && run test:types",
-    "test:coverage": "yarn workspaces foreach --all --parallel run test:unit --coverage --no-watch",
-    "test:types": "yarn workspaces foreach --all --parallel run test:types",
+    "prepare": "lerna run prepack",
+    "test": "./bin/test",
+    "test:coverage": "lerna run test:unit -- --coverage --no-watch",
+    "test:types": "lerna run test:types",
     "test:lint": "eslint packages/*/src --ext ts,tsx --color",
     "test:fmt": "prettier --check packages/*/src",
     "fmt": "prettier --write packages/*/src"

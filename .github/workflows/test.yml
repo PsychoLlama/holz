@@ -7,6 +7,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
-      - run: nix develop --command yarn install
-      - run: nix develop --command yarn prepare
-      - run: nix develop --command yarn test
+      - run: nix develop --command npm clean-install
+      - run: nix develop --command npm test
