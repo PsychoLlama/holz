@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [UNRELEASED]
 
+## [0.8.2] - 2025-05-28
+
 ### Changed
 
 - Holz adopted a [fixed mode versioning scheme](https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default). In following releases all packages will be published together with the same version.
@@ -156,7 +158,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/core]` Initial release.
 - `[@holz/logger]` Initial release.
 
-[UNRELEASED]: https://github.com/PsychoLlama/holz/compare/v0.8.1...HEAD
+[UNRELEASED]: https://github.com/PsychoLlama/holz/compare/v0.8.2...HEAD
+[0.8.2]: https://github.com/PsychoLlama/holz/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/PsychoLlama/holz/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/PsychoLlama/holz/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/PsychoLlama/holz/compare/v0.6.1...v0.7.0
