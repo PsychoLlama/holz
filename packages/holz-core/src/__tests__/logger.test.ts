@@ -47,13 +47,15 @@ describe('Logger', () => {
     const backend = vi.fn();
     const logger = createLogger(backend);
 
-    const { debug, info, warn, error } = logger;
+    const { trace, debug, info, warn, error, fatal } = logger;
+    trace('Trace message');
     debug('Debugging message');
     info('Informative message');
     warn('Warning message');
     error('Error message');
+    fatal('Fatal message');
 
-    expect(backend).toHaveBeenCalledTimes(4);
+    expect(backend).toHaveBeenCalledTimes(6);
   });
 
   describe('namespace', () => {
