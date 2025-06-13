@@ -85,7 +85,7 @@ export interface CustomContext {
    * Error instance associated with the log message. This supports error
    * tracking and shows prominently in visual backends like TTY output.
    */
-  error: Error;
+  error: unknown;
 }
 
 /**
