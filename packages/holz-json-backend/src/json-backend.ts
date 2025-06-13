@@ -22,6 +22,7 @@ export const createJsonBackend = ({ stream }: Config): LogProcessor => {
         level: labelForLevel[log.level],
         time: new Date(log.timestamp).toISOString(),
         msg: log.message,
+        origin: log.origin,
         ctx: Object.keys(log.context).length > 0 ? log.context : undefined,
       },
       errorSerializer,
