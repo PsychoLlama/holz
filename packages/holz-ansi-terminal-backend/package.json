@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@holz/core": "^0.8.2",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.0",
     "@vitest/coverage-v8": "^3.0.8",
     "typescript": "^5.8.2",
     "vite": "^7.0.0",
