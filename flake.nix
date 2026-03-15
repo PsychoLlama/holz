@@ -1,7 +1,10 @@
 {
   description = "Development environment";
 
-  inputs.systems.url = "github:nix-systems/default";
+  inputs = {
+    systems.url = "github:nix-systems/default";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  };
 
   outputs =
     {
@@ -19,12 +22,11 @@
     in
 
     {
-      devShell = eachSystem (
-        system: pkgs:
-        pkgs.mkShell {
-          packages = [
-            pkgs.nodejs
-          ];
+      devShells = eachSystem (
+        system: pkgs: {
+          default = pkgs.mkShell {
+            packages = [ pkgs.nodejs ];
+          };
         }
       );
     };
