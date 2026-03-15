@@ -1,10 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":disableDependencyDashboard"],
+  "extends": ["config:recommended", ":disableDependencyDashboard"],
+  "platformAutomerge": false,
+  "nix": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
       "automerge": true
+    },
+    {
+      "matchManagers": ["github-actions", "nix"],
+      "automerge": true
     }
   ]
 }
+
