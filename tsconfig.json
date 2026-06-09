@@ -12,7 +12,7 @@
     "jsx": "react",
     "noEmit": true,
     "strict": true,
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals", "node"],
     "paths": {
       "@holz/ansi-terminal-backend": [
         "./packages/holz-ansi-terminal-backend/src/index.ts"
