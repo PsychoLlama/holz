@@ -13,9 +13,7 @@
     "test": "./bin/test",
     "test:coverage": "lerna run test:unit -- --coverage --no-watch",
     "test:types": "lerna run test:types",
-    "test:lint": "eslint packages/*/src --ext ts,tsx --color",
-    "test:fmt": "prettier --check packages/*/src",
-    "fmt": "prettier --write packages/*/src"
+    "test:lint": "eslint packages/*/src --ext ts,tsx --color"
   },
   "prettier": {
     "singleQuote": true

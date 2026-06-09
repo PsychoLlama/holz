@@ -1,0 +1,23 @@
+[global]
+excludes = ["dist/**", "package-lock.json"]
+
+[formatter.prettier]
+command = "prettier"
+options = ["--write"]
+includes = [
+  "*.js",
+  "*.mjs",
+  "*.cjs",
+  "*.ts",
+  "*.tsx",
+  "*.json",
+  "*.md",
+  "*.yaml",
+  "*.yml",
+  "*.css",
+  "*.html",
+]
+
+[formatter.nix]
+command = "nixfmt"
+includes = ["*.nix"]

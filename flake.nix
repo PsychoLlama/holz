@@ -17,7 +17,7 @@
       inherit (nixpkgs) lib;
 
       eachSystem = lib.flip lib.mapAttrs (
-        lib.genAttrs (import systems) (system: nixpkgs.legacyPackages.${system})
+        lib.genAttrs (import systems) (system: import nixpkgs { inherit system; })
       );
     in
 
@@ -25,7 +25,12 @@
       devShells = eachSystem (
         system: pkgs: {
           default = pkgs.mkShell {
-            packages = [ pkgs.nodejs ];
+            packages = [
+              pkgs.just
+              pkgs.nixfmt
+              pkgs.nodejs
+              pkgs.treefmt
+            ];
           };
         }
       );
