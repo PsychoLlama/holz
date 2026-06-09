@@ -38,7 +38,7 @@
     "@holz/core": "^0.8.0"
   },
   "devDependencies": {
-    "@holz/core": "^0.8.2",
+    "@holz/core": "workspace:^",
     "@types/node": "^24.0.0",
     "@vitest/coverage-v8": "^3.0.8",
     "typescript": "^6.0.0",

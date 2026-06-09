@@ -36,5 +36,5 @@ fi
 
 echo "Publishing $1 release"
 
-npx lerna publish from-package \
+pnpm exec lerna publish from-package \
   --dist-tag "$tag"

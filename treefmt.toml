@@ -1,5 +1,5 @@
 [global]
-excludes = ["dist/**", "package-lock.json"]
+excludes = ["dist/**", "pnpm-lock.yaml"]
 
 [formatter.prettier]
 command = "prettier"

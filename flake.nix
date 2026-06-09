@@ -29,6 +29,7 @@
               pkgs.just
               pkgs.nixfmt
               pkgs.nodejs
+              pkgs.pnpm
               pkgs.treefmt
             ];
           };

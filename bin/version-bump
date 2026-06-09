@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-npx lerna version \
+pnpm exec lerna version \
   --no-push \
   --force-publish \
   --no-git-tag-version \

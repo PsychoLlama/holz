@@ -5,14 +5,11 @@
   "repository": "https://github.com/github:PsychoLlama/holz",
   "author": "Jesse Gibson",
   "license": "MIT",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "prepare": "lerna run prepack",
+    "prepare": "pnpm -r run prepack",
     "test": "./bin/test",
-    "test:coverage": "lerna run test:unit -- --coverage --no-watch",
-    "test:types": "lerna run test:types",
+    "test:coverage": "pnpm -r run test:unit -- --coverage --no-watch",
+    "test:types": "pnpm -r run test:types",
     "test:lint": "eslint packages/*/src --ext ts,tsx --color"
   },
   "prettier": {

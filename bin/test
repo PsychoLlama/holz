@@ -3,10 +3,10 @@ set -euo pipefail
 
 fail=
 
-npm run -s test:coverage || fail=1
-npm run -s test:lint || fail=1
+pnpm run -s test:coverage || fail=1
+pnpm run -s test:lint || fail=1
 treefmt --ci || fail=1
-npm run -s test:types || fail=1
+pnpm run -s test:types || fail=1
 
 if [[ -n "$fail" ]]; then
   exit 1
