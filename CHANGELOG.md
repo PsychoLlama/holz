@@ -9,11 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - `[@holz/json-backend]` Entries now include `log.owner`.
+- `[@holz/json-backend]` New optional `signal` option. Pass an `AbortSignal` to close the stream on shutdown, flushing queued writes.
 
 ### Changed
 
 - `[@holz/core]` The special `error` type in log context was widened from `Error` to `unknown` matching the type signature of try/catch and `.catch` handlers.
 - `[@holz/json-backend]` The platform-specific `\r\n` was dropped for better portability. All systems write `\n` as the newline character.
+- `[@holz/json-backend]` Expects a WHATWG [WritableStream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream) instead of a Node Streams interface. Improves portability, particularly for browser environments.
 
 ## [0.8.2] - 2025-05-28
 
