@@ -1,5 +1,4 @@
 import type { Writable } from 'node:stream';
-import { EOL } from 'node:os';
 import { level, type LogLevel, type Log, type LogProcessor } from '@holz/core';
 
 /**
@@ -34,7 +33,7 @@ export const createJsonBackend = ({ stream }: Config): LogProcessor => {
     // crashing the process.
     //
     // It is unlikely that a file or tty will apply backpressure in practice.
-    stream.write(`${output}${EOL}`);
+    stream.write(`${output}\n`);
   };
 };
 
