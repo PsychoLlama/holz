@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/json-backend]` Entries now include `log.owner`.
 - `[@holz/json-backend]` New optional `signal` option. Pass an `AbortSignal` to close the stream on shutdown, flushing queued writes.
 
+### Fixed
+
+- `[@holz/json-backend]` Special-case [AggregateError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError) to include the non-enumerable `errors[]` field.
+
 ### Changed
 
 - `[@holz/core]` The special `error` type in log context was widened from `Error` to `unknown` matching the type signature of try/catch and `.catch` handlers.
