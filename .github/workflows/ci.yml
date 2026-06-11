@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      # Force ANSI color in tools that gate on TTY detection.
+      FORCE_COLOR: '3'
+      CLICOLOR_FORCE: '1'
+    # Run every shell step inside the flake's devShell so CI stays in
+    # sync with local dev (single source of truth in flake.nix).
+    defaults:
+      run:
+        shell: nix develop --command bash -eo pipefail {0}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/nix-installer-action@v22
+      - uses: DeterminateSystems/magic-nix-cache-action@v14
+        with:
+          use-flakehub: false
+      # No-op that absorbs the first `nix develop` evaluation so its
+      # cost shows up here instead of inflating the next real step.
+      - name: Warm devShell
+        run: 'true'
+      - name: Restore pnpm store
+        uses: actions/cache@v5
+        with:
+          path: ~/.local/share/pnpm/store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
