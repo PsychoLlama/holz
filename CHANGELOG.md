@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
+- **AI disclosure:** Holz was built with Aider and Claude from the start. Agents will increasingly contribute, but quality remains a priority.
 - `[@holz/json-backend]` Entries now include `log.owner`.
 - `[@holz/json-backend]` New optional `signal` option. Pass an `AbortSignal` to close the stream on shutdown, flushing queued writes.
 
