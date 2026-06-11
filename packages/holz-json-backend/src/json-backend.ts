@@ -80,6 +80,11 @@ const errorSerializer = (_key: string, value: unknown) => {
       name: value.name,
       message: value.message,
       cause: value.cause,
+      // `AggregateError` collects its constituent failures in a
+      // non-enumerable `errors` array that the spread above misses. Pull it
+      // explicitly so those underlying errors survive serialization; the
+      // replacer recurses into each one.
+      ...(value instanceof AggregateError && { errors: value.errors }),
     };
   }
 

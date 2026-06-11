@@ -131,6 +131,69 @@ describe('JSON backend', () => {
     );
   });
 
+  it('serializes a cause that is not an error', async () => {
+    const { stream, signal, getOutput } = createStream();
+    const backend = createJsonBackend({ stream, signal });
+    const logger = createLogger(backend);
+
+    logger.error('content', {
+      error: new Error('Testing NDJSON errors', {
+        cause: { code: 'EACCES', retryable: false },
+      }),
+    });
+
+    expect(await getOutput()).toContain(
+      '"error":{"name":"Error","message":"Testing NDJSON errors","cause":{"code":"EACCES","retryable":false}}',
+    );
+  });
+
+  it('serializes a primitive cause', async () => {
+    const { stream, signal, getOutput } = createStream();
+    const backend = createJsonBackend({ stream, signal });
+    const logger = createLogger(backend);
+
+    logger.error('content', {
+      error: new Error('Testing NDJSON errors', { cause: 'plain string' }),
+    });
+
+    expect(await getOutput()).toContain(
+      '"error":{"name":"Error","message":"Testing NDJSON errors","cause":"plain string"}',
+    );
+  });
+
+  it('unpacks the constituent errors of an AggregateError', async () => {
+    const { stream, signal, getOutput } = createStream();
+    const backend = createJsonBackend({ stream, signal });
+    const logger = createLogger(backend);
+
+    logger.error('content', {
+      error: new AggregateError(
+        [new Error('First failure'), new TypeError('Second failure')],
+        'Everything failed',
+      ),
+    });
+
+    expect(await getOutput()).toContain(
+      '"error":{"name":"AggregateError","message":"Everything failed","errors":[{"name":"Error","message":"First failure"},{"name":"TypeError","message":"Second failure"}]}',
+    );
+  });
+
+  it('detects a cause alongside an AggregateError', async () => {
+    const { stream, signal, getOutput } = createStream();
+    const backend = createJsonBackend({ stream, signal });
+    const logger = createLogger(backend);
+
+    logger.error('content', {
+      error: new AggregateError([new Error('Inner')], 'Outer', {
+        cause: new Error('Root cause'),
+      }),
+    });
+
+    expect(await getOutput()).toContain(
+      '"error":{"name":"AggregateError","message":"Outer","cause":{"name":"Error","message":"Root cause"},"errors":[{"name":"Error","message":"Inner"}]}',
+    );
+  });
+
   it('includes any enumerable properties on the object', async () => {
     class CustomError extends Error {
       name = 'CustomError';
