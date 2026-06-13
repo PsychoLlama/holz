@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "stream",
+  "globalDependencies": ["tsconfig.json"],
+  "globalPassThroughEnv": ["FORCE_COLOR", "CLICOLOR_FORCE"],
+  "tasks": {
+    "test:types": {
+      "dependsOn": ["^test:types"],
+      "outputs": [],
+      "outputLogs": "errors-only"
+    },
+    "test:unit": {
+      "dependsOn": ["^test:types"],
+      "outputs": [],
+      "outputLogs": "errors-only"
+    },
+    "//#lint": {
+      "inputs": [
+        "packages/*/src/**/*.{ts,tsx}",
+        "packages/*/tsconfig.json",
+        "eslint.config.mjs",
+        "tsconfig.json"
+      ],
+      "outputs": ["node_modules/.cache/eslint/**"],
+      "outputLogs": "errors-only"
+    },
+    "//#fmt-check": {
+      "inputs": [
+        "**/*.{js,mjs,cjs,ts,tsx,json,md,yaml,yml,css,html,nix}",
+        "!**/node_modules/**",
+        "!**/dist/**",
+        "!**/.turbo/**",
+        "!**/coverage/**",
+        "!.direnv/**",
+        "treefmt.toml"
+      ],
+      "outputs": [],
+      "outputLogs": "errors-only"
+    }
+  }
+}
