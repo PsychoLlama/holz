@@ -5,12 +5,14 @@
   "repository": "https://github.com/github:PsychoLlama/holz",
   "author": "Jesse Gibson",
   "license": "MIT",
+  "packageManager": "pnpm@11.5.2",
   "scripts": {
     "prepare": "pnpm -r run prepack",
-    "test": "./bin/test",
+    "check": "turbo run test:types test:unit lint fmt-check",
+    "test": "pnpm check",
     "test:coverage": "pnpm -r run test:unit -- --coverage --no-watch",
-    "test:types": "pnpm -r run test:types",
-    "test:lint": "eslint packages/*/src --ext ts,tsx --color"
+    "lint": "eslint packages/*/src --ext ts,tsx --color --cache --cache-location node_modules/.cache/eslint/",
+    "fmt-check": "treefmt --ci"
   },
   "prettier": {
     "singleQuote": true
@@ -24,6 +26,7 @@
     "eslint-plugin-import": "^2.31.0",
     "lerna": "^9.0.0",
     "prettier": "^3.0.0",
+    "turbo": "^2.9.16",
     "typescript": "^6.0.0",
     "typescript-eslint": "^8.26.0"
   }

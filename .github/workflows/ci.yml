@@ -36,5 +36,15 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
+      # Persist turbo's local cache so unchanged tasks are skipped across
+      # CI runs. No remote cache: this is plain file-based caching, keyed
+      # per-commit with a fallback to the most recent prior cache.
+      - name: Restore turbo cache
+        uses: actions/cache@v5
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
       - run: pnpm install --frozen-lockfile
-      - run: pnpm test
+      - run: pnpm check
