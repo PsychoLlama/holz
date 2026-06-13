@@ -12,7 +12,8 @@
     "test": "pnpm check",
     "test:coverage": "pnpm -r run test:unit -- --coverage --no-watch",
     "lint": "eslint packages/*/src --ext ts,tsx --color --cache --cache-location node_modules/.cache/eslint/",
-    "fmt-check": "treefmt --ci"
+    "fmt-check": "treefmt --ci",
+    "release:candidate": "lerna publish --canary --preid rc --dist-tag rc --force-publish --yes"
   },
   "prettier": {
     "singleQuote": true
