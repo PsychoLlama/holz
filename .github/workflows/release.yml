@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+    # Skip publishing when a merge only touches Markdown. Mixed pushes (a
+    # .md plus real code) still run; this only fires when *every* changed
+    # file is Markdown.
+    paths-ignore:
+      - '**/*.md'
+
+# Never let two publishes race; a queued run waits rather than cancels so we
+# don't abandon a publish midway.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+# Minimal by default; the publish job opts into id-token below.
+permissions:
+  contents: read
+
+jobs:
+  publish-rc:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Required for npm OIDC trusted publishing (no NPM_TOKEN).
+      id-token: write
+    env:
+      # Force ANSI color in tools that gate on TTY detection.
+      FORCE_COLOR: '3'
+      CLICOLOR_FORCE: '1'
+    # Run every shell step inside the flake's devShell so CI stays in
+    # sync with local dev (single source of truth in flake.nix).
+    defaults:
+      run:
+        shell: nix develop --command bash -eo pipefail {0}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Lerna derives canary versions from the latest release tag, so it
+          # needs full history and tags, not a shallow clone.
+          fetch-depth: 0
+      - uses: DeterminateSystems/nix-installer-action@v22
+      - uses: DeterminateSystems/magic-nix-cache-action@v14
+        with:
+          use-flakehub: false
+      # No-op that absorbs the first `nix develop` evaluation so its
+      # cost shows up here instead of inflating the next real step.
+      - name: Warm devShell
+        run: 'true'
+      - name: Restore pnpm store
+        uses: actions/cache@v5
+        with:
+          path: ~/.local/share/pnpm/store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+      - name: Restore turbo cache
+        uses: actions/cache@v5
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - run: pnpm install --frozen-lockfile
+      # Gate the publish on a clean tree. Direct pushes to main skip PR CI,
+      # so re-run checks here; turbo's cache makes this a near no-op when CI
+      # already passed for this commit.
+      - run: pnpm check
+      - run: pnpm release:candidate
