@@ -33,6 +33,7 @@
   "scripts": {
     "prepack": "vite build",
     "test:unit": "vitest run --color --passWithNoTests",
+    "test:coverage": "vitest run --coverage --color --passWithNoTests",
     "test:types": "tsc"
   },
   "peerDependencies": {

@@ -7,10 +7,9 @@
   "license": "MIT",
   "packageManager": "pnpm@11.5.2",
   "scripts": {
-    "prepare": "pnpm -r run prepack",
-    "check": "turbo run test:types test:unit lint fmt-check",
+    "check": "turbo run prepack test:types test:unit lint fmt-check",
     "test": "pnpm check",
-    "test:coverage": "pnpm -r run test:unit -- --coverage --no-watch",
+    "test:coverage": "turbo run test:coverage",
     "lint": "eslint packages/*/src --ext ts,tsx --color --cache --cache-location node_modules/.cache/eslint/",
     "fmt-check": "treefmt --ci",
     "release:candidate": "lerna publish --canary --preid rc --dist-tag rc --force-publish --yes"
