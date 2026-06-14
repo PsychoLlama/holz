@@ -6,7 +6,13 @@ export default async () => {
   const builtins = builtinModules.map((name) => `node:${name}`);
 
   return defineConfig({
-    plugins: [dts({ rollupTypes: true, pathsToAliases: false })],
+    plugins: [
+      dts({
+        bundleTypes: true,
+        pathsToAliases: false,
+        compilerOptions: { paths: {}, rootDir: 'src' },
+      }),
+    ],
     build: {
       lib: {
         entry: './src/index.ts',

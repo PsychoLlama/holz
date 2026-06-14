@@ -3,7 +3,13 @@ import dts from 'vite-plugin-dts';
 
 export default async () => {
   return defineConfig({
-    plugins: [dts({ rollupTypes: true, pathsToAliases: false })],
+    plugins: [
+      dts({
+        bundleTypes: true,
+        pathsToAliases: false,
+        compilerOptions: { paths: {}, rootDir: 'src' },
+      }),
+    ],
     build: {
       lib: {
         entry: './src/index.ts',

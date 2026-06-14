@@ -53,6 +53,7 @@
     "@holz/stream-backend": "workspace:^"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.58.8",
     "@types/node": "^24.0.0",
     "@vitest/coverage-v8": "^4.0.0",
     "typescript": "^6.0.0",
