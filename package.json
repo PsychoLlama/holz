@@ -8,7 +8,6 @@
   "packageManager": "pnpm@11.5.2",
   "scripts": {
     "check": "turbo run prepack test:types test:unit lint fmt-check",
-    "test": "pnpm check",
     "test:coverage": "turbo run test:coverage",
     "lint": "eslint packages/*/src --ext ts,tsx --color --cache --cache-location node_modules/.cache/eslint/",
     "fmt-check": "treefmt --ci",
