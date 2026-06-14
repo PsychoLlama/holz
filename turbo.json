@@ -4,6 +4,11 @@
   "globalDependencies": ["tsconfig.json"],
   "globalPassThroughEnv": ["FORCE_COLOR", "CLICOLOR_FORCE"],
   "tasks": {
+    "prepack": {
+      "dependsOn": ["^prepack"],
+      "outputs": ["dist/**"],
+      "outputLogs": "errors-only"
+    },
     "test:types": {
       "dependsOn": ["^test:types"],
       "outputs": [],
@@ -12,6 +17,11 @@
     "test:unit": {
       "dependsOn": ["^test:types"],
       "outputs": [],
+      "outputLogs": "errors-only"
+    },
+    "test:coverage": {
+      "dependsOn": ["^test:types"],
+      "outputs": ["coverage/**"],
       "outputLogs": "errors-only"
     },
     "//#lint": {
