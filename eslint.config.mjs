@@ -1,15 +1,33 @@
 // @ts-check
+import { includeIgnoreFile } from '@eslint/config-helpers';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import importPlugin from 'eslint-plugin-import';
 
 export default tseslint.config(
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
+  // Honor .gitignore (node_modules, dist, coverage, …).
+  includeIgnoreFile(import.meta.dirname + '/.gitignore'),
   {
+    // The workspace is TypeScript-only, but ESLint lints `.js/.cjs/.mjs`
+    // by default — which would otherwise pull in this flat config itself.
+    ignores: ['**/*.{js,cjs,mjs}'],
+  },
+  {
+    // Lint scope: package sources only. Replaces the CLI
+    // `packages/*/src --ext ts,tsx` arguments so the targets live
+    // alongside the config rather than in package.json. The presets are
+    // pulled in via `extends` so this `files` scope propagates to them —
+    // otherwise their `**/*.ts` patterns would also drag in build/test
+    // configs (vite.config.ts, vitest.config.ts) that aren't in any
+    // package's tsconfig.
+    files: ['packages/*/src/**/*.{ts,tsx}'],
+    extends: [
+      pluginJs.configs.recommended,
+      tseslint.configs.recommended,
+      tseslint.configs.recommendedTypeChecked,
+      importPlugin.flatConfigs.recommended,
+      importPlugin.flatConfigs.typescript,
+    ],
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
     },
