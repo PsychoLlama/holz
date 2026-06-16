@@ -1,17 +1,11 @@
-// @ts-check
-import { includeIgnoreFile } from '@eslint/config-helpers';
+import { defineConfig, includeIgnoreFile } from 'eslint/config';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import importPlugin from 'eslint-plugin-import';
 
-export default tseslint.config(
+export default defineConfig(
   // Honor .gitignore (node_modules, dist, coverage, …).
   includeIgnoreFile(import.meta.dirname + '/.gitignore'),
-  {
-    // The workspace is TypeScript-only, but ESLint lints `.js/.cjs/.mjs`
-    // by default — which would otherwise pull in this flat config itself.
-    ignores: ['**/*.{js,cjs,mjs}'],
-  },
   {
     // Lint scope: package sources only. Replaces the CLI
     // `packages/*/src --ext ts,tsx` arguments so the targets live

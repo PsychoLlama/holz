@@ -18,13 +18,13 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "@eslint/config-helpers": "^0.6.0",
     "@eslint/js": "^10.0.0",
     "@types/node": "^24.0.0",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.26.0",
     "eslint": "^10.0.0",
     "eslint-plugin-import": "^2.31.0",
+    "jiti": "^2.0.0",
     "lerna": "^9.0.0",
     "prettier": "^3.0.0",
     "turbo": "^2.9.16",

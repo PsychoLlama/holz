@@ -15,7 +15,7 @@
       "outputLogs": "errors-only"
     },
     "//#test:types": {
-      "inputs": ["eslint.config.mjs", "tsconfig.json", "tsconfig.eslint.json"],
+      "inputs": ["eslint.config.ts", "tsconfig.json", "tsconfig.eslint.json"],
       "outputs": [],
       "outputLogs": "errors-only"
     },
@@ -33,7 +33,7 @@
       "inputs": [
         "packages/*/src/**/*.{ts,tsx}",
         "packages/*/tsconfig.json",
-        "eslint.config.mjs",
+        "eslint.config.ts",
         "tsconfig.json"
       ],
       "outputs": ["node_modules/.cache/eslint/**"],
