@@ -1,9 +1,6 @@
 // @ts-check
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
-
-// This package doesn't have type definitions.
-// @ts-expect-error
 import importPlugin from 'eslint-plugin-import';
 
 export default tseslint.config(
