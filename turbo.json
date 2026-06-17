@@ -34,7 +34,8 @@
         "packages/*/src/**/*.{ts,tsx}",
         "packages/*/tsconfig.json",
         "eslint.config.ts",
-        "tsconfig.json"
+        "tsconfig.json",
+        ".gitignore"
       ],
       "outputs": ["node_modules/.cache/eslint/**"],
       "outputLogs": "errors-only"
