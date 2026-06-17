@@ -10,22 +10,25 @@ importers:
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.0
-        version: 10.0.1(eslint@10.5.0)
+        version: 10.0.1(eslint@10.5.0(jiti@2.7.0))
       '@types/node':
         specifier: ^24.0.0
         version: 24.13.2
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.26.0
-        version: 8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0)(typescript@6.0.3))(eslint@10.5.0)(typescript@6.0.3)
+        version: 8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
       '@typescript-eslint/parser':
         specifier: ^8.26.0
-        version: 8.61.0(eslint@10.5.0)(typescript@6.0.3)
+        version: 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
       eslint:
         specifier: ^10.0.0
-        version: 10.5.0
+        version: 10.5.0(jiti@2.7.0)
       eslint-plugin-import:
         specifier: ^2.31.0
-        version: 2.32.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0)(typescript@6.0.3))(eslint@10.5.0)
+        version: 2.32.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))
+      jiti:
+        specifier: ^2.0.0
+        version: 2.7.0
       lerna:
         specifier: ^9.0.0
         version: 9.0.7(@types/node@24.13.2)
@@ -40,7 +43,7 @@ importers:
         version: 6.0.3
       typescript-eslint:
         specifier: ^8.26.0
-        version: 8.61.0(eslint@10.5.0)(typescript@6.0.3)
+        version: 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
 
   packages/holz-ansi-terminal-backend:
     devDependencies:
@@ -61,16 +64,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/holz-console-backend:
     devDependencies:
@@ -91,16 +94,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/holz-core:
     devDependencies:
@@ -115,16 +118,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/holz-env-filter:
     dependencies:
@@ -149,16 +152,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/holz-json-backend:
     devDependencies:
@@ -179,16 +182,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/holz-log-collector:
     devDependencies:
@@ -209,16 +212,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/holz-logger:
     dependencies:
@@ -255,16 +258,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/holz-pattern-filter:
     devDependencies:
@@ -282,16 +285,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/holz-stream-backend:
     devDependencies:
@@ -312,16 +315,16 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^6.0.0
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.0
-        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+        version: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
 packages:
 
@@ -2656,6 +2659,10 @@ packages:
     resolution: {integrity: sha512-CRpFK0RtLriVDGcPPAnR6HMVI8bSR2jnUIgralhauzYQZIb4RH9AtEInTuQr65LmmGggGcRT6HIASxwqsVsmlA==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
+  jiti@2.7.0:
+    resolution: {integrity: sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==}
+    hasBin: true
+
   jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
 
@@ -4296,9 +4303,9 @@ snapshots:
   '@esbuild/win32-x64@0.27.7':
     optional: true
 
-  '@eslint-community/eslint-utils@4.9.1(eslint@10.5.0)':
+  '@eslint-community/eslint-utils@4.9.1(eslint@10.5.0(jiti@2.7.0))':
     dependencies:
-      eslint: 10.5.0
+      eslint: 10.5.0(jiti@2.7.0)
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/regexpp@4.12.2': {}
@@ -4319,9 +4326,9 @@ snapshots:
     dependencies:
       '@types/json-schema': 7.0.15
 
-  '@eslint/js@10.0.1(eslint@10.5.0)':
+  '@eslint/js@10.0.1(eslint@10.5.0(jiti@2.7.0))':
     optionalDependencies:
-      eslint: 10.5.0
+      eslint: 10.5.0(jiti@2.7.0)
 
   '@eslint/object-schema@3.0.5': {}
 
@@ -5086,15 +5093,15 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@typescript-eslint/eslint-plugin@8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0)(typescript@6.0.3))(eslint@10.5.0)(typescript@6.0.3)':
+  '@typescript-eslint/eslint-plugin@8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.2
-      '@typescript-eslint/parser': 8.61.0(eslint@10.5.0)(typescript@6.0.3)
+      '@typescript-eslint/parser': 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
       '@typescript-eslint/scope-manager': 8.61.0
-      '@typescript-eslint/type-utils': 8.61.0(eslint@10.5.0)(typescript@6.0.3)
-      '@typescript-eslint/utils': 8.61.0(eslint@10.5.0)(typescript@6.0.3)
+      '@typescript-eslint/type-utils': 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
       '@typescript-eslint/visitor-keys': 8.61.0
-      eslint: 10.5.0
+      eslint: 10.5.0(jiti@2.7.0)
       ignore: 7.0.5
       natural-compare: 1.4.0
       ts-api-utils: 2.5.0(typescript@6.0.3)
@@ -5102,14 +5109,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.61.0(eslint@10.5.0)(typescript@6.0.3)':
+  '@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       '@typescript-eslint/scope-manager': 8.61.0
       '@typescript-eslint/types': 8.61.0
       '@typescript-eslint/typescript-estree': 8.61.0(typescript@6.0.3)
       '@typescript-eslint/visitor-keys': 8.61.0
       debug: 4.4.3
-      eslint: 10.5.0
+      eslint: 10.5.0(jiti@2.7.0)
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
@@ -5132,13 +5139,13 @@ snapshots:
     dependencies:
       typescript: 6.0.3
 
-  '@typescript-eslint/type-utils@8.61.0(eslint@10.5.0)(typescript@6.0.3)':
+  '@typescript-eslint/type-utils@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       '@typescript-eslint/types': 8.61.0
       '@typescript-eslint/typescript-estree': 8.61.0(typescript@6.0.3)
-      '@typescript-eslint/utils': 8.61.0(eslint@10.5.0)(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
       debug: 4.4.3
-      eslint: 10.5.0
+      eslint: 10.5.0(jiti@2.7.0)
       ts-api-utils: 2.5.0(typescript@6.0.3)
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -5161,13 +5168,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.61.0(eslint@10.5.0)(typescript@6.0.3)':
+  '@typescript-eslint/utils@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.1(eslint@10.5.0)
+      '@eslint-community/eslint-utils': 4.9.1(eslint@10.5.0(jiti@2.7.0))
       '@typescript-eslint/scope-manager': 8.61.0
       '@typescript-eslint/types': 8.61.0
       '@typescript-eslint/typescript-estree': 8.61.0(typescript@6.0.3)
-      eslint: 10.5.0
+      eslint: 10.5.0(jiti@2.7.0)
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
@@ -5189,7 +5196,7 @@ snapshots:
       obug: 2.1.2
       std-env: 4.1.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+      vitest: 4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
 
   '@vitest/expect@4.1.8':
     dependencies:
@@ -5200,13 +5207,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.8(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))':
+  '@vitest/mocker@4.1.8(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.8
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.8':
     dependencies:
@@ -5882,17 +5889,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.13.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint@10.5.0):
+  eslint-module-utils@2.13.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint@10.5.0(jiti@2.7.0)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
-      '@typescript-eslint/parser': 8.61.0(eslint@10.5.0)(typescript@6.0.3)
-      eslint: 10.5.0
+      '@typescript-eslint/parser': 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
+      eslint: 10.5.0(jiti@2.7.0)
       eslint-import-resolver-node: 0.3.10
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0)(typescript@6.0.3))(eslint@10.5.0):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9
@@ -5901,9 +5908,9 @@ snapshots:
       array.prototype.flatmap: 1.3.3
       debug: 3.2.7
       doctrine: 2.1.0
-      eslint: 10.5.0
+      eslint: 10.5.0(jiti@2.7.0)
       eslint-import-resolver-node: 0.3.10
-      eslint-module-utils: 2.13.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint@10.5.0)
+      eslint-module-utils: 2.13.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint@10.5.0(jiti@2.7.0))
       hasown: 2.0.4
       is-core-module: 2.16.2
       is-glob: 4.0.3
@@ -5915,7 +5922,7 @@ snapshots:
       string.prototype.trimend: 1.0.10
       tsconfig-paths: 3.15.0
     optionalDependencies:
-      '@typescript-eslint/parser': 8.61.0(eslint@10.5.0)(typescript@6.0.3)
+      '@typescript-eslint/parser': 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -5932,9 +5939,9 @@ snapshots:
 
   eslint-visitor-keys@5.0.1: {}
 
-  eslint@10.5.0:
+  eslint@10.5.0(jiti@2.7.0):
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.1(eslint@10.5.0)
+      '@eslint-community/eslint-utils': 4.9.1(eslint@10.5.0(jiti@2.7.0))
       '@eslint-community/regexpp': 4.12.2
       '@eslint/config-array': 0.23.5
       '@eslint/config-helpers': 0.6.0
@@ -5964,6 +5971,8 @@ snapshots:
       minimatch: 10.2.5
       natural-compare: 1.4.0
       optionator: 0.9.4
+    optionalDependencies:
+      jiti: 2.7.0
     transitivePeerDependencies:
       - supports-color
 
@@ -6514,6 +6523,8 @@ snapshots:
       '@jest/get-type': 30.1.0
       chalk: 4.1.2
       pretty-format: 30.4.1
+
+  jiti@2.7.0: {}
 
   jju@1.4.0: {}
 
@@ -8039,13 +8050,13 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typescript-eslint@8.61.0(eslint@10.5.0)(typescript@6.0.3):
+  typescript-eslint@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0)(typescript@6.0.3))(eslint@10.5.0)(typescript@6.0.3)
-      '@typescript-eslint/parser': 8.61.0(eslint@10.5.0)(typescript@6.0.3)
+      '@typescript-eslint/eslint-plugin': 8.61.0(@typescript-eslint/parser@8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
+      '@typescript-eslint/parser': 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
       '@typescript-eslint/typescript-estree': 8.61.0(typescript@6.0.3)
-      '@typescript-eslint/utils': 8.61.0(eslint@10.5.0)(typescript@6.0.3)
-      eslint: 10.5.0
+      '@typescript-eslint/utils': 8.61.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3)
+      eslint: 10.5.0(jiti@2.7.0)
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
@@ -8074,7 +8085,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-dts@1.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)):
+  unplugin-dts@1.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       '@rollup/pluginutils': 5.4.0(rollup@4.61.1)
       '@volar/typescript': 2.4.28
@@ -8090,7 +8101,7 @@ snapshots:
       esbuild: 0.27.7
       rolldown: 1.0.3
       rollup: 4.61.1
-      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -8116,13 +8127,13 @@ snapshots:
 
   validate-npm-package-name@6.0.2: {}
 
-  vite-plugin-dts@5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)):
+  vite-plugin-dts@5.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
-      unplugin-dts: 1.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+      unplugin-dts: 1.0.2(@microsoft/api-extractor@7.58.9(@types/node@24.13.2))(esbuild@0.27.7)(rolldown@1.0.3)(rollup@4.61.1)(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
     optionalDependencies:
       '@microsoft/api-extractor': 7.58.9(@types/node@24.13.2)
       rollup: 4.61.1
-      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@vue/language-core'
@@ -8132,17 +8143,17 @@ snapshots:
       - typescript
       - webpack
 
-  vite-tsconfig-paths@6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)):
+  vite-tsconfig-paths@6.1.1(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       debug: 4.4.3
       globrex: 0.1.2
       tsconfck: 3.1.6(typescript@6.0.3)
-      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0):
+  vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -8153,12 +8164,13 @@ snapshots:
       '@types/node': 24.13.2
       esbuild: 0.27.7
       fsevents: 2.3.3
+      jiti: 2.7.0
       yaml: 2.9.0
 
-  vitest@4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)):
+  vitest@4.1.8(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.8
-      '@vitest/mocker': 4.1.8(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0))
+      '@vitest/mocker': 4.1.8(vite@8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.8
       '@vitest/runner': 4.1.8
       '@vitest/snapshot': 4.1.8
@@ -8175,7 +8187,7 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(yaml@2.9.0)
+      vite: 8.0.16(@types/node@24.13.2)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.13.2

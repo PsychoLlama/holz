@@ -69,7 +69,7 @@ describe('JSON backend', () => {
     });
     const logger = createLogger(createJsonBackend({ stream }));
 
-    for (let i = 0; i < 100; i += 1) {
+    for (let iteration = 0; iteration < 100; iteration += 1) {
       logger.info('overwhelming the sink');
     }
 

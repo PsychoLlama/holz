@@ -8,8 +8,9 @@
   "packageManager": "pnpm@11.5.2",
   "scripts": {
     "check": "turbo run prepack test:types test:unit lint fmt-check",
+    "test:types": "tsc -p tsconfig.eslint.json",
     "test:coverage": "turbo run test:coverage",
-    "lint": "eslint packages/*/src --ext ts,tsx --color --cache --cache-location node_modules/.cache/eslint/",
+    "lint": "eslint . --color --cache --cache-location node_modules/.cache/eslint/",
     "fmt-check": "treefmt --ci",
     "release:candidate": "lerna publish --canary --preid rc --dist-tag rc --force-publish --yes"
   },
@@ -23,6 +24,7 @@
     "@typescript-eslint/parser": "^8.26.0",
     "eslint": "^10.0.0",
     "eslint-plugin-import": "^2.31.0",
+    "jiti": "^2.0.0",
     "lerna": "^9.0.0",
     "prettier": "^3.0.0",
     "turbo": "^2.9.16",
