@@ -36,7 +36,7 @@ jobs:
       run:
         shell: nix develop --command bash -eo pipefail {0}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           # Lerna derives canary versions from the latest release tag, so it
           # needs full history and tags, not a shallow clone.
