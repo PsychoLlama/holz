@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>PsychoLlama/renovate-config"],
+  "platformAutomerge": true,
   "packageRules": [
     {
       "description": "The flake owns the pnpm version (managePackageManagerVersions is off); the packageManager field is only a turbo lockfile-parser hint, kept in sync by hand. Skip its bump PRs.",
