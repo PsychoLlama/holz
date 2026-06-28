@@ -10,7 +10,7 @@ import { level, type LogLevel, type Log, type LogProcessor } from '@holz/core';
  *   stream: fs.createWriteStream('my-app.log', { flags: 'a' }),
  * })
  *
- * @see http://ndjson.org
+ * @see https://github.com/ndjson/ndjson-spec
  */
 export const createJsonBackend = ({ stream }: Config): LogProcessor => {
   return (log: Log) => {
