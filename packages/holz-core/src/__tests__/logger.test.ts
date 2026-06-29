@@ -22,6 +22,27 @@ describe('Logger', () => {
     });
   });
 
+  it('allows nested objects and arrays in context', () => {
+    const backend = vi.fn();
+    const logger = createLogger(backend);
+
+    logger.info('Established connection', {
+      host: 'localhost',
+      tags: ['db', 'primary'],
+      retry: { attempts: 3, backoff: { ms: 500 } },
+    });
+
+    expect(backend).toHaveBeenCalledWith(
+      expect.objectContaining({
+        context: {
+          host: 'localhost',
+          tags: ['db', 'primary'],
+          retry: { attempts: 3, backoff: { ms: 500 } },
+        },
+      }),
+    );
+  });
+
   it.each([
     ['trace' as const, 'Look, a dead fly', { urgency: 'high?' }],
     ['debug' as const, 'Made in Britain', { condition: 'fire' }],

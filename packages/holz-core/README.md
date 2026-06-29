@@ -63,7 +63,7 @@ A `Log` object contains the following properties:
 - `message`: The verbatim log message. This property should not contain any interpolated data.
 - `level`: The severity of the log message, expressed as a member of the `LogLevel` enum. The available log levels are, in increasing order of severity: `trace`, `debug`, `info`, `warn`, `error`, `fatal`.
 - `origin`: The source of the log message. This property is an array of strings that typically identifies the library, module, or component that generated the log message, followed by more specific information. This property can be used to filter and group log messages based on their origin.
-- `context`: A dictionary of key-value pairs that provides additional context for the log message. The values in this object must be JSON serializable. Because it's easy to accidentally include unsuitable log context, such as PII or deeply nested objects, the use of nested objects in the context is discouraged.
+- `context`: A dictionary of key-value pairs that provides additional context for the log message. The values in this object must be JSON serializable, except for `error` which must be an `Error` instance.
 
 Here is an example of a log message expressed as a `Log` object:
 
