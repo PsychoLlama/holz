@@ -47,16 +47,7 @@ Alternatively, you can enable logs by setting the `localStorage.debug` property:
 localStorage.debug = 'your-app*';
 ```
 
-For more details, check [the documentation](https://github.com/PsychoLlama/holz/tree/main/packages/holz-logger).
-
-## Rules
-
-To keep logs consistent and useful, the API is designed to follow these two rules:
-
-1. **Don't Interpolate:** Never interpolate data into your log messages. Instead, pass variables as structured data. This makes it easier to search, analyze, and visualize your logs.
-2. **Keep Context Shallow:** While the `log.context` property provides additional context for your log messages, we don't allow nested objects in it. This is to prevent the accidental inclusion of unsuitable log context, like sensitive user data or redux state.
-
-By following these rules, we make sure our logs are well-organized and useful, without compromising on the privacy and security of our users.
+For more details, read [the documentation](https://github.com/PsychoLlama/holz/tree/main/packages/holz-logger).
 
 ## Customizing the Logger
 

@@ -34,10 +34,6 @@ export interface Log {
    *
    * These values must be JSON serializable.
    *
-   * Because it's easy to accidentally include unsuitable log context (e.g.
-   * redux state, PII) nested objects are not allowed. The restriction doesn't
-   * make it impossible, but it makes it harder to miss during code review.
-   *
    * @example { userId: 123, reason: 'disconnect' }
    */
   readonly context: LogContext;
@@ -67,8 +63,17 @@ export type LogLevel = (typeof level)[keyof typeof level];
 
 type JsonPrimitive = string | number | boolean | null | undefined;
 
+/**
+ * Any JSON-serializable value. Supports nested objects and arrays so log
+ * context can carry structured data.
+ */
+export type JsonValue =
+  | JsonPrimitive
+  | ReadonlyArray<JsonValue>
+  | { readonly [key: string]: JsonValue };
+
 export interface JsonContext {
-  [key: string]: JsonPrimitive | ReadonlyArray<JsonPrimitive>;
+  [key: string]: JsonValue;
 }
 
 /**
@@ -96,7 +101,7 @@ export interface CustomContext {
 export type StrictContext<Input> = {
   [Key in keyof Input]: Key extends keyof CustomContext
     ? CustomContext[Key]
-    : JsonPrimitive | ReadonlyArray<JsonPrimitive>;
+    : JsonValue;
 };
 
 /**
