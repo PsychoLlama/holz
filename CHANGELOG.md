@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
+- `[@holz/core]` Widened the log context type to allow arbitrarily deep objects and arrays.
 - `[@holz/json-backend]` The platform-specific `\r\n` was dropped for better portability. All systems write `\n` as the newline character.
 
 ## [0.8.2] - 2025-05-28
