@@ -1,11 +1,13 @@
 <div align="center">
   <h1>Holz</h1>
-  <p>A structured, composable logging framework.</p>
+  <p>Unix-style plugins composing pipelines over structured logs.</p>
 </div>
 
 ## Purpose
 
-Most logging frameworks are destructive. The act of converting logs to strings partially destroys the data it contains. Instead, Holz encourages pipelines of structured data:
+Logging is personal. Every app has unique requirements, but they all do a mix of the same things. Frameworks bloat trying to handle every case.
+
+Holz takes a different approach. The core interface produces structured data without opinions on where it goes:
 
 ```typescript
 logger.info('Sending new user email', { userId: user.id });
@@ -21,11 +23,13 @@ logger.info('Sending new user email', { userId: user.id });
 }
 ```
 
-Each log is sent through a chain of plugins that choose how to filter, transform, serialize, or upload them.
+Logs are passed to one or more plugins: functions that take a log and decide what to do with it. They filter, transform, serialize, batch, or upload.
+
+Holz aims to be **tiny**. Plugins are aggressively optimized for bundle size.
 
 ## Usage
 
-Holz is built on a chain of plugins, but if you want something that Just Works, use the preconfigured bundle:
+If you don't want to bother with plugins, `@holz/logger` is an opinionated package with batteries included.
 
 ```typescript
 import logger from '@holz/logger';
@@ -33,7 +37,7 @@ import logger from '@holz/logger';
 logger.info('Hello, world!');
 ```
 
-That's it! You can use Holz in Node or in the browser.
+It works in both Node and the browser.
 
 By default, logs are hidden. To enable them, set the `DEBUG` environment variable to the namespace(s) you want to see logs for:
 
@@ -49,19 +53,21 @@ localStorage.debug = 'your-app*';
 
 For more details, read [the documentation](https://github.com/PsychoLlama/holz/tree/main/packages/holz-logger).
 
-## Customizing the Logger
+## Plugins
 
-Almost everything in Holz is a plugin. Plugins are functions that take a log and do something with it:
+Everything in Holz is a plugin. Plugins are functions that take a log and do something with it:
 
 ```typescript
-import { createLogger } from '@holz/core';
+import { createLogger, type LogProcessor } from '@holz/core';
 
-const plugin = (log: Log) => {
-  // Print it, save it to a file, pass it to another plugin...
-  // This is up to you.
+const createPlugin: LogProcessor = () => {
+  return (log) => {
+    // Print it, save it to a file, pass it to another plugin.
+    // This is up to you.
+  };
 };
 
-const logger = createLogger(plugin);
+const logger = createLogger(createPlugin());
 ```
 
 Holz has a number of plugins already available. See each package for documentation:
@@ -81,7 +87,7 @@ Holz has a number of plugins already available. See each package for documentati
 
 ### Multiple Logging Destinations
 
-Holz supports forking to different log destinations by using the `combine(...)` operator:
+Holz supports forking to different log destinations by using the `combine(...)` utility:
 
 ```typescript
 import { createLogger, combine } from '@holz/core';
