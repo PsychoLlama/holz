@@ -1,5 +1,8 @@
 name: Release
 
+# npm's trusted publishing (OIDC) only trusts a single workflow file, so both
+# the RC and stable publishers must live here. They never run together: RC
+# fires on every push to main, stable only on a manual dispatch.
 on:
   push:
     branches: [main]
@@ -8,64 +11,107 @@ on:
     # file is Markdown.
     paths-ignore:
       - '**/*.md'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to publish, e.g. v1.2.3 (must already exist on main)'
+        required: true
+        type: string
 
 # Never let two publishes race; a queued run waits rather than cancels so we
-# don't abandon a publish midway.
+# don't abandon a publish midway. RC and stable share the group so a manual
+# stable release also serializes against in-flight RC publishes.
 concurrency:
   group: release
   cancel-in-progress: false
 
-# Minimal by default; the publish job opts into id-token below.
+# Minimal by default; the publish jobs opt into more below.
 permissions:
   contents: read
 
+# Shared by both jobs. Composite actions can't set a job's defaults/env, but
+# workflow-level values apply to every job, so this is the one place both
+# publishers can agree on their shell and color settings.
+env:
+  # Force ANSI color in tools that gate on TTY detection.
+  FORCE_COLOR: '3'
+  CLICOLOR_FORCE: '1'
+defaults:
+  run:
+    # Run every shell step inside the flake's devShell so CI stays in sync with
+    # local dev (single source of truth in flake.nix).
+    shell: nix develop --command bash -eo pipefail {0}
+
 jobs:
   publish-rc:
+    name: Publish RC
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: read
       # Required for npm OIDC trusted publishing (no NPM_TOKEN).
       id-token: write
-    env:
-      # Force ANSI color in tools that gate on TTY detection.
-      FORCE_COLOR: '3'
-      CLICOLOR_FORCE: '1'
-    # Run every shell step inside the flake's devShell so CI stays in
-    # sync with local dev (single source of truth in flake.nix).
-    defaults:
-      run:
-        shell: nix develop --command bash -eo pipefail {0}
     steps:
       - uses: actions/checkout@v7
         with:
-          # Lerna derives canary versions from the latest release tag, so it
-          # needs full history and tags, not a shallow clone.
+          # Lerna derives canary versions with `git describe`, so it needs full
+          # history back to the latest tag — a shallow clone won't reach it.
           fetch-depth: 0
-      - uses: DeterminateSystems/nix-installer-action@v22
-      - uses: DeterminateSystems/magic-nix-cache-action@v14
-        with:
-          use-flakehub: false
-      # No-op that absorbs the first `nix develop` evaluation so its
-      # cost shows up here instead of inflating the next real step.
-      - name: Warm devShell
-        run: 'true'
-      - name: Restore pnpm store
-        uses: actions/cache@v6
-        with:
-          path: ~/.local/share/pnpm/store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-      - name: Restore turbo cache
-        uses: actions/cache@v6
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
-      - run: pnpm install --frozen-lockfile
+      - uses: ./.github/actions/setup
       # Gate the publish on a clean tree. Direct pushes to main skip PR CI,
       # so re-run checks here; turbo's cache makes this a near no-op when CI
       # already passed for this commit.
       - run: pnpm check
       - run: pnpm release:candidate
+
+  publish-stable:
+    name: Publish stable
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      # Required for npm OIDC trusted publishing (no NPM_TOKEN).
+      id-token: write
+      # Required for `gh release create`.
+      contents: write
+    env:
+      TAG: ${{ inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      # Validate before checking anything out: no repo or Nix exists yet, so
+      # this runs in plain bash and fails fast on bad input. The GitHub API
+      # lets us verify the tag without cloning the repo.
+      - name: Validate release tag
+        shell: bash
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          if [[ "$GITHUB_REF_NAME" != "main" ]]; then
+            echo "::error::Stable releases must be dispatched from main (got '$GITHUB_REF_NAME')."
+            exit 1
+          fi
+          if ! gh api "repos/$REPO/git/ref/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::Tag '$TAG' does not exist. Create it during release prep (see docs/internal/publishing.md)."
+            exit 1
+          fi
+          # base...head: a tag on main is "identical" to or "behind" main.
+          status=$(gh api "repos/$REPO/compare/main...$TAG" --jq '.status')
+          if [[ "$status" != identical && "$status" != behind ]]; then
+            echo "::error::Tag '$TAG' is not reachable from main (compare: $status). Stable releases must ship commits already on main."
+            exit 1
+          fi
+      # Check out only the tagged commit — the publish needs that tree, nothing
+      # more.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.tag }}
+      - uses: ./.github/actions/setup
+      # Re-verify the tree is green before shipping it. Near no-op via turbo cache.
+      - run: pnpm check
+      # `from-package` publishes the versions committed at this tag; it neither
+      # bumps versions nor creates tags (release prep already did that).
+      - name: Publish to npm
+        run: pnpm exec lerna publish from-package --dist-tag latest --yes
+      # `--notes-from-tag` reuses the annotated tag's message (the changelog
+      # section) as the release notes.
+      - name: Create GitHub release
+        run: gh release create "$TAG" --title "$TAG" --notes-from-tag --verify-tag
