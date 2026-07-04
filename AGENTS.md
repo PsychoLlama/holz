@@ -3,6 +3,7 @@
 - pnpm (workspace)
 - Turbo
 - Nix (flakes)
+- Lerna (fixed mode versioning)
 
 ## Structure
 
