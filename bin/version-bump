@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-pnpm exec lerna version \
+# Bump every package to an explicit stable version as part of manual release
+# prep. Publishing happens later in CI (see docs/internal/publishing.md); this
+# only rewrites versions in the working tree.
+
+if (( $# != 1 )); then
+  echo "Usage: $0 <version>   e.g. $0 1.2.3" >&2
+  exit 1
+fi
+
+# --no-git-tag-version: leave the commit and tag to us (they must also capture
+#   the changelog edit).
+# --no-push: never touch the remote.
+# --force-publish: keep fixed-mode versions in lockstep even when a package has
+#   no changes of its own.
+pnpm exec lerna version "$1" \
   --no-push \
-  --force-publish \
   --no-git-tag-version \
-  --preid rc \
-  "$@"
+  --force-publish \
+  --yes

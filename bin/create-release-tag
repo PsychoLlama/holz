@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Create the annotated git tag for a stable release. The message is read from
+# stdin and should be the CHANGELOG.md section for this version — the release
+# workflow publishes it verbatim as the GitHub release notes. Run this after
+# committing the version bump and changelog (see docs/internal/publishing.md).
+#
+# --cleanup=whitespace keeps the changelog's `###` subheadings, which git's
+# default cleanup would otherwise strip as comments.
+#
+#   bin/create-release-tag v1.2.3 <<'EOF'
+#   ### Added
+#
+#   - Something worth shipping.
+#   EOF
+
+if (( $# != 1 )); then
+  echo "Usage: $0 <tag> < <release-notes>   e.g. $0 v1.2.3 <<'EOF' ... EOF" >&2
+  exit 1
+fi
+
+tag=$1
+notes=$(cat)
+
+if [[ -z "${notes//[[:space:]]/}" ]]; then
+  echo "No release notes on stdin. Pipe the changelog section for $tag." >&2
+  exit 1
+fi
+
+git tag --annotate --cleanup=whitespace "$tag" --message "$notes"
+echo "Created tag $tag. Review it with: git show $tag" >&2
