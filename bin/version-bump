@@ -20,3 +20,10 @@ pnpm exec lerna version "$1" \
   --no-git-tag-version \
   --force-publish \
   --yes
+
+# lerna rewrites lerna.json without a trailing newline, which fails the
+# `fmt-check` step of `pnpm check` (treefmt/prettier). Re-run the same formatter
+# so the release-prep commit is already clean. Full-tree (not scoped to the
+# files lerna touched) so it stays correct if a future lerna rewrites something
+# else; prep starts from a clean tree, so nothing unrelated gets reformatted.
+treefmt
