@@ -7,10 +7,12 @@
   "license": "MIT",
   "packageManager": "pnpm@11.5.2",
   "scripts": {
-    "check": "turbo run prepack test:types test:unit lint fmt-check",
+    "check": "turbo run prepack test:types test:unit lint fmt-check knip:dev knip:production",
     "test:types": "tsc -p tsconfig.eslint.json",
     "test:coverage": "turbo run test:coverage",
     "lint": "eslint . --color --cache --cache-location node_modules/.cache/eslint/",
+    "knip:dev": "knip",
+    "knip:production": "knip --production --include dependencies,unlisted,binaries,unresolved",
     "fmt-check": "treefmt --ci",
     "release:candidate": "lerna publish --canary --preid rc --dist-tag rc --force-publish --yes"
   },
@@ -20,11 +22,10 @@
   "devDependencies": {
     "@eslint/js": "^10.0.0",
     "@types/node": "^24.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.26.0",
-    "@typescript-eslint/parser": "^8.26.0",
     "eslint": "^10.0.0",
     "eslint-plugin-import": "^2.31.0",
     "jiti": "^2.0.0",
+    "knip": "^6.13.1",
     "lerna": "^9.0.0",
     "prettier": "^3.0.0",
     "turbo": "^2.9.16",

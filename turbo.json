@@ -29,6 +29,38 @@
       "outputs": ["coverage/**"],
       "outputLogs": "errors-only"
     },
+    "//#knip:dev": {
+      "inputs": [
+        "packages/*/src/**",
+        "packages/*/package.json",
+        "knip.config.ts",
+        "*.ts"
+      ],
+      "outputs": [],
+      "outputLogs": "errors-only"
+    },
+    "//#knip:production": {
+      "dependsOn": [
+        "@holz/ansi-terminal-backend#prepack",
+        "@holz/console-backend#prepack",
+        "@holz/core#prepack",
+        "@holz/env-filter#prepack",
+        "@holz/json-backend#prepack",
+        "@holz/log-collector#prepack",
+        "@holz/logger#prepack",
+        "@holz/pattern-filter#prepack",
+        "@holz/stream-backend#prepack"
+      ],
+      "inputs": [
+        "packages/*/src/**",
+        "packages/*/package.json",
+        "packages/*/dist/**",
+        "knip.config.ts",
+        "*.ts"
+      ],
+      "outputs": [],
+      "outputLogs": "errors-only"
+    },
     "//#lint": {
       "inputs": [
         "packages/*/src/**/*.{ts,tsx}",
