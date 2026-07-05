@@ -1,6 +1,6 @@
 {
   "name": "@holz/json-backend",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Print logs as newline-delimited JSON.",
   "type": "module",
   "repository": {

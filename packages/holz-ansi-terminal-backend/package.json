@@ -1,6 +1,6 @@
 {
   "name": "@holz/ansi-terminal-backend",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "An ANSI terminal backend for Holz",
   "type": "module",
   "repository": {

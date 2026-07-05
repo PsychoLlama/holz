@@ -1,6 +1,6 @@
 {
   "name": "@holz/pattern-filter",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Only print log messages that match a pattern",
   "type": "module",
   "repository": {

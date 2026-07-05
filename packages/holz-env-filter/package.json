@@ -1,6 +1,6 @@
 {
   "name": "@holz/env-filter",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Filter logs based on the current environment.",
   "type": "module",
   "repository": {

@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [UNRELEASED]
 
+## [0.9.0] - 2026-07-05
+
 ### Added
 
 - **AI disclosure:** Holz was built with Aider and Claude from the start. Agents will increasingly contribute, but quality remains a priority.
@@ -172,7 +174,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/core]` Initial release.
 - `[@holz/logger]` Initial release.
 
-[UNRELEASED]: https://github.com/PsychoLlama/holz/compare/v0.8.2...HEAD
+[UNRELEASED]: https://github.com/PsychoLlama/holz/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/PsychoLlama/holz/compare/v0.8.2...v0.9.0
 [0.8.2]: https://github.com/PsychoLlama/holz/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/PsychoLlama/holz/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/PsychoLlama/holz/compare/v0.7.0...v0.8.0
