@@ -29,7 +29,7 @@
     "lerna": "^9.0.0",
     "prettier": "^3.0.0",
     "turbo": "^2.9.16",
-    "typescript": "^6.0.0",
+    "typescript": "^7.0.0",
     "typescript-eslint": "^8.26.0"
   }
 }
