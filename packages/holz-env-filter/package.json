@@ -41,7 +41,7 @@
     "@holz/pattern-filter": "workspace:^"
   },
   "peerDependencies": {
-    "@holz/core": "^0.8.0"
+    "@holz/core": "^0.8.0 || ^0.9.0"
   },
   "devDependencies": {
     "@holz/core": "workspace:^",
