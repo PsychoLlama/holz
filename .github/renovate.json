@@ -7,6 +7,11 @@
       "description": "The flake owns the pnpm version (managePackageManagerVersions is off); the packageManager field is only a turbo lockfile-parser hint, kept in sync by hand. Skip its bump PRs.",
       "matchDepTypes": ["packageManager"],
       "enabled": false
+    },
+    {
+      "description": "Monorepo versions are managed at publish time by lerna.",
+      "matchPackageNames": ["@holz/**"],
+      "enabled": false
     }
   ]
 }
