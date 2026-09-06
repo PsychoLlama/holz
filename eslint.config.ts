@@ -25,6 +25,11 @@ export default defineConfig(
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
     },
+    settings: {
+      'import/resolver': {
+        typescript: true,
+      },
+    },
     languageOptions: {
       parserOptions: {
         project: true,
@@ -39,8 +44,7 @@ export default defineConfig(
       '@typescript-eslint/no-unused-vars': 'error',
       'import/order': 'error',
 
-      // This is already handled by TypeScript.
-      'import/no-unresolved': 'off',
+      'import/no-unresolved': 'error',
 
       // Import hygiene
       'import/first': 'error',
@@ -49,7 +53,10 @@ export default defineConfig(
       'import/no-useless-path-segments': 'error',
       'import/no-self-import': 'error',
       'import/no-mutable-exports': 'error',
-      'import/no-extraneous-dependencies': 'error',
+      'import/no-extraneous-dependencies': [
+        'error',
+        { devDependencies: ['**/__tests__/**'] },
+      ],
       'import/no-relative-packages': 'error',
 
       // General opinionated checks

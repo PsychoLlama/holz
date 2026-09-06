@@ -4,3 +4,4 @@ packages:
 allowBuilds:
   esbuild: true
   nx: true
+  unrs-resolver: true
