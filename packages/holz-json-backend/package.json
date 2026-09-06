@@ -36,6 +36,9 @@
     "test:coverage": "vitest run --coverage --color --passWithNoTests",
     "test:types": "tsc"
   },
+  "peerDependencies": {
+    "@holz/core": "^0.9.0"
+  },
   "devDependencies": {
     "@holz/core": "workspace:^",
     "@microsoft/api-extractor": "^7.58.8",
