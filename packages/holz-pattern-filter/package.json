@@ -10,6 +10,7 @@
   },
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "types": "./dist/holz-pattern-filter.d.ts",
       "require": "./dist/holz-pattern-filter.cjs",
       "import": "./dist/holz-pattern-filter.js"
@@ -22,7 +23,9 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/**/__tests__"
   ],
   "keywords": [
     "holz",

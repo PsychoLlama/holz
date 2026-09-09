@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [UNRELEASED]
 
+### Changed
+
+- Packages ship source files alongside `dist/` again, reversing the removal in `0.8.1`. The change improves Knip's static analysis for developers working on Holz.
+
 ## [0.9.0] - 2026-07-05
 
 ### Added
