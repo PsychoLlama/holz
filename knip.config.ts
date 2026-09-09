@@ -25,6 +25,10 @@ const config = {
 
   workspaces: {
     '.': {
+      // Repo scripts. Not reachable from any package, and not yet run by a
+      // pnpm script, so knip needs them named explicitly.
+      entry: ['bin/*.mts'],
+
       // treefmt is provided by the nix devShell, not pnpm, but the root
       // `fmt-check` script shells out to it.
       ignoreBinaries: ['treefmt'],
