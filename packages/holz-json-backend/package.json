@@ -10,6 +10,7 @@
   },
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "types": "./dist/holz-json-backend.d.ts",
       "require": "./dist/holz-json-backend.cjs",
       "import": "./dist/holz-json-backend.js"
@@ -22,7 +23,9 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/**/__tests__"
   ],
   "keywords": [
     "holz-backend",

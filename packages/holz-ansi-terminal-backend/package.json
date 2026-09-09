@@ -10,6 +10,7 @@
   },
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "types": "./dist/holz-ansi-terminal-backend.d.ts",
       "require": "./dist/holz-ansi-terminal-backend.cjs",
       "import": "./dist/holz-ansi-terminal-backend.js"
@@ -22,7 +23,9 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/**/__tests__"
   ],
   "keywords": [
     "holz-backend",

@@ -10,6 +10,7 @@
   },
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "types": "./dist/holz-log-collector.d.ts",
       "require": "./dist/holz-log-collector.cjs",
       "import": "./dist/holz-log-collector.js"
@@ -22,7 +23,9 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/**/__tests__"
   ],
   "keywords": [
     "holz",
