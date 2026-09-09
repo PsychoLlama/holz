@@ -27,3 +27,10 @@ pnpm exec lerna version "$1" \
 # files lerna touched) so it stays correct if a future lerna rewrites something
 # else; prep starts from a clean tree, so nothing unrelated gets reformatted.
 treefmt
+
+# Peer selectors are hand-written and lerna won't touch them, so a bump can
+# leave them excluding the version they now ship beside. Runs last: the bump is
+# already applied and formatted when this exits non-zero, so fixing the
+# selectors is an edit in place, not a rollback. Re-run this script (idempotent)
+# or the check alone to confirm.
+"$(dirname "$0")/check-peer-ranges.mts"
