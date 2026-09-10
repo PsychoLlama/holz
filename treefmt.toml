@@ -9,6 +9,7 @@ includes = [
   "*.mjs",
   "*.cjs",
   "*.ts",
+  "*.mts",
   "*.tsx",
   "*.json",
   "*.md",

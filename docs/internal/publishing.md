@@ -35,6 +35,18 @@ bin/version-bump 1.2.3
 This rewrites every package to `1.2.3` (Lerna fixed mode) without committing,
 tagging, or pushing.
 
+Note: packages with `peerDependencies` need special care. The update script
+flags selectors unsatisfied by the new version.
+
+A failure leaves the bump applied in the working tree, so fix the selectors in
+place. Either:
+
+- Widen (`^0.8.0 || ^0.9.0`) when the release didn't break plugins.
+- Replace (`^0.9.0`) when it did, forcing consumers to upgrade together.
+
+Re-run `bin/version-bump <version>` to confirm (idempotent). Or run
+`bin/check-peer-ranges.mts` alone.
+
 ### 2. Update the changelog
 
 Edit `CHANGELOG.md` following [Keep a Changelog](https://keepachangelog.com/):
