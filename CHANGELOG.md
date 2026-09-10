@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 - Peer dependencies drifted to incompatible ranges with the last release. They've been widened. New tooling catches it going forward.
+- `[@holz/console-backend]` Parts of `@holz/core` were bundled rather than externalized. The duplication made it a little bigger than necessary.
 
 ## [0.9.0] - 2026-07-05
 

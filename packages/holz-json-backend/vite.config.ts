@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
+import { builtinModules } from 'node:module';
 import { defineConfig } from 'vite';
-import { builtinModules } from 'module';
 import dts from 'vite-plugin-dts';
 
 export default async () => {
