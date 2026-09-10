@@ -1,4 +1,4 @@
-import { readFile } from 'fs/promises';
+import { readFile } from 'node:fs/promises';
 import { builtinModules } from 'node:module';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
