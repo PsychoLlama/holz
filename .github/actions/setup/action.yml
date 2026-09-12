@@ -8,7 +8,7 @@ runs:
   using: composite
   steps:
     - uses: DeterminateSystems/nix-installer-action@v22
-    - uses: DeterminateSystems/magic-nix-cache-action@v14
+    - uses: DeterminateSystems/magic-nix-cache-action@v15
       with:
         use-flakehub: false
     # No-op that absorbs the first `nix develop` evaluation so its cost shows
