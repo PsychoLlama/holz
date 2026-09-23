@@ -73,7 +73,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -103,7 +103,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -127,7 +127,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -161,7 +161,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -191,7 +191,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -221,7 +221,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -267,7 +267,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -294,7 +294,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -324,7 +324,7 @@ importers:
         version: 8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vite-tsconfig-paths:
         specifier: ^6.0.0
         version: 6.1.1(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -2158,8 +2158,8 @@ packages:
   confbox@0.1.8:
     resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
 
-  confbox@0.2.4:
-    resolution: {integrity: sha512-ysOGlgTFbN2/Y6Cg3Iye8YKulHw+R2fNXHrgSmXISQdMnomY6eNDprVdW9R5xBguEqI954+S6709UyiO7B+6OQ==}
+  confbox@0.3.1:
+    resolution: {integrity: sha512-cKUSoKa8YxFZZSmraVi7onONx3amu77ngK3kGpsYHDH7drPwCRkQE1RYMPlLRrMtnciRj274XNRxcHxnKmDSnA==}
 
   content-type@2.1.0:
     resolution: {integrity: sha512-mj7UPXE0jaqaOsukNZRUEfEi2AcL7C/vwmwcHV0O97eO1E1pxBZuyjlZrx5seTaNBg1U6+o35wpa35Qfcc+7ag==}
@@ -3574,8 +3574,8 @@ packages:
   pkg-types@1.3.1:
     resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
 
-  pkg-types@2.3.1:
-    resolution: {integrity: sha512-y+ichcgc2LrADuhLNAx8DFjVfgz91pRxfZdI3UDhxHvcVEZsenLO+7XaU5vOp0u/7V/wZ+plyuQxtrDlZJ+yeg==}
+  pkg-types@2.3.3:
+    resolution: {integrity: sha512-j/lCFdcppV0JxWpCEITdbDltBxPP6cHT+yNJ6Go2OgoSA9518X847X9z0p6LtA4Nc16+eQzCZjRrWanTGvHJ5w==}
 
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
@@ -4086,8 +4086,8 @@ packages:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
 
-  unplugin-dts@1.1.0:
-    resolution: {integrity: sha512-KZJ+qk+lmd9dJY/PJvDRFL9BUtVubKDiX7Ai/X6mlkCArcQNzwmupKjVqHbRA42uqO5ZfFRFc+o8/OCbQ1GonQ==}
+  unplugin-dts@1.1.1:
+    resolution: {integrity: sha512-Z2VcabC0hjYuzF62oWmZXVoxagkM8bUWgqUy+dotoJTPnooR5mNaxbpv63JCmcaxdGCW2Bb75omK6FOryOYCRg==}
     peerDependencies:
       '@microsoft/api-extractor': '>=7'
       '@rspack/core': ^1
@@ -4136,8 +4136,8 @@ packages:
     resolution: {integrity: sha512-IUoow1YUtvoBBC06dXs8bR8B9vuA3aJfmQNKMoaPG/OFsPmoQvw8xh+6Ye25Gx9DQhoEom3Pcu9MKHerm/NpUQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  vite-plugin-dts@5.1.0:
-    resolution: {integrity: sha512-MfLc2G+mXPUDGGxpHQeYbdunavFP9UpT9yxiAsTgUXRxfEd3HqysSAM4E72jhz5eIz3OOexCHkqiVlQq8ok9/A==}
+  vite-plugin-dts@5.1.1:
+    resolution: {integrity: sha512-U5dyX3DPFvHB+gaJIULn90kKGsXNYllyJ3vn491Y+LGu2nL5Fb8z7YgurN/Pi6ZFlnGljh2wSM0ZbFogSh4yAg==}
     peerDependencies:
       '@microsoft/api-extractor': '>=7'
       rollup: '>=3'
@@ -5955,7 +5955,7 @@ snapshots:
 
   confbox@0.1.8: {}
 
-  confbox@0.2.4: {}
+  confbox@0.3.1: {}
 
   content-type@2.1.0: {}
 
@@ -7103,7 +7103,7 @@ snapshots:
   local-pkg@1.2.1:
     dependencies:
       mlly: 1.8.2
-      pkg-types: 2.3.1
+      pkg-types: 2.3.3
       quansync: 0.2.11
 
   locate-path@5.0.0:
@@ -7772,9 +7772,9 @@ snapshots:
       mlly: 1.8.2
       pathe: 2.0.3
 
-  pkg-types@2.3.1:
+  pkg-types@2.3.3:
     dependencies:
-      confbox: 0.2.4
+      confbox: 0.3.1
       exsolve: 1.1.1
       pathe: 2.0.3
 
@@ -8334,7 +8334,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-dts@1.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)):
+  unplugin-dts@1.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)):
     dependencies:
       '@rollup/pluginutils': 5.4.0(rollup@4.61.1)
       '@volar/typescript': 2.4.28
@@ -8402,9 +8402,9 @@ snapshots:
 
   validate-npm-package-name@6.0.2: {}
 
-  vite-plugin-dts@5.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)):
+  vite-plugin-dts@5.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)):
     dependencies:
-      unplugin-dts: 1.1.0(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(supports-color@7.2.0)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
+      unplugin-dts: 1.1.1(@microsoft/api-extractor@7.59.1(@types/node@24.13.6))(esbuild@0.27.7)(rolldown@1.2.8)(rollup@4.61.1)(typescript@6.0.3)(vite@8.3.0(@types/node@24.13.6)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
     optionalDependencies:
       '@microsoft/api-extractor': 7.59.1(@types/node@24.13.6)
       rollup: 4.61.1
