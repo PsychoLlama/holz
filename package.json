@@ -33,7 +33,7 @@
     "prettier": "^3.0.0",
     "semver": "^7.8.5",
     "turbo": "^2.9.16",
-    "typescript": "^6.0.0",
+    "typescript": "^7.0.0",
     "typescript-eslint": "^8.26.0"
   }
 }
