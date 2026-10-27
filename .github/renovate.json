@@ -4,7 +4,7 @@
   "platformAutomerge": true,
   "packageRules": [
     {
-      "description": "The flake owns the pnpm version (managePackageManagerVersions is off); the packageManager field is only a turbo lockfile-parser hint, kept in sync by hand. Skip its bump PRs.",
+      "description": "The flake owns the pnpm version. The packageManager field mirrors it exactly so pnpm and Renovate use the same binary. Bump it alongside the flake, not on its own.",
       "matchDepTypes": ["packageManager"],
       "enabled": false
     },
