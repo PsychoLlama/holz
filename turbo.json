@@ -1,5 +1,7 @@
 {
   "$schema": "https://turborepo.com/schema.json",
+  "agentGuidance": false,
+  "noUpdateNotifier": true,
   "ui": "stream",
   "globalDependencies": ["tsconfig.json"],
   "globalPassThroughEnv": ["FORCE_COLOR", "CLICOLOR_FORCE"],

@@ -5,7 +5,7 @@
   "repository": "https://github.com/github:PsychoLlama/holz",
   "author": "Jesse Gibson",
   "license": "MIT",
-  "packageManager": "pnpm@11.5.2",
+  "packageManager": "pnpm@12.9.0",
   "scripts": {
     "check": "turbo run prepack test:types test:unit lint fmt-check check:peer-deps knip:dev knip:production",
     "test:types": "tsc -p tsconfig.eslint.json",
