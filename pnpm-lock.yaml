@@ -232,9 +232,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -262,9 +259,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -286,9 +280,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -320,9 +311,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -350,9 +338,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -380,9 +365,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -426,9 +408,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -453,9 +432,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -483,9 +459,6 @@ importers:
       vite-plugin-dts:
         specifier: ^5.0.0
         version: 5.1.2(@microsoft/api-extractor@7.59.4(@types/node@26.6.5))(esbuild@0.27.7)(rolldown@1.2.15)(rollup@4.61.1)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
-      vite-tsconfig-paths:
-        specifier: ^6.0.0
-        version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
       vitest:
         specifier: ^5.0.0
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1))
@@ -2781,9 +2754,6 @@ packages:
     resolution: {integrity: sha512-DpLKbNU4WylpxJykQujfCcwYWiV/Jhm50Goo0wrVILAv5jOr9d+H+UR3PhSCD2rCCEIg0uc+G+muBTwD54JhDQ==}
     engines: {node: '>= 0.4'}
 
-  globrex@0.1.2:
-    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
-
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
@@ -3991,17 +3961,6 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4'
 
-  tsconfck@3.1.6:
-    resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
-    engines: {node: ^18 || >=20}
-    deprecated: unmaintained
-    hasBin: true
-    peerDependencies:
-      typescript: ^5.0.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
   tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==}
 
@@ -4159,11 +4118,6 @@ packages:
         optional: true
       vite:
         optional: true
-
-  vite-tsconfig-paths@6.1.1:
-    resolution: {integrity: sha512-2cihq7zliibCCZ8P9cKJrQBkfgdvcFkOOc3Y02o3GWUDLgqjWsZudaoiuOwO/gzTzy17cS5F7ZPo4bsnS4DGkg==}
-    peerDependencies:
-      vite: '*'
 
   vite@8.3.5:
     resolution: {integrity: sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ==}
@@ -6541,8 +6495,6 @@ snapshots:
       define-properties: 1.2.1
       gopd: 1.2.0
 
-  globrex@0.1.2: {}
-
   gopd@1.2.0: {}
 
   graceful-fs@4.2.11: {}
@@ -8027,10 +7979,6 @@ snapshots:
     dependencies:
       typescript: 6.0.3
 
-  tsconfck@3.1.6(typescript@6.0.3):
-    optionalDependencies:
-      typescript: 6.0.3
-
   tsconfig-paths@3.15.0:
     dependencies:
       '@types/json5': 0.0.29
@@ -8221,16 +8169,6 @@ snapshots:
       - supports-color
       - typescript
       - webpack
-
-  vite-tsconfig-paths@6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)):
-    dependencies:
-      debug: 4.4.3(supports-color@8.1.1)
-      globrex: 0.1.2
-      tsconfck: 3.1.6(typescript@6.0.3)
-      vite: 8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
 
   vite@8.3.5(@types/node@26.6.5)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.1):
     dependencies:
