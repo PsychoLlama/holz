@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [UNRELEASED]
 
+### Added
+
+- `[@holz/json-backend]` New `/serialize` package export. Useful for environments outside Node.
+
+### Changed
+
+- `[@holz/json-backend]` Only `context.error` is serialized as an error. Errors under other context keys use JSON's default serializer.
+
 ## [0.9.1] - 2026-09-10
 
 ### Changed
