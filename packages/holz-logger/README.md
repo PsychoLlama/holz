@@ -50,4 +50,4 @@ Holz is suitable for use in other libraries as you can enable logs when needed, 
 
 Although the bundled logger is opinionated and not configurable, you can easily use the individual plugins to create a logger tailored to your needs. The logger's foundation is the `createLogger(backend)` function from [`@holz/core`](https://github.com/PsychoLlama/holz/tree/main/packages/holz-core), and you can select the plugins to include based on your requirements.
 
-For more details check out [the documentation](https://github.com/PsychoLlama/holz/blob/main/README.md) or look at [an example](https://github.com/PsychoLlama/holz/blob/main/packages/holz-logger/src/index.browser.ts).
+For more details check out [the documentation](https://github.com/PsychoLlama/holz/blob/main/README.md) or look at [an example](https://github.com/PsychoLlama/holz/blob/main/packages/holz-logger/src/processor.browser.ts).

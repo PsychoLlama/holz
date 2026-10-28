@@ -22,10 +22,7 @@
       "@holz/json-backend/marshal": [
         "./packages/holz-json-backend/src/marshal/index.ts"
       ],
-      "@holz/logger": [
-        "./packages/holz-logger/src/index.node.ts",
-        "./packages/holz-logger/src/index.browser.ts"
-      ],
+      "@holz/logger": ["./packages/holz-logger/src/index.ts"],
       "@holz/pattern-filter": ["./packages/holz-pattern-filter/src/index.ts"],
       "@holz/stream-backend": ["./packages/holz-stream-backend/src/index.ts"],
       "@holz/log-collector": ["./packages/holz-log-collector/src/index.ts"]
