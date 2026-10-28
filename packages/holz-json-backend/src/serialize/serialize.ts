@@ -1,15 +1,30 @@
 import { level, type LogLevel, type Log, type LogContext } from '@holz/core';
 
 /**
- * Serializes a log as a single line of JSON (without the trailing newline).
+ * Serializes a log as a single JSON line.
+ * Keys ordered to make visually skimming a log file easier.
  */
 export const serialize = (log: Log): string => {
-  // Key order matters for skimming a log file. Filters come first.
   return JSON.stringify({
+    // Convert the numeric level to a label. Lossless, as keys map back to
+    // `level`. Improves readability and use with tools like `jq`.
     level: labelForLevel[log.level],
+
+    // Converted purely for human readability. `jq` doesn't have millis-level
+    // date precision, so optimizing for tools is somewhat moot.
     timestamp: new Date(log.timestamp).toISOString(),
+
+    // No changes needed here.
     message: log.message,
     origin: log.origin,
+
+    // Everything in context is meant to be JSON-serializable, with the
+    // exception (heh) of errors. Those are kinda important. We make
+    // a best-effort attempt at converting `context.error` to
+    // a JSON-serializable value.
+    //
+    // This is NOT a lossless conversion. Values are too dynamic. But we can
+    // handle the vast majority.
     context: normalizeContext(log.context),
   });
 };
