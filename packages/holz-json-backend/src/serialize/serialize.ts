@@ -10,7 +10,7 @@ export const serialize = (log: Log): string => {
     timestamp: new Date(log.timestamp).toISOString(),
     message: log.message,
     origin: log.origin,
-    context: serializeContext(log.context),
+    context: normalizeContext(log.context),
   });
 };
 
@@ -19,7 +19,7 @@ export const serialize = (log: Log): string => {
  * of any logging system. Only `context.error` is treated as one (per
  * `CustomContext`); errors anywhere else are left to `JSON.stringify`.
  */
-const serializeContext = (context: LogContext) => ({
+const normalizeContext = (context: LogContext) => ({
   ...context,
   error: normalizeValue(context.error),
 });
@@ -27,16 +27,14 @@ const serializeContext = (context: LogContext) => ({
 /** Unwraps an error, its cause chain, and any aggregated errors. */
 export const describeError = (error: Error): Record<string, unknown> => ({
   ...error, // Some custom errors have important custom properties.
+
   name: error.name,
   message: error.message,
   cause: normalizeValue(error.cause),
 
-  // `AggregateError` collects its constituent failures in a non-enumerable
-  // `errors` array that the spread above misses. Pull it explicitly so those
-  // underlying errors survive serialization.
-  ...(error instanceof AggregateError && {
-    errors: error.errors.map(normalizeValue),
-  }),
+  // Special case for `AggregateError` which carries a list of errors. Or, one
+  // hopes they're errors. It's not like JS enforces it.
+  errors: (error as AggregateError).errors?.map(normalizeValue),
 });
 
 const normalizeValue = (value: unknown) =>

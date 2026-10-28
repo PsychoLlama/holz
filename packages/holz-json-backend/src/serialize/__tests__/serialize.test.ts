@@ -224,4 +224,22 @@ describe('describeError', () => {
       cause: { name: 'TypeError', message: 'Inner', cause: undefined },
     });
   });
+
+  it('passes through non-error values in an AggregateError', () => {
+    const error = new AggregateError(
+      [new Error('Real error'), 'plain string', { code: 'EACCES' }, null],
+      'Mixed failures',
+    );
+
+    expect(describeError(error)).toEqual({
+      name: 'AggregateError',
+      message: 'Mixed failures',
+      errors: [
+        { name: 'Error', message: 'Real error' },
+        'plain string',
+        { code: 'EACCES' },
+        null,
+      ],
+    });
+  });
 });
