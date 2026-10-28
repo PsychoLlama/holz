@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`JSON backend > prints the logs to the writable stream 1`] = `
-"{"level":"debug","time":"2020-06-15T12:00:00.000Z","msg":"shout","origin":[]}
-{"level":"info","time":"2020-06-15T12:00:00.000Z","msg":"normal","origin":[]}
-{"level":"warn","time":"2020-06-15T12:00:00.000Z","msg":"hmmmm","origin":[]}
-{"level":"error","time":"2020-06-15T12:00:00.000Z","msg":"oh no","origin":[]}
+"{"level":"debug","timestamp":"2020-06-15T12:00:00.000Z","message":"shout","origin":[],"context":{}}
+{"level":"info","timestamp":"2020-06-15T12:00:00.000Z","message":"normal","origin":[],"context":{}}
+{"level":"warn","timestamp":"2020-06-15T12:00:00.000Z","message":"hmmmm","origin":[],"context":{}}
+{"level":"error","timestamp":"2020-06-15T12:00:00.000Z","message":"oh no","origin":[],"context":{}}
 "
 `;

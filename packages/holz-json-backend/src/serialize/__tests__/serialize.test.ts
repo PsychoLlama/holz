@@ -51,16 +51,16 @@ describe('serialize', () => {
     });
 
     expect(lines).toEqual([
-      '{"level":"info","time":"2020-06-15T12:00:00.000Z","msg":"hello","origin":["app","module"],"ctx":{"reqId":"abc"}}',
+      '{"level":"info","timestamp":"2020-06-15T12:00:00.000Z","message":"hello","origin":["app","module"],"context":{"reqId":"abc"}}',
     ]);
   });
 
-  it('omits empty context', () => {
+  it('includes empty context', () => {
     const { logger, lines } = createSink();
 
     logger.info('content');
 
-    expect(lines).toEqual([expect.not.stringContaining('"ctx"')]);
+    expect(lines).toEqual([expect.stringContaining('"context":{}')]);
   });
 
   it('escapes newlines and carriage returns', () => {
@@ -195,7 +195,7 @@ describe('serialize', () => {
     });
 
     expect(lines).toEqual([
-      expect.stringContaining('"ctx":{"failure":{},"nested":{"error":{}}}'),
+      expect.stringContaining('"context":{"failure":{},"nested":{"error":{}}}'),
     ]);
   });
 
@@ -208,8 +208,8 @@ describe('serialize', () => {
     logger.error('content', { error: 'plain string' });
 
     expect(lines).toEqual([
-      expect.stringContaining('"ctx":{"error":{"code":"EACCES"}}'),
-      expect.stringContaining('"ctx":{"error":"plain string"}'),
+      expect.stringContaining('"context":{"error":{"code":"EACCES"}}'),
+      expect.stringContaining('"context":{"error":"plain string"}'),
     ]);
   });
 });
