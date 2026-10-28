@@ -1,8 +1,11 @@
 import { defineConfig } from 'vite';
-import dts from 'unplugin-dts/vite';
+import { dts } from 'rolldown-plugin-dts';
 
 export default defineConfig({
-  plugins: [dts({ bundleTypes: true, compilerOptions: { paths: {} } })],
+  plugins: [dts({ compilerOptions: { paths: {} } })],
+  // Vite strips TypeScript from every `.ts` module, including the `.d.ts`
+  // files rolldown-plugin-dts bundles, which leaves them empty.
+  oxc: { exclude: [/\.d\.ts$/] },
   build: {
     lib: {
       entry: {
