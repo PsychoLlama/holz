@@ -25,7 +25,7 @@ const serializeContext = (context: LogContext) => ({
 });
 
 /** Unwraps an error, its cause chain, and any aggregated errors. */
-export const serializeError = (error: Error): Record<string, unknown> => ({
+export const describeError = (error: Error): Record<string, unknown> => ({
   ...error, // Some custom errors have important custom properties.
   name: error.name,
   message: error.message,
@@ -40,7 +40,7 @@ export const serializeError = (error: Error): Record<string, unknown> => ({
 });
 
 const unwrapError = (value: unknown) =>
-  value instanceof Error ? serializeError(value) : value;
+  value instanceof Error ? describeError(value) : value;
 
 /**
  * Slightly heavier than logging the number, but easier to process
