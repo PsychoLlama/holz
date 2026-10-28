@@ -21,7 +21,7 @@ export const serialize = (log: Log): string => {
  */
 const serializeContext = (context: LogContext) => ({
   ...context,
-  error: unwrapError(context.error),
+  error: normalizeValue(context.error),
 });
 
 /** Unwraps an error, its cause chain, and any aggregated errors. */
@@ -29,17 +29,17 @@ export const describeError = (error: Error): Record<string, unknown> => ({
   ...error, // Some custom errors have important custom properties.
   name: error.name,
   message: error.message,
-  cause: unwrapError(error.cause),
+  cause: normalizeValue(error.cause),
 
   // `AggregateError` collects its constituent failures in a non-enumerable
   // `errors` array that the spread above misses. Pull it explicitly so those
   // underlying errors survive serialization.
   ...(error instanceof AggregateError && {
-    errors: error.errors.map(unwrapError),
+    errors: error.errors.map(normalizeValue),
   }),
 });
 
-const unwrapError = (value: unknown) =>
+const normalizeValue = (value: unknown) =>
   value instanceof Error ? describeError(value) : value;
 
 /**
