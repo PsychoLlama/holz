@@ -1,4 +1,5 @@
-import { level, type LogLevel, type Log, type LogProcessor } from '@holz/core';
+import { level } from '@holz/core';
+import type { LogLevel, Log, LogProcessor } from '@holz/core';
 import * as ansi from './ansi-codes';
 
 /**

@@ -1,10 +1,10 @@
-import {
-  level,
-  type LogContext,
-  type LogLevel,
-  type LogProcessor,
-  type StrictContext,
-  type Logger,
+import { level } from './types';
+import type {
+  LogContext,
+  LogLevel,
+  LogProcessor,
+  StrictContext,
+  Logger,
 } from './types';
 
 const createNamespacedLogger = (

@@ -1,13 +1,8 @@
 import type { Writable } from 'node:stream';
 import { EOL } from 'node:os';
 import { inspect } from 'node:util';
-import {
-  level,
-  type LogLevel,
-  type Log,
-  type LogContext,
-  type LogProcessor,
-} from '@holz/core';
+import { level } from '@holz/core';
+import type { LogLevel, Log, LogContext, LogProcessor } from '@holz/core';
 
 /**
  * Prints logs to a writable stream in plaintext. Optimized for log files.

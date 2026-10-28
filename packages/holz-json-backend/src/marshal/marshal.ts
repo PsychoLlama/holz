@@ -1,4 +1,5 @@
-import { level, type LogLevel, type Log, type LogContext } from '@holz/core';
+import { level } from '@holz/core';
+import type { LogLevel, Log, LogContext } from '@holz/core';
 
 /**
  * Converts a log to a JSON-serializable object.
