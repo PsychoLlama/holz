@@ -21,7 +21,7 @@ export const serialize = (log: Log): string => {
  */
 const normalizeContext = (context: LogContext) => ({
   ...context,
-  error: normalizeValue(context.error),
+  error: describeErrorField(context.error),
 });
 
 /** Unwraps an error, its cause chain, and any aggregated errors. */
@@ -30,15 +30,24 @@ export const describeError = (error: Error): Record<string, unknown> => ({
 
   name: error.name,
   message: error.message,
-  cause: normalizeValue(error.cause),
+  cause: describeErrorField(error.cause),
 
-  // Special case for `AggregateError` which carries a list of errors. Or, one
-  // hopes they're errors. It's not like JS enforces it.
-  errors: (error as AggregateError).errors?.map(normalizeValue),
+  // Special case for `AggregateError` which carries a list of errors. Well,
+  // we hope they're errors. It's not like JS enforces it.
+  errors: describeErrorField((error as AggregateError).errors),
 });
 
-const normalizeValue = (value: unknown) =>
-  value instanceof Error ? describeError(value) : value;
+const describeErrorField = (value: unknown): unknown => {
+  if (value instanceof Error) {
+    return describeError(value);
+  }
+
+  if (Array.isArray(value)) {
+    return value.map(describeErrorField);
+  }
+
+  return value;
+};
 
 /**
  * Slightly heavier than logging the number, but easier to process

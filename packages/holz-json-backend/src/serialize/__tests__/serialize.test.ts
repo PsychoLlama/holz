@@ -242,4 +242,32 @@ describe('describeError', () => {
       ],
     });
   });
+
+  it('passes through a custom `errors` field that is not an array', () => {
+    class ValidationError extends Error {
+      name = 'ValidationError';
+      errors = { email: 'required' };
+    }
+
+    expect(describeError(new ValidationError('Invalid input'))).toEqual({
+      name: 'ValidationError',
+      message: 'Invalid input',
+      errors: { email: 'required' },
+    });
+  });
+
+  it('describes each error when `cause` is an array of errors', () => {
+    const error = new Error('Outer', {
+      cause: [new Error('First cause'), new TypeError('Second cause')],
+    });
+
+    expect(describeError(error)).toEqual({
+      name: 'Error',
+      message: 'Outer',
+      cause: [
+        { name: 'Error', message: 'First cause' },
+        { name: 'TypeError', message: 'Second cause' },
+      ],
+    });
+  });
 });
