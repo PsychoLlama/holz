@@ -12,14 +12,12 @@
     ".": {
       "source": "./src/index.ts",
       "types": "./dist/holz-json-backend.d.ts",
-      "require": "./dist/holz-json-backend.cjs",
-      "import": "./dist/holz-json-backend.js"
+      "default": "./dist/holz-json-backend.js"
     },
     "./marshal": {
       "source": "./src/marshal/index.ts",
       "types": "./dist/marshal.d.ts",
-      "require": "./dist/marshal.cjs",
-      "import": "./dist/marshal.js"
+      "default": "./dist/marshal.js"
     }
   },
   "publishConfig": {
@@ -50,11 +48,10 @@
   },
   "devDependencies": {
     "@holz/core": "workspace:^",
-    "@microsoft/api-extractor": "^7.58.8",
     "@types/node": "^26.0.0",
     "@vitest/coverage-v8": "^5.0.0",
+    "rolldown-plugin-dts": "^0.28.8",
     "typescript": "^6.0.0",
-    "unplugin-dts": "^1.1.2",
     "vite": "^8.0.0",
     "vitest": "^5.0.0"
   }

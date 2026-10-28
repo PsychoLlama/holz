@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `[@holz/json-backend]` Only `context.error` is serialized as an error. Errors under other context keys use JSON's default serializer.
 - `[@holz/json-backend]` Arrays in `.cause` and `.errors` are recursively unwrapped.
 
+### Removed
+
+- CommonJS builds are no longer included. LTS Node supports ESM transparently. Jest is an outlier and [requires config](https://jestjs.io/docs/ecmascript-modules). Please submit an issue if this breaks a modern tool.
+
 ## [0.9.1] - 2026-09-10
 
 ### Changed

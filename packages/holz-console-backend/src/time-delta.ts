@@ -8,7 +8,7 @@ const day = 24 * hour;
  *
  * Inspired by the `ms` package. Thanks TJ.
  */
-export const timeDelta = (now: Date, then: Date = now) => {
+export const timeDelta = (now: Date, then: Date = now): string => {
   const offset = now.getTime() - then.getTime();
   const distance = Math.abs(offset);
   const sign = offset < 0 ? '' : '+';

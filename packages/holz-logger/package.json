@@ -13,14 +13,12 @@
       "browser": {
         "source": "./src/index.browser.ts",
         "types": "./dist/browser-logger.d.ts",
-        "import": "./dist/browser-logger.js",
-        "require": "./dist/browser-logger.cjs"
+        "default": "./dist/browser-logger.js"
       },
       "default": {
         "source": "./src/index.node.ts",
         "types": "./dist/server-logger.d.ts",
-        "import": "./dist/server-logger.js",
-        "require": "./dist/server-logger.cjs"
+        "default": "./dist/server-logger.js"
       }
     }
   },
@@ -58,11 +56,10 @@
     "@holz/stream-backend": "workspace:^"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.58.8",
     "@types/node": "^26.0.0",
     "@vitest/coverage-v8": "^5.0.0",
+    "rolldown-plugin-dts": "^0.28.8",
     "typescript": "^6.0.0",
-    "unplugin-dts": "^1.1.2",
     "vite": "^8.0.0",
     "vitest": "^5.0.0"
   }

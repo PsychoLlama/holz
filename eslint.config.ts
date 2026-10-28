@@ -40,6 +40,9 @@ export default defineConfig(
     rules: {
       '@typescript-eslint/no-use-before-define': 'off',
       '@typescript-eslint/consistent-type-imports': 'error',
+      // `rolldown-plugin-dts` drops `import { type X }` from bundled
+      // declarations when it's the file's only import.
+      'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
       '@typescript-eslint/no-deprecated': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
       'import/order': 'error',

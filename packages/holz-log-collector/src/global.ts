@@ -10,7 +10,7 @@ const MATCH_ALL = () => true;
 export const setGlobalLogCollector = ({
   processor,
   condition: match = MATCH_ALL,
-}: InterceptorConfig) => {
+}: InterceptorConfig): void => {
   globalScope[COLLECTOR_SYMBOL] = { processor, condition: match };
 };
 
@@ -18,7 +18,7 @@ export const setGlobalLogCollector = ({
  * Remove the global log collector restoring defaults. Safe to call regardless
  * of whether one is set.
  */
-export const unsetGlobalLogCollector = () => {
+export const unsetGlobalLogCollector = (): void => {
   delete globalScope[COLLECTOR_SYMBOL];
 };
 
@@ -38,7 +38,9 @@ export const globalScope = globalThis as unknown as GlobalContext;
 
 // Stored in the global scope. Uses the symbol registry in case multiple
 // versions of Holz are loaded in the same context.
-export const COLLECTOR_SYMBOL = Symbol.for('@holz/log-collector');
+export const COLLECTOR_SYMBOL: unique symbol = Symbol.for(
+  '@holz/log-collector',
+);
 
 interface GlobalContext {
   [COLLECTOR_SYMBOL]?: Required<InterceptorConfig>;

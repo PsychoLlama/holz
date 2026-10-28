@@ -12,8 +12,7 @@
     ".": {
       "source": "./src/index.ts",
       "types": "./dist/holz-log-collector.d.ts",
-      "require": "./dist/holz-log-collector.cjs",
-      "import": "./dist/holz-log-collector.js"
+      "default": "./dist/holz-log-collector.js"
     }
   },
   "publishConfig": {
@@ -44,11 +43,10 @@
   },
   "devDependencies": {
     "@holz/core": "workspace:^",
-    "@microsoft/api-extractor": "^7.58.8",
     "@types/node": "^26.0.0",
     "@vitest/coverage-v8": "^5.0.0",
+    "rolldown-plugin-dts": "^0.28.8",
     "typescript": "^6.0.0",
-    "unplugin-dts": "^1.1.2",
     "vite": "^8.0.0",
     "vitest": "^5.0.0"
   }
