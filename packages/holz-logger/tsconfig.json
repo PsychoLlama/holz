@@ -2,9 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "isolatedDeclarations": true,
-    // Resolve `#processor` to source, not the build output.
-    "customConditions": ["source"]
+    "isolatedDeclarations": true
   },
   "include": ["src"]
 }

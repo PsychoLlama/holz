@@ -27,7 +27,18 @@ export default defineConfig(
     },
     settings: {
       'import/resolver': {
-        typescript: true,
+        // Doesn't read `customConditions` from tsconfig. Mirror it so
+        // workspace packages resolve to source, not the build output.
+        typescript: {
+          conditionNames: [
+            'source',
+            'types',
+            'import',
+            'require',
+            'node',
+            'default',
+          ],
+        },
       },
     },
     languageOptions: {
