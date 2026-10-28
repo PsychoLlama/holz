@@ -31,21 +31,19 @@ Lean on your environment's tools (`journalctl`) or use a package like [rotating-
 The default backend assumes a NodeJS environment. For other envs, use the JSON serializer exported from `/serialize`.
 
 ```ts
-import { serialize } from '@holz/json-backend/serialize';
+import serialize from '@holz/json-backend/serialize';
 
 // Stream logs as NDJSON.
 const jsonStream = new ReadableStream<Uint8Array>({
-  start(controller) {
-    for (const log of logs) {
-      const encoder = new TextEncoder();
+  async start(controller) {
+    const encoder = new TextEncoder();
 
-      for await (const log of readLogStream()) {
-        const encoded = encoder.encode(`${serialize(log)}\n`);
-        controller.enqueue(encoded);
-      }
-
-      controller.close();
+    for await (const log of readLogStream()) {
+      const encoded = encoder.encode(`${serialize(log)}\n`);
+      controller.enqueue(encoded);
     }
+
+    controller.close();
   },
 });
 ```
