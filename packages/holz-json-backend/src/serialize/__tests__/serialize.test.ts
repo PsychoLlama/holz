@@ -1,5 +1,5 @@
 import { createLogger } from '@holz/core';
-import { serialize } from '../serialize';
+import { serialize, serializeError } from '../serialize';
 
 const CURRENT_TIME = new Date('2020-06-15T12:00:00.000Z');
 
@@ -211,5 +211,17 @@ describe('serialize', () => {
       expect.stringContaining('"context":{"error":{"code":"EACCES"}}'),
       expect.stringContaining('"context":{"error":"plain string"}'),
     ]);
+  });
+});
+
+describe('serializeError', () => {
+  it('returns a plain object', () => {
+    const error = new Error('Outer', { cause: new TypeError('Inner') });
+
+    expect(serializeError(error)).toEqual({
+      name: 'Error',
+      message: 'Outer',
+      cause: { name: 'TypeError', message: 'Inner', cause: undefined },
+    });
   });
 });
