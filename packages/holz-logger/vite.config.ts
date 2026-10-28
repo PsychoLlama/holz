@@ -9,14 +9,17 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        'server-logger': 'src/index.node.ts',
-        'browser-logger': 'src/index.browser.ts',
+        index: 'src/index.ts',
+        'processor.browser': 'src/processor.browser.ts',
+        'processor.node': 'src/processor.node.ts',
       },
       formats: ['es'],
     },
     rolldownOptions: {
       // Only workspace packages and Node builtins are allowed at runtime.
-      external: [/^node:/, /^@holz\//],
+      // `#processor` stays external so the consumer's bundler picks the
+      // runtime variant through the `imports` conditions.
+      external: [/^node:/, /^@holz\//, '#processor'],
     },
   },
 });

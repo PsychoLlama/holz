@@ -10,16 +10,19 @@
   },
   "exports": {
     ".": {
-      "browser": {
-        "source": "./src/index.browser.ts",
-        "types": "./dist/browser-logger.d.ts",
-        "default": "./dist/browser-logger.js"
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "imports": {
+    "#processor": {
+      "source": {
+        "browser": "./src/processor.browser.ts",
+        "default": "./src/processor.node.ts"
       },
-      "default": {
-        "source": "./src/index.node.ts",
-        "types": "./dist/server-logger.d.ts",
-        "default": "./dist/server-logger.js"
-      }
+      "browser": "./dist/processor.browser.js",
+      "default": "./dist/processor.node.js"
     }
   },
   "publishConfig": {

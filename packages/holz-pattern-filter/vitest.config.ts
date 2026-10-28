@@ -1,8 +1,10 @@
+import { defaultServerConditions } from 'vite';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  resolve: {
-    tsconfigPaths: true,
+  ssr: {
+    // Resolve workspace packages to source, not the build output.
+    resolve: { conditions: ['source', ...defaultServerConditions] },
   },
   test: {
     globals: true,
