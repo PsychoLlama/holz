@@ -13,6 +13,12 @@ describe('toJSON', () => {
     return { logger, lines };
   };
 
+  /** Errors include stack traces, so compare them as parsed objects. */
+  const parseError = (line: string) =>
+    (JSON.parse(line) as { context: { error: unknown } }).context.error;
+
+  const stack: unknown = expect.any(String);
+
   beforeEach(() => {
     vi.useFakeTimers({
       now: CURRENT_TIME,
@@ -83,11 +89,11 @@ describe('toJSON', () => {
       error: new RangeError('Testing NDJSON errors'),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"RangeError","message":"Testing NDJSON errors"}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'RangeError',
+      message: 'Testing NDJSON errors',
+      stack,
+    });
   });
 
   it('detects and includes error causes', () => {
@@ -99,11 +105,12 @@ describe('toJSON', () => {
       }),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"Error","message":"Testing NDJSON errors","cause":{"name":"Error","message":"Cause"}}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'Error',
+      message: 'Testing NDJSON errors',
+      stack,
+      cause: { name: 'Error', message: 'Cause', stack },
+    });
   });
 
   it('serializes a cause that is not an error', () => {
@@ -115,11 +122,12 @@ describe('toJSON', () => {
       }),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"Error","message":"Testing NDJSON errors","cause":{"code":"EACCES","retryable":false}}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'Error',
+      message: 'Testing NDJSON errors',
+      stack,
+      cause: { code: 'EACCES', retryable: false },
+    });
   });
 
   it('serializes a primitive cause', () => {
@@ -129,11 +137,12 @@ describe('toJSON', () => {
       error: new Error('Testing NDJSON errors', { cause: 'plain string' }),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"Error","message":"Testing NDJSON errors","cause":"plain string"}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'Error',
+      message: 'Testing NDJSON errors',
+      stack,
+      cause: 'plain string',
+    });
   });
 
   it('unpacks the constituent errors of an AggregateError', () => {
@@ -146,11 +155,15 @@ describe('toJSON', () => {
       ),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"AggregateError","message":"Everything failed","errors":[{"name":"Error","message":"First failure"},{"name":"TypeError","message":"Second failure"}]}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'AggregateError',
+      message: 'Everything failed',
+      stack,
+      errors: [
+        { name: 'Error', message: 'First failure', stack },
+        { name: 'TypeError', message: 'Second failure', stack },
+      ],
+    });
   });
 
   it('detects a cause alongside an AggregateError', () => {
@@ -162,11 +175,13 @@ describe('toJSON', () => {
       }),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"AggregateError","message":"Outer","cause":{"name":"Error","message":"Root cause"},"errors":[{"name":"Error","message":"Inner"}]}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'AggregateError',
+      message: 'Outer',
+      stack,
+      cause: { name: 'Error', message: 'Root cause', stack },
+      errors: [{ name: 'Error', message: 'Inner', stack }],
+    });
   });
 
   it('includes any enumerable properties on the object', () => {
@@ -215,13 +230,22 @@ describe('toJSON', () => {
 });
 
 describe('errorToJSON', () => {
+  const stack: unknown = expect.any(String);
+
+  it('includes the stack trace', () => {
+    const error = new Error('Testing stack traces');
+
+    expect(errorToJSON(error)).toHaveProperty('stack', error.stack);
+  });
+
   it('returns a plain object', () => {
     const error = new Error('Outer', { cause: new TypeError('Inner') });
 
     expect(errorToJSON(error)).toEqual({
       name: 'Error',
       message: 'Outer',
-      cause: { name: 'TypeError', message: 'Inner', cause: undefined },
+      stack,
+      cause: { name: 'TypeError', message: 'Inner', stack, cause: undefined },
     });
   });
 
@@ -234,8 +258,9 @@ describe('errorToJSON', () => {
     expect(errorToJSON(error)).toEqual({
       name: 'AggregateError',
       message: 'Mixed failures',
+      stack,
       errors: [
-        { name: 'Error', message: 'Real error' },
+        { name: 'Error', message: 'Real error', stack },
         'plain string',
         { code: 'EACCES' },
         null,
@@ -252,6 +277,7 @@ describe('errorToJSON', () => {
     expect(errorToJSON(new ValidationError('Invalid input'))).toEqual({
       name: 'ValidationError',
       message: 'Invalid input',
+      stack,
       errors: { email: 'required' },
     });
   });
@@ -264,9 +290,10 @@ describe('errorToJSON', () => {
     expect(errorToJSON(error)).toEqual({
       name: 'Error',
       message: 'Outer',
+      stack,
       cause: [
-        { name: 'Error', message: 'First cause' },
-        { name: 'TypeError', message: 'Second cause' },
+        { name: 'Error', message: 'First cause', stack },
+        { name: 'TypeError', message: 'Second cause', stack },
       ],
     });
   });

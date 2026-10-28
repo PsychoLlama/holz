@@ -40,6 +40,9 @@ export const errorToJSON = (error: Error): Record<string, unknown> => ({
   // Special case for `AggregateError` which carries a list of errors. Well,
   // we hope they're errors. It's not like JS enforces it.
   errors: errorFieldToJSON((error as AggregateError).errors),
+
+  // Invaluable when needed, but costly in terms of noise.
+  stack: error.stack,
 });
 
 const errorFieldToJSON = (value: unknown): unknown => {
