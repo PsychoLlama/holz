@@ -12,8 +12,7 @@
     ".": {
       "source": "./src/index.ts",
       "types": "./dist/holz-stream-backend.d.ts",
-      "require": "./dist/holz-stream-backend.cjs",
-      "import": "./dist/holz-stream-backend.js"
+      "default": "./dist/holz-stream-backend.js"
     }
   },
   "publishConfig": {

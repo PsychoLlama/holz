@@ -23,13 +23,10 @@ export default async () => {
           'server-logger': 'src/index.node.ts',
           'browser-logger': 'src/index.browser.ts',
         },
-        formats: ['es', 'cjs'],
+        formats: ['es'],
       },
       rollupOptions: {
         external: dependencies.concat(peerDependencies).concat(builtins),
-        output: {
-          exports: 'named',
-        },
       },
     },
   });

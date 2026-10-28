@@ -12,8 +12,7 @@
     ".": {
       "source": "./src/index.ts",
       "types": "./dist/holz-core.d.ts",
-      "require": "./dist/holz-core.cjs",
-      "import": "./dist/holz-core.js"
+      "default": "./dist/holz-core.js"
     }
   },
   "publishConfig": {

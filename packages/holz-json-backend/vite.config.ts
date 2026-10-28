@@ -23,13 +23,10 @@ export default async () => {
           'holz-json-backend': './src/index.ts',
           marshal: './src/marshal/index.ts',
         },
-        formats: ['es', 'cjs'],
+        formats: ['es'],
       },
       rollupOptions: {
         external: dependencies.concat(peerDependencies).concat(builtins),
-        output: {
-          exports: 'named',
-        },
       },
     },
   });

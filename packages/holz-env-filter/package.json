@@ -12,8 +12,7 @@
     ".": {
       "source": "./src/index.ts",
       "types": "./dist/holz-env-filter.d.ts",
-      "require": "./dist/holz-env-filter.cjs",
-      "import": "./dist/holz-env-filter.js"
+      "default": "./dist/holz-env-filter.js"
     }
   },
   "publishConfig": {

@@ -12,8 +12,7 @@
     ".": {
       "source": "./src/index.ts",
       "types": "./dist/holz-ansi-terminal-backend.d.ts",
-      "require": "./dist/holz-ansi-terminal-backend.cjs",
-      "import": "./dist/holz-ansi-terminal-backend.js"
+      "default": "./dist/holz-ansi-terminal-backend.js"
     }
   },
   "publishConfig": {

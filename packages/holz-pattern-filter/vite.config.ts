@@ -21,13 +21,10 @@ export default async () => {
       lib: {
         entry: './src/index.ts',
         fileName: 'holz-pattern-filter',
-        formats: ['es', 'cjs'],
+        formats: ['es'],
       },
       rollupOptions: {
         external: dependencies.concat(peerDependencies).concat(builtins),
-        output: {
-          exports: 'named',
-        },
       },
     },
   });

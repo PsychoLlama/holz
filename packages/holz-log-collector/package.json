@@ -12,8 +12,7 @@
     ".": {
       "source": "./src/index.ts",
       "types": "./dist/holz-log-collector.d.ts",
-      "require": "./dist/holz-log-collector.cjs",
-      "import": "./dist/holz-log-collector.js"
+      "default": "./dist/holz-log-collector.js"
     }
   },
   "publishConfig": {

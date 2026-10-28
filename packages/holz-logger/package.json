@@ -13,14 +13,12 @@
       "browser": {
         "source": "./src/index.browser.ts",
         "types": "./dist/browser-logger.d.ts",
-        "import": "./dist/browser-logger.js",
-        "require": "./dist/browser-logger.cjs"
+        "default": "./dist/browser-logger.js"
       },
       "default": {
         "source": "./src/index.node.ts",
         "types": "./dist/server-logger.d.ts",
-        "import": "./dist/server-logger.js",
-        "require": "./dist/server-logger.cjs"
+        "default": "./dist/server-logger.js"
       }
     }
   },
