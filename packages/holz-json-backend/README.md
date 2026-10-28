@@ -25,3 +25,27 @@ The `stream` option specifies where the logs will be written to. You can use any
 Long-lived processes or noisy services can fill up the disk, given enough time.
 
 Lean on your environment's tools (`journalctl`) or use a package like [rotating-file-stream](https://github.com/iccicci/rotating-file-stream) to prevent files from growing unbounded.
+
+## Custom Destinations
+
+The default backend assumes a NodeJS environment. For other envs, use the JSON serializer exported from `/serialize`.
+
+```ts
+import { serialize } from '@holz/json-backend/serialize';
+
+// Stream logs as NDJSON.
+const jsonStream = new ReadableStream<Uint8Array>({
+  start(controller) {
+    for (const log of logs) {
+      const encoder = new TextEncoder();
+
+      for await (const log of readLogStream()) {
+        const encoded = encoder.encode(`${serialize(log)}\n`);
+        controller.enqueue(encoded);
+      }
+
+      controller.close();
+    }
+  },
+});
+```
