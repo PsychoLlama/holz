@@ -18,18 +18,21 @@ export const toJSON = (log: Log): Record<string, unknown> => {
     message: log.message,
     origin: log.origin,
 
-    // Everything in context is meant to be JSON-serializable, with the
-    // exception (heh) of errors. Those are kinda important. We make
-    // a best-effort attempt at converting `context.error` to
-    // a JSON-serializable value.
-    //
-    // This is NOT a lossless conversion. Values are too dynamic. But we can
-    // handle the vast majority.
+    // Everything in context is meant to be JSON-serializable with the
+    // exception (heh) of errors. Attempt a naive conversion.
     context: contextToJSON(log.context),
   };
 };
 
-/** Unwraps an error, its cause chain, and any aggregated errors. */
+/**
+ * Best-effort attempt at converting `Error` instances to serializable JSON.
+ *
+ * These are among the most important logs, but the default behavior produces
+ * an empty object.
+ *
+ * This is NOT a lossless conversion. Values are too dynamic, especially
+ * considering custom errors. But it should handle the vast majority.
+ */
 export const errorToJSON = (error: Error): Record<string, unknown> => ({
   ...error, // Some custom errors have important custom properties.
 
@@ -61,9 +64,11 @@ const errorFieldToJSON = (value: unknown): unknown => {
 };
 
 /**
- * Errors are not JSON serializable, but errors are naturally a crucial aspect
- * of any logging system. Only `context.error` is treated as one (per
- * `CustomContext`); errors anywhere else are left to `JSON.stringify`.
+ * Types require `context.error` to be an `Error` instance. Everything else is
+ * restricted to JSON values.
+ *
+ * `errorToJSON` is exported as an escape hatch. Internally, we only handle
+ * `context.error`. Consumers with more advanced cases have to eject.
  */
 const contextToJSON = (context: LogContext) => ({
   ...context,
