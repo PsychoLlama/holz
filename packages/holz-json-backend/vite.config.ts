@@ -21,7 +21,7 @@ export default async () => {
       lib: {
         entry: {
           'holz-json-backend': './src/index.ts',
-          serialize: './src/serialize/index.ts',
+          marshal: './src/marshal/index.ts',
         },
         formats: ['es', 'cjs'],
       },

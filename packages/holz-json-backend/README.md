@@ -28,10 +28,10 @@ Lean on your environment's tools (`journalctl`) or use a package like [rotating-
 
 ## Custom Destinations
 
-The default backend assumes a NodeJS environment. For other envs, use `toJSON` exported from `/serialize`.
+The default backend assumes a NodeJS environment. For other envs, use `toJSON` exported from `/marshal`.
 
 ```ts
-import { toJSON } from '@holz/json-backend/serialize';
+import { toJSON } from '@holz/json-backend/marshal';
 
 // Stream logs as NDJSON.
 const jsonStream = new ReadableStream<Uint8Array>({
