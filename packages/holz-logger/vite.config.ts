@@ -1,33 +1,19 @@
-import { readFile } from 'node:fs/promises';
-import { builtinModules } from 'node:module';
 import { defineConfig } from 'vite';
 import dts from 'unplugin-dts/vite';
 
-export default async () => {
-  const pkg = JSON.parse(await readFile('./package.json', 'utf-8'));
-  const dependencies = Object.keys(pkg.dependencies ?? {});
-  const peerDependencies = Object.keys(pkg.peerDependencies ?? {});
-  const builtins = builtinModules.map((name) => `node:${name}`);
-
-  return defineConfig({
-    plugins: [
-      dts({
-        bundleTypes: true,
-        pathsToAliases: false,
-        compilerOptions: { paths: {}, rootDir: 'src' },
-      }),
-    ],
-    build: {
-      lib: {
-        entry: {
-          'server-logger': 'src/index.node.ts',
-          'browser-logger': 'src/index.browser.ts',
-        },
-        formats: ['es'],
+export default defineConfig({
+  plugins: [dts({ bundleTypes: true, compilerOptions: { paths: {} } })],
+  build: {
+    lib: {
+      entry: {
+        'server-logger': 'src/index.node.ts',
+        'browser-logger': 'src/index.browser.ts',
       },
-      rollupOptions: {
-        external: dependencies.concat(peerDependencies).concat(builtins),
-      },
+      formats: ['es'],
     },
-  });
-};
+    rolldownOptions: {
+      // Only workspace packages and Node builtins are allowed at runtime.
+      external: [/^node:/, /^@holz\//],
+    },
+  },
+});
