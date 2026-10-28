@@ -8,11 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- `[@holz/json-backend]` New `/serialize` package export. Useful for environments outside Node.
+- `[@holz/json-backend]` New `/marshal` package export. `toJSON` and `errorToJSON` expose the core serializer. Useful for environments outside Node.
+- `[@holz/json-backend]` Errors now include stack traces, reversing a design tradeoff between file size, tooling, and readability.
 
 ### Changed
 
+- `[@holz/json-backend]` **Breaking:** Fields renamed to match `Log`: `time` is now `timestamp`, `msg` is now `message`, and `ctx` is now `context`.
+- `[@holz/json-backend]` `context` is always included, even when empty.
 - `[@holz/json-backend]` Only `context.error` is serialized as an error. Errors under other context keys use JSON's default serializer.
+- `[@holz/json-backend]` Arrays in `.cause` and `.errors` are recursively unwrapped.
 
 ## [0.9.1] - 2026-09-10
 

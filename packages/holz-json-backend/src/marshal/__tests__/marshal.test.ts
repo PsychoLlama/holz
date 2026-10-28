@@ -1,17 +1,23 @@
 import { createLogger } from '@holz/core';
-import { serialize } from '../serialize';
+import { toJSON, errorToJSON } from '../marshal';
 
 const CURRENT_TIME = new Date('2020-06-15T12:00:00.000Z');
 
-describe('serialize', () => {
+describe('toJSON', () => {
   const createSink = () => {
     const lines: Array<string> = [];
     const logger = createLogger((log) => {
-      lines.push(serialize(log));
+      lines.push(JSON.stringify(toJSON(log)));
     });
 
     return { logger, lines };
   };
+
+  /** Errors include stack traces, so compare them as parsed objects. */
+  const parseError = (line: string) =>
+    (JSON.parse(line) as { context: { error: unknown } }).context.error;
+
+  const stack: unknown = expect.any(String);
 
   beforeEach(() => {
     vi.useFakeTimers({
@@ -51,16 +57,16 @@ describe('serialize', () => {
     });
 
     expect(lines).toEqual([
-      '{"level":"info","time":"2020-06-15T12:00:00.000Z","msg":"hello","origin":["app","module"],"ctx":{"reqId":"abc"}}',
+      '{"level":"info","timestamp":"2020-06-15T12:00:00.000Z","message":"hello","origin":["app","module"],"context":{"reqId":"abc"}}',
     ]);
   });
 
-  it('omits empty context', () => {
+  it('includes empty context', () => {
     const { logger, lines } = createSink();
 
     logger.info('content');
 
-    expect(lines).toEqual([expect.not.stringContaining('"ctx"')]);
+    expect(lines).toEqual([expect.stringContaining('"context":{}')]);
   });
 
   it('escapes newlines and carriage returns', () => {
@@ -83,11 +89,11 @@ describe('serialize', () => {
       error: new RangeError('Testing NDJSON errors'),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"RangeError","message":"Testing NDJSON errors"}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'RangeError',
+      message: 'Testing NDJSON errors',
+      stack,
+    });
   });
 
   it('detects and includes error causes', () => {
@@ -99,11 +105,12 @@ describe('serialize', () => {
       }),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"Error","message":"Testing NDJSON errors","cause":{"name":"Error","message":"Cause"}}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'Error',
+      message: 'Testing NDJSON errors',
+      stack,
+      cause: { name: 'Error', message: 'Cause', stack },
+    });
   });
 
   it('serializes a cause that is not an error', () => {
@@ -115,11 +122,12 @@ describe('serialize', () => {
       }),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"Error","message":"Testing NDJSON errors","cause":{"code":"EACCES","retryable":false}}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'Error',
+      message: 'Testing NDJSON errors',
+      stack,
+      cause: { code: 'EACCES', retryable: false },
+    });
   });
 
   it('serializes a primitive cause', () => {
@@ -129,11 +137,12 @@ describe('serialize', () => {
       error: new Error('Testing NDJSON errors', { cause: 'plain string' }),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"Error","message":"Testing NDJSON errors","cause":"plain string"}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'Error',
+      message: 'Testing NDJSON errors',
+      stack,
+      cause: 'plain string',
+    });
   });
 
   it('unpacks the constituent errors of an AggregateError', () => {
@@ -146,11 +155,15 @@ describe('serialize', () => {
       ),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"AggregateError","message":"Everything failed","errors":[{"name":"Error","message":"First failure"},{"name":"TypeError","message":"Second failure"}]}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'AggregateError',
+      message: 'Everything failed',
+      stack,
+      errors: [
+        { name: 'Error', message: 'First failure', stack },
+        { name: 'TypeError', message: 'Second failure', stack },
+      ],
+    });
   });
 
   it('detects a cause alongside an AggregateError', () => {
@@ -162,11 +175,13 @@ describe('serialize', () => {
       }),
     });
 
-    expect(lines).toEqual([
-      expect.stringContaining(
-        '"error":{"name":"AggregateError","message":"Outer","cause":{"name":"Error","message":"Root cause"},"errors":[{"name":"Error","message":"Inner"}]}',
-      ),
-    ]);
+    expect(parseError(lines[0])).toEqual({
+      name: 'AggregateError',
+      message: 'Outer',
+      stack,
+      cause: { name: 'Error', message: 'Root cause', stack },
+      errors: [{ name: 'Error', message: 'Inner', stack }],
+    });
   });
 
   it('includes any enumerable properties on the object', () => {
@@ -195,7 +210,7 @@ describe('serialize', () => {
     });
 
     expect(lines).toEqual([
-      expect.stringContaining('"ctx":{"failure":{},"nested":{"error":{}}}'),
+      expect.stringContaining('"context":{"failure":{},"nested":{"error":{}}}'),
     ]);
   });
 
@@ -208,8 +223,78 @@ describe('serialize', () => {
     logger.error('content', { error: 'plain string' });
 
     expect(lines).toEqual([
-      expect.stringContaining('"ctx":{"error":{"code":"EACCES"}}'),
-      expect.stringContaining('"ctx":{"error":"plain string"}'),
+      expect.stringContaining('"context":{"error":{"code":"EACCES"}}'),
+      expect.stringContaining('"context":{"error":"plain string"}'),
     ]);
+  });
+});
+
+describe('errorToJSON', () => {
+  const stack: unknown = expect.any(String);
+
+  it('includes the stack trace', () => {
+    const error = new Error('Testing stack traces');
+
+    expect(errorToJSON(error)).toHaveProperty('stack', error.stack);
+  });
+
+  it('returns a plain object', () => {
+    const error = new Error('Outer', { cause: new TypeError('Inner') });
+
+    expect(errorToJSON(error)).toEqual({
+      name: 'Error',
+      message: 'Outer',
+      stack,
+      cause: { name: 'TypeError', message: 'Inner', stack, cause: undefined },
+    });
+  });
+
+  it('passes through non-error values in an AggregateError', () => {
+    const error = new AggregateError(
+      [new Error('Real error'), 'plain string', { code: 'EACCES' }, null],
+      'Mixed failures',
+    );
+
+    expect(errorToJSON(error)).toEqual({
+      name: 'AggregateError',
+      message: 'Mixed failures',
+      stack,
+      errors: [
+        { name: 'Error', message: 'Real error', stack },
+        'plain string',
+        { code: 'EACCES' },
+        null,
+      ],
+    });
+  });
+
+  it('passes through a custom `errors` field that is not an array', () => {
+    class ValidationError extends Error {
+      name = 'ValidationError';
+      errors = { email: 'required' };
+    }
+
+    expect(errorToJSON(new ValidationError('Invalid input'))).toEqual({
+      name: 'ValidationError',
+      message: 'Invalid input',
+      stack,
+      errors: { email: 'required' },
+    });
+  });
+
+  it('describes each error when `cause` is an array of errors', () => {
+    const error = new Error('Outer', {
+      cause: [new Error('First cause'), new TypeError('Second cause')],
+    });
+
+    expect(errorToJSON(error)).toEqual({
+      name: 'Error',
+      message: 'Outer',
+      stack,
+      cause: [
+        { name: 'Error', message: 'First cause', stack },
+        { name: 'TypeError', message: 'Second cause', stack },
+      ],
+    });
   });
 });
