@@ -42,8 +42,8 @@
     "@microsoft/api-extractor": "^7.58.8",
     "@vitest/coverage-v8": "^5.0.0",
     "typescript": "^6.0.0",
+    "unplugin-dts": "^1.1.2",
     "vite": "^8.0.0",
-    "vite-plugin-dts": "^5.0.0",
     "vitest": "^5.0.0"
   }
 }
