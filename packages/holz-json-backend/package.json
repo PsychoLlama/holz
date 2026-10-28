@@ -14,6 +14,12 @@
       "types": "./dist/holz-json-backend.d.ts",
       "require": "./dist/holz-json-backend.cjs",
       "import": "./dist/holz-json-backend.js"
+    },
+    "./serialize": {
+      "source": "./src/serialize/index.ts",
+      "types": "./dist/serialize.d.ts",
+      "require": "./dist/serialize.cjs",
+      "import": "./dist/serialize.js"
     }
   },
   "publishConfig": {
