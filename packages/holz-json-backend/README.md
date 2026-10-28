@@ -31,7 +31,7 @@ Lean on your environment's tools (`journalctl`) or use a package like [rotating-
 The default backend assumes a NodeJS environment. For other envs, use the JSON serializer exported from `/serialize`.
 
 ```ts
-import serialize from '@holz/json-backend/serialize';
+import { serialize } from '@holz/json-backend/serialize';
 
 // Stream logs as NDJSON.
 const jsonStream = new ReadableStream<Uint8Array>({

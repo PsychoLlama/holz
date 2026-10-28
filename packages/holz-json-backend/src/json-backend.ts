@@ -1,6 +1,6 @@
 import type { Writable } from 'node:stream';
 import type { Log, LogProcessor } from '@holz/core';
-import serialize from './serialize';
+import { serialize } from './serialize';
 
 /**
  * Prints structured logs to a writable stream in NDJSON form. Optimized for
