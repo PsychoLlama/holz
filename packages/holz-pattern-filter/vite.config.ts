@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { builtinModules } from 'node:module';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+import dts from 'unplugin-dts/vite';
 
 export default async () => {
   const pkg = JSON.parse(await readFile('./package.json', 'utf-8'));
