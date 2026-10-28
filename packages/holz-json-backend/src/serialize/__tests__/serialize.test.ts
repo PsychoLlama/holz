@@ -1,13 +1,13 @@
 import { createLogger } from '@holz/core';
-import { serialize, describeError } from '../serialize';
+import { toJSON, errorToJSON } from '../serialize';
 
 const CURRENT_TIME = new Date('2020-06-15T12:00:00.000Z');
 
-describe('serialize', () => {
+describe('toJSON', () => {
   const createSink = () => {
     const lines: Array<string> = [];
     const logger = createLogger((log) => {
-      lines.push(serialize(log));
+      lines.push(JSON.stringify(toJSON(log)));
     });
 
     return { logger, lines };
@@ -214,11 +214,11 @@ describe('serialize', () => {
   });
 });
 
-describe('describeError', () => {
+describe('errorToJSON', () => {
   it('returns a plain object', () => {
     const error = new Error('Outer', { cause: new TypeError('Inner') });
 
-    expect(describeError(error)).toEqual({
+    expect(errorToJSON(error)).toEqual({
       name: 'Error',
       message: 'Outer',
       cause: { name: 'TypeError', message: 'Inner', cause: undefined },
@@ -231,7 +231,7 @@ describe('describeError', () => {
       'Mixed failures',
     );
 
-    expect(describeError(error)).toEqual({
+    expect(errorToJSON(error)).toEqual({
       name: 'AggregateError',
       message: 'Mixed failures',
       errors: [
@@ -249,7 +249,7 @@ describe('describeError', () => {
       errors = { email: 'required' };
     }
 
-    expect(describeError(new ValidationError('Invalid input'))).toEqual({
+    expect(errorToJSON(new ValidationError('Invalid input'))).toEqual({
       name: 'ValidationError',
       message: 'Invalid input',
       errors: { email: 'required' },
@@ -261,7 +261,7 @@ describe('describeError', () => {
       cause: [new Error('First cause'), new TypeError('Second cause')],
     });
 
-    expect(describeError(error)).toEqual({
+    expect(errorToJSON(error)).toEqual({
       name: 'Error',
       message: 'Outer',
       cause: [

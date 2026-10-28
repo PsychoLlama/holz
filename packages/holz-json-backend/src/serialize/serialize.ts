@@ -1,11 +1,11 @@
 import { level, type LogLevel, type Log, type LogContext } from '@holz/core';
 
 /**
- * Serializes a log as a single JSON line.
+ * Converts a log to a JSON-serializable object.
  * Keys ordered to make visually skimming a log file easier.
  */
-export const serialize = (log: Log): string => {
-  return JSON.stringify({
+export const toJSON = (log: Log): Record<string, unknown> => {
+  return {
     // Convert the numeric level to a label. Lossless, as keys map back to
     // `level`. Improves readability and use with tools like `jq`.
     level: labelForLevel[log.level],
@@ -25,8 +25,36 @@ export const serialize = (log: Log): string => {
     //
     // This is NOT a lossless conversion. Values are too dynamic. But we can
     // handle the vast majority.
-    context: normalizeContext(log.context),
-  });
+    context: contextToJSON(log.context),
+  };
+};
+
+/** Unwraps an error, its cause chain, and any aggregated errors. */
+export const errorToJSON = (error: Error): Record<string, unknown> => ({
+  ...error, // Some custom errors have important custom properties.
+
+  name: error.name,
+  message: error.message,
+  cause: errorFieldToJSON(error.cause),
+
+  // Special case for `AggregateError` which carries a list of errors. Well,
+  // we hope they're errors. It's not like JS enforces it.
+  errors: errorFieldToJSON((error as AggregateError).errors),
+});
+
+const errorFieldToJSON = (value: unknown): unknown => {
+  // Example: `Error(...).cause`
+  if (value instanceof Error) {
+    return errorToJSON(value);
+  }
+
+  // Example: `AggregateError(...).errors`
+  if (Array.isArray(value)) {
+    return value.map(errorFieldToJSON);
+  }
+
+  // Pass through unremarked.
+  return value;
 };
 
 /**
@@ -34,35 +62,10 @@ export const serialize = (log: Log): string => {
  * of any logging system. Only `context.error` is treated as one (per
  * `CustomContext`); errors anywhere else are left to `JSON.stringify`.
  */
-const normalizeContext = (context: LogContext) => ({
+const contextToJSON = (context: LogContext) => ({
   ...context,
-  error: describeErrorField(context.error),
+  error: errorFieldToJSON(context.error),
 });
-
-/** Unwraps an error, its cause chain, and any aggregated errors. */
-export const describeError = (error: Error): Record<string, unknown> => ({
-  ...error, // Some custom errors have important custom properties.
-
-  name: error.name,
-  message: error.message,
-  cause: describeErrorField(error.cause),
-
-  // Special case for `AggregateError` which carries a list of errors. Well,
-  // we hope they're errors. It's not like JS enforces it.
-  errors: describeErrorField((error as AggregateError).errors),
-});
-
-const describeErrorField = (value: unknown): unknown => {
-  if (value instanceof Error) {
-    return describeError(value);
-  }
-
-  if (Array.isArray(value)) {
-    return value.map(describeErrorField);
-  }
-
-  return value;
-};
 
 /**
  * Slightly heavier than logging the number, but easier to process

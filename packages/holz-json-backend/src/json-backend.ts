@@ -1,6 +1,6 @@
 import type { Writable } from 'node:stream';
 import type { Log, LogProcessor } from '@holz/core';
-import { serialize } from './serialize';
+import { toJSON } from './serialize';
 
 /**
  * Prints structured logs to a writable stream in NDJSON form. Optimized for
@@ -21,7 +21,7 @@ export const createJsonBackend = ({ stream }: Config): LogProcessor => {
     // crashing the process.
     //
     // It is unlikely that a file or tty will apply backpressure in practice.
-    stream.write(`${serialize(log)}\n`);
+    stream.write(`${JSON.stringify(toJSON(log))}\n`);
   };
 };
 
