@@ -19,8 +19,10 @@ export default async () => {
     ],
     build: {
       lib: {
-        entry: './src/index.ts',
-        fileName: 'holz-json-backend',
+        entry: {
+          'holz-json-backend': './src/index.ts',
+          serialize: './src/serialize/index.ts',
+        },
         formats: ['es', 'cjs'],
       },
       rollupOptions: {

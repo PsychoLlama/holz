@@ -20,6 +20,9 @@
       "@holz/core": ["./packages/holz-core/src/index.ts"],
       "@holz/env-filter": ["./packages/holz-env-filter/src/index.ts"],
       "@holz/json-backend": ["./packages/holz-json-backend/src/index.ts"],
+      "@holz/json-backend/serialize": [
+        "./packages/holz-json-backend/src/serialize/index.ts"
+      ],
       "@holz/logger": [
         "./packages/holz-logger/src/index.node.ts",
         "./packages/holz-logger/src/index.browser.ts"
