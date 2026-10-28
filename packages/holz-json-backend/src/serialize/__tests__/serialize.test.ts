@@ -183,4 +183,33 @@ describe('serialize', () => {
 
     expect(lines).toEqual([expect.stringContaining('"status":418')]);
   });
+
+  it('only unwraps the error under `context.error`', () => {
+    const { logger, lines } = createSink();
+
+    logger.error('content', {
+      // @ts-expect-error Intentional test of error value outside `error` key.
+      failure: new Error('Not unwrapped'),
+      // @ts-expect-error Intentional test of error value outside `error` key.
+      nested: { error: new Error('Not unwrapped either') },
+    });
+
+    expect(lines).toEqual([
+      expect.stringContaining('"ctx":{"failure":{},"nested":{"error":{}}}'),
+    ]);
+  });
+
+  it('passes through a non-error value under `context.error`', () => {
+    const { logger, lines } = createSink();
+
+    // @ts-expect-error Intentional test of a non-error `error` value.
+    logger.error('content', { error: { code: 'EACCES' } });
+    // @ts-expect-error Intentional test of a non-error `error` value.
+    logger.error('content', { error: 'plain string' });
+
+    expect(lines).toEqual([
+      expect.stringContaining('"ctx":{"error":{"code":"EACCES"}}'),
+      expect.stringContaining('"ctx":{"error":"plain string"}'),
+    ]);
+  });
 });
