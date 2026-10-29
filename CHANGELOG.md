@@ -8,6 +8,8 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 
 ## [UNRELEASED]
 
+## [0.10.0] - 2026-10-28
+
 ### Added
 
 - `[@holz/json-backend]` New `/marshal` package export. `toJSON` and `errorToJSON` expose the core serializer. Useful for environments outside Node.
@@ -203,7 +205,8 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 - `[@holz/core]` Initial release.
 - `[@holz/logger]` Initial release.
 
-[UNRELEASED]: https://github.com/PsychoLlama/holz/compare/v0.9.1...HEAD
+[UNRELEASED]: https://github.com/PsychoLlama/holz/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/PsychoLlama/holz/compare/v0.9.1...v0.10.0
 [0.9.1]: https://github.com/PsychoLlama/holz/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/PsychoLlama/holz/compare/v0.8.2...v0.9.0
 [0.8.2]: https://github.com/PsychoLlama/holz/compare/v0.8.1...v0.8.2
