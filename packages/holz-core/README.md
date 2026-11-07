@@ -112,14 +112,14 @@ const logger = createLogger(
 );
 ```
 
-### `filter`
+### `createFilter`
 
-The `filter` processor takes a filter function and another log processor as input. If the filter function returns `true` for a log, it is forwarded to the second processor. If the filter function returns `false`, the log is discarded. This is useful when you want to selectively forward logs based on some criteria.
+The `createFilter` function takes a filter function and another log processor as input. If the filter function returns `true` for a log, it is forwarded to the second processor. If the filter function returns `false`, the log is discarded. This is useful when you want to selectively forward logs based on some criteria.
 
 ```typescript
-import { filter } from '@holz/core/functions';
+import { createFilter } from '@holz/core/functions';
 
-const debugLogFilter = filter(
+const debugLogFilter = createFilter(
   (log) => log.level > level.debug,
   consoleProcessor,
 );

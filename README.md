@@ -106,10 +106,10 @@ const logger = createLogger(
 
 ```typescript
 import { createLogger, level } from '@holz/core';
-import { filter } from '@holz/core/functions';
+import { createFilter } from '@holz/core/functions';
 
 const logger = createLogger(
-  filter(
+  createFilter(
     (log) => log.level >= level.info,
     createStreamBackend({ stream: process.stderr }),
   ),
@@ -120,12 +120,12 @@ const logger = createLogger(
 
 ```typescript
 import { createLogger } from '@holz/core';
-import { combine, filter } from '@holz/core/functions';
+import { combine, createFilter } from '@holz/core/functions';
 
 const logger = createLogger(
   combine([
     createStreamBackend({ stream: process.stderr }),
-    filter(
+    createFilter(
       (log) => log.origin[0] === 'my-app',
       createUploadBackend({ key: config.uploadKey }),
     ),

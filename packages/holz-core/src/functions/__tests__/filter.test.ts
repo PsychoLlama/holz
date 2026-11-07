@@ -1,12 +1,12 @@
 import { createLogger } from '../../logger';
 import { level } from '../../types';
-import { filter } from '../filter';
+import { createFilter } from '../filter';
 
-describe('filter', () => {
+describe('createFilter', () => {
   it('filters out logs that do not match the predicate', () => {
     const backend = vi.fn();
     const logger = createLogger(
-      filter((log) => log.level !== level.debug, backend),
+      createFilter((log) => log.level !== level.debug, backend),
     );
 
     logger.info('keep me');
