@@ -87,14 +87,14 @@ Holz has a number of plugins already available. See each package for documentati
 
 ### Multiple Logging Destinations
 
-Holz supports forking to different log destinations by using the `combine(...)` utility:
+Holz supports forking to different log destinations by using the `createGroup(...)` utility:
 
 ```typescript
 import { createLogger } from '@holz/core';
-import { combine } from '@holz/core/functions';
+import { createGroup } from '@holz/core/functions';
 
 const logger = createLogger(
-  combine([
+  createGroup([
     createConsoleBackend(),
     createFileBackend('./my-app.log'),
     createUploadBackend({ apiKey: config.apiKey }),
@@ -106,10 +106,10 @@ const logger = createLogger(
 
 ```typescript
 import { createLogger, level } from '@holz/core';
-import { filter } from '@holz/core/functions';
+import { createFilter } from '@holz/core/functions';
 
 const logger = createLogger(
-  filter(
+  createFilter(
     (log) => log.level >= level.info,
     createStreamBackend({ stream: process.stderr }),
   ),
@@ -120,12 +120,12 @@ const logger = createLogger(
 
 ```typescript
 import { createLogger } from '@holz/core';
-import { combine, filter } from '@holz/core/functions';
+import { createFilter, createGroup } from '@holz/core/functions';
 
 const logger = createLogger(
-  combine([
+  createGroup([
     createStreamBackend({ stream: process.stderr }),
-    filter(
+    createFilter(
       (log) => log.origin[0] === 'my-app',
       createUploadBackend({ key: config.uploadKey }),
     ),

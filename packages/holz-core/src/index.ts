@@ -1,10 +1,10 @@
-import { combine as combineFn, filter as filterFn } from './functions';
+import { createFilter, createGroup } from './functions';
 
-/** @deprecated Import from `@holz/core/functions` instead. */
-export const combine: typeof combineFn = combineFn;
+/** @deprecated Use `createGroup` from `@holz/core/functions` instead. */
+export const combine: typeof createGroup = createGroup;
 
-/** @deprecated Import from `@holz/core/functions` instead. */
-export const filter: typeof filterFn = filterFn;
+/** @deprecated Use `createFilter` from `@holz/core/functions` instead. */
+export const filter: typeof createFilter = createFilter;
 
 export { createLogger } from './logger';
 export { level } from './types';

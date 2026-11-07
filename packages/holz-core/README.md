@@ -87,20 +87,20 @@ In this example, the log message describes a successful connection to a database
 
 In Holz, a `LogProcessor` function is responsible for processing log messages. The `createLogger` function takes this function as an argument. A `LogProcessor` is a plain function that takes a `Log` object, which contains the message, level, origin, and context of the log.
 
-Holz provides a set of off-the-shelf plugins for logging to various destinations, filtering, formatting, and more. You can also write your own plugins to suit your specific needs. These plugins can be combined into a `LogProcessor` function using the utility function `combine()`, allowing you to send a single log to multiple destinations.
+Holz provides a set of off-the-shelf plugins for logging to various destinations, filtering, formatting, and more. You can also write your own plugins to suit your specific needs. These plugins can be combined into a `LogProcessor` function using the utility function `createGroup()`, allowing you to send a single log to multiple destinations.
 
 Holz's plugin system is designed to be flexible and extensible. If none of the provided plugins meet your needs, you can easily create your own plugin and still build on plugins from the rest of the ecosystem. Check out the [`@holz/logger`](https://github.com/PsychoLlama/holz/tree/main/packages/holz-logger) package for a bundled example of Holz's logging plugins.
 
-## Functions
+## Functions (`@holz/core/functions`)
 
 In addition to the core `Logger` class, `@holz/core` provides some utility processors that you can use to extend the functionality of your logging solution. These processors are optional and can be combined with each other or with third-party processors as needed.
 
-### `combine`
+### `createGroup`
 
-The `combine` processor takes an array of log processors and returns a single log processor that forwards each log to all of the input processors. This is useful when you want to send a single log to multiple log destinations.
+Groups a set of destinations into a single processor. Logs fan out to each.
 
 ```typescript
-import { combine } from '@holz/core/functions';
+import { createGroup } from '@holz/core/functions';
 import {
   consoleBackend,
   fileBackend,
@@ -108,18 +108,18 @@ import {
 } from './custom-processors';
 
 const logger = createLogger(
-  combine([consoleBackend, fileBackend, logUploadService]),
+  createGroup([consoleBackend, fileBackend, logUploadService]),
 );
 ```
 
-### `filter`
+### `createFilter`
 
-The `filter` processor takes a filter function and another log processor as input. If the filter function returns `true` for a log, it is forwarded to the second processor. If the filter function returns `false`, the log is discarded. This is useful when you want to selectively forward logs based on some criteria.
+Accepts a filter function. Anything returning `false` is discarded.
 
 ```typescript
-import { filter } from '@holz/core/functions';
+import { createFilter } from '@holz/core/functions';
 
-const debugLogFilter = filter(
+const debugLogFilter = createFilter(
   (log) => log.level > level.debug,
   consoleProcessor,
 );
@@ -127,4 +127,125 @@ const debugLogFilter = filter(
 const logger = createLogger(debugLogFilter);
 ```
 
-Note that you can chain multiple filter processors together to create more complex filters.
+### `createValve`
+
+Switches between buffering and streaming. Analogous to opening a valve on a hose.
+
+#### Use Cases
+
+- Buffer logs until a plugin finishes initializing.
+- Pause uploads while offline and flush on reconnect.
+- Wait to send logs until a user consents to telemetry.
+
+#### Example
+
+```typescript
+import { createValve } from '@holz/core/functions';
+
+const { open, close, processor } = createValve({
+  // Start in buffered mode.
+  open: false,
+
+  // Buffer up to 1k logs. Beyond that, drop the oldest.
+  capacity: 1_000,
+
+  // Streaming: forward to this backend.
+  processor: persist,
+
+  // Batched: drain logs when the valve opens.
+  drain: (logs) => logs.forEach(persist),
+});
+
+const logger = createLogger(processor);
+
+// Later: drain the buffer and stream logs going forward.
+open();
+```
+
+### `createRouter`
+
+Switches between log destinations dynamically.
+
+#### Use Cases
+
+- Fall back to local storage when uploads fail, and switch back once they recover.
+- Swap backends when changing a diagnostics setting.
+- Redirect logs to a file while a TUI owns the terminal.
+
+#### Example
+
+```typescript
+import { createRouter } from '@holz/core/functions';
+
+const { select, processor } = createRouter(
+  // Start by sending logs to stderr.
+  'stderr',
+
+  // Every possible destination, by name.
+  {
+    stderr: printToStderr,
+    file: writeToFile,
+  },
+);
+
+const logger = createLogger(processor);
+
+// Later: send logs to the file instead of stderr.
+select('file');
+```
+
+### `createBuffer`
+
+Holds logs in a ring buffer until drained. Once `capacity` is reached, each new log overwrites the oldest.
+
+#### Use Cases
+
+- Hold startup logs until you know where to send them.
+- Keep recent logs in memory to attach to crash reports.
+- Collect logs during a test and assert on them afterward.
+
+#### Example
+
+```typescript
+import { createBuffer } from '@holz/core/functions';
+
+const { drain, processor } = createBuffer({
+  // Buffer up to 1k logs. Beyond that, drop the oldest.
+  // Defaults to `Infinity`.
+  capacity: 1_000,
+});
+
+const logger = createLogger(processor);
+
+// Later: empty the buffer and return its logs in arrival order.
+const logs = drain();
+```
+
+### `createBatcher`
+
+Groups logs into fixed-size batches and hands each full batch to a sink in one call.
+
+#### Use Cases
+
+- Upload logs in one request per batch instead of one per log.
+- Write logs to IndexedDB or SQLite in one transaction per batch.
+- Flush a partial batch before the process exits or the page unloads.
+
+#### Example
+
+```typescript
+import { createBatcher } from '@holz/core/functions';
+
+const { drain, clear, processor } = createBatcher({
+  // Flush every 50 logs.
+  size: 50,
+
+  // Receives each batch in arrival order.
+  sink: upload,
+});
+
+const logger = createLogger(processor);
+
+// Later: flush the partial batch before exiting.
+drain();
+```

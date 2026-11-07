@@ -1,11 +1,11 @@
 import { createLogger } from '../../logger';
-import { combine } from '../combine';
+import { createGroup } from '../group';
 
-describe('combine', () => {
-  it('combines several log processors backends into one', () => {
+describe('createGroup', () => {
+  it('groups several log processors into one', () => {
     const b1 = vi.fn();
     const b2 = vi.fn();
-    const backend = combine([b1, b2]);
+    const backend = createGroup([b1, b2]);
     const logger = createLogger(backend);
 
     logger.info('tee message');
@@ -20,7 +20,7 @@ describe('combine', () => {
   });
 
   it('works even if you provide no logging backend', () => {
-    const backend = combine([]);
+    const backend = createGroup([]);
     const logger = createLogger(backend);
 
     expect(() => logger.info('no backend')).not.toThrow();

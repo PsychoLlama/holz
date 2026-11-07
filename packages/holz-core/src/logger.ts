@@ -57,7 +57,7 @@ const createNamespacedLogger = (
  * Create a new logger. The processor is up to you. There are plugins for
  * filtering, formatting, combining multiple processors together, and more.
  *
- * If you wish to use more than one processor, `combine(...)` them first.
+ * If you wish to use more than one processor, `createGroup(...)` them first.
  */
 export const createLogger = (processor: LogProcessor): Logger =>
   createNamespacedLogger(processor, []);

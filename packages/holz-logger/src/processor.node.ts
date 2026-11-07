@@ -1,6 +1,6 @@
 import { createAnsiTerminalBackend } from '@holz/ansi-terminal-backend';
 import type { LogProcessor } from '@holz/core';
-import { filter } from '@holz/core/functions';
+import { createFilter } from '@holz/core/functions';
 import { createEnvironmentFilter } from '@holz/env-filter';
 import { createStreamBackend } from '@holz/stream-backend';
 import { createLogCollector } from '@holz/log-collector';
@@ -11,7 +11,7 @@ const supportsAnsiColors =
   process.stderr.isTTY && process.stderr.getColorDepth() > 1;
 
 export const processor: LogProcessor = createLogCollector({
-  fallback: filter(
+  fallback: createFilter(
     () => NODE_ENV !== 'test',
     createEnvironmentFilter({
       defaultPattern: '',

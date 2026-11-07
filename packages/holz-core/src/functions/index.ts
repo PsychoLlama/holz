@@ -1,2 +1,10 @@
-export { combine } from './combine';
-export { filter } from './filter';
+export { createBatcher } from './batcher';
+export type { LogBatcher, LogBatcherOptions } from './batcher';
+export { createBuffer } from './buffer';
+export type { LogBuffer, LogBufferOptions } from './buffer';
+export { createFilter } from './filter';
+export { createGroup } from './group';
+export { createRouter } from './router';
+export type { LogRouter } from './router';
+export { createValve } from './valve';
+export type { LogValve, LogValveOptions } from './valve';
