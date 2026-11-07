@@ -8,7 +8,10 @@ export default defineConfig({
   oxc: { exclude: [/\.d\.ts$/] },
   build: {
     lib: {
-      entry: { 'holz-core': './src/index.ts' },
+      entry: {
+        'holz-core': './src/index.ts',
+        functions: './src/functions/index.ts',
+      },
       formats: ['es'],
     },
     rolldownOptions: {
