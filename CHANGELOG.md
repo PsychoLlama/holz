@@ -8,6 +8,14 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 
 ## [UNRELEASED]
 
+### Added
+
+- `[@holz/core]` New `/functions` package export with `combine` and `filter`.
+
+### Deprecated
+
+- `[@holz/core]` Importing `combine` and `filter` from the root export. Use `@holz/core/functions` instead.
+
 ## [0.10.0] - 2026-10-28
 
 ### Added

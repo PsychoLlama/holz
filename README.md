@@ -90,7 +90,8 @@ Holz has a number of plugins already available. See each package for documentati
 Holz supports forking to different log destinations by using the `combine(...)` utility:
 
 ```typescript
-import { createLogger, combine } from '@holz/core';
+import { createLogger } from '@holz/core';
+import { combine } from '@holz/core/functions';
 
 const logger = createLogger(
   combine([
@@ -104,7 +105,8 @@ const logger = createLogger(
 ### Filtering Debug Logs
 
 ```typescript
-import { createLogger, filter, level } from '@holz/core';
+import { createLogger, level } from '@holz/core';
+import { filter } from '@holz/core/functions';
 
 const logger = createLogger(
   filter(
@@ -117,7 +119,8 @@ const logger = createLogger(
 ### Filtering Logs Before Uploading
 
 ```typescript
-import { createLogger, combine, filter } from '@holz/core';
+import { createLogger } from '@holz/core';
+import { combine, filter } from '@holz/core/functions';
 
 const logger = createLogger(
   combine([

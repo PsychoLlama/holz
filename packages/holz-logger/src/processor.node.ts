@@ -1,6 +1,6 @@
 import { createAnsiTerminalBackend } from '@holz/ansi-terminal-backend';
-import { filter } from '@holz/core';
 import type { LogProcessor } from '@holz/core';
+import { filter } from '@holz/core/functions';
 import { createEnvironmentFilter } from '@holz/env-filter';
 import { createStreamBackend } from '@holz/stream-backend';
 import { createLogCollector } from '@holz/log-collector';

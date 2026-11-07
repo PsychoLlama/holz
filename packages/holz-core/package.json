@@ -13,6 +13,11 @@
       "source": "./src/index.ts",
       "types": "./dist/holz-core.d.ts",
       "default": "./dist/holz-core.js"
+    },
+    "./functions": {
+      "source": "./src/functions/index.ts",
+      "types": "./dist/functions.d.ts",
+      "default": "./dist/functions.js"
     }
   },
   "publishConfig": {
