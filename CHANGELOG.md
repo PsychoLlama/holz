@@ -8,6 +8,8 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 
 ## [UNRELEASED]
 
+## [0.11.0] - 2026-11-06
+
 ### Added
 
 - `[@holz/core]` New `/functions` package export.
@@ -219,7 +221,8 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 - `[@holz/core]` Initial release.
 - `[@holz/logger]` Initial release.
 
-[UNRELEASED]: https://github.com/PsychoLlama/holz/compare/v0.10.0...HEAD
+[UNRELEASED]: https://github.com/PsychoLlama/holz/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/PsychoLlama/holz/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/PsychoLlama/holz/compare/v0.9.1...v0.10.0
 [0.9.1]: https://github.com/PsychoLlama/holz/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/PsychoLlama/holz/compare/v0.8.2...v0.9.0
