@@ -6,3 +6,5 @@ export { combine } from './combine';
 export { filter } from './filter';
 export { createRouter } from './router';
 export type { LogRouter } from './router';
+export { createValve } from './valve';
+export type { LogValve, LogValveOptions } from './valve';
