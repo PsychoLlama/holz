@@ -87,7 +87,7 @@ In this example, the log message describes a successful connection to a database
 
 In Holz, a `LogProcessor` function is responsible for processing log messages. The `createLogger` function takes this function as an argument. A `LogProcessor` is a plain function that takes a `Log` object, which contains the message, level, origin, and context of the log.
 
-Holz provides a set of off-the-shelf plugins for logging to various destinations, filtering, formatting, and more. You can also write your own plugins to suit your specific needs. These plugins can be combined into a `LogProcessor` function using the utility function `combine()`, allowing you to send a single log to multiple destinations.
+Holz provides a set of off-the-shelf plugins for logging to various destinations, filtering, formatting, and more. You can also write your own plugins to suit your specific needs. These plugins can be combined into a `LogProcessor` function using the utility function `createGroup()`, allowing you to send a single log to multiple destinations.
 
 Holz's plugin system is designed to be flexible and extensible. If none of the provided plugins meet your needs, you can easily create your own plugin and still build on plugins from the rest of the ecosystem. Check out the [`@holz/logger`](https://github.com/PsychoLlama/holz/tree/main/packages/holz-logger) package for a bundled example of Holz's logging plugins.
 
@@ -95,12 +95,12 @@ Holz's plugin system is designed to be flexible and extensible. If none of the p
 
 In addition to the core `Logger` class, `@holz/core` provides some utility processors that you can use to extend the functionality of your logging solution. These processors are optional and can be combined with each other or with third-party processors as needed.
 
-### `combine`
+### `createGroup`
 
-The `combine` processor takes an array of log processors and returns a single log processor that forwards each log to all of the input processors. This is useful when you want to send a single log to multiple log destinations.
+Groups a set of destinations into a single processor. Logs fan out to each.
 
 ```typescript
-import { combine } from '@holz/core/functions';
+import { createGroup } from '@holz/core/functions';
 import {
   consoleBackend,
   fileBackend,
@@ -108,13 +108,13 @@ import {
 } from './custom-processors';
 
 const logger = createLogger(
-  combine([consoleBackend, fileBackend, logUploadService]),
+  createGroup([consoleBackend, fileBackend, logUploadService]),
 );
 ```
 
 ### `createFilter`
 
-The `createFilter` function takes a filter function and another log processor as input. If the filter function returns `true` for a log, it is forwarded to the second processor. If the filter function returns `false`, the log is discarded. This is useful when you want to selectively forward logs based on some criteria.
+Accepts a filter function. Anything returning `false` is discarded.
 
 ```typescript
 import { createFilter } from '@holz/core/functions';
@@ -126,8 +126,6 @@ const debugLogFilter = createFilter(
 
 const logger = createLogger(debugLogFilter);
 ```
-
-Note that you can chain multiple filter processors together to create more complex filters.
 
 ### `createValve`
 

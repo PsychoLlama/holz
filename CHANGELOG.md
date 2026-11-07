@@ -10,7 +10,9 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 
 ### Added
 
-- `[@holz/core]` New `/functions` package export with `combine` and `createFilter`.
+- `[@holz/core]` New `/functions` package export.
+- `[@holz/core]` Added `createGroup` (formerly `combine(...)`).
+- `[@holz/core]` Added `createFilter` (formerly `filter(...)`).
 - `[@holz/core]` Added `createValve`: buffer logs while closed and release as a batch when opened.
 - `[@holz/core]` Added `createRouter`: dynamically switch log destinations.
 - `[@holz/core]` Added `createBuffer`: hold logs in a ring buffer until drained.
@@ -18,7 +20,7 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 
 ### Deprecated
 
-- `[@holz/core]` Importing `combine` and `filter` from the root export. Use `combine` and `createFilter` from `@holz/core/functions` instead.
+- `[@holz/core]` Importing `combine` and `filter` from the root export. Use `createGroup` and `createFilter` from `@holz/core/functions` instead.
 
 ## [0.10.0] - 2026-10-28
 
