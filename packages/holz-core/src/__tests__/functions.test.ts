@@ -1,8 +1,8 @@
 import { createLogger } from '../logger';
-import { combine, filter } from '../operators';
+import { combine, filter } from '../functions';
 import { level } from '../types';
 
-describe('operators', () => {
+describe('functions', () => {
   describe('combine', () => {
     it('combines several log processors backends into one', () => {
       const b1 = vi.fn();

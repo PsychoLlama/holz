@@ -1,4 +1,4 @@
-export { combine, filter } from './operators';
+export { combine, filter } from './functions';
 export { createLogger } from './logger';
 export { level } from './types';
 export type {
