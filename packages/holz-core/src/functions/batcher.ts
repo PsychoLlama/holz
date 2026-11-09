@@ -12,8 +12,8 @@ export interface LogBatcher {
   /** Flush the pending batch to the sink early. No-op when empty. */
   drain: () => void;
 
-  /** Discard the pending batch without flushing it. */
-  clear: () => void;
+  /** Discard the pending batch without flushing it and return its logs. */
+  clear: () => Log[];
 }
 
 /** Options for {@link createBatcher}. */
@@ -54,7 +54,10 @@ export const createBatcher = ({
   };
 
   const clear = () => {
+    const discarded = pending;
     pending = [];
+
+    return discarded;
   };
 
   return { processor, drain, clear };

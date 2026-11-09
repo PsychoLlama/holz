@@ -69,6 +69,16 @@ describe('createBatcher', () => {
     expect(batches).toEqual([['b']]);
   });
 
+  it('returns the discarded logs on clear', () => {
+    const { logger, clear } = setup(3);
+
+    logger.info('a');
+    logger.info('b');
+
+    expect(clear().map((log) => log.message)).toEqual(['a', 'b']);
+    expect(clear()).toEqual([]);
+  });
+
   it('sends every log on its own at size 1', () => {
     const { batches, logger } = setup(1);
 
