@@ -66,11 +66,11 @@ export const createValve = ({
 
     open: () => {
       // Route before draining so a log emitted from inside `drain` streams
-      // straight through. `buffer.drain()` resets before returning, so it can't
+      // straight through. `buffer.clear()` resets before returning, so it can't
       // land in the batch already released.
       router.select('open');
 
-      const logs = buffer.drain();
+      const logs = buffer.clear();
       if (logs.length > 0) drain(logs);
     },
 

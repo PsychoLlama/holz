@@ -2,14 +2,14 @@ import type { Log, LogProcessor } from '../types';
 
 /**
  * A bounded ring buffer over a log stream. Install {@link LogBuffer.processor}
- * in a pipeline and collect what it held with {@link LogBuffer.drain}.
+ * in a pipeline and collect what it held with {@link LogBuffer.clear}.
  */
 export interface LogBuffer {
   /** The processor to install upstream. Holds every log it receives. */
   processor: LogProcessor;
 
   /** Empty the buffer, returning the held logs in arrival order. */
-  drain: () => Log[];
+  clear: () => Log[];
 }
 
 /** Options for {@link createBuffer}. */
@@ -45,7 +45,7 @@ export const createBuffer = ({
     }
   };
 
-  const drain = () => {
+  const clear = () => {
     // The ring holds two contiguous runs, `oldest` to the end then the start
     // up to `oldest`, so joining those slices restores arrival order.
     const logs = buffer.slice(oldest).concat(buffer.slice(0, oldest));
@@ -56,5 +56,5 @@ export const createBuffer = ({
     return logs;
   };
 
-  return { processor, drain };
+  return { processor, clear };
 };
