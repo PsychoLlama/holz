@@ -12,10 +12,10 @@ const setup = (size: number) => {
     batches.push(logs.map((log) => log.message));
   };
 
-  const { processor, drain, clear } = createBatcher({ size, sink });
+  const { processor, flush, clear } = createBatcher({ size, sink });
   const logger = createLogger(processor);
 
-  return { batches, logger, drain, clear };
+  return { batches, logger, flush, clear };
 };
 
 describe('createBatcher', () => {
@@ -41,30 +41,30 @@ describe('createBatcher', () => {
     ]);
   });
 
-  it('flushes a partial batch on drain', () => {
-    const { batches, logger, drain } = setup(3);
+  it('flushes a partial batch on flush', () => {
+    const { batches, logger, flush } = setup(3);
 
     logger.info('a');
-    drain();
+    flush();
 
     expect(batches).toEqual([['a']]);
   });
 
-  it('skips the sink when draining an empty batch', () => {
-    const { batches, drain } = setup(3);
+  it('skips the sink when flushing an empty batch', () => {
+    const { batches, flush } = setup(3);
 
-    drain();
+    flush();
 
     expect(batches).toEqual([]);
   });
 
   it('discards the pending batch on clear', () => {
-    const { batches, logger, drain, clear } = setup(3);
+    const { batches, logger, flush, clear } = setup(3);
 
     logger.info('a');
     clear();
     logger.info('b');
-    drain();
+    flush();
 
     expect(batches).toEqual([['b']]);
   });
@@ -96,7 +96,7 @@ describe('createBatcher', () => {
       batches.push(logs.map((log) => log.message));
     };
 
-    const { processor, drain } = createBatcher({ size: 2, sink });
+    const { processor, flush } = createBatcher({ size: 2, sink });
     const logger = createLogger(processor);
 
     logger.info('a');
@@ -104,7 +104,7 @@ describe('createBatcher', () => {
 
     fail = false;
     logger.info('c');
-    drain();
+    flush();
 
     expect(batches).toEqual([['c']]);
   });
@@ -118,12 +118,12 @@ describe('createBatcher', () => {
       if (batches.length === 1) logger.info('reentrant');
     };
 
-    const { processor, drain } = createBatcher({ size: 2, sink });
+    const { processor, flush } = createBatcher({ size: 2, sink });
     const logger = createLogger(processor);
 
     logger.info('a');
     logger.info('b');
-    drain();
+    flush();
 
     expect(batches).toEqual([['a', 'b'], ['reentrant']]);
   });

@@ -196,7 +196,7 @@ select('file');
 
 ### `createBuffer`
 
-Holds logs in a ring buffer until drained. Once `capacity` is reached, each new log overwrites the oldest.
+Holds logs in a ring buffer until cleared. Once `capacity` is reached, each new log overwrites the oldest.
 
 #### Use Cases
 
@@ -209,7 +209,7 @@ Holds logs in a ring buffer until drained. Once `capacity` is reached, each new 
 ```typescript
 import { createBuffer } from '@holz/core/functions';
 
-const { drain, processor } = createBuffer({
+const { clear, processor } = createBuffer({
   // Buffer up to 1k logs. Beyond that, drop the oldest.
   // Defaults to `Infinity`.
   capacity: 1_000,
@@ -218,7 +218,7 @@ const { drain, processor } = createBuffer({
 const logger = createLogger(processor);
 
 // Later: empty the buffer and return its logs in arrival order.
-const logs = drain();
+const logs = clear();
 ```
 
 ### `createBatcher`
@@ -236,7 +236,7 @@ Groups logs into fixed-size batches and hands each full batch to a sink in one c
 ```typescript
 import { createBatcher } from '@holz/core/functions';
 
-const { drain, clear, processor } = createBatcher({
+const { flush, clear, processor } = createBatcher({
   // Flush every 50 logs.
   size: 50,
 
@@ -247,5 +247,5 @@ const { drain, clear, processor } = createBatcher({
 const logger = createLogger(processor);
 
 // Later: flush the partial batch before exiting.
-drain();
+flush();
 ```

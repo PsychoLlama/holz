@@ -10,7 +10,7 @@ export interface LogBatcher {
   processor: LogProcessor;
 
   /** Flush the pending batch to the sink early. No-op when empty. */
-  drain: () => void;
+  flush: () => void;
 
   /** Discard the pending batch without flushing it and return its logs. */
   clear: () => Log[];
@@ -35,24 +35,6 @@ export const createBatcher = ({
 }: LogBatcherOptions): LogBatcher => {
   let pending: Log[] = [];
 
-  const drain = () => {
-    if (pending.length === 0) return;
-
-    // Swap before calling the sink. A throwing sink can't leave the batch to
-    // grow unbounded, and a log emitted from inside the sink starts the next
-    // batch instead of mutating the one being flushed.
-    const batch = pending;
-    pending = [];
-
-    sink(batch);
-  };
-
-  const processor: LogProcessor = (log) => {
-    pending.push(log);
-
-    if (pending.length >= size) drain();
-  };
-
   const clear = () => {
     const discarded = pending;
     pending = [];
@@ -60,5 +42,20 @@ export const createBatcher = ({
     return discarded;
   };
 
-  return { processor, drain, clear };
+  const flush = () => {
+    // Clear before calling the sink. A throwing sink can't leave the batch to
+    // grow unbounded, and a log emitted from inside the sink starts the next
+    // batch instead of mutating the one being flushed.
+    const batch = clear();
+
+    if (batch.length > 0) sink(batch);
+  };
+
+  const processor: LogProcessor = (log) => {
+    pending.push(log);
+
+    if (pending.length >= size) flush();
+  };
+
+  return { processor, flush, clear };
 };
