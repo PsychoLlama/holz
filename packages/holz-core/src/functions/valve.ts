@@ -50,32 +50,30 @@ export interface LogValveOptions {
  * isn't ready, then release them all at once when it is.
  */
 export const createValve = ({
+  open,
   capacity,
-  drain,
   processor,
-  open: startOpen,
+  drain,
 }: LogValveOptions): LogValve => {
-  const buffer = createBuffer({ capacity });
-  const router = createRouter(startOpen ? 'open' : 'closed', {
-    closed: buffer.processor,
+  const { clear, processor: buffer } = createBuffer({ capacity });
+  const { select, processor: router } = createRouter(open ? 'open' : 'closed', {
+    closed: buffer,
     open: processor,
   });
 
   return {
-    processor: router.processor,
+    processor: router,
 
     open: () => {
       // Route before draining so a log emitted from inside `drain` streams
-      // straight through. `buffer.clear()` resets before returning, so it can't
+      // straight through. `clear()` resets before returning, so it can't
       // land in the batch already released.
-      router.select('open');
+      select('open');
 
-      const logs = buffer.clear();
+      const logs = clear();
       if (logs.length > 0) drain(logs);
     },
 
-    close: () => {
-      router.select('closed');
-    },
+    close: () => select('closed'),
   };
 };
