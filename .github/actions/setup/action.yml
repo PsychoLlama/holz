@@ -11,6 +11,7 @@ runs:
     - uses: DeterminateSystems/magic-nix-cache-action@v15
       with:
         use-flakehub: false
+
     # No-op that absorbs the first `nix develop` evaluation so its cost shows
     # up here instead of inflating the next real step.
     - name: Warm devShell
@@ -23,6 +24,7 @@ runs:
         key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-
+
     # Persist turbo's local cache so unchanged tasks are skipped across runs.
     # No remote cache: this is plain file-based caching, keyed per-commit with
     # a fallback to the most recent prior cache.
@@ -33,6 +35,30 @@ runs:
         key: ${{ runner.os }}-turbo-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-turbo-
+
     - name: Install dependencies
       shell: nix develop --command bash -eo pipefail {0}
       run: pnpm install --frozen-lockfile
+
+    # Playwright needs Chromium. Cache by playwright version to avoid
+    # installing on every CI run.
+    - name: Resolve Playwright version
+      id: playwright-version
+      shell: nix develop --command bash -eo pipefail {0}
+      run: echo "version=$(pnpm exec playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+
+    - name: Restore Playwright cache
+      id: playwright-cache
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.version }}
+
+    - name: Install Playwright system deps
+      shell: nix develop --command bash -eo pipefail {0}
+      run: pnpm exec playwright install-deps chromium
+
+    - name: Install Playwright browser
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+      shell: nix develop --command bash -eo pipefail {0}
+      run: pnpm exec playwright install chromium

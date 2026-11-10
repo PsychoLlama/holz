@@ -29,9 +29,10 @@ const config = {
       // `fmt-check` script shells out to it.
       ignoreBinaries: ['treefmt'],
 
-      // Invoked by treefmt (see treefmt.toml), so the usage is invisible
-      // to knip.
-      ignoreDependencies: ['prettier'],
+      // `prettier` is invoked by treefmt (see treefmt.toml). `playwright`
+      // backs CI's browser install (`pnpm exec playwright install`). Both
+      // usages are invisible to knip.
+      ignoreDependencies: ['playwright', 'prettier'],
     },
   },
 } satisfies KnipConfig;
