@@ -11,6 +11,7 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 ### Changed
 
 - `[@holz/core]` **Breaking:** renamed `drain()` from `createBatcher(...)` to `flush()`.
+- `[@holz/core]` **Breaking:** renamed `drain()` from `createBuffer(...)` to `clear()`.
 
 ## [0.11.1] - 2026-11-09
 
