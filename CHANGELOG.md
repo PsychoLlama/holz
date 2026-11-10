@@ -8,6 +8,10 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 
 ## [UNRELEASED]
 
+### Changed
+
+- `[@holz/core]` `clear()` from `createBatcher(...)` now returns the logs it discarded.
+
 ## [0.11.0] - 2026-11-06
 
 ### Added
