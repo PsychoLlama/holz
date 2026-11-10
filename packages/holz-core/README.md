@@ -236,7 +236,7 @@ Groups logs into fixed-size batches and hands each full batch to a sink in one c
 ```typescript
 import { createBatcher } from '@holz/core/functions';
 
-const { drain, clear, processor } = createBatcher({
+const { flush, clear, processor } = createBatcher({
   // Flush every 50 logs.
   size: 50,
 
@@ -247,5 +247,5 @@ const { drain, clear, processor } = createBatcher({
 const logger = createLogger(processor);
 
 // Later: flush the partial batch before exiting.
-drain();
+flush();
 ```
