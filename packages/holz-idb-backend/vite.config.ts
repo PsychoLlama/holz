@@ -10,6 +10,7 @@ export default defineConfig({
     lib: {
       entry: {
         'holz-idb-backend': './src/index.ts',
+        database: './src/database/external.ts',
       },
       formats: ['es'],
     },
