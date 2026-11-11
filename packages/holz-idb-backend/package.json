@@ -14,6 +14,11 @@
       "source": "./src/index.ts",
       "types": "./dist/holz-idb-backend.d.ts",
       "default": "./dist/holz-idb-backend.js"
+    },
+    "./database": {
+      "source": "./src/database/external.ts",
+      "types": "./dist/database.d.ts",
+      "default": "./dist/database.js"
     }
   },
   "publishConfig": {
