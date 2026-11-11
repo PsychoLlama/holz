@@ -127,6 +127,42 @@ describe('createIdbBackend', () => {
     await waitForLogs(context.schema, [ready, ...batch]);
   });
 
+  it('shares the database with another backend', async () => {
+    await using context = createSchemaContext();
+    using first = startBackend(context.schema);
+    using second = startBackend(context.schema);
+    const fromFirst = [createLog('first-a'), createLog('first-b')];
+    const fromSecond = [createLog('second-a'), createLog('second-b')];
+
+    // Interleaved while both race to create the database.
+    fromFirst.forEach((log, index) => {
+      first.processor(log);
+      second.processor(fromSecond[index]);
+    });
+
+    const saved = await vi.waitFor(async () => {
+      const logs = await readLogs(context.schema);
+      expect(logs).toHaveLength(4);
+
+      return logs;
+    });
+
+    // Which backend writes first is up to the browser, but each one's logs
+    // land in the order it received them.
+    const messages = saved.map(({ message }) => message);
+    expect(messages.filter((message) => message.startsWith('first'))).toEqual([
+      'first-a',
+      'first-b',
+    ]);
+    expect(messages.filter((message) => message.startsWith('second'))).toEqual([
+      'second-a',
+      'second-b',
+    ]);
+
+    expect(first.onError).not.toHaveBeenCalled();
+    expect(second.onError).not.toHaveBeenCalled();
+  });
+
   it('keeps persisting after the database is deleted', async () => {
     await using context = createSchemaContext();
     using backend = startBackend(context.schema);
