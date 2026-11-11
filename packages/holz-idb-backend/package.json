@@ -1,6 +1,5 @@
 {
   "name": "@holz/idb-backend",
-  "private": true,
   "version": "0.11.1",
   "description": "Persist logs to IndexedDB.",
   "type": "module",
