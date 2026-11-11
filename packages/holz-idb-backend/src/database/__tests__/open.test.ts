@@ -1,5 +1,6 @@
 import type { Migration } from '../migrations';
-import { openOrUpgrade } from '../open';
+import { openCurrent, openExisting, openOrUpgrade } from '../open';
+import { deleteDatabase } from '../delete-database';
 import { createSchemaContext } from './fixtures';
 
 const createMigration = (name: string) => ({
@@ -144,5 +145,103 @@ describe('openOrUpgrade', () => {
     expect(database.version).toBe(1);
     expect([...database.objectStoreNames]).toEqual([]);
     expect(first.run).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('openExisting', () => {
+  it('opens at the current version', async () => {
+    await using context = createSchemaContext();
+    const { name } = context.schema;
+    const migrations = [createMigration('first'), createMigration('second')];
+
+    (await openOrUpgrade(define(name, migrations))).close();
+    const database = await openExisting(define(name));
+    database.close();
+
+    expect(database.version).toBe(2);
+  });
+
+  it('rejects and creates nothing when the database is missing', async () => {
+    await using context = createSchemaContext();
+    const { name } = context.schema;
+
+    await expect(openExisting(define(name))).rejects.toMatchObject({
+      name: 'AbortError',
+    });
+
+    const databases = await indexedDB.databases();
+    expect(databases.map((database) => database.name)).not.toContain(name);
+  });
+});
+
+describe('openCurrent', () => {
+  it('creates and migrates a new database', async () => {
+    await using context = createSchemaContext();
+    const migration = createMigration('first');
+
+    const database = await openCurrent(
+      define(context.schema.name, [migration]),
+    );
+    database.close();
+
+    expect(database.version).toBe(1);
+    expect(migration.run).toHaveBeenCalledTimes(1);
+  });
+
+  it('upgrades a database behind the migrations', async () => {
+    await using context = createSchemaContext();
+    const { name } = context.schema;
+    const first = createMigration('first');
+    const second = createMigration('second');
+
+    (await openOrUpgrade(define(name, [first]))).close();
+    const database = await openCurrent(define(name, [first, second]));
+    database.close();
+
+    expect(database.version).toBe(2);
+    expect(second.run).toHaveBeenCalledTimes(1);
+  });
+
+  it('opens a database past the migrations as it stands', async () => {
+    await using context = createSchemaContext();
+    const { name } = context.schema;
+    const first = createMigration('first');
+    const second = createMigration('second');
+
+    (await openOrUpgrade(define(name, [first, second]))).close();
+    const database = await openCurrent(define(name, [first]));
+    database.close();
+
+    expect(database.version).toBe(2);
+  });
+
+  it('starts over when the newer database gets deleted', async () => {
+    await using context = createSchemaContext();
+    const { name } = context.schema;
+    const first = createMigration('first');
+    const newer = [createMigration('older'), createMigration('newer')];
+
+    (await openOrUpgrade(define(name, newer))).close();
+    const opening = openCurrent(define(name, [first]));
+
+    // Lands between the failed migrating open and the versionless one, since
+    // requests run in order and the versionless open isn't queued yet.
+    await deleteDatabase(name);
+    const database = await opening;
+    database.close();
+
+    expect(database.version).toBe(1);
+    expect(first.run).toHaveBeenCalledTimes(1);
+  });
+
+  it('rejects with the error a migration throws', async () => {
+    await using context = createSchemaContext();
+    const error = new Error('Migration failed.');
+
+    await expect(
+      openCurrent(
+        define(context.schema.name, [createThrowingMigration(error)]),
+      ),
+    ).rejects.toBe(error);
   });
 });
