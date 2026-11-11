@@ -23,7 +23,7 @@
 
     {
       devShells = eachSystem (
-        system: pkgs: {
+        system: pkgs: rec {
           default = pkgs.mkShell {
             packages = [
               pkgs.just
@@ -32,6 +32,15 @@
               pkgs.pnpm
               pkgs.treefmt
             ];
+          };
+
+          nixos = pkgs.mkShell {
+            inputsFrom = [ default ];
+
+            # Playwright ships its own Chromium, but the prebuilt binary can't
+            # run on NixOS. Consumed by Vitest configs using the Playwright
+            # browser provider.
+            CHROMIUM_PATH = "${pkgs.chromium}/bin/chromium";
           };
         }
       );

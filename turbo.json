@@ -4,7 +4,7 @@
   "noUpdateNotifier": true,
   "ui": "stream",
   "globalDependencies": ["tsconfig.json"],
-  "globalPassThroughEnv": ["FORCE_COLOR", "CLICOLOR_FORCE"],
+  "globalPassThroughEnv": ["CHROMIUM_PATH", "FORCE_COLOR", "CLICOLOR_FORCE"],
   "tasks": {
     "prepack": {
       "dependsOn": ["^prepack"],
