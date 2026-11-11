@@ -8,6 +8,10 @@ Packages use [fixed-mode versioning](https://lerna.js.org/docs/features/version-
 
 ## [UNRELEASED]
 
+### Added
+
+- `[@holz/idb-backend]` New package: persist logs to IndexedDB.
+
 ### Changed
 
 - `[@holz/core]` **Breaking:** renamed `drain()` from `createBatcher(...)` to `flush()`.
