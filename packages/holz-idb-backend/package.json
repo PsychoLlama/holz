@@ -40,7 +40,11 @@
     "test:coverage": "vitest run --coverage --color --passWithNoTests",
     "test:types": "tsc"
   },
+  "peerDependencies": {
+    "@holz/core": "^0.11.0"
+  },
   "devDependencies": {
+    "@holz/core": "workspace:^",
     "@vitest/browser-playwright": "^5.0.0",
     "@vitest/coverage-v8": "^5.0.0",
     "playwright": "^1.65.0",
